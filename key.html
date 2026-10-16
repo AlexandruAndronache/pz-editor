@@ -106,6 +106,7 @@ textarea.raw{width:100%;min-height:150px;font-family:var(--f-mono);font-size:12p
     <label class="mono" style="display:flex;align-items:center;gap:6px"><button type="button" onclick="document.getElementById('file').click()">Open .txt…</button>
       <input type="file" id="file" accept=".txt,text/plain" hidden></label>
     <button type="button" id="undoBtn" disabled>Undo</button>
+    <button type="button" id="dlHead" title="Download the full edited file">Download .txt</button>
     <button type="button" class="primary" id="exportBtn">Export</button>
   </div>
 </header>
@@ -159,11 +160,12 @@ textarea.raw{width:100%;min-height:150px;font-family:var(--f-mono);font-size:12p
     <div class="row"><strong>Export</strong>
       <div class="actions">
         <label class="chk" style="display:flex;gap:6px;align-items:center;font-size:12.5px"><input type="checkbox" id="exOnly"> Modified items only</label>
-        <button type="button" class="primary" id="copyBtn">Copy text</button>
+        <button type="button" class="primary" id="dlBtn">Download .txt</button>
+        <button type="button" id="copyBtn">Copy text</button>
         <button type="button" id="closeEx">Close</button>
       </div>
     </div>
-    <p class="note">Copy this and paste it over your <span class="mono">key.txt</span>. Unchanged items keep their original formatting.</p>
+    <p class="note">Download <span class="mono">key.txt</span> (or copy the text) and put it in your mod at the same path as the original, e.g. <span class="mono">42/media/scripts/…/key.txt</span>. Unchanged items keep their original formatting.</p>
     <textarea id="exText" readonly spellcheck="false"></textarea>
     <div class="msg" id="copyMsg"></div>
   </div>
@@ -373,6 +375,12 @@ load(SRC,'key.txt');
 try{ const d=JSON.parse(localStorage.getItem(DK)||'null'); if(d && d.text){ $('draftBanner').hidden=false;
   $('restoreBtn').onclick=()=>{ load(d.text,d.name); $('draftBanner').hidden=true; $('bMsg').textContent='Restored your edits. Modified markers are reset; the restored text is the new baseline.' };
   $('discardBtn').onclick=()=>{ try{localStorage.removeItem(DK)}catch(_){} $('draftBanner').hidden=true } } }catch(_){}
+
+function saveFile(name,text){try{const b=new Blob([text],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500);return true}catch(e){return false}}
+
+function dlName(only){return only?S.name.replace(/\.txt$/i,'')+'_modified.txt':S.name}
+$('dlBtn').addEventListener('click',()=>{const only=$('exOnly').checked;fillExport();if(saveFile(dlName(only),$('exText').value))$('copyMsg').textContent='Downloaded '+dlName(only)+'.';else $('copyMsg').textContent='Download blocked by the browser. Use Copy text instead.'});
+$('dlHead').addEventListener('click',()=>{saveFile(S.name,serialize(false))});
 </script>
 
 </body>

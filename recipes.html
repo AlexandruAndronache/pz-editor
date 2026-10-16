@@ -122,6 +122,7 @@ textarea.whole{min-height:420px}
     <button type="button" onclick="document.getElementById('file').click()">Open .txt…</button>
     <input type="file" id="file" accept=".txt,text/plain" multiple hidden>
     <button type="button" id="undoBtn" disabled>Undo</button>
+    <button type="button" id="dlHead" title="Download every changed file">Download changed</button>
     <button type="button" class="primary" id="exportBtn">Export</button>
   </div>
 </header>
@@ -195,7 +196,9 @@ textarea.whole{min-height:420px}
     <div class="row"><strong>Export</strong>
       <div class="actions">
         <select id="exFile"></select>
-        <button type="button" class="primary" id="copyBtn">Copy text</button>
+        <button type="button" class="primary" id="dlBtn">Download .txt</button>
+        <button type="button" id="dlZip">All changed files (.zip)</button>
+        <button type="button" id="copyBtn">Copy text</button>
         <button type="button" id="closeEx">Close</button>
       </div>
     </div>
@@ -574,7 +577,7 @@ function renderExport(){
   }else{
     const f=F[+v],n=R.filter(r=>r.file===+v&&isMod(r)).length;
     $('exText').value=serFile(+v);
-    $('exNote').innerHTML=`Copy this and paste it over your <span class="mono">${esc(f.name)}</span>. ${n?`${n} recipe${n>1?'s':''} changed; `:'No changes; '}unchanged recipes keep their original formatting.`;
+    $('exNote').innerHTML=`Download <span class="mono">${esc(f.name)}</span> (or copy the text) and put it in your mod at the same path as the original, e.g. <span class="mono">42/media/scripts/…/${esc(f.name)}</span>. ${n?`${n} recipe${n>1?'s':''} changed; `:'No changes; '}unchanged recipes keep their original formatting.`;
   }
   $('copyMsg').textContent='';
 }
@@ -620,6 +623,24 @@ try{const raw=localStorage.getItem(DK);if(raw){const d=JSON.parse(raw);if((d.edi
   $('restoreBtn').onclick=()=>{restore(d);$('draftBanner').hidden=true;saveDraft()};
   $('discardBtn').onclick=()=>{try{localStorage.removeItem(DK)}catch(e){};$('draftBanner').hidden=true};
 }}}catch(e){}
+
+function saveFile(name,text){try{const b=new Blob([text],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500);return true}catch(e){return false}}
+
+function changedFiles(){const set=new Set(R.filter(r=>isMod(r)&&!F[r.file].gone).map(r=>r.file));return [...set].map(i=>({name:F[i].name,text:serFile(i)}))}
+function loadZip(){return window.JSZip?Promise.resolve(window.JSZip):new Promise((ok,no)=>{const sc=document.createElement('script');sc.src='jszip.min.js';sc.onload=()=>ok(window.JSZip);sc.onerror=no;document.head.appendChild(sc)})}
+async function downloadChanged(msgEl){
+  const fs=changedFiles(), say=t=>{if(msgEl)msgEl.textContent=t};
+  if(!fs.length){say('Nothing changed yet.');if(!msgEl)alertBar('Nothing changed yet.');return}
+  if(fs.length===1){saveFile(fs[0].name,fs[0].text);say('Downloaded '+fs[0].name+'.');return}
+  try{const Z=await loadZip(),z=new Z();fs.forEach(x=>z.file(x.name,x.text));const b=await z.generateAsync({type:'blob'});
+    const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='pz-recipes-changed.zip';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500);
+    say('Downloaded '+fs.length+' files: '+fs.map(x=>x.name).join(', '));
+  }catch(e){fs.forEach(x=>saveFile(x.name,x.text));say('Zip unavailable, downloaded '+fs.length+' separate files.')}
+}
+function alertBar(t){const m=$('bMsg');if(m){m.textContent=t;m.className='msg err'}}
+$('dlBtn').onclick=()=>{const v=$('exFile').value,name=v==='mod'?'recipes_modified.txt':F[+v].name;if(saveFile(name,$('exText').value))$('copyMsg').textContent='Downloaded '+name+'.';else $('copyMsg').textContent='Download blocked by the browser. Use Copy text instead.'};
+$('dlZip').onclick=()=>downloadChanged($('copyMsg'));
+$('dlHead').onclick=()=>downloadChanged(null);
 </script>
 
 </body>

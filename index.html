@@ -74,7 +74,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);color:v
     <span class="kicker">Project Zomboid script editor</span>
     <h1>Edit item and recipe scripts without hand-editing .txt files.</h1>
     <p>Browse every entry, change its fields, bulk-tweak hundreds at once, then copy the result back over the original script. Entries you didn't touch keep their exact original formatting.</p>
-    <div class="stats"><span><b>4,661</b>items</span><span><b>606</b>recipes</span><span><b>49</b>script files</span></div>
+    <div class="stats"><span><b>4,661</b>items</span><span><b>845</b>recipes</span><span><b>64</b>script files</span></div>
   </section>
 
   <h2>Recipes</h2>
@@ -96,6 +96,29 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);color:v
         item 1 [Base.Handle] mode:keep,
     }
     outputs { item 1 Base.Rope, }
+}</pre>
+    </a>
+  </div>
+
+  <div class="grid" style="margin-top:12px">
+    <a class="card big" href="blacksmith.html">
+      <div style="display:grid;gap:10px;align-content:start">
+        <div class="head"><h3>Blacksmith</h3><span class="n">239 recipes · 15 files</span></div>
+        <p>Forging, furnaces and smelting, metal bars and sheets, tool and weapon heads, blades, armor and cookware, plus stonemasonry, the bandsaw and the standing drill. Same editing, bulk tools and downloads as the recipe editor.</p>
+        <span class="go">Open blacksmith editor →</span>
+      </div>
+<pre><span class="k">craftRecipe</span> Forge_Smithing_Hammer_Head
+{
+    time = <span class="k">300</span>,
+    SkillRequired = Blacksmith:<span class="k">1</span>,
+    xpAward = Blacksmith:<span class="k">25</span>,
+    Tags = PrimitiveForge,
+    inputs
+    {
+        item <span class="k">2</span> tags[base:charcoal],
+        item 1 tags[base:piercedchunk],
+    }
+    outputs { item 1 Base.SmithingHammerHead, }
 }</pre>
     </a>
   </div>

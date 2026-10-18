@@ -112,7 +112,7 @@ textarea.whole{min-height:420px}
 </head>
 <body>
 
-<nav class="pznav" aria-label="Editors"><a class="b" href="index.html"><i aria-hidden="true"></i>PZ Editor</a><div class="l"><a href="recipes.html">Recipes</a><a href="blacksmith.html" class="on" aria-current="page">Blacksmith</a><a href="pottery.html">Pottery</a><a href="clothing.html">Clothing</a><a href="container.html">Containers</a><a href="drainable.html">Drainables</a><a href="food.html">Food</a><a href="key.html">Keys</a><a href="literature.html">Literature</a><a href="normal.html">Normal items</a><a href="weapon.html">Weapons</a><a href="weaponpart.html">Weapon parts</a></div></nav>
+<nav class="pznav" aria-label="Editors"><a class="b" href="index.html"><i aria-hidden="true"></i>PZ Editor</a><div class="l"><a href="recipes.html">Recipes</a><a href="blacksmith.html" class="on" aria-current="page">Blacksmith</a><a href="pottery.html">Pottery</a><a href="clothing.html">Clothing</a><a href="container.html">Containers</a><a href="drainable.html">Drainables</a><a href="food.html">Food</a><a href="key.html">Keys</a><a href="literature.html">Literature</a><a href="normal.html">Normal items</a><a href="weapon.html">Weapons</a><a href="weaponpart.html">Weapon parts</a><a href="mod.html">Mod builder</a></div></nav>
 <header>
   <div>
     <h1>Zomboid Blacksmith Editor</h1>
@@ -643,5 +643,12 @@ $('dlZip').onclick=()=>downloadChanged($('copyMsg'));
 $('dlHead').onclick=()=>downloadChanged(null);
 </script>
 
+<script src="modkit.js"></script>
+<script>
+(function(){var ED='blacksmith';
+var mk=PZMod.attach({editor:ED,collect:function(){var m={};F.forEach(function(f,i){if(f.gone)return;if(R.some(function(r){return r.file===i&&isMod(r)}))m[f.name]=serFile(i)});return m}});
+var _sd=saveDraft;saveDraft=function(){_sd();mk.schedule()};
+var d=document.getElementById('discardBtn');if(d)d.addEventListener('click',function(){mk.clearMine()});})();
+</script>
 </body>
 </html>

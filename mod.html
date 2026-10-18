@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Mod builder · PZ Editor</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#eef0e8; --panel:#f8f9f4; --line:#d3d7c6; --fg:#22261c; --muted:#5f6651;
+  --accent:#5b6b2e; --accent-fg:#ffffff; --hi:#fff3c4; --hi-line:#d9b84a; --danger:#a33a24; --chip:#e2e6d5;
+  --f-display:"Archivo",system-ui,sans-serif; --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#181a14; --panel:#20231b; --line:#353a2c; --fg:#e4e7da; --muted:#9aa18a;
+  --accent:#a9be62; --accent-fg:#161a0c; --hi:#3a3418; --hi-line:#a88e2c; --danger:#e07a5f; --chip:#2c3024; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#181a14; --panel:#20231b; --line:#353a2c; --fg:#e4e7da; --muted:#9aa18a;
+  --accent:#a9be62; --accent-fg:#161a0c; --hi:#3a3418; --hi-line:#a88e2c; --danger:#e07a5f; --chip:#2c3024; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-display);font-size:14px;line-height:1.5;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:14px 48px}
+a{color:inherit}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:1px solid var(--line);background:var(--panel);border-radius:6px;padding:7px 12px;font-weight:600}
+button:hover{border-color:var(--accent)}
+button.primary{background:var(--accent);color:var(--accent-fg);border-color:var(--accent)}
+button.ghost{background:transparent;border-color:transparent;color:var(--muted);padding:4px 8px}
+button.ghost:hover{color:var(--danger)}
+button:disabled{opacity:.55;cursor:default}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+input,textarea{background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:7px 9px;width:100%;min-width:0}
+.mono{font-family:var(--f-mono);font-size:12.5px}
+.pznav{display:flex;align-items:center;gap:6px 14px;margin:0 0 12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:13px;min-width:0}
+.pznav .b{font-weight:900;letter-spacing:-.02em;text-decoration:none;color:var(--fg);display:flex;align-items:center;gap:8px;white-space:nowrap;font-size:15px}
+.pznav .b i{width:18px;height:18px;border-radius:4px;background:repeating-linear-gradient(-45deg,var(--hi-line) 0 4px,var(--fg) 4px 8px)}
+.pznav .l{display:flex;gap:4px;overflow-x:auto;scrollbar-width:thin;min-width:0;flex:1}
+.pznav .l a{text-decoration:none;color:var(--muted);padding:4px 9px;border-radius:5px;white-space:nowrap;font-weight:600}
+.pznav .l a:hover{color:var(--fg);background:var(--chip)}
+.pznav .l a.on{background:var(--accent);color:var(--accent-fg)}
+.wrap{max-width:1120px;margin:0 auto;display:grid;gap:16px}
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:12px}
+h1{font-size:clamp(26px,4vw,36px);font-weight:900;letter-spacing:-.03em;margin:0;line-height:1.05}
+.lede{margin:6px 0 0;color:var(--muted);max-width:64ch}
+.actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:16px;align-items:start}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;min-width:0}
+.panel h2{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0;padding:11px 14px;border-bottom:1px solid var(--line);font-weight:700;display:flex;justify-content:space-between;gap:8px}
+.body{padding:14px;display:grid;gap:12px}
+label{display:grid;gap:4px;font-size:12.5px;color:var(--muted);font-weight:600}
+.hint{font-size:12px;color:var(--muted);margin:0;line-height:1.45}
+.err{color:var(--danger)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700;padding:8px 10px;border-bottom:1px solid var(--line)}
+td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+td .p{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);overflow-wrap:anywhere}
+td .n{font-family:var(--f-mono);font-weight:600;font-size:12.5px;overflow-wrap:anywhere}
+td.num{white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--muted)}
+.tbl{overflow-x:auto}
+.empty{padding:28px 14px;text-align:center;color:var(--muted)}
+pre.tree{margin:0;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-family:var(--f-mono);font-size:12px;line-height:1.6;overflow:auto;white-space:pre}
+pre.tree .d{color:var(--accent);font-weight:600}
+.steps{display:grid;gap:10px;counter-reset:s;margin:0;padding:0;list-style:none}
+.steps li{counter-increment:s;display:grid;grid-template-columns:28px minmax(0,1fr);gap:8px}
+.steps li::before{content:counter(s);width:22px;height:22px;border-radius:50%;background:var(--chip);color:var(--fg);font-size:12px;font-weight:700;display:grid;place-items:center}
+.steps code{font-family:var(--f-mono);font-size:12px;background:var(--chip);border-radius:4px;padding:1px 5px;overflow-wrap:anywhere}
+.msg{font-size:13px;color:var(--accent);min-height:1.3em}
+@media (max-width:860px){.grid{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<nav class="pznav" aria-label="Editors"><a class="b" href="index.html"><i aria-hidden="true"></i>PZ Editor</a><div class="l"><a href="recipes.html">Recipes</a><a href="blacksmith.html">Blacksmith</a><a href="pottery.html">Pottery</a><a href="clothing.html">Clothing</a><a href="container.html">Containers</a><a href="drainable.html">Drainables</a><a href="food.html">Food</a><a href="key.html">Keys</a><a href="literature.html">Literature</a><a href="normal.html">Normal items</a><a href="weapon.html">Weapons</a><a href="weaponpart.html">Weapon parts</a><a href="mod.html" class="on" aria-current="page">Mod builder</a></div></nav>
+
+<div class="wrap">
+  <div class="head">
+    <div>
+      <h1>Mod builder</h1>
+      <p class="lede">Every script file you change in any editor is collected here, already placed at its Build 42 path. Name your mod, then download it as one zip and unzip it into your Zomboid mods folder.</p>
+    </div>
+    <div class="actions">
+      <button type="button" id="clearBtn">Clear all</button>
+      <button type="button" class="primary" id="dlBtn">Download mod (.zip)</button>
+    </div>
+  </div>
+  <div class="msg" id="msg" role="status"></div>
+
+  <div class="grid">
+    <section class="panel">
+      <h2><span>mod.info</span></h2>
+      <div class="body">
+        <label>Name<input id="fName" maxlength="80"></label>
+        <label>ID <span class="hint" style="font-weight:400">(letters, numbers, _ and -; also the folder name)</span><input id="fId" class="mono" maxlength="60"></label>
+        <label>Description<textarea id="fDesc" rows="2" maxlength="300"></textarea></label>
+        <label>Author<input id="fAuthor" maxlength="60"></label>
+        <pre class="tree" id="tree" aria-label="Folder preview"></pre>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2><span>Changed files</span><span id="cnt"></span></h2>
+      <div class="tbl"><table>
+        <thead><tr><th>File</th><th>Editor</th><th>Changed</th><th></th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table></div>
+      <div class="empty" id="empty" hidden>No changes yet. Edit something in any editor and it shows up here automatically.</div>
+    </section>
+  </div>
+
+  <section class="panel">
+    <h2><span>Install</span></h2>
+    <div class="body">
+      <ol class="steps">
+        <li><span>Unzip the download into <code>C:\Users\&lt;you&gt;\Zomboid\mods\</code>, so you get <code id="instPath">mods\MyFirstMod\mod.info</code>.</span></li>
+        <li><span>Start the game, open <b>Mods</b>, and enable your mod. For an existing save: Load → pick the save → <b>More</b> → <b>Mods</b>.</span></li>
+        <li><span>Each file replaces the whole vanilla file at the same path. After a game update, open the editor again, redo or restore your edits, and download a fresh zip.</span></li>
+        <li><span>If something doesn't load, search <code>C:\Users\&lt;you&gt;\Zomboid\console.txt</code> for the file name or <code>ERROR</code>.</span></li>
+      </ol>
+      <p class="hint">Changes are stored only in this browser. Clearing site data or using another browser starts an empty mod.</p>
+    </div>
+  </section>
+</div>
+
+<script src="modkit.js"></script>
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const fields={fName:'name',fId:'id',fDesc:'description',fAuthor:'author'};
+  let s=PZMod.settings(), files=[];
+  for(const [el,k] of Object.entries(fields)){ $(el).value=s[k]||''; $(el).addEventListener('input',()=>{ s[k]=$(el).value; PZMod.settings(s); renderTree(); }); }
+  $('fId').addEventListener('blur',()=>{ $('fId').value=PZMod.cleanId($('fId').value); s.id=$('fId').value; PZMod.settings(s); renderTree(); });
+
+  function size(n){ return n<1024? n+' B' : n<1048576? (n/1024).toFixed(1)+' KB' : (n/1048576).toFixed(2)+' MB'; }
+  function ago(t){ const d=(Date.now()-t)/1000; if(d<60) return 'just now'; if(d<3600) return Math.round(d/60)+' min ago'; if(d<86400) return Math.round(d/3600)+' h ago'; return new Date(t).toLocaleDateString(); }
+
+  function renderTree(){
+    const id=PZMod.cleanId(s.id); $('instPath').textContent='mods\\'+id+'\\mod.info';
+    const out=[`<span class="d">${esc(id)}/</span>`,'├─ mod.info','├─ <span class="d">common/</span>media/','└─ <span class="d">42/</span>','   ├─ mod.info'];
+    if(!files.length) out.push('   └─ media/scripts/generated/   <span style="opacity:.7">(empty)</span>');
+    else{
+      out.push('   └─ <span class="d">media/scripts/generated/</span>');
+      const rel=files.map(f=>f.path.replace(PZMod.BASE,''));
+      rel.forEach((p,i)=>out.push('      '+(i===rel.length-1?'└─ ':'├─ ')+esc(p)));
+    }
+    $('tree').innerHTML=out.join('\n');
+  }
+  function render(a){
+    files=a; $('cnt').textContent=a.length? a.length+' file'+(a.length>1?'s':'') : '';
+    $('empty').hidden=!!a.length; $('dlBtn').disabled=!a.length; $('clearBtn').disabled=!a.length;
+    $('rows').innerHTML=a.map(f=>{const e=PZMod.EDITORS[f.editor]||['',f.editor];
+      return `<tr><td><div class="n">${esc(f.name)}</div><div class="p">${esc(f.path.replace(PZMod.BASE,'…/generated/'))}</div></td>
+        <td><a href="${esc(f.editor)}.html">${esc(e[1])}</a></td>
+        <td class="num">${ago(f.updated)}<br>${size(new Blob([f.text]).size)}</td>
+        <td><button type="button" class="ghost" data-k="${esc(f.key)}" title="Leave this file out of the mod">Remove</button></td></tr>`}).join('');
+    renderTree();
+  }
+  $('rows').addEventListener('click',e=>{const b=e.target.closest('button[data-k]'); if(!b) return;
+    if(!b.dataset.arm){ b.dataset.arm=1; b.textContent='Confirm'; b.style.color='var(--danger)'; setTimeout(()=>{ if(b.isConnected){ delete b.dataset.arm; b.textContent='Remove'; b.style.color=''; } },3000); return; }
+    PZMod.remove(b.dataset.k);
+  });
+  $('clearBtn').addEventListener('click',()=>{const b=$('clearBtn');
+    if(!b.dataset.arm){ b.dataset.arm=1; b.textContent='Click again to clear'; setTimeout(()=>{ delete b.dataset.arm; b.textContent='Clear all'; },3000); return; }
+    delete b.dataset.arm; b.textContent='Clear all'; PZMod.clear().then(()=>$('msg').textContent='Mod cleared. Your editor drafts are untouched.');
+  });
+  $('dlBtn').addEventListener('click',()=>{ $('dlBtn').disabled=true; $('msg').textContent='Building zip…';
+    PZMod.download().then(r=>{ $('msg').textContent=`Downloaded ${r.filename} with ${r.count} file${r.count>1?'s':''}.`; $('dlBtn').disabled=false; },
+      err=>{ $('msg').textContent='Could not build the zip: '+err.message; $('dlBtn').disabled=false; });
+  });
+  PZMod.onChange(render);
+})();
+</script>
+</body>
+</html>

@@ -74,7 +74,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);color:v
     <span class="kicker">Project Zomboid script editor</span>
     <h1>Edit item and recipe scripts without hand-editing .txt files.</h1>
     <p>Browse every entry, change its fields, bulk-tweak hundreds at once, then copy the result back over the original script. Entries you didn't touch keep their exact original formatting.</p>
-    <div class="stats"><span><b>4,661</b>items</span><span><b>845</b>recipes</span><span><b>64</b>script files</span></div>
+    <div class="stats"><span><b>4,661</b>items</span><span><b>887</b>recipes</span><span><b>67</b>script files</span></div>
   </section>
 
   <h2>Recipes</h2>
@@ -119,6 +119,30 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);color:v
         item 1 tags[base:piercedchunk],
     }
     outputs { item 1 Base.SmithingHammerHead, }
+}</pre>
+    </a>
+  </div>
+
+  <div class="grid" style="margin-top:12px">
+    <a class="card big" href="pottery.html">
+      <div style="display:grid;gap:10px;align-content:start">
+        <div class="head"><h3>Pottery</h3><span class="n">42 recipes · 3 files</span></div>
+        <p>The pottery update: shaping on the pottery wheel and bench, pressing molds, bricks, tiles and oil on the hand press, and firing everything in the small and large kiln. Same editing, bulk tools and downloads as the other recipe editors.</p>
+        <span class="go">Open pottery editor →</span>
+      </div>
+<pre><span class="k">craftRecipe</span> MakeClayJar
+{
+    timedAction = Craft_PotteryWheel,
+    time = <span class="k">120</span>,
+    Tags = PotteryWheel,
+    SkillRequired = Pottery:<span class="k">5</span>,
+    xpAward = Pottery:<span class="k">40</span>,
+    inputs
+    {
+        item <span class="k">3</span> [Base.Clay],
+        -fluid <span class="k">0.25</span> categories[Water] mode:mixture,
+    }
+    outputs { item 1 Base.ClayJarUnfired, }
 }</pre>
     </a>
   </div>

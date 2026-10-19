@@ -7,13 +7,15 @@
     items: 'items/',
     recipes: 'recipes/',
     blacksmith: 'entities/blacksmith/craftRecipes/',
-    pottery: 'entities/pottery/craftRecipes/'
+    pottery: 'entities/pottery/cratRecipes/',
+    entities: 'entities/'
   };
   var EDITORS = {
     clothing: ['items', 'Clothing'], container: ['items', 'Containers'], drainable: ['items', 'Drainables'],
     food: ['items', 'Food'], key: ['items', 'Keys'], literature: ['items', 'Literature'],
     normal: ['items', 'Normal items'], weapon: ['items', 'Weapons'], weaponpart: ['items', 'Weapon parts'],
-    recipes: ['recipes', 'Recipes'], blacksmith: ['blacksmith', 'Blacksmith'], pottery: ['pottery', 'Pottery']
+    recipes: ['recipes', 'Recipes'], entities: ['entities', 'Entities'],
+    blacksmith: ['blacksmith', 'Blacksmith (old page)'], pottery: ['pottery', 'Pottery (old page)']
   };
   var SKEY = 'pz-mod-settings';
   var DEFAULTS = { name: 'My First Mod', id: 'MyFirstMod', description: 'Script changes made with PZ Editor.', author: '' };
@@ -110,6 +112,10 @@
       root.file('mod.info', modInfo(s));
       root.folder('common').folder('media');
       root.file('42/mod.info', modInfo(s));
+      /* newest wins when two editors produced the same path */
+      var byPath = {};
+      files.forEach(function (f) { if (!byPath[f.path] || f.updated > byPath[f.path].updated) byPath[f.path] = f; });
+      files = Object.keys(byPath).map(function (k) { return byPath[k]; });
       files.forEach(function (f) { root.file(f.path, f.text); });
       return z.generateAsync({ type: 'blob', compression: 'DEFLATE' }).then(function (blob) {
         return { blob: blob, filename: id + '.zip', count: files.length, id: id };

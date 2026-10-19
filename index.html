@@ -58,6 +58,15 @@ h2::after{content:"";flex:1;height:1px;background:var(--line)}
 .step h4{margin:4px 0 4px;font-size:16px}
 .step p{margin:0;color:var(--muted);font-size:13.5px;max-width:42ch}
 footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.chips{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px;align-content:start}
+.chip{display:grid;gap:1px;padding:8px 10px;border:1px solid var(--line);border-radius:7px;background:var(--bg);text-decoration:none;min-width:0}
+.chip:hover{border-color:var(--accent)}
+.chip b{font-size:13.5px}
+.chip span{font-family:var(--f-mono);font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card.ent:hover{transform:none}
+.card.ent>a{min-width:0}
+.card.ent .head{flex-wrap:wrap}
+.card.ent .n{white-space:normal}
 @media (max-width:760px){.card.big{grid-template-columns:minmax(0,1fr)}}
 @media (prefers-reduced-motion:reduce){.card{transition:none}.card:hover{transform:none}}
 </style>
@@ -74,7 +83,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);color:v
     <span class="kicker">Project Zomboid script editor</span>
     <h1>Edit item and recipe scripts without hand-editing .txt files.</h1>
     <p>Browse every entry, change its fields, bulk-tweak hundreds at once, then copy the result back over the original script. Entries you didn't touch keep their exact original formatting.</p>
-    <div class="stats"><span><b>4,661</b>items</span><span><b>887</b>recipes</span><span><b>67</b>script files</span></div>
+    <div class="stats"><span><b>4,661</b>items</span><span><b>952</b>recipes</span><span><b>219</b>entities</span><span><b>275</b>script files</span></div>
   </section>
 
   <h2>Recipes</h2>
@@ -101,50 +110,14 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);color:v
   </div>
 
   <div class="grid" style="margin-top:12px">
-    <a class="card big" href="blacksmith.html">
-      <div style="display:grid;gap:10px;align-content:start">
-        <div class="head"><h3>Blacksmith</h3><span class="n">239 recipes · 15 files</span></div>
-        <p>Forging, furnaces and smelting, metal bars and sheets, tool and weapon heads, blades, armor and cookware, plus stonemasonry, the bandsaw and the standing drill. Same editing, bulk tools and downloads as the recipe editor.</p>
-        <span class="go">Open blacksmith editor →</span>
-      </div>
-<pre><span class="k">craftRecipe</span> Forge_Smithing_Hammer_Head
-{
-    time = <span class="k">300</span>,
-    SkillRequired = Blacksmith:<span class="k">1</span>,
-    xpAward = Blacksmith:<span class="k">25</span>,
-    Tags = PrimitiveForge,
-    inputs
-    {
-        item <span class="k">2</span> tags[base:charcoal],
-        item 1 tags[base:piercedchunk],
-    }
-    outputs { item 1 Base.SmithingHammerHead, }
-}</pre>
-    </a>
-  </div>
-
-  <div class="grid" style="margin-top:12px">
-    <a class="card big" href="pottery.html">
-      <div style="display:grid;gap:10px;align-content:start">
-        <div class="head"><h3>Pottery</h3><span class="n">42 recipes · 3 files</span></div>
-        <p>The pottery update: shaping on the pottery wheel and bench, pressing molds, bricks, tiles and oil on the hand press, and firing everything in the small and large kiln. Same editing, bulk tools and downloads as the other recipe editors.</p>
-        <span class="go">Open pottery editor →</span>
-      </div>
-<pre><span class="k">craftRecipe</span> MakeClayJar
-{
-    timedAction = Craft_PotteryWheel,
-    time = <span class="k">120</span>,
-    Tags = PotteryWheel,
-    SkillRequired = Pottery:<span class="k">5</span>,
-    xpAward = Pottery:<span class="k">40</span>,
-    inputs
-    {
-        item <span class="k">3</span> [Base.Clay],
-        -fluid <span class="k">0.25</span> categories[Water] mode:mixture,
-    }
-    outputs { item 1 Base.ClayJarUnfired, }
-}</pre>
-    </a>
+    <div class="card big ent">
+      <a href="entities.html" style="display:grid;gap:10px;align-content:start;text-decoration:none">
+        <div class="head"><h3>Entities</h3><span class="n">346 recipes · 219 entities · 226 files</span></div>
+        <p>The whole <span style="font-family:var(--f-mono);font-size:12.5px">scripts/generated/entities</span> folder: workstation craft recipes (blacksmith, pottery, agricultural, animals, appliances) and buildable entities (furniture, walls, outdoors, stairs…). Edit recipe fields, inputs and outputs, and every <span style="font-family:var(--f-mono);font-size:12.5px">component</span> of an entity, including its build recipe.</p>
+        <span class="go">Open entities editor →</span>
+      </a>
+      <div class="chips"><a class="chip" href="entities.html#agricultural"><b>Agricultural</b><span>47 recipes · 13 entities</span></a><a class="chip" href="entities.html#animals"><b>Animals</b><span>14 recipes · 13 entities</span></a><a class="chip" href="entities.html#appliances"><b>Appliances</b><span>3 recipes · 6 entities</span></a><a class="chip" href="entities.html#blacksmith"><b>Blacksmith</b><span>240 recipes · 15 entities</span></a><a class="chip" href="entities.html#pottery"><b>Pottery</b><span>42 recipes · 6 entities</span></a><a class="chip" href="entities.html#furniture"><b>Furniture</b><span>52 entities</span></a><a class="chip" href="entities.html#walls"><b>Walls</b><span>70 entities</span></a><a class="chip" href="entities.html#outdoors"><b>Outdoors</b><span>30 entities</span></a><a class="chip" href="entities.html#barricades"><b>Barricades</b><span>3 entities</span></a><a class="chip" href="entities.html#fences_low"><b>Low fences</b><span>3 entities</span></a><a class="chip" href="entities.html#stairs"><b>Stairs</b><span>3 entities</span></a><a class="chip" href="entities.html#misc"><b>Misc</b><span>4 entities</span></a><a class="chip" href="entities.html#admin"><b>Admin</b><span>1 entity</span></a></div>
+    </div>
   </div>
 
   <h2>Items</h2>

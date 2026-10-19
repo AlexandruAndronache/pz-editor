@@ -7,7 +7,7 @@
     items: 'items/',
     recipes: 'recipes/',
     blacksmith: 'entities/blacksmith/craftRecipes/',
-    pottery: 'entities/pottery/cratRecipes/',
+    pottery: 'entities/pottery/craftRecipes/',
     entities: 'entities/'
   };
   var EDITORS = {

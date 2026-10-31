@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fitness · PZ Editor</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{color-scheme:light;
+  --bg:#eef0e8; --panel:#f8f9f4; --line:#d3d7c6; --fg:#22261c; --muted:#666d58;
+  --accent:#5b6b2e; --accent-fg:#ffffff; --hi:#fff3c4; --hi-line:#d9b84a;
+  --danger:#a33a24; --chip:#e2e6d5;
+  --f-display:"Archivo",system-ui,sans-serif; --f-body:"Archivo",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#181a14; --panel:#20231b; --line:#353a2c; --fg:#e4e7da; --muted:#9aa18a;
+  --accent:#a9be62; --accent-fg:#161a0c; --hi:#3a3418; --hi-line:#a88e2c;
+  --danger:#e07a5f; --chip:#2c3024; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#181a14; --panel:#20231b; --line:#353a2c; --fg:#e4e7da; --muted:#9aa18a;
+  --accent:#a9be62; --accent-fg:#161a0c; --hi:#3a3418; --hi-line:#a88e2c;
+  --danger:#e07a5f; --chip:#2c3024; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:14px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:14px 24px}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:1px solid var(--line);background:var(--panel);border-radius:6px;padding:6px 11px;font-weight:600}
+button:hover{border-color:var(--accent)}
+button:disabled{opacity:.5;cursor:default}
+button.primary{background:var(--accent);color:var(--accent-fg);border-color:var(--accent)}
+button.ghost{background:transparent;border-color:transparent;color:var(--muted)}
+button.ghost:hover{color:var(--danger)}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+input,select,textarea{background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:6px 8px;min-width:0}
+.mono{font-family:var(--f-mono);font-size:12.5px}
+header{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between;margin-bottom:12px}
+h1{font-family:var(--f-display);font-weight:800;font-size:20px;margin:0;letter-spacing:-.01em}
+.sub{color:var(--muted);font-size:12.5px;display:flex;gap:12px;flex-wrap:wrap}
+.sub b{color:var(--fg);font-variant-numeric:tabular-nums}
+.actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.banner{background:var(--hi);border:1px solid var(--hi-line);border-radius:6px;padding:8px 12px;margin-bottom:12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.grid{display:grid;grid-template-columns:270px minmax(0,1fr) 300px;gap:12px;align-items:start}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:8px;min-width:0}
+.panel h2{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0;padding:10px 12px;border-bottom:1px solid var(--line);font-weight:700;display:flex;justify-content:space-between;gap:8px}
+.filters{display:grid;gap:6px;padding:10px 12px;border-bottom:1px solid var(--line)}
+.filters label{display:flex;gap:6px;align-items:center;font-size:12.5px;color:var(--muted)}
+.list{max-height:calc(100vh - 290px);min-height:240px;overflow-y:auto}
+.it{display:flex;justify-content:space-between;gap:8px;padding:7px 12px;border-bottom:1px solid var(--line);cursor:pointer;align-items:baseline}
+.it:hover{background:var(--chip)}
+.it.sel{background:var(--accent);color:var(--accent-fg)}
+.it.sel .cat{color:inherit;opacity:.8}
+.it .nm{font-family:var(--f-mono);font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.it .cat{font-size:11px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--hi-line);margin-right:6px;vertical-align:middle}
+.editor{padding:12px 14px;display:grid;gap:12px;grid-template-columns:minmax(0,1fr)}
+.ehead{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ehead input{font-family:var(--f-mono);font-weight:600;font-size:15px;flex:1 1 200px}
+.fields{display:grid;gap:6px}
+.frow{display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:4px 8px;align-items:center;padding:5px 6px;border-radius:5px}
+.frow.chg{background:var(--hi)}
+.frow .k{font-family:var(--f-mono);font-size:12.5px;font-weight:600}
+.vwrap{display:flex;align-items:center;min-width:0;border:1px solid var(--line);border-radius:5px;background:var(--bg)}
+.vwrap:focus-within{outline:2px solid var(--accent);outline-offset:1px}
+.vwrap input{border:0;background:transparent;font-family:var(--f-mono);font-size:12.5px;width:100%;outline:none;padding:6px 4px}
+.vwrap .q{font-family:var(--f-mono);font-size:12.5px;color:var(--muted);padding:0 2px 0 8px;white-space:nowrap}
+.vwrap .q.r{padding:0 8px 0 2px}
+.vwrap.bad{border-color:var(--danger)}
+.hint{grid-column:2/3;font-size:11.5px;color:var(--muted);line-height:1.4}
+.hint .was{font-family:var(--f-mono)}
+.parts{grid-column:2/3;display:flex;flex-wrap:wrap;gap:4px}
+.part{border:1px solid var(--line);background:transparent;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;color:var(--muted)}
+.part.on{background:var(--accent);border-color:var(--accent);color:var(--accent-fg)}
+textarea.raw{grid-column:1/-1;width:100%;min-height:34px;font-family:var(--f-mono);font-size:12px;white-space:pre;overflow:auto}
+.add{display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:6px;padding-top:10px;border-top:1px dashed var(--line)}
+.add input{font-family:var(--f-mono);font-size:12.5px}
+.preview{background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:10px;max-height:260px;overflow:auto;margin:0;font-family:var(--f-mono);font-size:12px;white-space:pre;tab-size:4}
+.bulk{padding:12px;display:grid;gap:8px}
+.bulk label{font-size:12px;color:var(--muted);display:grid;gap:3px}
+.bulk .chk{display:flex;gap:6px;align-items:center}
+.msg{font-size:12.5px;color:var(--accent);min-height:1.2em}
+.msg.err{color:var(--danger)}
+.note{font-size:12px;color:var(--muted);line-height:1.45;margin:0}
+.empty{padding:30px;color:var(--muted);text-align:center}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;padding:16px;z-index:10}
+.modal{background:var(--panel);border:1px solid var(--line);border-radius:10px;width:min(980px,100%);max-height:100%;display:flex;flex-direction:column;gap:10px;padding:14px;overflow:auto}
+.modal textarea{min-height:36vh;width:100%;font-family:var(--f-mono);font-size:12px;white-space:pre;overflow:auto;tab-size:4}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.modgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;align-items:start}
+.modgrid label{font-size:12px;color:var(--muted);display:grid;gap:3px}
+.tree{background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:10px;margin:0;font-family:var(--f-mono);font-size:12px;line-height:1.55;white-space:pre;overflow:auto}
+.tree b{color:var(--accent)}
+.pznav{display:flex;align-items:center;gap:6px 14px;margin:0 0 12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:13px;min-width:0}
+.pznav .b{font-weight:900;letter-spacing:-.02em;text-decoration:none;color:var(--fg);display:flex;align-items:center;gap:8px;white-space:nowrap;font-size:15px}
+.pznav .b i{width:18px;height:18px;border-radius:4px;background:repeating-linear-gradient(-45deg,var(--hi-line) 0 4px,var(--fg) 4px 8px)}
+.pznav .l{display:flex;gap:4px;overflow-x:auto;scrollbar-width:thin;min-width:0;flex:1}
+.pznav .l a{text-decoration:none;color:var(--muted);padding:4px 9px;border-radius:5px;white-space:nowrap;font-weight:600}
+.pznav .l a:hover{color:var(--fg);background:var(--chip)}
+.pznav .l a.on{background:var(--accent);color:var(--accent-fg)}
+@media (max-width:1100px){.grid{grid-template-columns:250px minmax(0,1fr)}.bulkp{grid-column:1/-1}}
+@media (max-width:720px){.grid,.modgrid{grid-template-columns:minmax(0,1fr)}.list{max-height:300px;min-height:0}
+  .frow,.add{grid-template-columns:minmax(0,1fr) auto}.frow .k{grid-column:1/-1}.hint,.parts{grid-column:1/-1}
+  .frow .vwrap{grid-column:1/2}}
+</style>
+</head>
+<body>
+
+<nav class="pznav" aria-label="Editors"><a class="b" href="index.html"><i aria-hidden="true"></i>PZ Editor</a><div class="l"><a href="recipes.html">Recipes</a><a href="blacksmith.html">Blacksmith</a><a href="clothing.html">Clothing</a><a href="container.html">Containers</a><a href="drainable.html">Drainables</a><a href="food.html">Food</a><a href="key.html">Keys</a><a href="literature.html">Literature</a><a href="normal.html">Normal items</a><a href="weapon.html">Weapons</a><a href="weaponpart.html">Weapon parts</a><a href="fitness.html" class="on" aria-current="page">Fitness</a></div></nav>
+<header>
+  <div>
+    <h1>Zomboid Fitness Editor</h1>
+    <div class="sub"><span id="fname">FitnessExercises.lua</span><span class="mono">media/lua/shared/Definitions</span><span><b id="cnt">0</b> exercises</span><span><b id="dcnt">0</b> modified</span></div>
+  </div>
+  <div class="actions">
+    <button type="button" onclick="document.getElementById('file').click()">Open .lua…</button>
+    <input type="file" id="file" accept=".lua,text/plain" hidden>
+    <button type="button" id="undoBtn" disabled>Undo</button>
+    <button type="button" class="primary" id="exportBtn">Export</button>
+  </div>
+</header>
+<div class="banner" id="draftBanner" hidden><span>You have unsaved edits from your last visit.</span><button type="button" id="restoreBtn">Restore them</button><button type="button" class="ghost" id="discardBtn">Discard</button></div>
+
+<div class="grid">
+  <section class="panel">
+    <h2><span>Exercises</span><span id="shown"></span></h2>
+    <div class="filters">
+      <input id="q" type="search" placeholder="Search name or value…">
+      <select id="fMet"><option value="">All metabolics</option></select>
+      <select id="fPart"><option value="">Any muscle group</option></select>
+      <select id="fItem"><option value="">With or without equipment</option><option value="y">Needs an item</option><option value="n">Bodyweight only</option></select>
+      <label><input type="checkbox" id="fMod"> Modified only</label>
+    </div>
+    <div class="list" id="list"></div>
+  </section>
+
+  <section class="panel">
+    <h2><span>Fields</span><span id="ehint"></span></h2>
+    <div class="editor" id="editor"></div>
+  </section>
+
+  <section class="panel bulkp">
+    <h2><span>Bulk edit</span><span id="bscope"></span></h2>
+    <div class="bulk">
+      <p class="note">Applies to every exercise shown in the list. Narrow it with the filters first.</p>
+      <label>Field<input id="bKey" list="keys" class="mono" placeholder="e.g. xpMod" value="xpMod"></label>
+      <label>Operation
+        <select id="bOp">
+          <option value="mul">Multiply by</option>
+          <option value="add">Add number</option>
+          <option value="set">Set value</option>
+          <option value="max">Clamp to max</option>
+          <option value="min">Raise to min</option>
+          <option value="addPart">Add to list (,)</option>
+          <option value="rmPart">Remove from list (,)</option>
+          <option value="del">Delete field</option>
+        </select></label>
+      <label id="bValL">Value<input id="bVal" class="mono" placeholder="e.g. 1.5" list="bvals"></label>
+      <label class="chk"><input type="checkbox" id="bOnly" checked> Only exercises that already have this field</label>
+      <button type="button" class="primary" id="bApply">Apply</button>
+      <div class="msg" id="bMsg" role="status"></div>
+      <p class="note"><span class="mono">xpMod</span> scales XP per rep (1 = normal). <span class="mono">stiffness</span> is a comma list of <span class="mono">legs, arms, abs, chest</span>. For <span class="mono">metabolics</span>, <span class="mono">FitnessHeavy</span> works as shorthand for <span class="mono">Metabolics.FitnessHeavy</span>.</p>
+    </div>
+  </section>
+</div>
+<datalist id="keys"></datalist><datalist id="bvals"></datalist>
+<datalist id="dl-metabolics"><option value="Metabolics.Fitness"><option value="Metabolics.FitnessHeavy"><option value="Metabolics.LightWork"><option value="Metabolics.MediumWork"><option value="Metabolics.HeavyWork"></datalist>
+<datalist id="dl-prop"><option value="twohands"><option value="primary"><option value="switch"></datalist>
+<datalist id="dl-item"><option value="Base.BarBell"><option value="Base.DumbBell"></datalist>
+
+<div class="overlay" id="exportModal" hidden>
+  <div class="modal" role="dialog" aria-label="Export">
+    <div class="row"><strong>Export</strong>
+      <div class="actions">
+        <button type="button" class="primary" id="zipBtn">Download mod (.zip)</button>
+        <button type="button" id="dlBtn">Download .lua</button>
+        <button type="button" id="copyBtn">Copy text</button>
+        <button type="button" id="closeEx">Close</button>
+      </div>
+    </div>
+    <div class="modgrid">
+      <div style="display:grid;gap:8px">
+        <label>Mod name<input id="modName" value="PZ Editor Tweaks"></label>
+        <label>Mod ID (folder name)<input id="modId" class="mono" value="PZEditorTweaks"></label>
+        <p class="note">The zip is a Build 42 mod that replaces the game's <span class="mono">FitnessExercises.lua</span>. Unzip it into <span class="mono">C:\Users\&lt;you&gt;\Zomboid\mods\</span> and enable it in the Mods menu. If you use the same Mod ID as your other PZ Editor downloads, the folders merge into one mod.</p>
+      </div>
+      <pre class="tree" id="tree"></pre>
+    </div>
+    <textarea id="exText" readonly spellcheck="false" aria-label="FitnessExercises.lua"></textarea>
+    <div class="msg" id="copyMsg" role="status"></div>
+  </div>
+</div>
+
+<script>
+const SRC = "FitnessExercises = {};\r\n\r\nFitnessExercises.exercisesType = {\r\n\tsquats = {\r\n\t\ttype = \"squats\",\r\n\t\tname=getText(\"IGUI_Squats\"),\r\n\t\ttooltip=getText(\"IGUI_Squats_Tooltip\"),\r\n\t\tstiffness=\"legs\", -- where we gonna build stiffness (can be a list separated by \",\" can be legs, arms or abs)\r\n\t\tmetabolics = Metabolics.Fitness,\r\n\t\txpMod = 1,\r\n\t};\r\n\tpushups = {\r\n\t\ttype = \"pushups\",\r\n\t\tname=getText(\"IGUI_PushUps\"),\r\n\t\ttooltip=getText(\"IGUI_PushUps_Tooltip\"),\r\n\t\tstiffness=\"arms,chest\",\r\n\t\tmetabolics = Metabolics.Fitness,\r\n\t\txpMod = 1,\r\n\t};\r\n\tsitup = {\r\n\t\ttype = \"situp\",\r\n\t\tname=getText(\"IGUI_SitUps\"),\r\n\t\ttooltip=getText(\"IGUI_SitUps_Tooltip\"),\r\n\t\tstiffness=\"abs\",\r\n\t\tmetabolics = Metabolics.Fitness,\r\n\t\txpMod = 1,\r\n\t};\r\n\tburpees = {\r\n\t\ttype = \"burpees\",\r\n\t\tname=getText(\"IGUI_Burpees\"),\r\n\t\ttooltip=getText(\"IGUI_Burpees_Tooltip\"),\r\n\t\tstiffness=\"legs,arms,chest\", -- where we gonna build stiffness (can be a list separated by \",\" can be legs, arms or abs)\r\n\t\tmetabolics = Metabolics.FitnessHeavy,\r\n\t\txpMod = 0.8, -- few less xp as it gives xp for 3 body parts\r\n\t};\r\n\tbarbellcurl = {\r\n\t\ttype = \"barbellcurl\",\r\n\t\tname=getText(\"IGUI_BarbellCurl\"),\r\n\t\ttooltip=getText(\"IGUI_BarbellCurl_Tooltip\"),\r\n\t\titem = \"Base.BarBell\",\r\n\t\tprop=\"twohands\", -- prop is where we gonna put our item, 2 hand, primary or switch (one hand, then the other every X times)\r\n\t\tstiffness=\"arms,chest\",\r\n\t\tmetabolics = Metabolics.FitnessHeavy,\r\n\t\txpMod = 1.2,\r\n\t};\r\n\tdumbbellpress = {\r\n\t\ttype = \"dumbbellpress\",\r\n\t\tname=getText(\"IGUI_DumbbellPress\"),\r\n\t\ttooltip=getText(\"IGUI_PushUps_Tooltip\"),\r\n\t\titem = \"Base.DumbBell\",\r\n\t\tprop=\"switch\",\r\n\t\tstiffness=\"arms\",\r\n\t\tmetabolics = Metabolics.FitnessHeavy,\r\n\t\txpMod = 1.8,\r\n\t};\r\n\tbicepscurl = {\r\n\t\ttype = \"bicepscurl\",\r\n\t\tname=getText(\"IGUI_BicepsCurl\"),\r\n\t\ttooltip=getText(\"IGUI_PushUps_Tooltip\"),\r\n\t\titem = \"Base.DumbBell\",\r\n\t\tprop=\"switch\", -- switch is special, as i have 2 anim, one for left hand and one for right, i'll switch every X repeat the hand used\r\n\t\tstiffness=\"arms\",\r\n\t\tmetabolics = Metabolics.FitnessHeavy,\r\n\t\txpMod = 1.8,\r\n\t};\r\n}";
+const GAME_PATH = 'media/lua/shared/Definitions/FitnessExercises.lua';
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const KNOWN = {
+  type:{kind:'str',hint:'Exercise ID. The game also uses it to pick the animation, so a new ID has no animation.'},
+  name:{kind:'text',hint:'Translation key for the name in the exercise menu.'},
+  tooltip:{kind:'text',hint:'Translation key for the menu tooltip.'},
+  item:{kind:'str',hint:'Item you must have to do it, e.g. Base.DumbBell.'},
+  prop:{kind:'str',hint:'How the item is held: twohands, primary, or switch (alternates hands).'},
+  stiffness:{kind:'str',hint:'Muscles that get stiff afterwards.'},
+  metabolics:{kind:'raw',hint:'How tiring it is: affects heat and fatigue.'},
+  xpMod:{kind:'raw',hint:'XP multiplier per rep. 1 = normal.'}
+};
+const PARTS = ['legs','arms','abs','chest'];
+let S = { name:'FitnessExercises.lua', nl:'\n', segs:[], ex:[], sel:-1, undo:null };
+
+// ---------- parsing (line based, round-trip exact) ----------
+function parseValue(s){
+  let m;
+  if((m=s.match(/^"((?:[^"\\]|\\.)*)"/))) return {kind:'str',v:m[1],len:m[0].length};
+  if((m=s.match(/^getText\(\s*"((?:[^"\\]|\\.)*)"\s*\)/))) return {kind:'text',v:m[1],len:m[0].length};
+  m=s.match(/^(.*?)(?=\s*,|\s*--|\s*$)/); return {kind:'raw',v:m[1],len:m[1].length};
+}
+function parseField(line){
+  const m=line.match(/^(\s*)([A-Za-z_]\w*)(\s*=\s*)(.*)$/); if(!m) return null;
+  const pv=parseValue(m[4]), post=m[4].slice(pv.len);
+  if(!pv.v && pv.kind==='raw') return null;
+  if(!/^\s*,?\s*(--.*)?$/.test(post)) return null;
+  return {ind:m[1], k:m[2], eq:m[3], kind:pv.kind, v:pv.v, post};
+}
+const stripStr = l => l.replace(/"(?:[^"\\]|\\.)*"/g,'""').replace(/--.*$/,'');
+function parse(text){
+  const nl=text.includes('\r\n')?'\r\n':'\n';
+  const lines=text.replace(/\r\n/g,'\n').split('\n');
+  const segs=[], ex=[]; let raw=[];
+  for(let i=0;i<lines.length;){
+    const h=lines[i].match(/^(\s*)([A-Za-z_]\w*)(\s*=\s*\{\s*)$/);
+    if(h){
+      let j=i+1, ok=false; const body=[];
+      for(;j<lines.length;j++){ const l=lines[j];
+        if(/^\s*\}\s*[;,]?\s*(--.*)?$/.test(l)){ok=true;break}
+        if(/[{}]/.test(stripStr(l))) break;
+        body.push(l) }
+      if(ok){
+        if(raw.length){segs.push({raw});raw=[]}
+        const fields=body.map(l=>parseField(l)||{raw:l});
+        const e={name:h[2], origName:h[2], hind:h[1], hpost:h[3], foot:lines[j], fields, orig:lines.slice(i,j+1), dirty:false};
+        e.origMap=Object.fromEntries(fields.filter(f=>f.k).map(f=>[f.k,fmt(f)]));
+        segs.push({ex:ex.length}); ex.push(e); i=j+1; continue;
+      }
+    }
+    raw.push(lines[i]); i++;
+  }
+  if(raw.length) segs.push({raw});
+  return {segs,ex,nl};
+}
+function fmt(f){
+  if(f.kind==='str') return '"'+f.v.replace(/(^|[^\\])"/g,'$1\\"')+'"';
+  if(f.kind==='text') return 'getText("'+f.v.replace(/(^|[^\\])"/g,'$1\\"')+'")';
+  return f.v;
+}
+function serEx(e){
+  if(!e.dirty) return e.orig.join('\n');
+  return [e.hind+e.name+e.hpost, ...e.fields.map(f=>f.raw!=null?f.raw:f.ind+f.k+f.eq+fmt(f)+f.post), e.foot].join('\n');
+}
+function serialize(){
+  return S.segs.map(s=>s.raw? s.raw.join('\n') : serEx(S.ex[s.ex])).join('\n').replace(/\n/g,S.nl);
+}
+const fld=(e,k)=>e.fields.find(f=>f.k===k);
+const get=(e,k)=>{const f=fld(e,k);return f?f.v:''};
+const partsOf=e=>get(e,'stiffness').split(',').map(x=>x.trim()).filter(Boolean);
+function fieldIndent(e){ const f=e.fields.find(f=>f.k); return f?f.ind:e.hind+'\t' }
+function newField(e,k,input){
+  let kind=(KNOWN[k]||{}).kind, v=input;
+  const pv=parseValue(input.trim());
+  if(/^"|^getText\(/.test(input.trim()) && pv.len===input.trim().length){ kind=pv.kind; v=pv.v }
+  else if(!kind) kind = (input.trim()!=='' && !isNaN(+input)) || /^[A-Za-z_][\w.]*\.[\w]+$/.test(input.trim()) || /^(true|false|nil)$/.test(input.trim()) ? 'raw' : 'str';
+  if(k==='metabolics' && kind==='raw' && /^[A-Za-z]\w*$/.test(v.trim())) v='Metabolics.'+v.trim();
+  return {ind:fieldIndent(e), k, eq:' = ', kind, v, post:','};
+}
+function normVal(f,input){ // value typed for an existing field via bulk "set"
+  if(f.k==='metabolics' && /^[A-Za-z]\w*$/.test(input)) return 'Metabolics.'+input;
+  return input;
+}
+
+// ---------- state & UI ----------
+function load(text,name){
+  const p=parse(text); S.segs=p.segs; S.ex=p.ex; S.nl=p.nl; S.name=name||S.name;
+  $('fname').textContent=S.name; $('cnt').textContent=S.ex.length;
+  S.sel=S.ex.length?0:-1; S.undo=null; $('undoBtn').disabled=true;
+  buildFilters(); renderList(); renderEditor();
+}
+function live(){ return S.ex.filter(e=>!e.deleted) }
+function buildFilters(){
+  const mets=new Set(), parts=new Set(PARTS), keys=new Map();
+  for(const e of live()){ mets.add(get(e,'metabolics')); partsOf(e).forEach(p=>parts.add(p));
+    for(const f of e.fields) if(f.k) keys.set(f.k,(keys.get(f.k)||0)+1) }
+  const fill=(el,set,lab,f=x=>x)=>{const v=el.value; el.innerHTML='<option value="">'+lab+'</option>'+[...set].filter(Boolean).sort().map(x=>`<option value="${esc(x)}">${esc(f(x))}</option>`).join(''); el.value=v};
+  fill($('fMet'),mets,'All metabolics',x=>x.replace(/^Metabolics\./,''));
+  fill($('fPart'),parts,'Any muscle group');
+  for(const k of Object.keys(KNOWN)) if(!keys.has(k)) keys.set(k,0);
+  $('keys').innerHTML=[...keys].sort((a,b)=>b[1]-a[1]).map(([k])=>`<option value="${esc(k)}">`).join('');
+  $('cnt').textContent=live().length;
+}
+function filtered(){
+  const q=$('q').value.trim().toLowerCase(), m=$('fMet').value, p=$('fPart').value, it=$('fItem').value, mo=$('fMod').checked;
+  const out=[];
+  S.ex.forEach((e,i)=>{
+    if(e.deleted) return;
+    if(m && get(e,'metabolics')!==m) return;
+    if(p && !partsOf(e).includes(p)) return;
+    if(it==='y' && !get(e,'item')) return;
+    if(it==='n' && get(e,'item')) return;
+    if(mo && !e.dirty) return;
+    if(q && !e.name.toLowerCase().includes(q) && !e.fields.some(f=>(f.v||f.raw||'').toLowerCase().includes(q))) return;
+    out.push(i);
+  }); return out;
+}
+function renderList(){
+  const f=filtered();
+  $('shown').textContent=f.length+' shown'; $('bscope').textContent=f.length+' in scope';
+  $('dcnt').textContent=S.ex.filter(x=>x.dirty).length;
+  $('list').innerHTML=f.length? f.map(i=>{const e=S.ex[i], xp=get(e,'xpMod');
+    return `<div class="it${i===S.sel?' sel':''}" data-i="${i}"><span class="nm">${e.dirty?'<span class="dot" title="Modified"></span>':''}${esc(e.name)}</span><span class="cat">${xp?'xp ×'+esc(xp):''}</span></div>`}).join('')
+    : '<div class="empty">No exercises match these filters.</div>';
+}
+function markDirty(e){ e.dirty=true; saveDraft(); }
+function renderEditor(){
+  const ed=$('editor'), e=S.ex[S.sel];
+  if(!e || e.deleted){ed.innerHTML='<div class="empty">Pick an exercise from the list.</div>';$('ehint').textContent='';return}
+  $('ehint').textContent=e.fields.filter(f=>f.k).length+' fields';
+  let h=`<div class="ehead"><input id="nm" value="${esc(e.name)}" aria-label="Exercise key" spellcheck="false">
+    <button type="button" id="dupBtn">Duplicate</button>
+    <button type="button" id="revBtn" ${e.dirty&&e.orig.length?'':'disabled'}>Revert</button>
+    <button type="button" class="ghost" id="delEx">Delete</button></div><div class="fields">`;
+  e.fields.forEach((f,fi)=>{
+    if(f.raw!=null){ if(f.raw.trim()) h+=`<div class="frow"><textarea class="raw" data-fi="${fi}" spellcheck="false" aria-label="Raw line">${esc(f.raw)}</textarea></div>`; return }
+    const o=e.origMap[f.k], cur=fmt(f), chg=e.orig.length>0 && o!==cur;
+    const qL=f.kind==='str'?'"':f.kind==='text'?'getText("':'', qR=f.kind==='str'?'"':f.kind==='text'?'")':'';
+    const dl=$('dl-'+f.k)?` list="dl-${f.k}"`:'';
+    const bad=f.k==='xpMod' && (f.v.trim()===''||isNaN(+f.v));
+    h+=`<div class="frow${chg?' chg':''}"><span class="k">${esc(f.k)}</span>
+      <div class="vwrap${bad?' bad':''}">${qL?`<span class="q">${esc(qL)}</span>`:''}<input data-fi="${fi}" value="${esc(f.v)}" aria-label="${esc(f.k)}" spellcheck="false"${dl}>${qR?`<span class="q r">${esc(qR)}</span>`:''}</div>
+      <button type="button" class="ghost" data-del="${fi}" title="Remove field" aria-label="Remove ${esc(f.k)}">✕</button>`;
+    if(f.k==='stiffness'){ const cur=partsOf(e); h+=`<div class="parts">${PARTS.concat(cur.filter(p=>!PARTS.includes(p))).map(p=>`<button type="button" class="part${cur.includes(p)?' on':''}" data-part="${esc(p)}" aria-pressed="${cur.includes(p)}">${esc(p)}</button>`).join('')}</div>` }
+    const hint=(KNOWN[f.k]||{}).hint||'';
+    const was=chg? (o===undefined?' <b>New field.</b>':` Was <span class="was">${esc(o)}</span>`):'';
+    if(hint||was) h+=`<div class="hint">${esc(hint)}${was}</div>`;
+    h+='</div>';
+  });
+  h+=`</div><div class="add"><input id="nk" list="keys" placeholder="New field" spellcheck="false"><input id="nv" placeholder="Value" spellcheck="false"><button type="button" id="addF">Add</button></div>
+  <div><div class="note" style="margin-bottom:6px">Output preview</div><pre class="preview" id="prev">${esc(serEx(e))}</pre></div>`;
+  ed.innerHTML=h;
+}
+function refreshPreview(){const e=S.ex[S.sel]; if(e&&$('prev')) $('prev').textContent=serEx(e)}
+function rerenderKeepFocus(){ const a=document.activeElement, fi=a&&a.dataset.fi, id=a&&a.id, ss=a&&a.selectionStart; renderEditor();
+  const n= fi!=null? $('editor').querySelector(`[data-fi="${fi}"]`) : id? $(id):null; if(n){ n.focus(); try{ if(ss!=null) n.setSelectionRange(ss,ss) }catch(_){} } }
+
+$('editor').addEventListener('input',ev=>{
+  const e=S.ex[S.sel]; if(!e) return; const t=ev.target;
+  if(t.id==='nm'){ const v=t.value.trim().replace(/[^\w]/g,'_'); if(v && !/^\d/.test(v)){ e.name=v; markDirty(e); refreshPreview(); } return }
+  if(t.dataset.fi!=null){ const f=e.fields[+t.dataset.fi]; if(f.raw!=null) f.raw=t.value; else f.v=t.value; markDirty(e); refreshPreview(); }
+});
+$('editor').addEventListener('change',ev=>{ if(ev.target.matches('input[data-fi],textarea,#nm')){ buildFilters(); renderList(); rerenderKeepFocus() } });
+$('editor').addEventListener('click',ev=>{
+  const e=S.ex[S.sel]; if(!e) return; const t=ev.target.closest('button'); if(!t) return;
+  if(t.dataset.del!=null){ e.fields.splice(+t.dataset.del,1); markDirty(e); buildFilters(); renderEditor(); renderList(); }
+  else if(t.dataset.part!=null){ const p=t.dataset.part; let cur=partsOf(e); cur=cur.includes(p)?cur.filter(x=>x!==p):cur.concat(p);
+    const f=fld(e,'stiffness'); if(f) f.v=cur.join(','); markDirty(e); buildFilters(); renderEditor(); renderList(); }
+  else if(t.id==='addF'){ const k=$('nk').value.trim(), v=$('nv').value.trim();
+    if(!/^[A-Za-z_]\w*$/.test(k)){ $('nk').focus(); return }
+    const ex=fld(e,k); if(ex) ex.v=normVal(ex,v); else e.fields.push(newField(e,k,v));
+    markDirty(e); buildFilters(); renderEditor(); renderList(); $('nk').focus(); }
+  else if(t.id==='revBtn'){ const p=parse(e.orig.join('\n')).ex[0]; Object.assign(e,{name:e.origName,fields:p.fields,dirty:false}); saveDraft(); buildFilters(); renderEditor(); renderList(); }
+  else if(t.id==='dupBtn'){ snapshot(); const c=JSON.parse(JSON.stringify(e)); let n=e.name+'_copy', k=2; while(S.ex.some(x=>!x.deleted&&x.name===n)) n=e.name+'_copy'+(k++);
+    c.name=n; c.origName=n; c.dirty=true; c.origMap={}; c.orig=[]; const tf=fld(c,'type'); if(tf) tf.v=n;
+    const si=S.segs.findIndex(s=>s.ex===S.sel); S.ex.push(c); S.segs.splice(si+1,0,{ex:S.ex.length-1});
+    S.sel=S.ex.length-1; saveDraft(); buildFilters(); renderList(); renderEditor(); }
+  else if(t.id==='delEx'){ if(t.dataset.arm){ snapshot(); const si=S.segs.findIndex(s=>s.ex===S.sel); S.segs.splice(si,1); e.deleted=true; e.dirty=true;
+      S.sel=-1; saveDraft(); buildFilters(); renderList(); renderEditor(); }
+    else { t.dataset.arm=1; t.textContent='Click again to delete'; t.style.color='var(--danger)'; } }
+});
+$('list').addEventListener('click',ev=>{const r=ev.target.closest('.it'); if(!r) return; S.sel=+r.dataset.i; renderList(); renderEditor();});
+['q','fMet','fPart','fItem','fMod'].forEach(id=>$(id).addEventListener('input',renderList));
+
+// ---------- bulk ----------
+const fmtN=x=>String(+x.toFixed(4));
+function bulkHints(){ const k=$('bKey').value.trim();
+  const opts= k==='metabolics'?['Metabolics.Fitness','Metabolics.FitnessHeavy']: k==='stiffness'?PARTS: k==='prop'?['twohands','primary','switch']: k==='item'?['Base.BarBell','Base.DumbBell']:[];
+  $('bvals').innerHTML=opts.map(o=>`<option value="${esc(o)}">`).join(''); }
+$('bKey').addEventListener('input',bulkHints);
+$('bOp').addEventListener('input',()=>{ const op=$('bOp').value; $('bValL').hidden=op==='del'; $('bOnly').disabled=!['set','addPart'].includes(op); if($('bOnly').disabled) $('bOnly').checked=true; });
+$('bApply').addEventListener('click',()=>{
+  const key=$('bKey').value.trim(), op=$('bOp').value, val=$('bVal').value.trim(), only=$('bOnly').checked, msg=$('bMsg');
+  msg.className='msg';
+  if(!/^[A-Za-z_]\w*$/.test(key)){msg.className='msg err';msg.textContent='Enter a field name first.';return}
+  if(op!=='del' && val===''){msg.className='msg err';msg.textContent='Enter a value.';return}
+  const num=parseFloat(val);
+  if(['mul','add','max','min'].includes(op) && isNaN(num)){msg.className='msg err';msg.textContent=`"${val}" is not a number.`;return}
+  const scope=filtered(); snapshot(); let n=0, skipped=0;
+  for(const i of scope){ const e=S.ex[i]; const fi=e.fields.findIndex(f=>f.k===key), f=e.fields[fi]; let nv;
+    if(!f){ if(only) continue;
+      if(op==='set'||op==='addPart'){ e.fields.push(newField(e,key,val)); markDirty(e); n++ } continue }
+    if(op==='del'){ e.fields.splice(fi,1); markDirty(e); n++; continue }
+    if(op==='set') nv=normVal(f,val);
+    else if(op==='addPart'||op==='rmPart'){ const p=f.v.split(',').map(x=>x.trim()).filter(Boolean); const adds=val.split(',').map(x=>x.trim()).filter(Boolean);
+      const r= op==='addPart'? p.concat(adds.filter(a=>!p.includes(a))) : p.filter(x=>!adds.includes(x)); nv=r.join(',') }
+    else { const x=parseFloat(f.v); if(isNaN(x)||f.kind!=='raw'){skipped++;continue}
+      nv=fmtN(op==='mul'?x*num: op==='add'?x+num: op==='max'?Math.min(x,num):Math.max(x,num)) }
+    if(nv!==f.v){ f.v=nv; markDirty(e); n++ }
+  }
+  msg.textContent=`Changed ${n} of ${scope.length} exercises.`+(skipped?` Skipped ${skipped} with non-numeric values.`:'');
+  buildFilters(); renderList(); renderEditor();
+});
+function snapshot(){ S.undo=JSON.stringify({ex:S.ex,segs:S.segs,sel:S.sel}); $('undoBtn').disabled=false }
+$('undoBtn').addEventListener('click',()=>{ if(!S.undo) return; const u=JSON.parse(S.undo); S.ex=u.ex; S.segs=u.segs; S.sel=u.sel; S.undo=null; $('undoBtn').disabled=true; $('bMsg').className='msg'; $('bMsg').textContent='Undid the last action.'; saveDraft(); buildFilters(); renderList(); renderEditor(); });
+
+// ---------- file in ----------
+$('file').addEventListener('change',ev=>{ const f=ev.target.files[0]; if(!f) return; const r=new FileReader(); r.onload=()=>{ load(r.result,f.name); saveDraft(true) }; r.readAsText(f); ev.target.value=''; });
+
+// ---------- export & mod zip ----------
+const MK='pz-editor-mod-meta';
+try{ const m=JSON.parse(localStorage.getItem(MK)||'null'); if(m){ if(m.name) $('modName').value=m.name; if(m.id) $('modId').value=m.id } }catch(_){}
+const modId=()=>($('modId').value.trim().replace(/[^\w.-]/g,'')||'PZEditorTweaks');
+function drawTree(){ const id=esc(modId());
+  $('tree').innerHTML=`Zomboid/mods/\n└─ <b>${id}</b>/\n   ├─ common/\n   └─ 42/\n      ├─ mod.info\n      └─ media/\n         └─ lua/\n            └─ shared/\n               └─ Definitions/\n                  └─ <b>FitnessExercises.lua</b>`;
+  try{ localStorage.setItem(MK,JSON.stringify({name:$('modName').value,id:$('modId').value})) }catch(_){} }
+['modName','modId'].forEach(id=>$(id).addEventListener('input',drawTree));
+$('exportBtn').addEventListener('click',()=>{ $('exText').value=serialize(); drawTree(); $('copyMsg').textContent=''; $('exportModal').hidden=false; });
+$('closeEx').addEventListener('click',()=>$('exportModal').hidden=true);
+$('exportModal').addEventListener('click',ev=>{ if(ev.target.id==='exportModal') $('exportModal').hidden=true });
+document.addEventListener('keydown',ev=>{ if(ev.key==='Escape') $('exportModal').hidden=true });
+$('copyBtn').addEventListener('click',()=>{ const t=$('exText');
+  navigator.clipboard.writeText(t.value).then(()=>{$('copyMsg').textContent='Copied '+t.value.split('\n').length+' lines.'})
+  .catch(()=>{ t.focus(); t.select(); $('copyMsg').textContent='Text selected. Press Ctrl+C to copy.' }); });
+function saveBlob(blob,name){ const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=name; document.body.appendChild(a); a.click(); setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000); }
+$('dlBtn').addEventListener('click',()=>{ saveBlob(new Blob([serialize()],{type:'text/plain'}),'FitnessExercises.lua'); $('copyMsg').textContent='Downloaded FitnessExercises.lua. It goes in '+GAME_PATH.replace(/\/[^/]+$/,'/')+' inside your mod.'; });
+function loadScript(src){ return new Promise((ok,no)=>{ const s=document.createElement('script'); s.src=src; s.onload=ok; s.onerror=no; document.head.appendChild(s) }) }
+async function ensureZip(){ if(window.JSZip) return;
+  try{ await loadScript('jszip.min.js') }catch(_){ await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js') } }
+$('zipBtn').addEventListener('click',async()=>{
+  const m=$('copyMsg'); m.className='msg'; m.textContent='Building zip…';
+  try{ await ensureZip();
+    const id=modId(), nm=$('modName').value.trim()||id, z=new JSZip();
+    z.folder(id+'/common');
+    z.file(id+'/42/mod.info',['name='+nm,'id='+id,'description=Edited with PZ Editor. Replaces '+GAME_PATH+'.',''].join('\r\n'));
+    z.file(id+'/42/'+GAME_PATH, serialize());
+    saveBlob(await z.generateAsync({type:'blob'}), id+'.zip');
+    m.textContent=`Downloaded ${id}.zip. Unzip it into your Zomboid\\mods folder.`;
+  }catch(err){ m.className='msg err'; m.textContent='Could not build the zip here. Use Download .lua instead.'; }
+});
+
+// ---------- drafts (this browser only) ----------
+const DK='pz-fitness-draft';
+let draftTimer;
+function saveDraft(clear){ clearTimeout(draftTimer); draftTimer=setTimeout(()=>{ try{
+  if(clear || !S.ex.some(x=>x.dirty)) localStorage.removeItem(DK);
+  else localStorage.setItem(DK, JSON.stringify({name:S.name,text:serialize()})) }catch(_){} },400) }
+
+load(SRC,'FitnessExercises.lua');
+try{ const d=JSON.parse(localStorage.getItem(DK)||'null'); if(d && d.text){ $('draftBanner').hidden=false;
+  $('restoreBtn').onclick=()=>{ load(d.text,d.name); $('draftBanner').hidden=true; $('bMsg').textContent='Restored your edits. They are now the baseline.' };
+  $('discardBtn').onclick=()=>{ try{localStorage.removeItem(DK)}catch(_){} $('draftBanner').hidden=true } } }catch(_){}
+</script>
+</body>
+</html>

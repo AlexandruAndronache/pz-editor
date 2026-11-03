@@ -8,13 +8,15 @@
     recipes: 'recipes/',
     blacksmith: 'entities/blacksmith/craftRecipes/',
     pottery: 'entities/pottery/craftRecipes/',
-    entities: 'entities/'
+    entities: 'entities/',
+    /* '@' = full path inside the mod's 42/ folder, not under media/scripts/generated */
+    foraging: '@42/media/lua/shared/Foraging/Categories/'
   };
   var EDITORS = {
     clothing: ['items', 'Clothing'], container: ['items', 'Containers'], drainable: ['items', 'Drainables'],
     food: ['items', 'Food'], key: ['items', 'Keys'], literature: ['items', 'Literature'],
     normal: ['items', 'Normal items'], weapon: ['items', 'Weapons'], weaponpart: ['items', 'Weapon parts'],
-    recipes: ['recipes', 'Recipes'], entities: ['entities', 'Entities'],
+    recipes: ['recipes', 'Recipes'], entities: ['entities', 'Entities'], foraging: ['foraging', 'Foraging'],
     blacksmith: ['blacksmith', 'Blacksmith (old page)'], pottery: ['pottery', 'Pottery (old page)']
   };
   var SKEY = 'pz-mod-settings';
@@ -56,7 +58,7 @@
   }
   function pathFor(editor, name) {
     var e = EDITORS[editor], folder = FOLDERS[e ? e[0] : 'items'];
-    return BASE + folder + name;
+    return folder.charAt(0) === '@' ? folder.slice(1) + name : BASE + folder + name;
   }
   /* Replace every stored file of one editor with `files` ({name: text}). */
   function sync(editor, files) {

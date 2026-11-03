@@ -71,7 +71,7 @@ pre.tree .d{color:var(--accent);font-weight:600}
 </style>
 </head>
 <body>
-<nav class="pznav" aria-label="Editors"><a class="b" href="index.html"><i aria-hidden="true"></i>PZ Editor</a><div class="l"><a href="recipes.html">Recipes</a><a href="entities.html">Entities</a><a href="entities.html#blacksmith">Blacksmith</a><a href="entities.html#pottery">Pottery</a><a href="clothing.html">Clothing</a><a href="container.html">Containers</a><a href="drainable.html">Drainables</a><a href="food.html">Food</a><a href="key.html">Keys</a><a href="literature.html">Literature</a><a href="normal.html">Normal items</a><a href="weapon.html">Weapons</a><a href="weaponpart.html">Weapon parts</a><a href="mod.html" class="on" aria-current="page">Mod builder</a><a href="fitness.html">Fitness</a></div></nav>
+<nav class="pznav" aria-label="Editors"><a class="b" href="index.html"><i aria-hidden="true"></i>PZ Editor</a><div class="l"><a href="recipes.html">Recipes</a><a href="entities.html">Entities</a><a href="entities.html#blacksmith">Blacksmith</a><a href="entities.html#pottery">Pottery</a><a href="clothing.html">Clothing</a><a href="container.html">Containers</a><a href="drainable.html">Drainables</a><a href="food.html">Food</a><a href="key.html">Keys</a><a href="literature.html">Literature</a><a href="normal.html">Normal items</a><a href="weapon.html">Weapons</a><a href="weaponpart.html">Weapon parts</a><a href="mod.html" class="on" aria-current="page">Mod builder</a><a href="fitness.html">Fitness</a><a href="foraging.html">Foraging</a></div></nav>
 
 <div class="wrap">
   <div class="head">
@@ -140,8 +140,8 @@ pre.tree .d{color:var(--accent);font-weight:600}
     const out=[`<span class="d">${esc(id)}/</span>`,'├─ mod.info','├─ <span class="d">common/</span>media/','└─ <span class="d">42/</span>','   ├─ mod.info'];
     if(!files.length) out.push('   └─ media/scripts/generated/   <span style="opacity:.7">(empty)</span>');
     else{
-      out.push('   └─ <span class="d">media/scripts/generated/</span>');
-      const rel=files.map(f=>f.path.replace(PZMod.BASE,''));
+      out.push('   └─ <span class="d">media/</span>');
+      const rel=files.map(f=>f.path.replace(/^42\/media\//,''));
       rel.forEach((p,i)=>out.push('      '+(i===rel.length-1?'└─ ':'├─ ')+esc(p)));
     }
     $('tree').innerHTML=out.join('\n');
@@ -150,7 +150,7 @@ pre.tree .d{color:var(--accent);font-weight:600}
     files=a; $('cnt').textContent=a.length? a.length+' file'+(a.length>1?'s':'') : '';
     $('empty').hidden=!!a.length; $('dlBtn').disabled=!a.length; $('clearBtn').disabled=!a.length;
     $('rows').innerHTML=a.map(f=>{const e=PZMod.EDITORS[f.editor]||['',f.editor];
-      return `<tr><td><div class="n">${esc(f.name)}</div><div class="p">${esc(f.path.replace(PZMod.BASE,'…/generated/'))}</div></td>
+      return `<tr><td><div class="n">${esc(f.name)}</div><div class="p">${esc(f.path.replace(PZMod.BASE,'…/generated/').replace(/^42\/media\//,'…/'))}</div></td>
         <td><a href="${esc(f.editor)}.html">${esc(e[1])}</a></td>
         <td class="num">${ago(f.updated)}<br>${size(new Blob([f.text]).size)}</td>
         <td><button type="button" class="ghost" data-k="${esc(f.key)}" title="Leave this file out of the mod">Remove</button></td></tr>`}).join('');

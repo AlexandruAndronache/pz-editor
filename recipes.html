@@ -299,6 +299,22 @@ function fmtNum(n,orig){
 const live=()=>R.filter(r=>!r.deleted&&!F[r.file].gone);
 function textOf(r){if(!r._t||r._tv!==r._ver){r._t=(r.name+'\n'+serRecipe(r)).toLowerCase();r._tv=r._ver}return r._t}
 function touch(r){r._ver=(r._ver||0)+1;markDirty(r)}
+/* Drying racks: their output slot holds a fixed amount, so bulk "Multiply output item counts"
+   must never change recipes a rack runs. Rack recipe tags are read from every entity whose name
+   contains "Rack" (craftLogic Recipes = ...), plus the known vanilla tags as a fallback. */
+const RACK_TAGS_FALLBACK=['DryLeatherSmall','DryLeatherMedium','DryLeatherLarge','DryingRackHerb','DryingRackGrain'];
+let _rackTags=null;
+function rackTags(){
+  if(_rackTags) return _rackTags;
+  const s=new Set(RACK_TAGS_FALLBACK.map(x=>x.toLowerCase()));
+  if(typeof R!=='undefined') for(const r of R){ if(r.kw!=='entity'||!/rack/i.test(r.name)) continue;
+    for(const p of r.parts) if(p.t==='f'&&/^recipes$/i.test(p.k)) listOf(p.ov!=null?p.ov:p.v).forEach(x=>s.add(x.toLowerCase())); }
+  return _rackTags=s;
+}
+function isRackRecipe(r){
+  if(r.kw&&r.kw!=='craftRecipe') return false;
+  const t=rackTags(); return listOf(getI(r,'Tags')).some(x=>t.has(x.toLowerCase()));
+}
 function parseIO(v){const m=v.match(/^(\S+)\s+(\d+(?:\.\d+)?)\s+(.*)$/);return m?{kind:m[1],qty:m[2],rest:m[3]}:null}
 
 /* ---------- filters / list ---------- */
@@ -495,7 +511,7 @@ const HELP={
   skAdd:'Adds to each <span class="mono">Skill:N</span> number (negative to lower). Levels that reach 0 are removed from SkillRequired.',
   skSet:'Sets the number for the named skill; adds the skill where it is missing.',
   inMul:'Multiplies <span class="mono">item N</span> counts in inputs, rounded, minimum 1.',
-  outMul:'Multiplies <span class="mono">item N</span> counts in outputs, rounded, minimum 1.',
+  outMul:'Multiplies <span class="mono">item N</span> counts in outputs, rounded, minimum 1. Drying-rack recipes are skipped: a rack&#39;s output slot only fits the normal amount.',
   flMul:'Multiplies <span class="mono">-fluid N</span> amounts in inputs.'};
 function syncBulk(){
   const op=$('bOp').value, sk=op.startsWith('sk'), io=/^(in|out|fl)Mul$/.test(op);
@@ -514,8 +530,10 @@ $('bApply').onclick=()=>{
   if(op!=='del'&&op!=='set'&&op!=='addTag'&&op!=='rmTag'&&op!=='skSet'&&!isFinite(num)) return msg('Enter a number.',1);
   const before=rs.map(r=>({i:r.idx,name:r.name,parts:structuredClone(r.parts),deleted:r.deleted}));
   let n=0;
+  let rackSkip=0;
   for(const r of rs){
     let ch=false;
+    if(op==='outMul'&&isRackRecipe(r)){rackSkip++;continue}
     if(['set','mul','add','clamp','addTag','rmTag','del'].includes(op)){
       const k=$('bKey').value.trim(); if(!/^[A-Za-z_]\w*$/.test(k)) return msg('Enter a field name.',1);
       const p=r.parts.find(p=>p.t==='f'&&p.k===k)||findField(r,k), only=$('bOnly').checked;
@@ -556,7 +574,7 @@ $('bApply').onclick=()=>{
     if(ch){touch(r);n++}
   }
   S.undo=before;$('undoBtn').disabled=false;saveDraft();buildFilters();renderList();renderEditor();
-  msg(n?`Changed ${n} recipe${n>1?'s':''}.`:'No recipes changed.',!n);
+  msg((n?`Changed ${n} recipe${n>1?'s':''}.`:'No recipes changed.')+(rackSkip?` Left ${rackSkip} drying-rack recipe${rackSkip>1?'s':''} unchanged (rack outputs are fixed).`:''),!n&&!rackSkip);
 };
 
 /* ---------- export ---------- */

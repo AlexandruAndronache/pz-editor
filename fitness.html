@@ -119,7 +119,6 @@ textarea.raw{grid-column:1/-1;width:100%;min-height:34px;font-family:var(--f-mon
     <button type="button" class="primary" id="exportBtn">Export</button>
   </div>
 </header>
-<div class="banner" id="draftBanner" hidden><span>You have unsaved edits from your last visit.</span><button type="button" id="restoreBtn">Restore them</button><button type="button" class="ghost" id="discardBtn">Discard</button></div>
 
 <div class="grid">
   <section class="panel">
@@ -445,17 +444,25 @@ $('zipBtn').addEventListener('click',async()=>{
   }catch(err){ m.className='msg err'; m.textContent='Could not build the zip here. Use Download .lua instead.'; }
 });
 
-// ---------- drafts (this browser only) ----------
+// ---------- drafts (this browser only, restored automatically) ----------
 const DK='pz-fitness-draft';
-let draftTimer;
-function saveDraft(clear){ clearTimeout(draftTimer); draftTimer=setTimeout(()=>{ try{
-  if(clear || !S.ex.some(x=>x.dirty)) localStorage.removeItem(DK);
-  else localStorage.setItem(DK, JSON.stringify({name:S.name,text:serialize()})) }catch(_){} },400) }
+let draftTimer=null;
+function sig(str){ let h=2166136261; for(let i=0;i<str.length;i+=7){ h^=str.charCodeAt(i); h=Math.imul(h,16777619) } return str.length+':'+(h>>>0).toString(36) }
+const SIG=sig(SRC);
+function writeDraft(){ clearTimeout(draftTimer); draftTimer=null; try{
+  if(!S.ex.some(x=>x.dirty) && S.name==='FitnessExercises.lua') localStorage.removeItem(DK);
+  else localStorage.setItem(DK, JSON.stringify({sig:SIG, name:S.name, ex:S.ex, segs:S.segs, nl:S.nl})) }catch(_){} }
+function saveDraft(){ clearTimeout(draftTimer); draftTimer=setTimeout(writeDraft,250) }
+/* save before leaving the page */
+window.addEventListener('pagehide',()=>{ if(draftTimer) writeDraft() });
+document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='hidden' && draftTimer) writeDraft() });
+document.addEventListener('click',e=>{ if(draftTimer && e.target.closest && e.target.closest('a[href]')) writeDraft() },true);
 
 load(SRC,'FitnessExercises.lua');
-try{ const d=JSON.parse(localStorage.getItem(DK)||'null'); if(d && d.text){ $('draftBanner').hidden=false;
-  $('restoreBtn').onclick=()=>{ load(d.text,d.name); $('draftBanner').hidden=true; $('bMsg').textContent='Restored your edits. They are now the baseline.' };
-  $('discardBtn').onclick=()=>{ try{localStorage.removeItem(DK)}catch(_){} $('draftBanner').hidden=true } } }catch(_){}
+try{ const d=JSON.parse(localStorage.getItem(DK)||'null');
+  if(d && d.sig===SIG && Array.isArray(d.ex)){ S.ex=d.ex; S.segs=d.segs; S.nl=d.nl; S.name=d.name||S.name;
+    $('fname').textContent=S.name; S.sel=S.ex.findIndex(x=>!x.deleted); buildFilters(); renderList(); renderEditor(); }
+  else if(d && d.text){ load(d.text,d.name); $('bMsg').textContent='Restored your edits from an older version of this page. They are now the baseline.' } }catch(_){}
 </script>
 </body>
 </html>

@@ -129,7 +129,6 @@ h1{font-family:var(--f-display);font-weight:800;font-size:20px;margin:0;letter-s
     <button type="button" class="primary" id="exportBtn">Export</button>
   </div>
 </header>
-<div class="banner" id="draftBanner" hidden><span>You have unsaved edits from your last visit.</span><button type="button" id="restoreBtn">Restore them</button><button type="button" class="ghost" id="discardBtn">Discard</button></div>
 
 <div class="grid">
   <section class="panel">
@@ -615,18 +614,13 @@ $('dlBtn').addEventListener('click', ()=>{ const f = F[+$('exFile').value]; if(!
 
 /* ---------- drafts (this browser only) ---------- */
 const DK = 'pz-foraging-draft-v2';
-let draftT;
 function draftData(){
   const e = {}, a = {};
   for(const f of F){ for(const x of f.flds) if(x.v!==x.ov || x.del) e[f.name+':'+x.line] = x.del ? null : x.v;
     for(const n of f.nodes) if(n.adds.length) a[f.name+':'+n.start] = n.adds }
   return {e, a};
 }
-function saveDraft(clear){ clearTimeout(draftT); draftT = setTimeout(()=>{ try{
-  const {e, a} = draftData();
-  if(clear || (!Object.keys(e).length && !Object.keys(a).length)) localStorage.removeItem(DK);
-  else localStorage.setItem(DK, JSON.stringify({ files: BASE_LIST===FILES ? null : BASE_LIST, e, a }));
-  } catch(_){} if(window.__mk) window.__mk.schedule(); }, 400) }
+function saveDraft(){ if(window.__mk) window.__mk.schedule(); }  /* kept by modkit.js in IndexedDB */
 function applyDraft(dr){
   let n = 0;
   for(const f of F){ for(const x of f.flds){ const k = f.name+':'+x.line; if(k in dr.e){ if(dr.e[k]==null) x.del = true; else x.v = dr.e[k]; n++ } }
@@ -635,16 +629,25 @@ function applyDraft(dr){
 }
 
 loadAll(FILES);
-try{ const dr = JSON.parse(localStorage.getItem(DK)||'null'); if(dr && (dr.e || dr.a)){ dr.e = dr.e||{}; dr.a = dr.a||{}; $('draftBanner').hidden = false;
-  $('restoreBtn').onclick = ()=>{ if(dr.files){ BASE_LIST = dr.files; loadAll(dr.files) }
-    const n = applyDraft(dr); $('draftBanner').hidden = true; $('bMsg').className='msg'; $('bMsg').textContent = `Restored ${n} edit${n===1?'':'s'}.`; renderList(); renderEditor(); saveDraft(); };
-  $('discardBtn').onclick = ()=>{ try{ localStorage.removeItem(DK) }catch(_){} $('draftBanner').hidden = true; if(window.__mk) window.__mk.clearMine(); } } }catch(_){}
 
 </script>
 <script src="modkit.js"></script>
 <script>
 (function(){ if(!window.PZMod) return;
-  window.__mk = PZMod.attach({ editor:'foraging', collect:function(){ var m = {}; F.forEach(function(f,i){ if(fileChanged(i)) m[f.name] = serialize(i) }); return m } });
+  function restoreAll(dr, files){
+    if(!dr){ try{ dr = JSON.parse(localStorage.getItem(DK)||'null') }catch(_){ dr = null } }   /* drafts from before this update */
+    try{ localStorage.removeItem(DK) }catch(_){}
+    if(!dr) return;
+    const keep = o => { const r = {}; for(const k in (o||{})){ if(files[k.slice(0, k.lastIndexOf(':'))] != null) r[k] = o[k] } return r };  /* removed in the mod builder = start clean */
+    const e = keep(dr.e), a = keep(dr.a);
+    if(!Object.keys(e).length && !Object.keys(a).length) return;
+    if(dr.files){ BASE_LIST = dr.files; loadAll(dr.files) }
+    applyDraft({e, a}); renderList(); renderEditor();
+  }
+  window.__mk = PZMod.attach({ editor:'foraging',
+    collect:function(){ var m = {}; F.forEach(function(f,i){ if(fileChanged(i)) m[f.name] = serialize(i) }); return m },
+    draft:function(files){ if(!Object.keys(files).length) return null; var d = draftData(); return { files: BASE_LIST===FILES ? null : BASE_LIST, e: d.e, a: d.a } },
+    restore:restoreAll });
 })();
 </script>
 </body>

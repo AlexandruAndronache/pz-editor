@@ -129,7 +129,6 @@ textarea.whole{min-height:420px}
     <button type="button" class="primary" id="exportBtn">Export</button>
   </div>
 </header>
-<div class="banner" id="draftBanner" hidden><span>You have unsaved edits from your last visit.</span><button type="button" id="restoreBtn">Restore them</button><button type="button" class="ghost" id="discardBtn">Discard</button></div>
 
 <div class="grid">
   <section class="panel">
@@ -660,24 +659,26 @@ $('file').onchange=async e=>{
   for(const file of e.target.files){
     const text=(await file.text()).replace(/\r\n/g,'\n');
     const ex=F.findIndex(f=>!f.gone&&f.name===file.name); if(ex>=0) F[ex].gone=true;
-    const fi=parseFile(file.name,text); F[fi].loaded=true;
+    const fi=parseFile(file.name,text); F[fi].loaded=true; F[fi].text0=text;
   }
-  e.target.value='';S.sel=-1;S.undo=null;$('undoBtn').disabled=true;buildFilters();renderList();renderEditor();
+  e.target.value='';S.sel=-1;S.undo=null;$('undoBtn').disabled=true;buildFilters();renderList();renderEditor();saveDraft();
 };
 
 /* ---------- drafts ---------- */
-let saveT=null;
-function saveDraft(){clearTimeout(saveT);saveT=setTimeout(()=>{
-  const d={edits:[],news:[]};
-  for(const r of R){ if(F[r.file].loaded||F[r.file].gone) continue;
+function saveDraft(){ if(window.__mk) window.__mk.schedule(); }
+/* full editing state, kept by modkit.js in IndexedDB and restored when the page opens */
+function draftData(){
+  const d={edits:[],news:[],loaded:F.filter(f=>f.loaded&&!f.gone).map(f=>({name:f.name,text:f.text0}))};
+  for(const r of R){ if(F[r.file].gone) continue;
     if(r.isNew){ if(!r.deleted) d.news.push({sf:F[r.file].name,so:R[r.src].origName,name:r.name,parts:r.parts}); }
     else if(isMod(r)) d.edits.push({i:r.idx,file:F[r.file].name,on:r.origName,name:r.name,parts:r.parts,deleted:r.deleted});
   }
-  try{ if(d.edits.length||d.news.length) localStorage.setItem(DK,JSON.stringify(d)); else localStorage.removeItem(DK) }catch(e){}
-},400)}
+  return d;
+}
 function restore(d){
+  for(const l of d.loaded||[]){ if(l.text==null) continue; const ex=F.findIndex(f=>!f.gone&&f.name===l.name); if(ex>=0) F[ex].gone=true; const fi=parseFile(l.name,l.text); F[fi].loaded=true; F[fi].text0=l.text; }
   const used=new Set();for(const e of d.edits||[]){const r=R.find(x=>!x.isNew&&!used.has(x.idx)&&!F[x.file].gone&&F[x.file].name===e.file&&x.origName===e.on&&(x.idx===e.i||true));if(!r)continue;used.add(r.idx);r.name=e.name;r.parts=e.parts;r.deleted=e.deleted;touch(r)}
-  for(const n of d.news||[]){const s=R.find(x=>!x.isNew&&F[x.file].name===n.sf&&x.origName===n.so);if(!s)continue;dup(s);const c=R[R.length-1];c.name=n.name;c.parts=n.parts;touch(c)}
+  for(const n of d.news||[]){const s=R.find(x=>!x.isNew&&!F[x.file].gone&&F[x.file].name===n.sf&&x.origName===n.so);if(!s)continue;dup(s);const c=R[R.length-1];c.name=n.name;c.parts=n.parts;touch(c)}
   S.sel=-1;buildFilters();renderList();renderEditor();
 }
 
@@ -687,11 +688,6 @@ syncBulk(); buildFilters();
 (function(){const h=decodeURIComponent(location.hash.slice(1));if(h&&[...$('fDir').options].some(o=>o.value===h)){$('fDir').value=h;buildFilters()}syncHash()})();
 window.addEventListener('hashchange',()=>{const h=decodeURIComponent(location.hash.slice(1));if([...$('fDir').options].some(o=>o.value===h)||!h){$('fDir').value=h;$('fFile').value='';buildFilters();renderList();syncHash()}});
 renderList(); renderEditor();
-try{const raw=localStorage.getItem(DK);if(raw){const d=JSON.parse(raw);if((d.edits||[]).length||(d.news||[]).length){
-  $('draftBanner').hidden=false;
-  $('restoreBtn').onclick=()=>{restore(d);$('draftBanner').hidden=true;saveDraft()};
-  $('discardBtn').onclick=()=>{try{localStorage.removeItem(DK)}catch(e){};$('draftBanner').hidden=true};
-}}}catch(e){}
 
 function saveFile(name,text){try{const b=new Blob([text],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=String(name).split('/').pop();document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500);return true}catch(e){return false}}
 
@@ -715,9 +711,18 @@ $('dlHead').onclick=()=>downloadChanged(null);
 <script src="modkit.js"></script>
 <script>
 (function(){var ED='entities';
-var mk=PZMod.attach({editor:ED,collect:function(){var m={};F.forEach(function(f,i){if(f.gone)return;if(R.some(function(r){return r.file===i&&isMod(r)}))m[f.name]=serFile(i)});return m}});
-var _sd=saveDraft;saveDraft=function(){_sd();mk.schedule()};
-var d=document.getElementById('discardBtn');if(d)d.addEventListener('click',function(){mk.clearMine()});})();
+function restoreAll(d,files){
+  if(!d){ try{ d=JSON.parse(localStorage.getItem(DK)||'null') }catch(_){ d=null } }  /* drafts from before this update */
+  try{ localStorage.removeItem(DK) }catch(_){}
+  if(!d) return;
+  const has=n=>files[n]!=null;   /* a file removed in the mod builder starts clean */
+  restore({loaded:(d.loaded||[]).filter(l=>has(l.name)), edits:(d.edits||[]).filter(e=>has(e.file)), news:(d.news||[]).filter(n=>has(n.sf))});
+}
+window.__mk=PZMod.attach({editor:ED,
+  collect:function(){var m={};F.forEach(function(f,i){if(f.gone)return;if(R.some(function(r){return r.file===i&&isMod(r)}))m[f.name]=serFile(i)});return m},
+  draft:function(files){if(!Object.keys(files).length)return null;var d=draftData();return d.edits.length||d.news.length?d:null},
+  restore:restoreAll});
+})();
 </script>
 </body>
 </html>

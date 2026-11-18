@@ -153,7 +153,7 @@ pre.tree .d{color:var(--accent);font-weight:600}
       return `<tr><td><div class="n">${esc(f.name)}</div><div class="p">${esc(f.path.replace(PZMod.BASE,'…/generated/').replace(/^42\/media\//,'…/'))}</div></td>
         <td><a href="${esc(f.editor)}.html">${esc(e[1])}</a></td>
         <td class="num">${ago(f.updated)}<br>${size(new Blob([f.text]).size)}</td>
-        <td><button type="button" class="ghost" data-k="${esc(f.key)}" title="Leave this file out of the mod">Remove</button></td></tr>`}).join('');
+        <td><button type="button" class="ghost" data-k="${esc(f.key)}" title="Leave this file out of the mod and reset its edits">Remove</button></td></tr>`}).join('');
     renderTree();
   }
   $('rows').addEventListener('click',e=>{const b=e.target.closest('button[data-k]'); if(!b) return;
@@ -162,7 +162,7 @@ pre.tree .d{color:var(--accent);font-weight:600}
   });
   $('clearBtn').addEventListener('click',()=>{const b=$('clearBtn');
     if(!b.dataset.arm){ b.dataset.arm=1; b.textContent='Click again to clear'; setTimeout(()=>{ delete b.dataset.arm; b.textContent='Clear all'; },3000); return; }
-    delete b.dataset.arm; b.textContent='Clear all'; PZMod.clear().then(()=>$('msg').textContent='Mod cleared. Your editor drafts are untouched.');
+    delete b.dataset.arm; b.textContent='Clear all'; PZMod.clear().then(()=>$('msg').textContent='Mod cleared. Every editor starts from the original files again.');
   });
   $('dlBtn').addEventListener('click',()=>{ $('dlBtn').disabled=true; $('msg').textContent='Building zip…';
     PZMod.download().then(r=>{ $('msg').textContent=`Downloaded ${r.filename} with ${r.count} file${r.count>1?'s':''}.`; $('dlBtn').disabled=false; },

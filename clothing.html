@@ -110,7 +110,6 @@ textarea.raw{width:100%;min-height:150px;font-family:var(--f-mono);font-size:12p
     <button type="button" class="primary" id="exportBtn">Export</button>
   </div>
 </header>
-<div class="banner" id="draftBanner" hidden><span>You have unsaved edits from your last visit.</span><button type="button" id="restoreBtn">Restore them</button><button type="button" class="ghost" id="discardBtn">Discard</button></div>
 
 <div class="grid">
   <section class="panel">
@@ -364,17 +363,10 @@ $('copyBtn').addEventListener('click',()=>{ const t=$('exText');
   navigator.clipboard.writeText(t.value).then(()=>{$('copyMsg').textContent='Copied '+t.value.split('\n').length+' lines.'})
   .catch(()=>{ t.focus(); t.select(); $('copyMsg').textContent='Text selected — press Ctrl+C (Cmd+C) to copy.' }); });
 
-// drafts (this browser only)
-const DK='pz-clothing-draft';
-let draftTimer;
-function saveDraft(clear){ clearTimeout(draftTimer); draftTimer=setTimeout(()=>{ try{
-  if(clear || !S.items.some(x=>x.dirty)) localStorage.removeItem(DK);
-  else localStorage.setItem(DK, JSON.stringify({name:S.name,text:serialize(false)})) }catch(_){} },400) }
+// edits are kept by modkit.js (IndexedDB) and restored automatically when the page opens
+function saveDraft(){ if(window.__mk) window.__mk.schedule(); }
 
 load(SRC,'clothing.txt');
-try{ const d=JSON.parse(localStorage.getItem(DK)||'null'); if(d && d.text){ $('draftBanner').hidden=false;
-  $('restoreBtn').onclick=()=>{ load(d.text,d.name); $('draftBanner').hidden=true; $('bMsg').textContent='Restored your edits. Modified markers are reset; the restored text is the new baseline.' };
-  $('discardBtn').onclick=()=>{ try{localStorage.removeItem(DK)}catch(_){} $('draftBanner').hidden=true } } }catch(_){}
 
 function saveFile(name,text){try{const b=new Blob([text],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500);return true}catch(e){return false}}
 
@@ -385,10 +377,34 @@ $('dlHead').addEventListener('click',()=>{saveFile(S.name,serialize(false))});
 
 <script src="modkit.js"></script>
 <script>
-(function(){var ED='clothing',ORIGNAME='clothing.txt';
-var mk=PZMod.attach({editor:ED,collect:function(){var t=serialize(false),m={};if(t!==SRC||S.name!==ORIGNAME)m[S.name]=t;return m}});
-var _sd=saveDraft;saveDraft=function(c){_sd(c);if(!c)mk.schedule()};
-var d=document.getElementById('discardBtn');if(d)d.addEventListener('click',function(){mk.clearMine()});})();
+(function(){var ED='clothing',ORIGNAME='clothing.txt',DK='pz-clothing-draft',SIG=PZMod.sig(SRC);
+/* Load saved text, comparing it with the built-in items so "modified" markers and "was:" hints survive. */
+function reconcile(text,name){
+  const byName=new Map(); S.items.forEach(it=>{ if(!byName.has(it.origName)) byName.set(it.origName,[]); byName.get(it.origName).push(it) });
+  const p=parse(text), used=new Set();
+  p.items.forEach(it=>{ const c=(byName.get(it.name)||[]).find(o=>!used.has(o));
+    if(c){ used.add(c); const same=it.orig.join('\n')===c.orig.join('\n');
+      it.orig=c.orig; it.origMap=c.origMap; it.origName=c.origName; it.dirty=!same; it.fields.forEach(f=>{ if(f.k) f.ov=c.origMap[f.k] }) }
+    else { it.orig=[]; it.origMap={}; it.dirty=true; it.fields.forEach(f=>{ if(f.k) f.ov=undefined }) } });
+  S.items.forEach(c=>{ if(!used.has(c)){ c.deleted=true; c.dirty=true; p.items.push(c) } });
+  S.items=p.items; S.segs=p.segs; S.name=name;
+}
+function restore(d,files){
+  try{ localStorage.removeItem(DK) }catch(_){}
+  const name=d&&d.name&&files[d.name]!=null ? d.name : (files[ORIGNAME]!=null ? ORIGNAME : Object.keys(files)[0]);
+  if(name==null) return;                      /* file was removed from the mod: start clean */
+  if(d && d.sig===SIG && d.name===name && Array.isArray(d.items)){ S.items=d.items; S.segs=d.segs; S.name=d.name; }
+  else reconcile(files[name],name);           /* older draft or updated game data */
+  const mm=files[name].match(/^\s*module\s+(\S+)/m); $('mod').textContent=mm?mm[1]:'—';
+  $('fname').textContent=S.name; $('cnt').textContent=S.items.length;
+  S.sel=S.items.findIndex(x=>!x.deleted); S.undo=null; $('undoBtn').disabled=true;
+  buildFilters(); renderList(); renderEditor();
+}
+window.__mk=PZMod.attach({editor:ED,
+  collect:function(){var t=serialize(false),m={};if(t!==SRC||S.name!==ORIGNAME)m[S.name]=t;return m},
+  draft:function(files){return Object.keys(files).length?{sig:SIG,name:S.name,items:S.items,segs:S.segs}:null},
+  restore:restore});
+})();
 </script>
 </body>
 </html>

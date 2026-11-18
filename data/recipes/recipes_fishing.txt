@@ -1,0 +1,121 @@
+module Base
+{
+    craftRecipe MakeFishingRod
+    {
+        timedAction = SharpenStakeWood,
+        time = 80,
+        NeedToBeLearn = true,
+        OnCreate = RecipeCodeOnCreate.fixFishingRope,
+        Tags = InHandCraft;Fishing,
+        category = Fishing,
+        AutoLearnAny = Fishing:4;Carving:4,
+        xpAward = Carving:5,
+        inputs
+        {
+            item 1 tags[base:sharpknife;base:meatcleaver] mode:keep flags[MayDegradeLight;IsNotDull],
+            item 1 [Base.WoodenStick2],
+            item 2 tags[base:fishingline],
+            item 1 [Base.Paperclip;Base.Nails;Base.FishingHook;Base.FishingHook_Forged;Base.FishingHook_Bone],
+        }
+        outputs
+        {
+            item 1 Base.CraftedFishingRod,
+        }
+    }
+
+    craftRecipe FixFishingRod
+    {
+        timedAction = Making,
+        time = 80,
+        NeedToBeLearn = true,
+        OnCreate = RecipeCodeOnCreate.fixFishingRope,
+        Tags = InHandCraft;Fishing,
+        category = Fishing,
+        AutoLearnAny = Fishing:4,
+        inputs
+        {
+            item 1 [Base.FishingRodBreak],
+            item 1 tags[base:fishingline],
+            item 1 [Base.Paperclip;Base.Nails;Base.FishingHook;Base.FishingHook_Forged;Base.FishingHook_Bone],
+        }
+        outputs
+        {
+            item 1 Base.FishingRod,
+        }
+    }
+
+    craftRecipe MakeFishingNet
+    {
+        timedAction = Making,
+        time = 150,
+        NeedToBeLearn = true,
+        Tags = InHandCraft;Fishing,
+        category = Fishing,
+        AutoLearnAny = Fishing:6,
+        inputs
+        {
+            item 10 [Base.Twine],
+            item 5 [Base.Wire],
+        }
+        outputs
+        {
+            item 1 Base.FishingNet,
+        }
+    }
+
+    craftRecipe GetWireBack
+    {
+        timedAction = Making,
+        time = 100,
+        OnCreate = RecipeCodeOnCreate.dismantleFishingNet,
+        NeedToBeLearn = true,
+        Tags = InHandCraft;Fishing,
+        category = Fishing,
+        AutoLearnAny = Fishing:7,
+        inputs
+        {
+            item 1 [Base.BrokenFishingNet],
+        }
+        outputs
+        {
+            item 1 Base.Wire,
+        }
+    }
+
+    craftRecipe MakeChum
+    {
+        timedAction = MakeChum,
+        time = 120,
+        NeedToBeLearn = true,
+        Tags = InHandCraft;Fishing,
+        category = Fishing,
+        AutoLearnAny = Fishing:5,
+        inputs
+        {
+            item 1 [Base.Sandbag],
+        }
+        outputs
+        {
+            item 1 Base.Chum,
+        }
+    }
+
+    craftRecipe HarvestRoe
+    {
+        timedAction = MixingBowl,
+        time = 120,
+        Tags = InHandCraft;Fishing,
+        category = Fishing,
+        xpAward = Fishing:10,
+        inputs
+        {
+            item 1 tags[base:bowl] mode:keep flags[ItemCount],
+            -fluid 0.3 [Water],
+            item 1 [Base.FishRoeSac] flags[ItemCount;InheritFood],
+        }
+        outputs
+        {
+            item 1 Base.FishRoe,
+        }
+    }
+}

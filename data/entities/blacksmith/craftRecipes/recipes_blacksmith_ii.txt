@@ -1,0 +1,123 @@
+module Base
+{
+    craftRecipe Forge_Steel_Sheet
+    {
+        time = 200,
+        SkillRequired = Blacksmith:4,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:45,
+        AutoLearnAll = Blacksmith:6,
+        Tags = Forge,
+        category = Blacksmithing,
+        inputs
+        {
+            item 1 tags[base:charcoal],
+            item 1 [Base.SteelBlock],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 tags[base:tongs] mode:keep flags[Prop2;MayDegradeLight],
+            item 1 tags[base:metalworkingchisel] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.SheetMetal,
+        }
+    }
+
+    craftRecipe Forge_Small_Steel_Sheet
+    {
+        time = 200,
+        SkillRequired = Blacksmith:4,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:45,
+        AutoLearnAll = Blacksmith:6,
+        Tags = Forge,
+        category = Blacksmithing,
+        inputs
+        {
+            item 1 tags[base:charcoal],
+            item 1 [Base.SteelChunk],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 tags[base:tongs] mode:keep flags[Prop2;MayDegradeLight],
+            item 1 tags[base:metalworkingchisel] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.SmallSheetMetal,
+        }
+    }
+
+    craftRecipe Split_Steel_Sheet_Into_Small_Sheets
+    {
+        time = 200,
+        SkillRequired = Blacksmith:3,
+        timedAction = HammerMetalStanding,
+        Tags = Forge,
+        category = Blacksmithing,
+        inputs
+        {
+            item 1 [Base.SheetMetal],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 tags[base:tongs] mode:keep flags[Prop2;MayDegradeLight],
+            item 1 tags[base:metalworkingchisel] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 4 Base.SmallSheetMetal,
+        }
+    }
+
+    craftRecipe Forge_Lantern
+    {
+        time = 200,
+        SkillRequired = Blacksmith:5,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:60,
+        AutoLearnAll = Blacksmith:7,
+        Tags = AdvancedForge,
+        category = Tools,
+        inputs
+        {
+            item 1 tags[base:charcoal],
+            item 4 [Base.SmallSheetMetal;Base.SmallCopperSheet;Base.GoldSheet;Base.SilverSheet] mappers[LampMapper] flags[IsExclusive],
+            item 1 tags[base:smithinghammer] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 tags[base:tongs] mode:keep flags[Prop2;MayDegradeLight],
+            item 1 [Base.Wire],
+            item 1 [Base.LanternGlass],
+        }
+        outputs
+        {
+            item 1 mapper:LampMapper flags[HasNoUses],
+        }
+        itemMapper LampMapper
+        {
+            Base.Lantern_Hurricane_Forged = Base.SmallSheetMetal,
+            Base.Lantern_Hurricane_Copper = Base.SmallCopperSheet,
+            Base.Lantern_Hurricane_Gold = Base.GoldSheet,
+            Base.Lantern_Hurricane_Silver = Base.SilverSheet,
+            default = Base.Lantern_Hurricane_Forged,
+        }
+    }
+
+    craftRecipe ExtractIronFromBloom
+    {
+        time = 200,
+        Tags = PrimitiveForge,
+        category = Blacksmithing,
+        xpAward = Blacksmith:10,
+        timedAction = HammerMetalStanding,
+        inputs
+        {
+            item 4 tags[base:charcoal],
+            item 1 [Base.IronBloom],
+            item 1 tags[base:clubhammer;base:hammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:crudetongs;base:tongs] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 12 Base.IronChunk,
+        }
+    }
+}

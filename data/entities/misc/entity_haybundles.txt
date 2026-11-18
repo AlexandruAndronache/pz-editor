@@ -1,0 +1,102 @@
+module Base
+{
+    entity HayBundle
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_HayBundle,
+            uiEnabled = false,
+        }
+        component ContextMenuConfig
+        {
+            contextEntry
+            {
+                menu = TakeHay,
+                icon = Item_Haytuft.png,
+                customFunction = ContextMenuCode.TakeHay,
+            }
+        }
+        component SpriteConfig
+        {
+            face N
+            {
+                layer
+                {
+                    row = vegetation_farm_01_16,
+                }
+            }
+            face W
+            {
+                layer
+                {
+                    row = vegetation_farm_01_8,
+                }
+            }
+            face E
+            {
+                layer
+                {
+                    row = vegetation_farm_01_9,
+                }
+            }
+            face S
+            {
+                layer
+                {
+                    row = vegetation_farm_01_17,
+                }
+            }
+        }
+    }
+
+    entity HayBundleDouble
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_HayBundle,
+            uiEnabled = false,
+        }
+        component ContextMenuConfig
+        {
+            contextEntry
+            {
+                menu = TakeHay,
+                icon = Item_Haytuft.png,
+                customFunction = ContextMenuCode.TakeHayDouble,
+            }
+        }
+        component SpriteConfig
+        {
+            face N
+            {
+                layer
+                {
+                    row = vegetation_farm_01_18,
+                }
+            }
+            face W
+            {
+                layer
+                {
+                    row = vegetation_farm_01_10,
+                }
+            }
+            face E
+            {
+                layer
+                {
+                    row = vegetation_farm_01_11,
+                }
+            }
+            face S
+            {
+                layer
+                {
+                    row = vegetation_farm_01_19,
+                }
+            }
+        }
+    }
+}

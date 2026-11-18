@@ -1,0 +1,173 @@
+module Base
+{
+    craftRecipe MakeGlassJar
+    {
+        timedAction = Craft_Glassmaking,
+        time = 100,
+        Tags = AnySurfaceCraft;Glassmaking,
+        category = Glassmaking,
+        NeedToBeLearn = true,
+        SkillRequired = Glassmaking:5,
+        AutoLearnAny = Glassmaking:6,
+        xpAward = Glassmaking:75,
+        inputs
+        {
+            item 1 tags[base:pliers] mode:keep flags[MayDegradeLight],
+            item 1 [Base.GlassBlowingPipe] mode:keep,
+            item 1 [Base.CeramicCrucibleWithGlass],
+        }
+        outputs
+        {
+            item 1 Base.JarCrafted,
+        }
+    }
+
+    craftRecipe MakeGlassBottle
+    {
+        timedAction = Craft_Glassmaking,
+        time = 120,
+        Tags = AnySurfaceCraft;Glassmaking,
+        category = Glassmaking,
+        NeedToBeLearn = true,
+        AutoLearnAny = Glassmaking:5,
+        SkillRequired = Glassmaking:3,
+        xpAward = Glassmaking:60,
+        inputs
+        {
+            item 1 tags[base:pliers] mode:keep flags[MayDegradeLight],
+            item 1 [Base.GlassBlowingPipe] mode:keep,
+            item 1 [Base.CeramicCrucibleWithGlass],
+        }
+        outputs
+        {
+            item 1 Base.BottleCrafted,
+        }
+    }
+
+    craftRecipe MakeDrinkingGlass
+    {
+        timedAction = Craft_Glassmaking,
+        time = 120,
+        Tags = AnySurfaceCraft;Glassmaking,
+        category = Glassmaking,
+        NeedToBeLearn = true,
+        AutoLearnAny = Glassmaking:4,
+        SkillRequired = Glassmaking:2,
+        xpAward = Glassmaking:45,
+        inputs
+        {
+            item 1 tags[base:pliers] mode:keep flags[MayDegradeLight],
+            item 1 [Base.GlassBlowingPipe] mode:keep,
+            item 1 [Base.CeramicCrucibleWithGlass],
+        }
+        outputs
+        {
+            item 1 Base.DrinkingGlass,
+        }
+    }
+
+    craftRecipe MakeChampagneGlass
+    {
+        timedAction = Craft_Glassmaking,
+        time = 120,
+        Tags = AnySurfaceCraft;Glassmaking,
+        category = Glassmaking,
+        NeedToBeLearn = true,
+        AutoLearnAny = Glassmaking:10,
+        SkillRequired = Glassmaking:9,
+        xpAward = Glassmaking:90,
+        inputs
+        {
+            item 1 tags[base:pliers] mode:keep flags[MayDegradeLight],
+            item 1 [Base.GlassBlowingPipe] mode:keep,
+            item 1 [Base.CeramicCrucibleWithGlass],
+        }
+        outputs
+        {
+            item 1 Base.GlassChampagne,
+        }
+    }
+
+    craftRecipe MakeWineGlass
+    {
+        timedAction = Craft_Glassmaking,
+        time = 120,
+        Tags = AnySurfaceCraft;Glassmaking,
+        category = Glassmaking,
+        NeedToBeLearn = true,
+        AutoLearnAny = Glassmaking:8,
+        SkillRequired = Glassmaking:7,
+        xpAward = Glassmaking:90,
+        inputs
+        {
+            item 1 tags[base:pliers] mode:keep flags[MayDegradeLight],
+            item 1 [Base.GlassBlowingPipe] mode:keep,
+            item 1 [Base.CeramicCrucibleWithGlass],
+        }
+        outputs
+        {
+            item 1 Base.GlassWine,
+        }
+    }
+
+    craftRecipe MakeLanternGlass
+    {
+        timedAction = Craft_Glassmaking,
+        time = 120,
+        Tags = AnySurfaceCraft;Glassmaking,
+        category = Glassmaking,
+        NeedToBeLearn = true,
+        AutoLearnAny = Glassmaking:8,
+        SkillRequired = Glassmaking:7,
+        xpAward = Glassmaking:90,
+        inputs
+        {
+            item 1 tags[base:pliers] mode:keep flags[MayDegradeLight],
+            item 1 [Base.GlassBlowingPipe] mode:keep,
+            item 1 [Base.CeramicCrucibleWithGlass],
+        }
+        outputs
+        {
+            item 1 Base.LanternGlass,
+        }
+    }
+
+    craftRecipe MakeGlassPanel
+    {
+        time = 120,
+        Tags = AnySurfaceCraft;Glassmaking,
+        category = Glassmaking,
+        NeedToBeLearn = true,
+        xpAward = Glassmaking:25,
+        inputs
+        {
+            item 1 [Base.ClaySheetMold] mode:keep,
+            item 1 [Base.CeramicCrucibleWithGlass],
+        }
+        outputs
+        {
+            item 1 Base.GlassPanel,
+        }
+    }
+
+    craftRecipe MakeMirror
+    {
+        time = 120,
+        Tags = AnySurfaceCraft;Glassmaking,
+        category = Glassmaking,
+        NeedToBeLearn = true,
+        SkillRequired = Glassmaking:4,
+        AutoLearnAny = Glassmaking:5,
+        xpAward = Glassmaking:50,
+        inputs
+        {
+            item 1 [Base.ClaySheetMold] mode:keep,
+            item 1 [Base.CeramicCrucibleWithGlass],
+            item 1 [Base.SmallSheetMetal],
+        }
+        outputs
+        {
+            item 1 Base.Mirror,
+        }
+    }
+}

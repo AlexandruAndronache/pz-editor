@@ -1,0 +1,35 @@
+module Base
+{
+    entity StoneCairn
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_Cairn,
+            uiEnabled = false,
+        }
+        component SpriteConfig
+        {
+            health = 150,
+            skillBaseHealth = 50,
+            face W
+            {
+                layer
+                {
+                    row = location_community_cemetary_01_30,
+                }
+            }
+        }
+        component CraftRecipe
+        {
+            timedAction = BuildCairn,
+            time = 200,
+            category = Miscellaneous,
+            Tooltip = Tooltip_craft_stonePileDesc,
+            inputs
+            {
+                item 6 [Base.Stone2],
+            }
+        }
+    }
+}

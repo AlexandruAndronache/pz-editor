@@ -1,0 +1,868 @@
+module Base
+{
+    craftRecipe MakeBoneArmoredGloves
+    {
+        time = 180,
+        Tags = AnySurfaceCraft,
+        SkillRequired = Tailoring:5;Carving:3,
+        timedAction = CraftArmourPiece,
+        xpAward = Tailoring:45;Carving:30,
+        category = Tailoring,
+        AutoLearnAll = Tailoring:7;Carving:4,
+        inputs
+        {
+            item 4 [Base.SmallAnimalBone] flags[Prop2],
+            item 1 [Base.Gloves_FingerlessGloves;Base.Gloves_FingerlessLeatherGloves;Base.Gloves_FingerlessLeatherGloves_Black;Base.Gloves_FingerlessLeatherGloves_Brown;Base.Gloves_LeatherGloves;Base.Gloves_LeatherGlovesBlack;Base.Gloves_LeatherGlovesBrown],
+            item 1 tags[base:sharpknife] mode:keep flags[IsNotDull;MayDegradeLight],
+            item 1 [Base.Twine],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight;Prop1],
+        }
+        outputs
+        {
+            item 1 Base.Gloves_BoneGloves,
+        }
+    }
+
+    craftRecipe MakeBoneBodyArmor
+    {
+        time = 180,
+        Tags = AnySurfaceCraft,
+        SkillRequired = Tailoring:7;Carving:7,
+        NeedToBeLearn = true,
+        timedAction = SharpenStakeWood,
+        xpAward = Tailoring:80;Carving:60,
+        AutoLearnAll = Tailoring:9;Carving:8,
+        MetaRecipe = base:makebonearmor,
+        category = Tailoring,
+        inputs
+        {
+            item 20 [Base.BoneBead_Large] flags[Prop2],
+            item 4 [Base.LeatherStrips] mode:destroy,
+            item 1 tags[base:sharpknife] mode:keep flags[IsNotDull;MayDegradeLight;Prop1],
+            item 5 [Base.Twine],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.Cuirass_Bone,
+        }
+    }
+
+    craftRecipe MakeBoneChoker
+    {
+        time = 180,
+        Tags = AnySurfaceCraft,
+        SkillRequired = Tailoring:4,
+        NeedToBeLearn = true,
+        timedAction = CraftArmourPiece,
+        xpAward = Tailoring:30,
+        MetaRecipe = base:makebonearmor,
+        category = Tailoring,
+        inputs
+        {
+            item 4 [Base.BoneBead_Large] flags[Prop2],
+            item 1 [Base.LeatherStrips] mode:destroy,
+            item 1 tags[base:sharpknife] mode:keep flags[IsNotDull;MayDegradeLight],
+            item 1 [Base.Twine],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight;Prop1],
+        }
+        outputs
+        {
+            item 1 Base.Necklace_Choker_Bone,
+        }
+    }
+
+    craftRecipe MakeBoneForearmArmor
+    {
+        time = 180,
+        Tags = AnySurfaceCraft,
+        SkillRequired = Tailoring:4;Carving:5,
+        NeedToBeLearn = true,
+        timedAction = CraftArmourPiece,
+        xpAward = Tailoring:30;Carving:50,
+        AutoLearnAll = Tailoring:6;Carving:5,
+        MetaRecipe = base:makebonearmor,
+        category = Tailoring,
+        inputs
+        {
+            item 5 [Base.SmallAnimalBone] flags[Prop2],
+            item 2 [Base.LeatherStrips] mode:destroy,
+            item 1 tags[base:sharpknife] mode:keep flags[IsNotDull;MayDegradeLight],
+            item 1 [Base.Twine],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight;Prop1],
+        }
+        outputs
+        {
+            item 1 Base.VambraceBone_Left,
+        }
+    }
+
+    craftRecipe MakeBoneMask
+    {
+        time = 180,
+        Tags = AnySurfaceCraft,
+        SkillRequired = Tailoring:2;Carving:2,
+        timedAction = CraftArmourPiece,
+        xpAward = Tailoring:13;Carving:20,
+        category = Tailoring,
+        inputs
+        {
+            item 6 [Base.SmallAnimalBone] flags[Prop2],
+            item 1 [Base.LeatherStrips] mode:destroy,
+            item 1 tags[base:sharpknife] mode:keep flags[IsNotDull;MayDegradeLight],
+            item 1 [Base.Twine],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight;Prop1],
+        }
+        outputs
+        {
+            item 1 Base.Hat_BoneMask,
+        }
+    }
+
+    craftRecipe MakeBonePectoral
+    {
+        time = 180,
+        Tags = AnySurfaceCraft,
+        SkillRequired = Tailoring:2;Carving:2,
+        timedAction = CraftArmourPiece,
+        xpAward = Tailoring:13;Carving:20,
+        MetaRecipe = base:makebonearmor,
+        category = Tailoring,
+        inputs
+        {
+            item 6 [Base.SmallAnimalBone] flags[Prop2],
+            item 2 [Base.LeatherStrips] mode:destroy,
+            item 1 tags[base:sharpknife] mode:keep flags[IsNotDull;MayDegradeLight],
+            item 1 [Base.Twine],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight;Prop1],
+        }
+        outputs
+        {
+            item 1 Base.Cuirass_BasicBone,
+        }
+    }
+
+    craftRecipe MakeBoneShinArmor
+    {
+        time = 180,
+        Tags = AnySurfaceCraft,
+        SkillRequired = Tailoring:4;Carving:5,
+        NeedToBeLearn = true,
+        timedAction = SharpenStakeWood,
+        xpAward = Tailoring:30;Carving:50,
+        AutoLearnAll = Tailoring:6;Carving:5,
+        MetaRecipe = base:makebonearmor,
+        category = Tailoring,
+        inputs
+        {
+            item 3 [Base.AnimalBone] flags[Prop2],
+            item 2 [Base.LeatherStrips] mode:destroy,
+            item 1 tags[base:sharpknife] mode:keep flags[IsNotDull;MayDegradeLight;Prop1],
+            item 1 tags[base:saw;base:smallsaw;base:crudesaw] mode:keep flags[MayDegradeLight],
+            item 1 [Base.Twine],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.GreaveBone_Left,
+        }
+    }
+
+    craftRecipe MakeBoneShoulderArmor
+    {
+        time = 180,
+        Tags = AnySurfaceCraft,
+        SkillRequired = Tailoring:5;Carving:6,
+        NeedToBeLearn = true,
+        timedAction = CraftArmourPiece,
+        xpAward = Tailoring:45;Carving:50,
+        AutoLearnAll = Tailoring:7;Carving:6,
+        MetaRecipe = base:makebonearmor,
+        category = Tailoring,
+        inputs
+        {
+            item 5 [Base.SmallAnimalBone] flags[Prop2],
+            item 2 [Base.LeatherStrips] mode:destroy,
+            item 1 tags[base:sharpknife] mode:keep flags[IsNotDull;MayDegradeLight],
+            item 1 [Base.Twine],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight;Prop1],
+        }
+        outputs
+        {
+            item 1 Base.Shoulderpad_Bone_L,
+        }
+    }
+
+    craftRecipe MakeBoneThighArmor
+    {
+        time = 180,
+        Tags = AnySurfaceCraft,
+        SkillRequired = Tailoring:4;Carving:6,
+        NeedToBeLearn = true,
+        timedAction = SharpenStakeWood,
+        xpAward = Tailoring:30;Carving:50,
+        AutoLearnAll = Tailoring:6;Carving:6,
+        MetaRecipe = base:makebonearmor,
+        category = Tailoring,
+        inputs
+        {
+            item 3 [Base.AnimalBone] flags[Prop2],
+            item 2 [Base.LeatherStrips] mode:destroy,
+            item 1 tags[base:sharpknife] mode:keep flags[IsNotDull;MayDegradeLight;Prop1],
+            item 1 tags[base:saw;base:smallsaw;base:crudesaw] mode:keep flags[MayDegradeLight],
+            item 1 [Base.Twine],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.ThighBone_L,
+        }
+    }
+
+    craftRecipe MakeForearmBulletproofVestArmor
+    {
+        time = 300,
+        Tags = AnySurfaceCraft,
+        timedAction = CraftArmourPiece,
+        NeedToBeLearn = true,
+        AutoLearnAll = Tailoring:7,
+        MetaRecipe = base:makebulletprooflimbarmor,
+        SkillRequired = Tailoring:5,
+        xpAward = Tailoring:45,
+        category = Tailoring,
+        inputs
+        {
+            item 1 [Base.Vest_BulletArmy;Base.Vest_BulletCivilian;Base.Vest_BulletPolice;Base.Vest_BulletSWAT] mappers[VestMapper1;VestMapper2] flags[Prop2],
+            item 2 [Base.DuctTape],
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:scissors] mode:keep flags[IsNotDull;MayDegradeLight],
+            item 5 tags[base:heavythread],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 mapper:VestMapper1,
+            item 1 mapper:VestMapper2,
+        }
+        itemMapper VestMapper1
+        {
+            Base.Vambrace_BodyArmour_Left_Army = Base.Vest_BulletArmy,
+            Base.Vambrace_BodyArmour_Left_Civ = Base.Vest_BulletCivilian,
+            Base.Vambrace_BodyArmour_Left_Police = Base.Vest_BulletPolice,
+            Base.Vambrace_BodyArmour_Left_SWAT = Base.Vest_BulletSWAT,
+            default = Base.Vambrace_BodyArmour_Left_Army,
+        }
+        itemMapper VestMapper2
+        {
+            Base.Vambrace_BodyArmour_Right_Army = Base.Vest_BulletArmy,
+            Base.Vambrace_BodyArmour_Right_Civ = Base.Vest_BulletCivilian,
+            Base.Vambrace_BodyArmour_Right_Police = Base.Vest_BulletPolice,
+            Base.Vambrace_BodyArmour_Right_SWAT = Base.Vest_BulletSWAT,
+            default = Base.Vambrace_BodyArmour_Right_Army,
+        }
+    }
+
+    craftRecipe MakeShinBulletproofVestArmor
+    {
+        time = 300,
+        Tags = AnySurfaceCraft,
+        timedAction = CraftArmourPiece,
+        NeedToBeLearn = true,
+        AutoLearnAll = Tailoring:7,
+        MetaRecipe = base:makebulletprooflimbarmor,
+        SkillRequired = Tailoring:5,
+        xpAward = Tailoring:45,
+        category = Tailoring,
+        inputs
+        {
+            item 1 [Base.Vest_BulletArmy;Base.Vest_BulletCivilian;Base.Vest_BulletPolice;Base.Vest_BulletSWAT] mappers[VestMapper1;VestMapper2] flags[Prop2],
+            item 2 [Base.DuctTape],
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:scissors] mode:keep flags[IsNotDull;MayDegradeLight],
+            item 5 tags[base:heavythread],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 mapper:VestMapper1,
+            item 1 mapper:VestMapper2,
+        }
+        itemMapper VestMapper1
+        {
+            Base.GreaveBodyArmour_Left_Army = Base.Vest_BulletArmy,
+            Base.GreaveBodyArmour_Left_Civ = Base.Vest_BulletCivilian,
+            Base.GreaveBodyArmour_Left_Police = Base.Vest_BulletPolice,
+            Base.GreaveBodyArmour_Left_SWAT = Base.Vest_BulletSWAT,
+            default = Base.GreaveBodyArmour_Left_Army,
+        }
+        itemMapper VestMapper2
+        {
+            Base.GreaveBodyArmour_Right_Army = Base.Vest_BulletArmy,
+            Base.GreaveBodyArmour_Right_Civ = Base.Vest_BulletCivilian,
+            Base.GreaveBodyArmour_Right_Police = Base.Vest_BulletPolice,
+            Base.GreaveBodyArmour_Right_SWAT = Base.Vest_BulletSWAT,
+            default = Base.GreaveBodyArmour_Right_Army,
+        }
+    }
+
+    craftRecipe MakeThighBulletproofVestArmor
+    {
+        time = 300,
+        Tags = AnySurfaceCraft,
+        timedAction = CraftArmourPiece,
+        NeedToBeLearn = true,
+        AutoLearnAll = Tailoring:7,
+        MetaRecipe = base:makebulletprooflimbarmor,
+        SkillRequired = Tailoring:5,
+        xpAward = Tailoring:45,
+        category = Tailoring,
+        inputs
+        {
+            item 1 [Base.Vest_BulletArmy;Base.Vest_BulletCivilian;Base.Vest_BulletPolice;Base.Vest_BulletSWAT] mappers[VestMapper1;VestMapper2] flags[Prop2],
+            item 2 [Base.DuctTape],
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:scissors] mode:keep flags[IsNotDull;MayDegradeLight],
+            item 5 tags[base:heavythread],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 mapper:VestMapper1,
+            item 1 mapper:VestMapper2,
+        }
+        itemMapper VestMapper1
+        {
+            Base.ThighBodyArmour_L_Army = Base.Vest_BulletArmy,
+            Base.ThighBodyArmour_L_Civ = Base.Vest_BulletCivilian,
+            Base.ThighBodyArmour_L_Police = Base.Vest_BulletPolice,
+            Base.ThighBodyArmour_L_SWAT = Base.Vest_BulletSWAT,
+            default = Base.ThighBodyArmour_L_Army,
+        }
+        itemMapper VestMapper2
+        {
+            Base.ThighBodyArmour_R_Army = Base.Vest_BulletArmy,
+            Base.ThighBodyArmour_R_Civ = Base.Vest_BulletCivilian,
+            Base.ThighBodyArmour_R_Police = Base.Vest_BulletPolice,
+            Base.ThighBodyArmour_R_SWAT = Base.Vest_BulletSWAT,
+            default = Base.ThighBodyArmour_R_Army,
+        }
+    }
+
+    craftRecipe MakeBodyMagazineArmor
+    {
+        time = 100,
+        Tooltip = Tooltip_Recipe_RuinsItem,
+        Tags = AnySurfaceCraft;CanAlwaysBeResearched,
+        timedAction = CraftArmourPiece,
+        NeedToBeLearn = true,
+        MetaRecipe = base:makemagazinearmor,
+        category = Tailoring,
+        SkillRequired = Tailoring:1,
+        inputs
+        {
+            item 8 tags[base:magazine] flags[Prop2],
+            item 4 [Base.DuctTape] flags[Prop1],
+        }
+        outputs
+        {
+            item 1 Base.Cuirass_Magazine,
+        }
+    }
+
+    craftRecipe MakeForearmMagazineArmor
+    {
+        time = 100,
+        Tooltip = Tooltip_Recipe_RuinsItem,
+        Tags = InHandCraft;CanAlwaysBeResearched,
+        timedAction = CraftArmourPiece,
+        MetaRecipe = base:makemagazinearmor,
+        category = Tailoring,
+        inputs
+        {
+            item 1 tags[base:magazine] flags[Prop2],
+            item 2 [Base.DuctTape] flags[Prop1],
+        }
+        outputs
+        {
+            item 1 Base.VambraceMagazine_Left,
+        }
+    }
+
+    craftRecipe SpikePadding
+    {
+        time = 300,
+        Tags = AnySurfaceCraft,
+        timedAction = MakingHammer_Surface,
+        NeedToBeLearn = true,
+        AutoLearnAll = Tailoring:7;Maintenance:2,
+        SkillRequired = Tailoring:5;Maintenance:1,
+        xpAward = Tailoring:45;Maintenance:10,
+        category = Tailoring,
+        inputs
+        {
+            item 1 [Base.Shoulderpad_Football_L;Base.Shoulderpad_Football_R;Base.ShinKneeGuard_R;Base.ShinKneeGuard_R_Baseball;Base.ShinKneeGuard_R_IceHockey;Base.ShinKneeGuard_R_Protective;Base.ShinKneeGuard_L;Base.ShinKneeGuard_L_Baseball;Base.ShinKneeGuard_L_IceHockey;Base.ShinKneeGuard_L_Protective;Base.Vambrace_Leather_Right;Base.Vambrace_Leather_Left] mappers[armorMapper] flags[Prop2;CopyClothing],
+            item 1 tags[base:scissors;base:sharpknife] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:leathercrudetannedsmall],
+            item 2 tags[base:heavythread],
+            item 1 tags[base:hammer] mode:keep flags[Prop1;MayDegradeVeryLight],
+            item 3 [Base.Nails],
+        }
+        outputs
+        {
+            item 1 mapper:armorMapper,
+        }
+        itemMapper armorMapper
+        {
+            Base.Shoulderpad_Football_Spiked_L = Base.Shoulderpad_Football_L,
+            Base.Shoulderpad_Football_Spiked_R = Base.Shoulderpad_Football_R,
+            Base.ShinKneeGuardSpike_L = Base.ShinKneeGuard_L,
+            Base.ShinKneeGuardSpike_L_Baseball = Base.ShinKneeGuard_L_Baseball,
+            Base.ShinKneeGuardSpike_L_IceHockey = Base.ShinKneeGuard_L_IceHockey,
+            Base.ShinKneeGuardSpike_L_Protective = Base.ShinKneeGuard_L_Protective,
+            Base.ShinKneeGuardSpike_R = Base.ShinKneeGuard_R,
+            Base.ShinKneeGuardSpike_R_Baseball = Base.ShinKneeGuard_R_Baseball,
+            Base.ShinKneeGuardSpike_R_IceHockey = Base.ShinKneeGuard_R_IceHockey,
+            Base.ShinKneeGuardSpike_R_Protective = Base.ShinKneeGuard_R_Protective,
+            Base.Vambrace_LeatherSpike_Left = Base.Vambrace_Leather_Left,
+            Base.Vambrace_LeatherSpike_Right = Base.Vambrace_Leather_Right,
+            default = Base.Vambrace_LeatherSpike_Left,
+        }
+    }
+
+    craftRecipe SpikePaddingLarge
+    {
+        time = 300,
+        Tags = AnySurfaceCraft,
+        timedAction = MakingHammer_Surface,
+        NeedToBeLearn = true,
+        AutoLearnAll = Tailoring:7;Maintenance:2,
+        SkillRequired = Tailoring:5;Maintenance:1,
+        xpAward = Tailoring:45;Maintenance:10,
+        MetaRecipe = base:spikepadding,
+        category = Tailoring,
+        inputs
+        {
+            item 1 [Base.Hat_CrashHelmetFULL;Base.Hat_CrashHelmetFULL_Black;Base.Shoulderpads_Football;Base.Shoulderpads_FootballOnTop] mappers[armorMapper] flags[Prop2;CopyClothing],
+            item 1 tags[base:scissors;base:sharpknife] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+            item 2 tags[base:leathercrudetannedsmall],
+            item 4 tags[base:heavythread],
+            item 1 tags[base:hammer] mode:keep flags[Prop1;MayDegradeVeryLight],
+            item 6 [Base.Nails],
+        }
+        outputs
+        {
+            item 1 mapper:armorMapper,
+        }
+        itemMapper armorMapper
+        {
+            Base.Hat_CrashHelmetFULL_Spiked = Base.Hat_CrashHelmetFULL,
+            Base.Hat_CrashHelmetFULL_Black_Spiked = Base.Hat_CrashHelmetFULL_Black,
+            Base.Shoulderpads_FootballOnTop_Spiked = Base.Shoulderpads_Football,
+            Base.Shoulderpads_FootballOnTop_Spiked = Base.Shoulderpads_FootballOnTop,
+            default = Base.Shoulderpads_FootballOnTop_Spiked,
+        }
+    }
+
+    craftRecipe MakeTireBodyArmor
+    {
+        time = 180,
+        Tags = AnySurfaceCraft,
+        SkillRequired = Tailoring:6;Maintenance:5,
+        NeedToBeLearn = true,
+        timedAction = CraftArmourPiece,
+        xpAward = Tailoring:68;Maintenance:50,
+        AutoLearnAll = Tailoring:8;Maintenance:4,
+        MetaRecipe = base:maketirearmor,
+        category = Tailoring,
+        inputs
+        {
+            item 2 [Base.TirePiece] flags[Prop2],
+            item 4 [Base.LeatherStrips] mode:destroy,
+            item 4 [Base.NutsBolts],
+            item 1 tags[base:sharpknife] mode:keep flags[IsNotDull;MayDegradeLight],
+            item 1 tags[base:drillwood;base:drillmetal;base:drillwoodpoor] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:wrench] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:heavythread],
+            item 1 tags[base:metalsaw;base:boltcutters] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.Cuirass_Tire,
+        }
+    }
+
+    craftRecipe MakeTireForearmArmor
+    {
+        time = 180,
+        Tags = AnySurfaceCraft,
+        SkillRequired = Tailoring:3;Maintenance:2,
+        NeedToBeLearn = true,
+        timedAction = CraftArmourPiece,
+        xpAward = Tailoring:20;Maintenance:20,
+        AutoLearnAll = Tailoring:5;Maintenance:2,
+        MetaRecipe = base:maketirearmor,
+        category = Tailoring,
+        inputs
+        {
+            item 1 [Base.TirePiece] flags[Prop2],
+            item 2 [Base.LeatherStrips] mode:destroy,
+            item 2 [Base.Buckle],
+            item 2 [Base.NutsBolts],
+            item 1 tags[base:sharpknife] mode:keep flags[IsNotDull;MayDegradeLight],
+            item 1 tags[base:drillwood;base:drillmetal;base:drillwoodpoor] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:wrench] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:heavythread],
+            item 1 tags[base:metalsaw;base:boltcutters] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.VambraceTire_Left,
+        }
+    }
+
+    craftRecipe MakeTireShinArmor
+    {
+        time = 180,
+        Tags = AnySurfaceCraft,
+        SkillRequired = Tailoring:3;Maintenance:2,
+        NeedToBeLearn = true,
+        timedAction = CraftArmourPiece,
+        xpAward = Tailoring:20;Maintenance:20,
+        AutoLearnAll = Tailoring:5;Maintenance:2,
+        MetaRecipe = base:maketirearmor,
+        category = Tailoring,
+        inputs
+        {
+            item 1 [Base.TirePiece] flags[Prop2],
+            item 2 [Base.LeatherStrips] mode:destroy,
+            item 2 [Base.Buckle],
+            item 2 [Base.NutsBolts],
+            item 1 tags[base:sharpknife] mode:keep flags[IsNotDull;MayDegradeLight],
+            item 1 tags[base:drillwood;base:drillmetal;base:drillwoodpoor] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:wrench] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:heavythread],
+            item 1 tags[base:metalsaw;base:boltcutters] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.GreaveTire_Left,
+        }
+    }
+
+    craftRecipe MakeTireShoulderArmorLeft
+    {
+        time = 180,
+        Tags = AnySurfaceCraft,
+        SkillRequired = Tailoring:4;Maintenance:3,
+        NeedToBeLearn = true,
+        timedAction = CraftArmourPiece,
+        xpAward = Tailoring:30;Maintenance:30,
+        AutoLearnAll = Tailoring:5;Maintenance:3,
+        MetaRecipe = base:maketirearmor,
+        category = Tailoring,
+        inputs
+        {
+            item 1 [Base.TirePiece] flags[Prop2],
+            item 2 [Base.LeatherStrips] mode:destroy,
+            item 1 [Base.Buckle],
+            item 2 [Base.NutsBolts],
+            item 1 tags[base:sharpknife] mode:keep flags[IsNotDull;MayDegradeLight],
+            item 1 tags[base:drillwood;base:drillmetal;base:drillwoodpoor] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:wrench] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:heavythread],
+            item 1 tags[base:metalsaw;base:boltcutters] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.Shoulderpad_Tire_L,
+        }
+    }
+
+    craftRecipe MakeTireShoulderArmorRight
+    {
+        time = 180,
+        Tags = AnySurfaceCraft,
+        SkillRequired = Tailoring:4;Maintenance:3,
+        NeedToBeLearn = true,
+        timedAction = CraftArmourPiece,
+        xpAward = Tailoring:30;Maintenance:30,
+        AutoLearnAll = Tailoring:6;Maintenance:3,
+        MetaRecipe = base:maketireshoulderarmorleft,
+        category = Tailoring,
+        inputs
+        {
+            item 1 [Base.TirePiece] flags[Prop2],
+            item 2 [Base.LeatherStrips] mode:destroy,
+            item 1 [Base.Buckle],
+            item 2 [Base.NutsBolts],
+            item 1 tags[base:sharpknife] mode:keep flags[IsNotDull;MayDegradeLight],
+            item 1 tags[base:drillwood;base:drillmetal;base:drillwoodpoor] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:wrench] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:heavythread],
+            item 1 tags[base:metalsaw;base:boltcutters] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.Shoulderpad_Tire_R,
+        }
+    }
+
+    craftRecipe MakeTireThighArmor
+    {
+        time = 180,
+        Tags = AnySurfaceCraft,
+        SkillRequired = Tailoring:3;Maintenance:3,
+        NeedToBeLearn = true,
+        timedAction = CraftArmourPiece,
+        xpAward = Tailoring:20;Maintenance:30,
+        AutoLearnAll = Tailoring:5;Maintenance:3,
+        MetaRecipe = base:maketirearmor,
+        category = Tailoring,
+        inputs
+        {
+            item 1 [Base.TirePiece] flags[Prop2],
+            item 2 [Base.LeatherStrips] mode:destroy,
+            item 2 [Base.Buckle],
+            item 2 [Base.NutsBolts],
+            item 1 tags[base:sharpknife] mode:keep flags[IsNotDull;MayDegradeLight],
+            item 1 tags[base:drillwood;base:drillmetal;base:drillwoodpoor] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:wrench] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:heavythread],
+            item 1 tags[base:metalsaw;base:boltcutters] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.ThighTire_L,
+        }
+    }
+
+    craftRecipe CarveWoodenMask
+    {
+        time = 400,
+        Tags = AnySurfaceCraft,
+        timedAction = SharpenStakeWood,
+        xpAward = Carving:40,
+        SkillRequired = Carving:4,
+        category = Tailoring,
+        inputs
+        {
+            item 1 tags[base:sharpknife] mode:keep flags[MayDegradeLight;Prop1;IsNotDull;Prop1],
+            item 1 tags[base:saw;base:smallsaw;base:crudesaw] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:drillwood;base:drillmetal;base:drillwoodpoor] mode:keep flags[MayDegradeLight],
+            item 1 [Base.Plank] flags[Prop2],
+            item 2 [Base.LeatherStrips] mode:destroy,
+        }
+        outputs
+        {
+            item 1 Base.Hat_HockeyMask_Wood,
+        }
+    }
+
+    craftRecipe MakeWoodBodyArmor
+    {
+        time = 180,
+        Tags = AnySurfaceCraft,
+        SkillRequired = Tailoring:5;Carving:5,
+        NeedToBeLearn = true,
+        MetaRecipe = base:makewoodarmor,
+        timedAction = SharpenStakeWood,
+        xpAward = Tailoring:45;Carving:50,
+        AutoLearnAll = Tailoring:7;Carving:6,
+        category = Tailoring,
+        inputs
+        {
+            item 10 [Base.WoodenStick2] flags[Prop2],
+            item 4 [Base.LeatherStrips],
+            item 1 tags[base:sharpknife] mode:keep flags[IsNotDull;MayDegradeLight;Prop1],
+            item 5 [Base.Twine],
+            item 1 tags[base:saw;base:smallsaw;base:crudesaw] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.Cuirass_Wood,
+        }
+    }
+
+    craftRecipe MakeWoodForearmArmor
+    {
+        time = 180,
+        Tags = AnySurfaceCraft,
+        SkillRequired = Tailoring:1;Carving:2,
+        NeedToBeLearn = true,
+        MetaRecipe = base:makewoodarmor,
+        timedAction = SharpenStakeWood,
+        xpAward = Tailoring:11;Carving:20,
+        AutoLearnAll = Tailoring:5;Carving:3,
+        category = Tailoring,
+        inputs
+        {
+            item 4 [Base.WoodenStick2] flags[Prop2],
+            item 2 [Base.LeatherStrips],
+            item 1 tags[base:sharpknife] mode:keep flags[IsNotDull;MayDegradeLight;Prop1],
+            item 1 tags[base:saw;base:smallsaw;base:crudesaw] mode:keep flags[MayDegradeLight],
+            item 1 [Base.Twine],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.VambraceWood_Left,
+        }
+    }
+
+    craftRecipe MakeWoodShinArmor
+    {
+        time = 180,
+        Tags = AnySurfaceCraft,
+        SkillRequired = Tailoring:1;Carving:2,
+        NeedToBeLearn = true,
+        MetaRecipe = base:makewoodarmor,
+        timedAction = SharpenStakeWood,
+        xpAward = Tailoring:11;Carving:20,
+        AutoLearnAll = Tailoring:5;Carving:3,
+        category = Tailoring,
+        inputs
+        {
+            item 4 [Base.WoodenStick2] flags[Prop2],
+            item 2 [Base.LeatherStrips],
+            item 1 tags[base:sharpknife] mode:keep flags[IsNotDull;MayDegradeLight;Prop1],
+            item 1 tags[base:saw;base:smallsaw;base:crudesaw] mode:keep flags[MayDegradeLight],
+            item 1 [Base.Twine],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.GreaveWood_Left,
+        }
+    }
+
+    craftRecipe MakeWoodShoulderArmor
+    {
+        time = 180,
+        Tags = AnySurfaceCraft,
+        SkillRequired = Tailoring:4;Carving:3,
+        NeedToBeLearn = true,
+        MetaRecipe = base:makewoodarmor,
+        timedAction = SharpenStakeWood,
+        xpAward = Tailoring:30;Carving:30,
+        AutoLearnAll = Tailoring:6;Carving:4,
+        category = Tailoring,
+        inputs
+        {
+            item 4 [Base.WoodenStick2] flags[Prop2],
+            item 2 [Base.LeatherStrips],
+            item 1 tags[base:sharpknife] mode:keep flags[IsNotDull;MayDegradeLight;Prop1],
+            item 1 tags[base:saw;base:smallsaw;base:crudesaw] mode:keep flags[MayDegradeLight],
+            item 1 [Base.Twine],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.Shoulderpad_Wood_L,
+        }
+    }
+
+    craftRecipe MakeWoodThighArmor
+    {
+        time = 180,
+        Tags = AnySurfaceCraft,
+        SkillRequired = Tailoring:1;Carving:3,
+        NeedToBeLearn = true,
+        MetaRecipe = base:makewoodarmor,
+        timedAction = SharpenStakeWood,
+        xpAward = Tailoring:11;Carving:30,
+        AutoLearnAll = Tailoring:5;Carving:3,
+        category = Tailoring,
+        inputs
+        {
+            item 4 [Base.WoodenStick2] flags[Prop2],
+            item 2 [Base.LeatherStrips],
+            item 1 tags[base:sharpknife] mode:keep flags[IsNotDull;MayDegradeLight;Prop1],
+            item 1 tags[base:saw;base:smallsaw;base:crudesaw] mode:keep flags[MayDegradeLight],
+            item 1 [Base.Twine],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.ThighWood_L,
+        }
+    }
+
+    craftRecipe DivideShoulderpads
+    {
+        time = 180,
+        Tags = AnySurfaceCraft,
+        timedAction = CraftArmourPiece,
+        SkillRequired = Tailoring:1,
+        xpAward = Tailoring:9,
+        category = Tailoring,
+        inputs
+        {
+            item 1 [Base.Shoulderpads_Football;Base.Shoulderpads_FootballOnTop;Base.Shoulderpads_FootballOnTop_Spiked] flags[IsNotWorn;CopyClothing] mappers[padMapperL;padMapperR],
+            item 1 tags[base:scissors;base:sharpknife] mode:keep flags[IsNotDull;MayDegradeLight],
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 2 tags[base:heavythread],
+            item 4 [Base.LeatherStrips] mode:destroy,
+        }
+        outputs
+        {
+            item 1 mapper:padMapperL,
+            item 1 mapper:padMapperR,
+        }
+        itemMapper padMapperL
+        {
+            Base.Shoulderpad_Football_Spiked_L = Base.Shoulderpads_FootballOnTop_Spiked,
+            default = Base.Shoulderpad_Football_L,
+        }
+        itemMapper padMapperR
+        {
+            Base.Shoulderpad_Football_Spiked_R = Base.Shoulderpads_FootballOnTop_Spiked,
+            default = Base.Shoulderpad_Football_R,
+        }
+    }
+
+    craftRecipe SewNeckguard
+    {
+        timedAction = SewingCloth,
+        time = 200,
+        xpAward = Tailoring:9,
+        SkillRequired = Tailoring:1,
+        AllowBatchCraft = false,
+        Tags = AnySurfaceCraft,
+        category = Tailoring,
+        inputs
+        {
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 6 [Base.DenimStrips;Base.LeatherStrips;Base.RippedSheets;2:Base.BurlapPiece] mode:destroy mappers[ragType] flags[IsExclusive],
+            item 2 tags[base:thread],
+        }
+        outputs
+        {
+            item 1 mapper:ragType,
+        }
+        itemMapper ragType
+        {
+            Base.Gorget_Burlap = Base.BurlapPiece,
+            Base.Gorget_Denim = Base.DenimStrips,
+            Base.Gorget_LeatherWrap = Base.LeatherStrips,
+            Base.Gorget_Rag = Base.RippedSheets,
+            default = Base.Gorget_Rag,
+        }
+    }
+}

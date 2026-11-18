@@ -1,0 +1,895 @@
+module Base
+{
+    craftRecipe Forge_Heading_Tool
+    {
+        time = 200,
+        SkillRequired = Blacksmith:1,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:25,
+        AutoLearnAll = Blacksmith:3,
+        Tags = PrimitiveForge,
+        category = Tools,
+        inputs
+        {
+            item 1 tags[base:charcoal],
+            item 1 tags[base:barstockquarter],
+            item 1 tags[base:hammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:crudetongs;base:metalworkingpliers;base:tongs] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalworkingpunch;base:smallpunch] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.HeadingTool,
+        }
+    }
+
+    craftRecipe Forge_Draw_Plate
+    {
+        time = 300,
+        SkillRequired = Blacksmith:1,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:25,
+        AutoLearnAll = Blacksmith:3,
+        Tags = PrimitiveForge,
+        category = Tools,
+        inputs
+        {
+            item 2 tags[base:charcoal],
+            item 1 tags[base:barstockquarter],
+            item 1 tags[base:hammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:crudetongs;base:metalworkingpliers;base:tongs] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalworkingpunch;base:smallpunch] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.DrawPlate,
+        }
+    }
+
+    craftRecipe Forge_Metalworking_Punch
+    {
+        time = 300,
+        SkillRequired = Blacksmith:1,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:25,
+        AutoLearnAll = Blacksmith:3,
+        Tags = PrimitiveForge,
+        category = Tools,
+        inputs
+        {
+            item 2 tags[base:charcoal],
+            item 1 tags[base:barstockhalf],
+            item 1 tags[base:hammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:crudetongs;base:metalworkingpliers;base:tongs] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:whetstone;base:file] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.MetalworkingPunch,
+        }
+    }
+
+    craftRecipe Forge_Nails
+    {
+        time = 300,
+        SkillRequired = Blacksmith:1,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:20,
+        AutoLearnAll = Blacksmith:3,
+        Tags = PrimitiveForge,
+        category = Tools,
+        inputs
+        {
+            item 2 tags[base:charcoal],
+            item 1 [Base.IronChunk;Base.IronScrap;Base.SteelChunk;Base.SteelScrap],
+            item 1 tags[base:smithinghammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalworkingpliers;base:tongs] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:headingtool] mode:keep,
+        }
+        outputs
+        {
+            item 10 Base.Nails,
+        }
+    }
+
+    craftRecipe Forge_Nails_From_Piece
+    {
+        time = 200,
+        SkillRequired = Blacksmith:1,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:20,
+        AutoLearnAll = Blacksmith:3,
+        Tags = PrimitiveForge,
+        category = Tools,
+        inputs
+        {
+            item 1 tags[base:charcoal],
+            item 1 [Base.IronPiece;Base.SteelPiece],
+            item 1 tags[base:smithinghammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalworkingpliers;base:tongs] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:headingtool] mode:keep,
+        }
+        outputs
+        {
+            item 2 Base.Nails,
+        }
+    }
+
+    craftRecipe Forge_Nails_From_Wire
+    {
+        time = 200,
+        SkillRequired = Blacksmith:1,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:20,
+        AutoLearnAll = Blacksmith:3,
+        Tags = PrimitiveForge,
+        category = Tools,
+        inputs
+        {
+            item 1 tags[base:charcoal],
+            item 1 [Base.Wire],
+            item 1 tags[base:smithinghammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalworkingpliers;base:tongs] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:headingtool] mode:keep,
+        }
+        outputs
+        {
+            item 1 Base.Nails,
+        }
+    }
+
+    craftRecipe Forge_Tongs
+    {
+        time = 400,
+        SkillRequired = Blacksmith:1,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:25,
+        AutoLearnAll = Blacksmith:3,
+        Tags = PrimitiveForge,
+        category = Tools,
+        inputs
+        {
+            item 3 tags[base:charcoal],
+            item 2 tags[base:barstockquarter],
+            item 1 tags[base:hammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:crudetongs;base:metalworkingpliers;base:tongs] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalworkingpunch;base:smallpunch] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:headingtool] mode:keep,
+        }
+        outputs
+        {
+            item 1 Base.Tongs,
+        }
+    }
+
+    craftRecipe Forge_Large_Hook
+    {
+        time = 500,
+        SkillRequired = Blacksmith:1,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:20,
+        Tags = PrimitiveForge,
+        category = Tools,
+        inputs
+        {
+            item 4 tags[base:charcoal],
+            item 1 tags[base:barstock],
+            item 1 tags[base:hammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:crudetongs;base:tongs] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:whetstone;base:file] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.LargeHook,
+        }
+    }
+
+    craftRecipe Forge_Fleshing_Tool
+    {
+        time = 400,
+        SkillRequired = Blacksmith:3,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:20,
+        AutoLearnAll = Blacksmith:5,
+        Tags = PrimitiveForge,
+        category = Tools,
+        inputs
+        {
+            item 3 tags[base:charcoal],
+            item 1 tags[base:barstockhalf],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:tongs] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalworkingchisel] mode:keep flags[MayDegradeLight],
+            item 2 [Base.SmallHandle],
+        }
+        outputs
+        {
+            item 1 Base.Fleshing_Tool,
+        }
+    }
+
+    craftRecipe Forge_Fishing_Hooks
+    {
+        time = 200,
+        SkillRequired = Blacksmith:3,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:20,
+        AutoLearnAll = Blacksmith:4;Fishing:1,
+        Tags = PrimitiveForge,
+        category = Tools,
+        inputs
+        {
+            item 1 tags[base:charcoal],
+            item 2 tags[base:wire],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalworkingpliers] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 4 Base.FishingHook_Forged,
+        }
+    }
+
+    craftRecipe Forge_Bucket
+    {
+        time = 600,
+        SkillRequired = Blacksmith:3,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:40,
+        AutoLearnAll = Blacksmith:5,
+        Tags = PrimitiveForge,
+        category = Tools,
+        inputs
+        {
+            item 5 tags[base:charcoal],
+            item 1 [Base.SheetMetal],
+            item 1 tags[base:smithinghammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:tongs] mode:keep flags[MayDegradeLight],
+            item 1 [Base.Wire],
+        }
+        outputs
+        {
+            item 1 Base.BucketEmpty,
+        }
+    }
+
+    craftRecipe Forge_Masons_Chisel
+    {
+        time = 400,
+        SkillRequired = Blacksmith:3,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:45,
+        AutoLearnAll = Blacksmith:5,
+        Tags = PrimitiveForge,
+        category = Tools,
+        inputs
+        {
+            item 3 tags[base:charcoal],
+            item 1 tags[base:barstockhalf],
+            item 1 tags[base:hammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:crudetongs;base:tongs] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:whetstone;base:file] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.MasonsChisel,
+        }
+    }
+
+    craftRecipe Forge_Masons_Trowel
+    {
+        time = 400,
+        SkillRequired = Blacksmith:2,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:10,
+        AutoLearnAll = Blacksmith:4,
+        Tags = PrimitiveForge,
+        category = Tools,
+        inputs
+        {
+            item 4 tags[base:charcoal],
+            item 1 tags[base:barstockquarter],
+            item 1 tags[base:hammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:crudetongs;base:metalworkingpliers;base:tongs] mode:keep flags[MayDegradeLight],
+            item 1 [Base.SmallHandle],
+        }
+        outputs
+        {
+            item 1 Base.MasonsTrowel,
+        }
+    }
+
+    craftRecipe Forge_Fireplace_Poker
+    {
+        time = 600,
+        SkillRequired = Blacksmith:4,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:45,
+        AutoLearnAll = Blacksmith:6,
+        Tags = PrimitiveForge,
+        category = Tools,
+        inputs
+        {
+            item 5 tags[base:charcoal],
+            item 1 tags[base:barstock],
+            item 1 tags[base:smithinghammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:tongs] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.FireplacePoker,
+        }
+    }
+
+    craftRecipe Forge_Gardening_Trowel
+    {
+        time = 400,
+        SkillRequired = Blacksmith:4,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:45,
+        AutoLearnAll = Blacksmith:6,
+        Tags = PrimitiveForge,
+        category = Tools,
+        inputs
+        {
+            item 3 tags[base:charcoal],
+            item 1 tags[base:barstockquarter],
+            item 1 tags[base:smithinghammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalworkingpliers;base:tongs] mode:keep flags[MayDegradeLight],
+            item 1 [Base.SmallHandle],
+        }
+        outputs
+        {
+            item 1 Base.HandShovel,
+        }
+    }
+
+    craftRecipe Forge_Sheep_Shears
+    {
+        time = 400,
+        SkillRequired = Blacksmith:4,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:45,
+        AutoLearnAll = Blacksmith:6,
+        Tags = PrimitiveForge,
+        category = Tools,
+        inputs
+        {
+            item 3 tags[base:charcoal],
+            item 1 tags[base:barstockquarter],
+            item 1 tags[base:smithinghammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalworkingpliers;base:tongs] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.SheepShearsForged flags[IsBlunt],
+        }
+    }
+
+    craftRecipe Forge_Scissors
+    {
+        time = 400,
+        SkillRequired = Blacksmith:4,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:45,
+        AutoLearnAll = Blacksmith:6,
+        Tags = Forge,
+        category = Tools,
+        inputs
+        {
+            item 4 tags[base:charcoal],
+            item 1 tags[base:barstockquarter],
+            item 1 tags[base:smithinghammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:tongs;base:metalworkingpliers] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.ScissorsForged flags[IsBlunt],
+        }
+    }
+
+    craftRecipe Forge_Carpentry_Chisel
+    {
+        time = 400,
+        SkillRequired = Blacksmith:4,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:45,
+        AutoLearnAll = Blacksmith:6,
+        Tags = Forge,
+        category = Tools,
+        inputs
+        {
+            item 4 tags[base:charcoal],
+            item 1 tags[base:barstockhalf],
+            item 1 [Base.SmallHandle],
+            item 1 tags[base:smithinghammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:crudetongs;base:tongs] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:whetstone;base:file] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.CarpentryChisel,
+        }
+    }
+
+    craftRecipe Forge_Metalworking_Chisel
+    {
+        time = 400,
+        SkillRequired = Blacksmith:4,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:45,
+        AutoLearnAll = Blacksmith:6,
+        Tags = Forge,
+        category = Tools,
+        inputs
+        {
+            item 3 tags[base:charcoal],
+            item 1 tags[base:barstockhalf],
+            item 1 tags[base:smithinghammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:crudetongs;base:tongs] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:whetstone;base:file] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.MetalworkingChisel,
+        }
+    }
+
+    craftRecipe Forge_File
+    {
+        time = 400,
+        SkillRequired = Blacksmith:4,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:45,
+        AutoLearnAll = Blacksmith:6,
+        Tags = Forge,
+        category = Tools,
+        inputs
+        {
+            item 3 tags[base:charcoal],
+            item 1 tags[base:barstockhalf],
+            item 1 tags[base:smithinghammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:crudetongs;base:tongs] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalsaw;base:metalworkingchisel] mode:keep flags[MayDegradeLight],
+            item 1 [Base.Handle],
+        }
+        outputs
+        {
+            item 1 Base.File,
+        }
+    }
+
+    craftRecipe Forge_Drill
+    {
+        time = 400,
+        SkillRequired = Blacksmith:5,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:50,
+        AutoLearnAll = Blacksmith:7,
+        Tags = Forge,
+        category = Tools,
+        inputs
+        {
+            item 3 tags[base:charcoal],
+            item 1 tags[base:barstockquarter],
+            item 1 tags[base:smithinghammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:tongs] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:file] mode:keep flags[MayDegradeLight],
+            item 1 [Base.SmallHandle],
+        }
+        outputs
+        {
+            item 1 Base.OldDrill,
+        }
+    }
+
+    craftRecipe Forge_JarLid
+    {
+        time = 300,
+        SkillRequired = Blacksmith:5,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:50,
+        AutoLearnAll = Blacksmith:7,
+        Tags = PrimitiveForge,
+        category = Tools,
+        inputs
+        {
+            item 2 tags[base:charcoal],
+            item 1 [Base.SmallSheetMetal],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:tongs] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalworkingchisel] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 5 Base.JarLid,
+        }
+    }
+
+    craftRecipe Forge_Metalworking_Pliers
+    {
+        time = 400,
+        SkillRequired = Blacksmith:4,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:45,
+        AutoLearnAll = Blacksmith:6,
+        Tags = Forge,
+        category = Tools,
+        inputs
+        {
+            item 3 tags[base:charcoal],
+            item 2 tags[base:barstockquarter],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalworkingpliers;base:tongs] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalworkingpunch;base:smallpunch] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalworkingchisel] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:headingtool] mode:keep,
+        }
+        outputs
+        {
+            item 1 Base.MetalworkingPliers,
+        }
+    }
+
+    craftRecipe Forge_Saw
+    {
+        time = 400,
+        SkillRequired = Blacksmith:4,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:45,
+        AutoLearnAll = Blacksmith:6,
+        Tags = Forge,
+        category = Tools,
+        inputs
+        {
+            item 3 tags[base:charcoal],
+            item 1 tags[base:barstockhalf],
+            item 1 tags[base:smithinghammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:tongs;base:metalworkingpliers] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalworkingchisel] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:file] mode:keep flags[MayDegradeLight],
+            item 1 [Base.Handle],
+        }
+        outputs
+        {
+            item 1 Base.CrudeSaw,
+        }
+    }
+
+    craftRecipe Forge_Corkscrew
+    {
+        time = 200,
+        SkillRequired = Blacksmith:3,
+        NeedToBeLearn = true,
+        AutoLearnAll = Blacksmith:5,
+        Tags = Forge,
+        category = Tools,
+        timedAction = HammerMetalStanding,
+        inputs
+        {
+            item 1 tags[base:charcoal],
+            item 2 tags[base:wire],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalworkingpliers] mode:keep flags[MayDegradeLight],
+            item 1 [Base.SmallHandle],
+        }
+        outputs
+        {
+            item 1 Base.Corkscrew,
+        }
+    }
+
+    craftRecipe Forge_Needle
+    {
+        time = 200,
+        SkillRequired = Blacksmith:6,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:10,
+        AutoLearnAll = Blacksmith:6;Tailoring:5,
+        Tags = Forge,
+        category = Tools,
+        inputs
+        {
+            item 1 tags[base:charcoal],
+            item 1 tags[base:wire],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalworkingpliers] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.Needle_Forged,
+        }
+    }
+
+    craftRecipe Forge_Small_Metalworking_Punch_Set
+    {
+        time = 300,
+        SkillRequired = Blacksmith:5,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:45,
+        AutoLearnAll = Blacksmith:7,
+        Tags = Forge,
+        category = Tools,
+        MetaRecipe = base:forge_metalworking_chisel,
+        inputs
+        {
+            item 2 tags[base:charcoal],
+            item 2 [Base.SteelBarQuarter],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalworkingpliers;base:tongs] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:whetstone;base:file] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.SmallPunchSet,
+        }
+    }
+
+    craftRecipe Forge_Small_Files
+    {
+        time = 300,
+        SkillRequired = Blacksmith:6,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:50,
+        AutoLearnAll = Blacksmith:6,
+        Tags = Forge,
+        category = Tools,
+        MetaRecipe = base:forge_file,
+        inputs
+        {
+            item 2 tags[base:charcoal],
+            item 2 [Base.SteelBarQuarter],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalworkingpliers;base:tongs] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalsaw;base:metalworkingchisel] mode:keep flags[MayDegradeLight],
+            item 1 [Base.Handle],
+        }
+        outputs
+        {
+            item 1 Base.SmallFileSet,
+        }
+    }
+
+    craftRecipe Forge_Fine_Scissors
+    {
+        time = 500,
+        SkillRequired = Blacksmith:5,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:50,
+        AutoLearnAll = Blacksmith:6,
+        Tags = AdvancedForge,
+        category = Tools,
+        inputs
+        {
+            item 4 tags[base:charcoal],
+            item 1 [Base.SteelBarQuarter],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalworkingpliers] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalworkingpunch;base:smallpunch] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.Scissors flags[IsBlunt],
+        }
+    }
+
+    craftRecipe Forge_Tweezers
+    {
+        time = 300,
+        SkillRequired = Blacksmith:4,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:45,
+        AutoLearnAll = Blacksmith:6,
+        Tags = AdvancedForge,
+        category = Tools,
+        inputs
+        {
+            item 2 tags[base:charcoal],
+            item 1 tags[base:barstockquarter],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalworkingpliers] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.Tweezers_Forged,
+        }
+    }
+
+    craftRecipe Forge_Forceps
+    {
+        time = 300,
+        SkillRequired = Blacksmith:4,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:45,
+        AutoLearnAll = Blacksmith:6,
+        Tags = AdvancedForge,
+        category = Tools,
+        inputs
+        {
+            item 2 tags[base:charcoal],
+            item 1 tags[base:barstockquarter],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalworkingpliers] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalworkingpunch;base:smallpunch] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:headingtool] mode:keep,
+        }
+        outputs
+        {
+            item 1 Base.Forceps_Forged,
+        }
+    }
+
+    craftRecipe Forge_Crowbar
+    {
+        time = 600,
+        SkillRequired = Blacksmith:9,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:100,
+        AutoLearnAll = Blacksmith:10,
+        Tags = AdvancedForge,
+        category = Tools,
+        inputs
+        {
+            item 5 tags[base:charcoal],
+            item 1 [Base.SteelBar],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:tongs] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalworkingchisel] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.CrowbarForged,
+        }
+    }
+
+    craftRecipe Forge_Straight_Razor
+    {
+        time = 300,
+        SkillRequired = Blacksmith:9,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:50,
+        AutoLearnAll = Blacksmith:10,
+        Tags = AdvancedForge,
+        category = Tools,
+        inputs
+        {
+            item 2 tags[base:charcoal],
+            item 1 [Base.SteelChunk],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalworkingpliers] mode:keep flags[MayDegradeLight],
+            item 1 [Base.SmallHandle],
+        }
+        outputs
+        {
+            item 1 Base.StraightRazor flags[IsBlunt],
+        }
+    }
+
+    craftRecipe Forge_Hinge
+    {
+        time = 300,
+        SkillRequired = Blacksmith:5,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:50,
+        AutoLearnAll = Blacksmith:6,
+        Tags = AdvancedForge,
+        category = Tools,
+        inputs
+        {
+            item 2 tags[base:charcoal],
+            item 1 tags[base:barstockquarter],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalworkingpliers] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalworkingpunch;base:smallpunch] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.Hinge,
+        }
+    }
+
+    craftRecipe Forge_Buckle
+    {
+        time = 200,
+        SkillRequired = Blacksmith:4,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:40,
+        Tags = AdvancedForge,
+        category = Tools,
+        NeedToBeLearn = true,
+        AutoLearnAll = Blacksmith:6,
+        inputs
+        {
+            item 1 tags[base:charcoal],
+            item 1 tags[base:metalpiece],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalworkingpliers] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.Buckle,
+        }
+    }
+
+    craftRecipe Forge_Door_Knob
+    {
+        time = 300,
+        SkillRequired = Blacksmith:9,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:100,
+        AutoLearnAll = Blacksmith:10,
+        Tags = AdvancedForge,
+        category = Tools,
+        inputs
+        {
+            item 2 tags[base:charcoal],
+            item 1 tags[base:barstockquarter],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalworkingpliers] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:smallpunch] mode:keep,
+            item 1 tags[base:smallfiles] mode:keep,
+        }
+        outputs
+        {
+            item 1 Base.Doorknob,
+        }
+    }
+
+    craftRecipe Forge_Wrench
+    {
+        time = 500,
+        SkillRequired = Blacksmith:5,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:50,
+        AutoLearnAll = Blacksmith:7,
+        Tags = AdvancedForge,
+        category = Tools,
+        inputs
+        {
+            item 3 tags[base:charcoal],
+            item 1 [Base.SteelBarHalf],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:tongs] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:metalworkingchisel] mode:keep flags[MayDegradeLight],
+            item 1 [Base.Calipers] mode:keep,
+        }
+        outputs
+        {
+            item 1 Base.Wrench,
+        }
+    }
+}

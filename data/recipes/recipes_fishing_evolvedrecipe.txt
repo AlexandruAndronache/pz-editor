@@ -1,0 +1,14 @@
+module Base
+{
+    evolvedrecipe AddBaitToChum
+    {
+        BaseItem = Base.Chum,
+        MaxItems = 10,
+        ResultItem = Base.Chum,
+        Name = Add bait to chum,
+        Cookable = false,
+        CanAddSpicesEmpty = false,
+        AddIngredientIfCooked = false,
+        Template = AddBaitToChum,
+    }
+}

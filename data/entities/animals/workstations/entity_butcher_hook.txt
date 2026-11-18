@@ -1,0 +1,48 @@
+module Base
+{
+    entity ButcherHook
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_ButcherHook,
+            uiEnabled = true,
+        }
+        component ContextMenuConfig
+        {
+            contextEntry
+            {
+                menu = ButcherHook,
+                customFunction = ContextMenuCode.OnButcherHook,
+            }
+        }
+        component SpriteConfig
+        {
+            isThumpable = false,
+            OnCreate = BuildRecipeCode.butcheringHook.OnCreate,
+            face W
+            {
+                layer
+                {
+                    row = crafted_04_120,
+                }
+            }
+        }
+        component CraftRecipe
+        {
+            timedAction = BuildWoodenStructureMedium,
+            time = 200,
+            category = Farming,
+            SkillRequired = Woodwork:3,
+            xpAward = Woodwork:30,
+            Tooltip = Tooltip_craft_butcherHookDesc,
+            inputs
+            {
+                item 1 tags[base:hammer] mode:keep flags[Prop1;MayDegradeVeryLight],
+                item 2 [Base.Plank],
+                item 2 [Base.Nails],
+                item 1 [Base.LargeHook],
+            }
+        }
+    }
+}

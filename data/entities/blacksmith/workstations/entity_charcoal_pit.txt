@@ -1,0 +1,40 @@
+module Base
+{
+    entity Charcoal_Pit
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_Charcoal_Pit,
+            uiEnabled = true,
+        }
+        component CraftBench
+        {
+            Recipes = WoodCharcoal,
+        }
+        component SpriteConfig
+        {
+            health = 100,
+            skillBaseHealth = 20,
+            face SINGLE
+            {
+                layer
+                {
+                    row = false crafted_01_126,
+                    row = crafted_01_124 crafted_01_125,
+                }
+            }
+        }
+        component CraftRecipe
+        {
+            timedAction = BuildLowNoTool,
+            time = 50,
+            category = Blacksmithing,
+            Tooltip = Tooltip_craft_charcoalPitDesc,
+            inputs
+            {
+                item 1 tags[base:diggrave] mode:keep flags[Prop1;MayDegradeLight],
+            }
+        }
+    }
+}

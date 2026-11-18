@@ -1,0 +1,661 @@
+module Base
+{
+    craftRecipe TarpHandwrap
+    {
+        timedAction = SewingCloth,
+        time = 200,
+        xpAward = Tailoring:6,
+        AllowBatchCraft = false,
+        Tags = AnySurfaceCraft,
+        category = Tailoring,
+        inputs
+        {
+            item 2 [Base.TarpPiece],
+            item 1 [Base.DuctTape],
+        }
+        outputs
+        {
+            item 1 Base.Gloves_TarpWrap,
+        }
+    }
+
+    craftRecipe TarpFootwrap
+    {
+        timedAction = SewingCloth,
+        time = 200,
+        xpAward = Tailoring:6,
+        AllowBatchCraft = false,
+        Tags = AnySurfaceCraft,
+        category = Tailoring,
+        inputs
+        {
+            item 2 [Base.TarpPiece],
+            item 2 [Base.DuctTape],
+        }
+        outputs
+        {
+            item 1 Base.Shoes_TarpWrap,
+        }
+    }
+
+    craftRecipe TarpSack
+    {
+        timedAction = SewingCloth,
+        time = 200,
+        xpAward = Tailoring:6,
+        AllowBatchCraft = false,
+        Tags = AnySurfaceCraft,
+        category = Tailoring,
+        inputs
+        {
+            item 1 [Base.TarpPiece],
+            item 2 [Base.DuctTape],
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 3 tags[base:thread],
+        }
+        outputs
+        {
+            item 1 Base.Bag_TarpSack,
+        }
+    }
+
+    craftRecipe TarpHat
+    {
+        timedAction = SewingCloth,
+        time = 200,
+        xpAward = Tailoring:6,
+        AllowBatchCraft = false,
+        Tags = AnySurfaceCraft,
+        category = Tailoring,
+        inputs
+        {
+            item 1 [Base.TarpPiece],
+            item 2 [Base.DuctTape],
+            item 1 tags[base:scissors;base:sharpknife] mode:keep flags[IsNotDull;MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.Hat_TarpHat,
+        }
+    }
+
+    craftRecipe CutHeadSack
+    {
+        timedAction = Making,
+        time = 100,
+        AllowBatchCraft = false,
+        Tags = InHandCraft,
+        category = Tailoring,
+        inputs
+        {
+            item 1 tags[base:scissors;base:sharpknife] flags[SharpnessCheck;IsNotDull] mode:keep,
+            item 1 tags[base:holddirt;base:normalpillow;base:cutheadsack] flags[InheritColor] mappers[fabricType],
+        }
+        outputs
+        {
+            item 1 mapper:fabricType,
+        }
+        itemMapper fabricType
+        {
+            Base.Hat_HeadSack_Burlap = Base.EmptySandbag,
+            Base.Hat_HeadSack_Cotton = Base.Pillow,
+            Base.Hat_HeadSack_Cotton = Base.Pillow_Crafted,
+            Base.Hat_HeadSack_Tarp = Base.Bag_TarpSack,
+            Base.Hat_HeadSack_Hide = Base.Bag_HideSack,
+            default = Base.Hat_HeadSack_Burlap,
+        }
+    }
+
+    craftRecipe MakeDuctTapeHolster
+    {
+        timedAction = Making,
+        time = 100,
+        Tags = InHandCraft,
+        SkillRequired = Tailoring:1,
+        xpAward = Tailoring:9,
+        category = Tailoring,
+        inputs
+        {
+            item 3 [Base.DuctTape] flags[Prop1],
+            item 1 [Base.Pistol;Base.Pistol2;Base.Pistol3;Base.Revolver_Short;Base.Revolver;Base.Revolver_Long] mode:keep flags[Prop2],
+        }
+        outputs
+        {
+            item 1 Base.Holster_DuctTape,
+        }
+    }
+
+    craftRecipe MakeGarbageBagPoncho
+    {
+        timedAction = SewingCloth,
+        time = 200,
+        Tags = AnySurfaceCraft,
+        SkillRequired = Tailoring:1,
+        xpAward = Tailoring:9,
+        category = Tailoring,
+        inputs
+        {
+            item 2 tags[base:garbagebag] flags[Prop2;IsEmpty],
+            item 3 [Base.DuctTape],
+            item 1 tags[base:sharpknife;base:scissors] mode:keep flags[SharpnessCheck;IsNotDull],
+        }
+        outputs
+        {
+            item 1 Base.PonchoGarbageBag,
+        }
+    }
+
+    craftRecipe MakeTarpPoncho
+    {
+        timedAction = SewingCloth,
+        time = 200,
+        Tags = AnySurfaceCraft,
+        SkillRequired = Tailoring:1,
+        xpAward = Tailoring:9,
+        category = Tailoring,
+        inputs
+        {
+            item 1 [Base.Tarp] flags[Prop2;IsEmpty],
+            item 3 [Base.DuctTape],
+            item 1 tags[base:sharpknife;base:scissors] mode:keep flags[SharpnessCheck;IsNotDull],
+        }
+        outputs
+        {
+            item 1 Base.PonchoTarp,
+        }
+    }
+
+    craftRecipe MakeGarbageBagApron
+    {
+        timedAction = SewingCloth,
+        time = 200,
+        Tags = AnySurfaceCraft,
+        xpAward = Tailoring:6,
+        category = Tailoring,
+        inputs
+        {
+            item 1 tags[base:garbagebag] flags[Prop2;IsEmpty],
+            item 3 [Base.DuctTape],
+            item 1 tags[base:sharpknife;base:scissors] mode:keep flags[SharpnessCheck;IsNotDull],
+        }
+        outputs
+        {
+            item 1 Base.Apron_Garbage,
+        }
+    }
+
+    craftRecipe MakeTarpApron
+    {
+        timedAction = SewingCloth,
+        time = 200,
+        Tags = AnySurfaceCraft,
+        xpAward = Tailoring:6,
+        category = Tailoring,
+        inputs
+        {
+            item 3 [Base.TarpPiece] flags[Prop2],
+            item 3 [Base.DuctTape],
+            item 1 tags[base:sharpknife;base:scissors] mode:keep flags[SharpnessCheck;IsNotDull],
+        }
+        outputs
+        {
+            item 1 Base.Apron_Tarp,
+        }
+    }
+
+    craftRecipe MakeGarbageBagTankTop
+    {
+        timedAction = SewingCloth,
+        time = 100,
+        Tags = AnySurfaceCraft,
+        xpAward = Tailoring:6,
+        category = Tailoring,
+        inputs
+        {
+            item 1 tags[base:garbagebag] flags[Prop2;IsEmpty],
+            item 2 [Base.DuctTape],
+            item 1 tags[base:sharpknife;base:scissors] mode:keep flags[SharpnessCheck;IsNotDull],
+        }
+        outputs
+        {
+            item 1 Base.Vest_Garbage,
+        }
+    }
+
+    craftRecipe MakeTarpTankTop
+    {
+        timedAction = SewingCloth,
+        time = 200,
+        Tags = AnySurfaceCraft,
+        xpAward = Tailoring:6,
+        NeedToBeLearn = true,
+        category = Tailoring,
+        inputs
+        {
+            item 2 [Base.TarpPiece] flags[Prop2;IsEmpty],
+            item 2 [Base.DuctTape],
+            item 1 tags[base:sharpknife;base:scissors] mode:keep flags[SharpnessCheck;IsNotDull],
+        }
+        outputs
+        {
+            item 1 Base.Vest_Tarp,
+        }
+    }
+
+    craftRecipe MakeGarbageBagHeadSack
+    {
+        timedAction = SewingCloth,
+        time = 100,
+        Tags = AnySurfaceCraft,
+        xpAward = Tailoring:6,
+        category = Tailoring,
+        inputs
+        {
+            item 1 tags[base:garbagebag] flags[Prop2;IsEmpty],
+            item 1 [Base.DuctTape],
+        }
+        outputs
+        {
+            item 1 Base.Hat_HeadSack_Garbage,
+        }
+    }
+
+    craftRecipe MakeTarpHeadSack
+    {
+        timedAction = SewingCloth,
+        time = 200,
+        Tags = AnySurfaceCraft,
+        xpAward = Tailoring:6,
+        category = Tailoring,
+        inputs
+        {
+            item 1 [Base.TarpPiece] flags[Prop2;IsEmpty],
+            item 1 [Base.DuctTape],
+            item 1 tags[base:sharpknife;base:scissors] mode:keep flags[SharpnessCheck;IsNotDull],
+        }
+        outputs
+        {
+            item 1 Base.Hat_HeadSack_Tarp,
+        }
+    }
+
+    craftRecipe MakeGarbageBagDress
+    {
+        timedAction = SewingCloth,
+        time = 100,
+        Tags = AnySurfaceCraft,
+        xpAward = Tailoring:6,
+        category = Tailoring,
+        inputs
+        {
+            item 1 tags[base:garbagebag] flags[Prop2;IsEmpty],
+            item 3 [Base.DuctTape],
+            item 1 tags[base:sharpknife;base:scissors] mode:keep flags[SharpnessCheck;IsNotDull],
+        }
+        outputs
+        {
+            item 1 Base.Dress_SmallGarbageStrapless,
+        }
+    }
+
+    craftRecipe MakeGarbageBagSkirt
+    {
+        timedAction = SewingCloth,
+        time = 100,
+        Tags = AnySurfaceCraft,
+        xpAward = Tailoring:6,
+        category = Tailoring,
+        inputs
+        {
+            item 2 tags[base:garbagebag] flags[Prop2;IsEmpty],
+            item 2 [Base.DuctTape],
+        }
+        outputs
+        {
+            item 1 Base.Skirt_Normal_Garbage,
+        }
+    }
+
+    craftRecipe MakeGarbageBagKneeSkirt
+    {
+        timedAction = SewingCloth,
+        time = 100,
+        Tags = AnySurfaceCraft,
+        xpAward = Tailoring:6,
+        category = Tailoring,
+        inputs
+        {
+            item 1 tags[base:garbagebag] flags[Prop2;IsEmpty],
+            item 2 [Base.DuctTape],
+        }
+        outputs
+        {
+            item 1 Base.Skirt_Knees_Garbage,
+        }
+    }
+
+    craftRecipe MakeGarbageBagLongSkirt
+    {
+        timedAction = SewingCloth,
+        time = 100,
+        Tags = AnySurfaceCraft,
+        xpAward = Tailoring:6,
+        category = Tailoring,
+        inputs
+        {
+            item 2 tags[base:garbagebag] flags[Prop2;IsEmpty],
+            item 3 [Base.DuctTape],
+        }
+        outputs
+        {
+            item 1 Base.Skirt_Long_Garbage,
+        }
+    }
+
+    craftRecipe MakeGarbageBagShortSkirt
+    {
+        timedAction = SewingCloth,
+        time = 100,
+        Tags = AnySurfaceCraft,
+        xpAward = Tailoring:6,
+        category = Tailoring,
+        inputs
+        {
+            item 1 tags[base:garbagebag] flags[Prop2;IsEmpty],
+            item 1 [Base.DuctTape],
+        }
+        outputs
+        {
+            item 1 Base.Skirt_Short_Garbage,
+        }
+    }
+
+    craftRecipe MakeGarbageBagBandeau
+    {
+        timedAction = SewingCloth,
+        time = 100,
+        Tags = AnySurfaceCraft,
+        xpAward = Tailoring:6,
+        category = Tailoring,
+        inputs
+        {
+            item 1 tags[base:garbagebag] flags[Prop2;IsEmpty],
+            item 1 [Base.DuctTape],
+        }
+        outputs
+        {
+            item 1 Base.Bandeau_Garbage,
+        }
+    }
+
+    craftRecipe MakeGarbageBagBriefs
+    {
+        timedAction = SewingCloth,
+        time = 100,
+        Tags = AnySurfaceCraft,
+        xpAward = Tailoring:6,
+        category = Tailoring,
+        inputs
+        {
+            item 1 tags[base:garbagebag] flags[Prop2;IsEmpty],
+            item 1 [Base.DuctTape],
+        }
+        outputs
+        {
+            item 1 Base.Briefs_Garbage,
+        }
+    }
+
+    craftRecipe MakeTarpDress
+    {
+        timedAction = SewingCloth,
+        time = 200,
+        Tags = AnySurfaceCraft,
+        xpAward = Tailoring:6,
+        category = Tailoring,
+        inputs
+        {
+            item 3 [Base.TarpPiece] flags[Prop2],
+            item 3 [Base.DuctTape],
+            item 1 tags[base:sharpknife;base:scissors] mode:keep flags[SharpnessCheck;IsNotDull],
+        }
+        outputs
+        {
+            item 1 Base.Dress_SmallTarpStrapless,
+        }
+    }
+
+    craftRecipe MakeTarpSkirt
+    {
+        timedAction = SewingCloth,
+        time = 200,
+        Tags = AnySurfaceCraft,
+        xpAward = Tailoring:6,
+        category = Tailoring,
+        inputs
+        {
+            item 3 [Base.TarpPiece] flags[Prop2],
+            item 2 [Base.DuctTape],
+            item 1 tags[base:sharpknife;base:scissors] mode:keep flags[SharpnessCheck;IsNotDull],
+        }
+        outputs
+        {
+            item 1 Base.Skirt_Normal_Tarp,
+        }
+    }
+
+    craftRecipe MakeTarpKneeSkirt
+    {
+        timedAction = SewingCloth,
+        time = 200,
+        Tags = AnySurfaceCraft,
+        xpAward = Tailoring:6,
+        category = Tailoring,
+        inputs
+        {
+            item 2 [Base.TarpPiece] flags[Prop2],
+            item 2 [Base.DuctTape],
+            item 1 tags[base:sharpknife;base:scissors] mode:keep flags[SharpnessCheck;IsNotDull],
+        }
+        outputs
+        {
+            item 1 Base.Skirt_Knees_Tarp,
+        }
+    }
+
+    craftRecipe MakeTarpLongSkirt
+    {
+        timedAction = SewingCloth,
+        time = 200,
+        Tags = AnySurfaceCraft,
+        xpAward = Tailoring:6,
+        category = Tailoring,
+        inputs
+        {
+            item 4 [Base.TarpPiece] flags[Prop2],
+            item 3 [Base.DuctTape],
+            item 1 tags[base:sharpknife;base:scissors] mode:keep flags[SharpnessCheck;IsNotDull],
+        }
+        outputs
+        {
+            item 1 Base.Skirt_Long_Tarp,
+        }
+    }
+
+    craftRecipe MakeTarpShortSkirt
+    {
+        timedAction = SewingCloth,
+        time = 200,
+        Tags = AnySurfaceCraft,
+        xpAward = Tailoring:6,
+        category = Tailoring,
+        inputs
+        {
+            item 1 [Base.TarpPiece] flags[Prop2],
+            item 1 [Base.DuctTape],
+            item 1 tags[base:sharpknife;base:scissors] mode:keep flags[SharpnessCheck;IsNotDull],
+        }
+        outputs
+        {
+            item 1 Base.Skirt_Short_Tarp,
+        }
+    }
+
+    craftRecipe MakeTarpBandeau
+    {
+        timedAction = SewingCloth,
+        time = 200,
+        Tags = AnySurfaceCraft,
+        xpAward = Tailoring:6,
+        category = Tailoring,
+        inputs
+        {
+            item 1 [Base.TarpPiece] flags[Prop2],
+            item 1 [Base.DuctTape],
+            item 1 tags[base:sharpknife;base:scissors] mode:keep flags[SharpnessCheck;IsNotDull],
+        }
+        outputs
+        {
+            item 1 Base.Bandeau_Tarp,
+        }
+    }
+
+    craftRecipe MakeTarpBriefs
+    {
+        timedAction = SewingCloth,
+        time = 300,
+        Tags = AnySurfaceCraft,
+        xpAward = Tailoring:6,
+        category = Tailoring,
+        inputs
+        {
+            item 1 [Base.TarpPiece] flags[Prop2],
+            item 1 [Base.DuctTape],
+            item 1 tags[base:sharpknife;base:scissors] mode:keep flags[SharpnessCheck;IsNotDull],
+        }
+        outputs
+        {
+            item 1 Base.Briefs_Tarp,
+        }
+    }
+
+    craftRecipe MakeTarpChestRig
+    {
+        timedAction = SewingCloth,
+        time = 200,
+        Tags = AnySurfaceCraft,
+        SkillRequired = Tailoring:4,
+        xpAward = Tailoring:38,
+        NeedToBeLearn = true,
+        category = Tailoring,
+        inputs
+        {
+            item 3 [Base.TarpPiece] flags[Prop2],
+            item 6 [Base.DuctTape],
+            item 1 tags[base:scissors] mode:keep flags[SharpnessCheck;IsNotDull],
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 4 tags[base:thread],
+        }
+        outputs
+        {
+            item 1 Base.Bag_ChestRig_Tarp,
+        }
+    }
+
+    craftRecipe MakeTarpSlingBag
+    {
+        timedAction = MakeSheetSlingBag,
+        time = 100,
+        Tags = InHandCraft,
+        category = Tailoring,
+        inputs
+        {
+            item 1 [Base.Tarp],
+            item 2 [Base.DuctTape],
+        }
+        outputs
+        {
+            item 1 Base.Bag_TarpSlingBag,
+        }
+    }
+
+    craftRecipe SewCrudeTarpBackpack
+    {
+        timedAction = SewingCloth,
+        time = 200,
+        xpAward = Tailoring:16,
+        AllowBatchCraft = false,
+        Tags = AnySurfaceCraft,
+        category = Tailoring,
+        MetaRecipe = base:sewcrudeleatherbackpack,
+        SkillRequired = Tailoring:2,
+        NeedToBeLearn = true,
+        AutoLearnAll = Tailoring:5,
+        inputs
+        {
+            item 1 tags[base:scissors;base:sharpknife] mode:keep flags[IsNotDull;MayDegradeLight],
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+            item 3 [Base.TarpPiece],
+            item 2 tags[base:thread],
+            item 3 [Base.DuctTape],
+            item 2 [Base.LeatherStrips;Base.Rope;4:Base.DuctTape] flags[DontReplace],
+        }
+        outputs
+        {
+            item 1 Base.Bag_CrudeTarpBag,
+        }
+    }
+
+    craftRecipe AssembleLargeTarpFramepack
+    {
+        timedAction = SewingCloth,
+        time = 200,
+        xpAward = Tailoring:55,
+        AllowBatchCraft = false,
+        Tags = AnySurfaceCraft,
+        category = Tailoring,
+        SkillRequired = Tailoring:5,
+        NeedToBeLearn = true,
+        MetaRecipe = base:assemblelargeframepack,
+        inputs
+        {
+            item 1 tags[base:scissors;base:sharpknife] mode:keep flags[IsNotDull;MayDegradeLight],
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 1 [Base.Tarp],
+            item 4 tags[base:thread],
+            item 4 [Base.DuctTape],
+            item 3 [Base.Twine;Base.RippedSheets;Base.DenimStrips;Base.LeatherStrips;5:Base.DuctTape;2:Base.Rope] flags[DontReplace],
+            item 5 [Base.WoodenStick2],
+        }
+        outputs
+        {
+            item 1 Base.Bag_TarpFramepack_Large,
+        }
+    }
+
+    craftRecipe SewTarpFannyBag
+    {
+        timedAction = SewingCloth,
+        time = 200,
+        xpAward = Tailoring:20,
+        AllowBatchCraft = false,
+        Tags = AnySurfaceCraft,
+        category = Tailoring,
+        SkillRequired = Tailoring:3,
+        NeedToBeLearn = true,
+        MetaRecipe = base:sewhidefannybag,
+        inputs
+        {
+            item 1 tags[base:scissors] mode:keep flags[IsNotDull;MayDegradeLight],
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 1 [Base.TarpPiece],
+            item 1 tags[base:thread],
+            item 3 [Base.DuctTape],
+        }
+        outputs
+        {
+            item 1 Base.Bag_FannyPackFront_Tarp,
+        }
+    }
+}

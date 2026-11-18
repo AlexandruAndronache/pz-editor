@@ -1,0 +1,97 @@
+module Base
+{
+    entity SimpleLoom
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_SimpleLoom,
+            uiEnabled = true,
+        }
+        component CraftBench
+        {
+            Recipes = Weaving,
+        }
+        component SpriteConfig
+        {
+            face S
+            {
+                layer
+                {
+                    row = crafted_04_81,
+                    row = crafted_04_80,
+                }
+            }
+            face E
+            {
+                layer
+                {
+                    row = crafted_04_83 crafted_04_84,
+                }
+            }
+        }
+        component CraftRecipe
+        {
+            timedAction = BuildWoodenStructureMedium,
+            time = 50,
+            category = Farming,
+            Tags = Outdoors,
+            SkillRequired = Woodwork:3,
+            xpAward = Woodwork:30,
+            Tooltip = Tooltip_craft_loomSimpleDesc,
+            inputs
+            {
+                item 1 tags[base:hammer] mode:keep flags[Prop1;MayDegradeVeryLight],
+                item 1 tags[base:crudesaw;base:saw] mode:keep flags[MayDegradeLight],
+                item 4 [Base.Log],
+                item 5 [Base.LongStick],
+                item 4 [Base.RippedSheets;Base.RippedSheetsDirty;Base.Twine;Base.Rope;Base.SheetRope] flags[DontReplace],
+            }
+        }
+    }
+
+    entity Loom
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_Loom,
+            uiEnabled = true,
+        }
+        component CraftBench
+        {
+            Recipes = Weaving,
+        }
+        component SpriteConfig
+        {
+            face S
+            {
+                layer
+                {
+                    row = crafted_04_72,
+                }
+            }
+            face E
+            {
+                layer
+                {
+                    row = crafted_04_73,
+                }
+            }
+            face N
+            {
+                layer
+                {
+                    row = crafted_04_74,
+                }
+            }
+            face W
+            {
+                layer
+                {
+                    row = crafted_04_75,
+                }
+            }
+        }
+    }
+}

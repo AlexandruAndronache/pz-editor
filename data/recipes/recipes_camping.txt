@@ -1,0 +1,21 @@
+module Base
+{
+    craftRecipe MakeTentKit
+    {
+        timedAction = Making,
+        time = 120,
+        Tags = InHandCraft,
+        category = Miscellaneous,
+        inputs
+        {
+            item 1 [Base.Tarp],
+            item 4 tags[base:tentpeg],
+            item 2 [Base.WoodenStick2;Base.TreeBranch2],
+            item 1 [Base.LongStick;Base.Sapling],
+        }
+        outputs
+        {
+            item 1 Base.ImprovisedTentKit,
+        }
+    }
+}

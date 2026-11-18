@@ -1,0 +1,106 @@
+module Base
+{
+    craftRecipe DismantleElectronicsDevice
+    {
+        timedAction = DismantleElectrical,
+        time = 60,
+        OnCreate = RecipeCodeOnCreate.dismantleElectronics,
+        Tags = InHandCraft;Electrical,
+        category = Electrical,
+        xpAward = Electricity:10,
+        inputs
+        {
+            item 1 [Base.TvAntique;Base.TvWideScreen;Base.TvBlack;Base.RadioRed;Base.RadioBlack;Base.WalkieTalkie1;Base.WalkieTalkie2;Base.WalkieTalkie3;Base.WalkieTalkie4;Base.WalkieTalkie5;Base.ManPackRadio;Base.HamRadio1;Base.HamRadio2;Base.WalkieTalkieMakeShift;Base.HamRadioMakeShift;Base.RadioMakeShift] flags[NoBrokenItems;ResearchInput;ItemCount] mode:destroy,
+            item 1 tags[base:screwdriver] mode:keep flags[NoBrokenItems],
+        }
+        outputs
+        {
+            item 1 Base.ElectronicsScrap,
+        }
+    }
+
+    craftRecipe CraftMakeshiftRadio
+    {
+        timedAction = DismantleElectrical,
+        time = 100,
+        NeedToBeLearn = true,
+        SkillRequired = Electricity:1,
+        OnCreate = RecipeCodeOnCreate.radioCraft,
+        Tags = AnySurfaceCraft,
+        category = Electrical,
+        AutoLearnAny = Electricity:6,
+        xpAward = Electricity:10,
+        inputs
+        {
+            item 2 [Base.ElectronicsScrap] flags[NoBrokenItems],
+            item 1 [Base.Amplifier] flags[NoBrokenItems],
+            item 1 [Base.LightBulb] flags[NoBrokenItems],
+            item 1 [Base.RadioReceiver] flags[NoBrokenItems],
+            item 1 [Base.ElectricWire] flags[NoBrokenItems],
+            item 2 tags[base:aluminum] flags[NoBrokenItems],
+            item 1 tags[base:screwdriver] mode:keep flags[NoBrokenItems],
+        }
+        outputs
+        {
+            item 1 Base.RadioMakeShift,
+        }
+    }
+
+    craftRecipe CraftMakeshiftHAMRadio
+    {
+        timedAction = DismantleElectrical,
+        time = 100,
+        NeedToBeLearn = true,
+        SkillRequired = Electricity:3,
+        OnCreate = RecipeCodeOnCreate.radioCraft,
+        Tags = AnySurfaceCraft,
+        category = Electrical,
+        AutoLearnAny = Electricity:8,
+        xpAward = Electricity:30,
+        inputs
+        {
+            item 4 [Base.ElectronicsScrap] flags[NoBrokenItems],
+            item 1 [Base.Amplifier] flags[NoBrokenItems],
+            item 1 [Base.LightBulb] flags[NoBrokenItems],
+            item 1 [Base.LightBulbGreen] flags[NoBrokenItems],
+            item 1 [Base.RadioReceiver] flags[NoBrokenItems],
+            item 1 [Base.RadioTransmitter] flags[NoBrokenItems],
+            item 3 [Base.ElectricWire] flags[NoBrokenItems],
+            item 4 tags[base:aluminum] flags[NoBrokenItems],
+            item 1 tags[base:screwdriver] mode:keep flags[NoBrokenItems],
+        }
+        outputs
+        {
+            item 1 Base.HamRadioMakeShift,
+        }
+    }
+
+    craftRecipe CraftMakeshiftWalkieTalkie
+    {
+        timedAction = MakingElectrical,
+        time = 100,
+        NeedToBeLearn = true,
+        SkillRequired = Electricity:2,
+        OnCreate = RecipeCodeOnCreate.radioCraft,
+        Tags = AnySurfaceCraft,
+        category = Electrical,
+        AutoLearnAny = Electricity:7,
+        xpAward = Electricity:20,
+        inputs
+        {
+            item 3 [Base.ElectronicsScrap] flags[NoBrokenItems],
+            item 1 [Base.Amplifier] flags[NoBrokenItems],
+            item 1 [Base.LightBulb] flags[NoBrokenItems],
+            item 1 [Base.LightBulbGreen] flags[NoBrokenItems],
+            item 1 [Base.RadioReceiver] flags[NoBrokenItems],
+            item 1 [Base.RadioTransmitter] flags[NoBrokenItems],
+            item 2 [Base.ElectricWire] flags[NoBrokenItems],
+            item 3 tags[base:aluminum] flags[NoBrokenItems],
+            item 1 tags[base:screwdriver] mode:keep flags[NoBrokenItems],
+        }
+        outputs
+        {
+            item 1 Base.WalkieTalkieMakeShift,
+        }
+    }
+}

@@ -1,0 +1,45 @@
+module Base
+{
+    entity Stone_Mill
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_Stone_Mill,
+            uiEnabled = true,
+        }
+        component CraftBench
+        {
+            Recipes = Stone_Quern;Stone_Mill,
+        }
+        component SpriteConfig
+        {
+            face SINGLE
+            {
+                layer
+                {
+                    row = crafted_02_45,
+                }
+            }
+        }
+        component CraftRecipe
+        {
+            timedAction = BuildCairn,
+            time = 50,
+            category = Farming,
+            SkillRequired = Masonry:1,
+            xpAward = Masonry:10,
+            Tooltip = Tooltip_craft_stoneMillDesc,
+            inputs
+            {
+                item 1 [Base.StoneWheel],
+                item 2 [Base.StoneWheelSmall],
+                item 1 [Base.LongHandle],
+                item 1 [Base.WoodenStick2],
+                item 10 [Base.StoneBlock],
+                item 1 tags[base:concrete] flags[DontRecordInput],
+                item 1 tags[base:masonstrowel] mode:keep flags[Prop1;MayDegradeLight],
+            }
+        }
+    }
+}

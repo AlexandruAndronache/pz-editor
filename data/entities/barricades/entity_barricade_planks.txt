@@ -1,0 +1,62 @@
+module Base
+{
+    entity BarricadePlanks
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_BarricadePlanks,
+            uiEnabled = false,
+        }
+        component SpriteConfig
+        {
+            isThumpable = false,
+            OnIsValid = BuildRecipeCode.barricade.OnIsValidPlanks,
+            OnCreate = BuildRecipeCode.barricade.OnCreate,
+            TimedActionOnIsValid = BuildRecipeCode.barricade.TimedActionOnIsValid,
+            face W
+            {
+                layer
+                {
+                    row = carpentry_01_8,
+                }
+            }
+            face N
+            {
+                layer
+                {
+                    row = carpentry_01_9,
+                }
+            }
+            face E
+            {
+                layer
+                {
+                    row = carpentry_01_0,
+                }
+            }
+            face S
+            {
+                layer
+                {
+                    row = carpentry_01_1,
+                }
+            }
+        }
+        component CraftRecipe
+        {
+            timedAction = BuildWallHammer,
+            time = 200,
+            category = Barricades,
+            Tags = AutoRotate,
+            xpAward = Woodwork:10,
+            Tooltip = Tooltip_craft_BigMetalFenceDesc,
+            inputs
+            {
+                item 1 tags[base:hammer] mode:keep flags[Prop1;MayDegradeVeryLight;DontRecordInput],
+                item 1 [Base.Plank],
+                item 1 [Base.Nails] flags[DontRecordInput],
+            }
+        }
+    }
+}

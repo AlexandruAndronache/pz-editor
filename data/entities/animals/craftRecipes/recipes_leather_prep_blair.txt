@@ -1,0 +1,35 @@
+module Base
+{
+    craftRecipe CutLeatherInHalf
+    {
+        time = 300,
+        Tags = AnySurfaceCraft,
+        timedAction = Making,
+        inputs
+        {
+            item 1 [Base.Leather_Crude_Large;Base.Leather_Crude_Medium;Base.Leather_Crude_Large_Tan;Base.Leather_Crude_Medium_Tan;Base.CowLeather_Angus_Fur_Tan;Base.CowLeather_Angus_Fur_Tan_Medium;Base.CowLeather_Holstein_Fur_Tan;Base.CowLeather_Holstein_Fur_Tan_Medium;Base.CowLeather_Simmental_Fur_Tan;Base.CowLeather_Simmental_Fur_Tan_Medium;Base.SheepLeather_Fur_Tan;Base.PigLeather_Landrace_Fur_Tan;Base.PigLeather_Black_Fur_Tan;Base.DeerLeather_Fur_Tan] mappers[leatherMapper],
+            item 1 tags[base:sharpknife;base:scissors] mode:keep flags[IsNotDull;MayDegradeLight],
+        }
+        outputs
+        {
+            item 2 mapper:leatherMapper,
+        }
+        itemMapper leatherMapper
+        {
+            Base.Leather_Crude_Medium = Base.Leather_Crude_Large,
+            Base.Leather_Crude_Small = Base.Leather_Crude_Medium,
+            Base.Leather_Crude_Medium_Tan = Base.Leather_Crude_Large_Tan,
+            Base.Leather_Crude_Small_Tan = Base.Leather_Crude_Medium_Tan,
+            Base.CowLeather_Angus_Fur_Tan_Medium = Base.CowLeather_Angus_Fur_Tan,
+            Base.CowLeather_Angus_Fur_Tan_Small = Base.CowLeather_Angus_Fur_Tan_Medium,
+            Base.CowLeather_Holstein_Fur_Tan_Medium = Base.CowLeather_Holstein_Fur_Tan,
+            Base.CowLeather_Holstein_Fur_Tan_Small = Base.CowLeather_Holstein_Fur_Tan_Medium,
+            Base.CowLeather_Simmental_Fur_Tan_Medium = Base.CowLeather_Simmental_Fur_Tan,
+            Base.CowLeather_Simmental_Fur_Tan_Small = Base.CowLeather_Simmental_Fur_Tan_Medium,
+            Base.SheepLeather_Fur_Tan_Small = Base.SheepLeather_Fur_Tan,
+            Base.PigLeather_Landrace_Fur_Tan_Small = Base.PigLeather_Landrace_Fur_Tan,
+            Base.PigLeather_Black_Fur_Tan_Small = Base.PigLeather_Black_Fur_Tan,
+            Base.DeerLeather_Fur_Tan_Small = Base.DeerLeather_Fur_Tan,
+        }
+    }
+}

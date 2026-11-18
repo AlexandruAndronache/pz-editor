@@ -1,0 +1,206 @@
+module Base
+{
+    craftRecipe RemoveGasMaskFilter
+    {
+        timedAction = Making,
+        time = 30,
+        OnCreate = RecipeCodeOnCreate.removeGasFilter,
+        OnTest = RecipeCodeOnTest.haveFilter,
+        AllowBatchCraft = false,
+        Tags = InHandCraft;CanBeDoneInDark,
+        category = Miscellaneous,
+        inputs
+        {
+            item 1 tags[base:gasmask] mode:keep flags[AllowFavorite;ItemCount],
+        }
+    }
+
+    craftRecipe PutFilterOnGasMask
+    {
+        timedAction = Making,
+        time = 30,
+        OnCreate = RecipeCodeOnCreate.addGasFilter,
+        OnTest = RecipeCodeOnTest.noFilter,
+        AllowBatchCraft = false,
+        Tags = InHandCraft;CanBeDoneInDark,
+        category = Miscellaneous,
+        inputs
+        {
+            item 1 tags[base:gasmask] mode:keep flags[AllowFavorite;ItemCount],
+            item 1 tags[base:gasmaskfilter] flags[ItemCount;NotEmpty] mode:destroy,
+        }
+    }
+
+    craftRecipe RemoveRagFromImprovisedGasMask
+    {
+        timedAction = Making,
+        time = 30,
+        OnCreate = RecipeCodeOnCreate.removeGasFilter,
+        OnTest = RecipeCodeOnTest.haveFilter,
+        AllowBatchCraft = false,
+        Tags = InHandCraft;CanBeDoneInDark,
+        category = Miscellaneous,
+        inputs
+        {
+            item 1 tags[base:improvisedgasmask] mode:keep flags[AllowFavorite;ItemCount],
+        }
+    }
+
+    craftRecipe PutRagInImprovisedGasMask
+    {
+        timedAction = Making,
+        time = 30,
+        OnCreate = RecipeCodeOnCreate.addGasFilter,
+        OnTest = RecipeCodeOnTest.noFilter,
+        AllowBatchCraft = false,
+        Tags = InHandCraft;CanBeDoneInDark,
+        category = Miscellaneous,
+        inputs
+        {
+            item 1 tags[base:improvisedgasmask] mode:keep flags[AllowFavorite;ItemCount],
+            item 1 [Base.RippedSheets] flags[ItemCount] mode:destroy,
+        }
+    }
+
+    craftRecipe RemoveRespiratorFilters
+    {
+        timedAction = Making,
+        time = 30,
+        OnCreate = RecipeCodeOnCreate.removeGasFilter,
+        OnTest = RecipeCodeOnTest.haveFilter,
+        AllowBatchCraft = false,
+        Tags = InHandCraft;CanBeDoneInDark,
+        category = Miscellaneous,
+        inputs
+        {
+            item 1 tags[base:respirator] mode:keep flags[AllowFavorite;ItemCount],
+        }
+    }
+
+    craftRecipe PutFiltersOnRespirator
+    {
+        timedAction = Making,
+        time = 30,
+        OnCreate = RecipeCodeOnCreate.addGasFilter,
+        OnTest = RecipeCodeOnTest.noFilter,
+        AllowBatchCraft = false,
+        Tags = InHandCraft;CanBeDoneInDark,
+        category = Miscellaneous,
+        inputs
+        {
+            item 1 tags[base:respirator] mode:keep flags[AllowFavorite;ItemCount],
+            item 1 tags[base:respiratorfilter] flags[ItemCount;NotEmpty] mode:destroy,
+        }
+    }
+
+    craftRecipe MakeCraftedGasMaskFilter
+    {
+        timedAction = Making,
+        time = 80,
+        NeedToBeLearn = true,
+        Tags = InHandCraft;Engineer,
+        category = Miscellaneous,
+        inputs
+        {
+            item 1 tags[base:metalsaw;base:sheetmetalsnips;base:smallsaw;base:lightmetalsnips] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:pliers] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:mortarpestle] mode:keep,
+            item 1 tags[base:emptycan] flags[IsEmpty;ItemCount],
+            item 1 [Base.Sponge],
+            item 1 tags[base:charcoal],
+            item 1 [Base.RippedSheets] mode:destroy,
+            item 1 tags[base:glue],
+            item 1 tags[base:tape],
+        }
+        outputs
+        {
+            item 1 Base.GasmaskFilterCrafted,
+        }
+    }
+
+    craftRecipe RechargeFilters
+    {
+        timedAction = Making,
+        time = 80,
+        NeedToBeLearn = true,
+        Tags = InHandCraft;Engineer,
+        category = Miscellaneous,
+        inputs
+        {
+            item 1 tags[base:gasmaskfilter;base:respiratorfilter] mappers[FilterMapper] mode:destroy flags[NotFull;ItemCount],
+            item 1 tags[base:mortarpestle] mode:keep,
+            item 1 [Base.Sponge],
+            item 1 tags[base:charcoal],
+            item 1 [Base.RippedSheets] mode:destroy,
+            item 1 tags[base:glue],
+            item 1 tags[base:tape],
+        }
+        outputs
+        {
+            item 1 mapper:FilterMapper,
+        }
+        itemMapper FilterMapper
+        {
+            Base.GasmaskFilter = Base.GasmaskFilter,
+            Base.GasmaskFilterCrafted = Base.GasmaskFilterCrafted,
+            Base.RespiratorFiltersRecharged = Base.RespiratorFilters,
+            Base.RespiratorFiltersRecharged = Base.RespiratorFiltersRecharged,
+            default = Base.GasmaskFilterCrafted,
+        }
+    }
+
+    craftRecipe MakeImprovisedGasMask
+    {
+        timedAction = Making,
+        time = 80,
+        OnCreate = RecipeCodeOnCreate.assignRagFilterLife,
+        NeedToBeLearn = true,
+        Tags = InHandCraft;Engineer,
+        category = Miscellaneous,
+        xpAward = Tailoring:5,
+        inputs
+        {
+            item 1 tags[base:scissors;base:sharpknife] mode:keep flags[IsNotDull;SharpnessCheck],
+            item 2 [Base.DuctTape],
+            item 1 [Base.RippedSheets] mode:destroy,
+            item 1 [Base.PopBottle;Base.PopBottleRare;Base.WaterBottle] flags[IsEmpty;ItemCount],
+        }
+        outputs
+        {
+            item 1 Base.Hat_ImprovisedGasMask,
+        }
+    }
+
+    craftRecipe remove_oxygen_tank
+    {
+        timedAction = Making,
+        time = 60,
+        OnCreate = RecipeCodeOnCreate.removeOxygenTank,
+        OnTest = RecipeCodeOnTest.haveOxygenTank,
+        AllowBatchCraft = false,
+        Tooltip = Tooltip_Recipe_CantBeWorn,
+        Tags = InHandCraft;CanBeDoneInDark,
+        category = Miscellaneous,
+        inputs
+        {
+            item 1 tags[base:hazmatsuit;base:scba] mode:keep flags[IsNotWorn;AllowFavorite;InheritFavorite;ItemCount],
+        }
+    }
+
+    craftRecipe put_oxygen_tank
+    {
+        timedAction = Making,
+        time = 60,
+        OnCreate = RecipeCodeOnCreate.addOxygenTank,
+        OnTest = RecipeCodeOnTest.noOxygenTank,
+        AllowBatchCraft = false,
+        Tooltip = Tooltip_Recipe_CantBeWorn,
+        Tags = InHandCraft;CanBeDoneInDark,
+        category = Miscellaneous,
+        inputs
+        {
+            item 1 tags[base:hazmatsuit;base:scba] flags[IsNotWorn;AllowFavorite;InheritFavorite;CopyClothing;ItemCount] mode:keep,
+            item 1 [Base.Oxygen_Tank] flags[ItemCount;NotEmpty] mode:destroy,
+        }
+    }
+}

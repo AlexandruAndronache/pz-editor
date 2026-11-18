@@ -1,0 +1,49 @@
+module Base
+{
+    entity Dome_Kiln
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_Dome_Kiln,
+            uiEnabled = true,
+        }
+        component CraftBench
+        {
+            Recipes = DomeKiln;WoodCharcoal,
+        }
+        component SpriteConfig
+        {
+            health = 200,
+            skillBaseHealth = 50,
+            face S
+            {
+                layer
+                {
+                    row = crafted_01_81 crafted_01_83,
+                    row = crafted_01_80 crafted_01_82,
+                }
+            }
+            face E
+            {
+                layer
+                {
+                    row = crafted_01_98 crafted_01_99,
+                    row = crafted_01_96 crafted_01_97,
+                }
+            }
+        }
+        component CraftRecipe
+        {
+            timedAction = Make_With_Brick,
+            time = 50,
+            category = Blacksmithing,
+            inputs
+            {
+                item 40 [Base.StoneBlock],
+                item 1 tags[base:concrete] flags[DontRecordInput],
+                item 1 tags[base:masonstrowel] mode:keep flags[Prop1;MayDegradeLight],
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+module Base
+{
+    craftRecipe ScutchFibre
+    {
+        time = 100,
+        timedAction = MakingHammer_Surface,
+        Tags = Scutching,
+        category = Farming,
+        inputs
+        {
+            item 1 [Base.FlaxRippled;Base.HempBundleDried] mode:destroy mappers[fiberTypes] flags[Prop2],
+            item 1 tags[base:breakfiber] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 tags[base:dullknife] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 mapper:fiberTypes,
+        }
+        itemMapper fiberTypes
+        {
+            Base.FlaxScutched = Base.FlaxRippled,
+            Base.HempScutched = Base.HempBundleDried,
+            default = Base.FlaxScutched,
+        }
+    }
+}

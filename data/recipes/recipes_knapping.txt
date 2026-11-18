@@ -1,0 +1,332 @@
+module Base
+{
+    craftRecipe MakeStoneAwl
+    {
+        time = 230,
+        NeedToBeLearn = true,
+        Tags = AnySurfaceCraft,
+        category = Knapping,
+        timedAction = Chisel_Surface,
+        xpAward = FlintKnapping:10,
+        AutoLearnAny = FlintKnapping:2,
+        OnCreate = RecipeCodeOnCreate.minorCondition,
+        inputs
+        {
+            item 1 [Base.SharpedStone] flags[Prop2],
+            item 1 tags[base:hammerstone;base:mallet;base:knappingtool] mode:keep flags[MayDegradeLight;Prop1],
+        }
+        outputs
+        {
+            item 1 Base.Awl_Stone,
+        }
+    }
+
+    craftRecipe MakeSharpFlintFlake
+    {
+        time = 230,
+        xpAward = FlintKnapping:10,
+        timedAction = HammerStoneStanding,
+        Tags = AnySurfaceCraft,
+        category = Knapping,
+        OnCreate = RecipeCodeOnCreate.knappFlake,
+        inputs
+        {
+            item 1 [Base.FlintNodule] flags[Prop2],
+            item 1 tags[base:hammerstone;base:mallet;base:knappingtool] mode:keep flags[Prop1;MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.SharpedStone,
+        }
+    }
+
+    craftRecipe MakeCrudeStoneAxe
+    {
+        time = 230,
+        NeedToBeLearn = false,
+        SkillRequired = Maintenance:1,
+        xpAward = Maintenance:5,
+        Tags = AnySurfaceCraft,
+        category = Assembly,
+        timedAction = CraftWeapon2H,
+        inputs
+        {
+            item 1 [Base.TreeBranch2] flags[InheritCondition],
+            item 1 [Base.SharpedStone] flags[Prop2;IsHeadPart],
+            item 2 tags[base:simpleweaponbinding] flags[DontReplace],
+        }
+        outputs
+        {
+            item 1 Base.AxeStone,
+        }
+    }
+
+    craftRecipe MakeStoneHammer
+    {
+        time = 230,
+        NeedToBeLearn = false,
+        SkillRequired = Maintenance:1,
+        xpAward = Maintenance:5,
+        Tags = AnySurfaceCraft,
+        category = Assembly,
+        timedAction = CraftWeapon1H,
+        inputs
+        {
+            item 1 [Base.TreeBranch2] flags[Prop2;InheritCondition],
+            item 1 [Base.Stone2] flags[Prop1;Prop1;IsHeadPart],
+            item 2 tags[base:simpleweaponbinding] flags[DontReplace],
+            item 1 tags[base:sharpknife] mode:keep flags[IsNotDull;MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.HammerStone,
+        }
+    }
+
+    craftRecipe MakeLargeStoneAxe
+    {
+        time = 230,
+        NeedToBeLearn = false,
+        SkillRequired = Maintenance:1,
+        xpAward = Maintenance:5,
+        Tags = AnySurfaceCraft,
+        category = Assembly,
+        timedAction = CraftWeapon2H,
+        inputs
+        {
+            item 1 [Base.LongHandle] flags[Prop2;InheritCondition],
+            item 1 [Base.StoneAxeHead] flags[Prop1;IsHeadPart],
+            item 3 tags[base:simpleweaponbinding] flags[DontReplace],
+            item 1 tags[base:sharpknife] mode:keep flags[IsNotDull;MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.StoneAxeLarge,
+        }
+    }
+
+    craftRecipe MakeStoneMaul
+    {
+        time = 230,
+        NeedToBeLearn = false,
+        SkillRequired = Maintenance:1,
+        xpAward = Maintenance:5,
+        Tags = AnySurfaceCraft,
+        category = Assembly,
+        timedAction = CraftWeapon2H,
+        inputs
+        {
+            item 1 [Base.LongHandle] flags[Prop2;InheritCondition],
+            item 1 [Base.StoneMaulHead] flags[Prop1;IsHeadPart],
+            item 3 tags[base:simpleweaponbinding] flags[DontReplace],
+            item 1 tags[base:sharpknife] mode:keep flags[IsNotDull;MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.StoneMaul,
+        }
+    }
+
+    craftRecipe MakeStoneBlade
+    {
+        time = 230,
+        NeedToBeLearn = true,
+        SkillRequired = FlintKnapping:1,
+        xpAward = FlintKnapping:20,
+        timedAction = HammerStoneStanding,
+        Tags = AnySurfaceCraft,
+        category = Knapping,
+        AutoLearnAny = FlintKnapping:3,
+        OnCreate = RecipeCodeOnCreate.minorCondition,
+        inputs
+        {
+            item 1 [Base.SharpedStone] flags[Prop2],
+            item 1 tags[base:hammerstone;base:mallet;base:knappingtool] mode:keep flags[Prop1;MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.StoneBlade,
+        }
+    }
+
+    craftRecipe RemakeLongStoneBlade
+    {
+        time = 230,
+        NeedToBeLearn = true,
+        SkillRequired = FlintKnapping:1,
+        xpAward = FlintKnapping:20,
+        timedAction = HammerStoneStanding,
+        Tags = AnySurfaceCraft,
+        category = Knapping,
+        MetaRecipe = base:makestoneblade,
+        OnCreate = RecipeCodeOnCreate.minorCondition,
+        inputs
+        {
+            item 1 [Base.StoneBladeLong] flags[AllowDestroyedItem;Prop2],
+            item 1 tags[base:hammerstone;base:mallet;base:knappingtool] mode:keep flags[Prop1;MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.StoneBlade,
+        }
+    }
+
+    craftRecipe MakeStoneBladeScythe
+    {
+        time = 230,
+        NeedToBeLearn = true,
+        SkillRequired = FlintKnapping:2,
+        xpAward = FlintKnapping:30,
+        Tags = AnySurfaceCraft,
+        category = Knapping,
+        timedAction = HammerStoneStanding,
+        AutoLearnAny = FlintKnapping:5,
+        OnCreate = RecipeCodeOnCreate.minorCondition,
+        inputs
+        {
+            item 1 [Base.TreeBranch2;Base.Handle] flags[InheritCondition],
+            item 1 [Base.SharpedStone] flags[Prop2],
+            item 1 tags[base:hammerstone;base:mallet;base:knappingtool] mode:keep flags[Prop1;MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.PrimitiveScythe,
+        }
+    }
+
+    craftRecipe MakeStoneChisel
+    {
+        time = 230,
+        NeedToBeLearn = true,
+        Tags = AnySurfaceCraft,
+        category = Knapping,
+        timedAction = HammerStoneStanding,
+        SkillRequired = FlintKnapping:1,
+        xpAward = FlintKnapping:20,
+        AutoLearnAny = FlintKnapping:4,
+        OnCreate = RecipeCodeOnCreate.minorCondition,
+        inputs
+        {
+            item 2 [Base.SharpedStone],
+            item 1 tags[base:hammerstone;base:mallet;base:knappingtool] mode:keep flags[MayDegradeLight;Prop1],
+        }
+        outputs
+        {
+            item 1 Base.StoneChisel,
+        }
+    }
+
+    craftRecipe MakeStoneBladeSaw
+    {
+        time = 230,
+        NeedToBeLearn = true,
+        SkillRequired = FlintKnapping:3,
+        xpAward = FlintKnapping:40,
+        Tags = AnySurfaceCraft,
+        category = Knapping,
+        timedAction = HammerStoneStanding,
+        AutoLearnAny = FlintKnapping:6,
+        OnCreate = RecipeCodeOnCreate.minorCondition,
+        inputs
+        {
+            item 1 [Base.TreeBranch2;Base.Handle] flags[InheritCondition],
+            item 1 [Base.SharpedStone] flags[Prop2],
+            item 1 [Base.Twine;Base.LeatherStrips] flags[DontReplace],
+            item 1 tags[base:hammerstone;base:mallet;base:knappingtool] mode:keep flags[Prop1;MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.Saw_Flint,
+        }
+    }
+
+    craftRecipe MakeLargeStoneAxeHead
+    {
+        time = 230,
+        NeedToBeLearn = true,
+        SkillRequired = FlintKnapping:4,
+        xpAward = FlintKnapping:50,
+        Tags = AnySurfaceCraft;CanBeDoneFromFloor,
+        category = Knapping,
+        timedAction = HammerStoneStanding,
+        AutoLearnAny = FlintKnapping:7,
+        OnCreate = RecipeCodeOnCreate.minorCondition,
+        inputs
+        {
+            item 1 [Base.FlatStone] flags[Prop2],
+            item 1 tags[base:hammerstone;base:mallet;base:knappingtool] mode:keep flags[Prop1;MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.StoneAxeHead,
+        }
+    }
+
+    craftRecipe MakeStoneMaulHead
+    {
+        time = 230,
+        NeedToBeLearn = true,
+        SkillRequired = FlintKnapping:5,
+        xpAward = FlintKnapping:60,
+        Tags = AnySurfaceCraft;CanBeDoneFromFloor,
+        category = Knapping,
+        timedAction = HammerStoneStanding,
+        AutoLearnAny = FlintKnapping:8,
+        OnCreate = RecipeCodeOnCreate.minorCondition,
+        inputs
+        {
+            item 1 [Base.FlatStone] flags[Prop2],
+            item 1 tags[base:hammerstone;base:mallet;base:knappingtool] mode:keep flags[Prop1;MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.StoneMaulHead,
+        }
+    }
+
+    craftRecipe MakeStoneDrill
+    {
+        time = 230,
+        NeedToBeLearn = true,
+        Tags = AnySurfaceCraft,
+        category = Knapping,
+        timedAction = HammerStoneStanding,
+        SkillRequired = FlintKnapping:5,
+        xpAward = FlintKnapping:60,
+        AutoLearnAny = FlintKnapping:8,
+        OnCreate = RecipeCodeOnCreate.minorCondition,
+        inputs
+        {
+            item 1 [Base.SharpedStone],
+            item 1 tags[base:hammer;base:clubhammer;base:hammerstone;base:mallet;base:knappingtool] mode:keep flags[MayDegradeLight;Prop1],
+            item 1 tags[base:crudechisel;base:masonschisel] mode:keep flags[MayDegradeLight;Prop2],
+        }
+        outputs
+        {
+            item 1 Base.StoneDrill,
+        }
+    }
+
+    craftRecipe MakeLongStoneBlade
+    {
+        time = 230,
+        NeedToBeLearn = true,
+        SkillRequired = FlintKnapping:6,
+        xpAward = FlintKnapping:70,
+        timedAction = HammerStoneStanding,
+        Tags = AnySurfaceCraft,
+        category = Knapping,
+        AutoLearnAny = FlintKnapping:9,
+        MetaRecipe = base:makestoneblade,
+        OnCreate = RecipeCodeOnCreate.minorCondition,
+        inputs
+        {
+            item 1 [Base.FlintNodule] flags[Prop2],
+            item 1 tags[base:hammerstone;base:mallet;base:knappingtool] mode:keep flags[Prop1;MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.StoneBladeLong,
+        }
+    }
+}

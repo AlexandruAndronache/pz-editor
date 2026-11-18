@@ -1,0 +1,42 @@
+module Base
+{
+    entity Stone_Quern
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_Stone_Quern,
+            uiEnabled = true,
+        }
+        component CraftBench
+        {
+            Recipes = Stone_Quern,
+        }
+        component SpriteConfig
+        {
+            isThumpable = false,
+            face SINGLE
+            {
+                layer
+                {
+                    row = crafted_02_40,
+                }
+            }
+        }
+        component CraftRecipe
+        {
+            timedAction = BuildCairn,
+            time = 50,
+            category = Farming,
+            SkillRequired = Masonry:1,
+            xpAward = Masonry:10,
+            Tooltip = Tooltip_craft_stoneQuernDesc,
+            inputs
+            {
+                item 1 [Base.StoneWheel],
+                item 2 [Base.StoneWheelSmall],
+                item 1 [Base.Handle],
+            }
+        }
+    }
+}

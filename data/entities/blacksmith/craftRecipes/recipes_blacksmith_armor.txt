@@ -1,0 +1,465 @@
+module Base
+{
+    craftRecipe Forge_Codpiece
+    {
+        time = 400,
+        SkillRequired = Blacksmith:4;Tailoring:3,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:10;Tailoring:5,
+        Tags = Forge,
+        category = Armor,
+        AutoLearnAll = Blacksmith:6,
+        inputs
+        {
+            item 3 tags[base:charcoal],
+            item 1 [Base.SmallSheetMetal],
+            item 1 tags[base:smithinghammer] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 tags[base:tongs] mode:keep flags[Prop2;MayDegradeLight],
+            item 1 tags[base:metalworkingpunch;base:smallpunch] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:headingtool] mode:keep,
+            item 1 tags[base:scissors] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:leathercrudetannedsmall],
+            item 1 tags[base:heavythread],
+            item 1 [Base.LeatherStrips] mode:destroy,
+        }
+        outputs
+        {
+            item 1 Base.Codpiece_Metal,
+        }
+    }
+
+    craftRecipe Forge_Gorget
+    {
+        time = 600,
+        SkillRequired = Blacksmith:6;Tailoring:3,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:15;Tailoring:5,
+        Tags = Forge,
+        category = Armor,
+        AutoLearnAll = Blacksmith:6,
+        inputs
+        {
+            item 5 tags[base:charcoal],
+            item 2 [Base.SmallSheetMetal],
+            item 1 tags[base:smithinghammer] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 tags[base:tongs] mode:keep flags[Prop2;MayDegradeLight],
+            item 1 tags[base:metalworkingpunch;base:smallpunch] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:headingtool] mode:keep,
+            item 1 tags[base:scissors] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:leathercrudetannedsmall],
+            item 1 tags[base:heavythread],
+            item 1 [Base.LeatherStrips] mode:destroy,
+        }
+        outputs
+        {
+            item 1 Base.Gorget_Metal,
+        }
+    }
+
+    craftRecipe Forge_Armored_Gloves
+    {
+        time = 300,
+        SkillRequired = Blacksmith:6;Tailoring:3,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:15;Tailoring:5,
+        Tags = Forge,
+        category = Armor,
+        AutoLearnAll = Blacksmith:6,
+        inputs
+        {
+            item 1 tags[base:charcoal],
+            item 1 [Base.SmallSheetMetal],
+            item 1 tags[base:smithinghammer] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 tags[base:tongs] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:awl;base:smallpunch] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:headingtool] mode:keep,
+            item 1 tags[base:scissors] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:heavythread],
+            item 1 [Base.Gloves_FingerlessGloves;Base.Gloves_FingerlessLeatherGloves;Base.Gloves_FingerlessLeatherGloves_Black;Base.Gloves_LeatherGloves;Base.Gloves_LeatherGlovesBlack;Base.Gloves_LeatherGlovesBrown],
+        }
+        outputs
+        {
+            item 1 Base.Gloves_MetalArmour,
+        }
+    }
+
+    craftRecipe Assemble_Forearm_Armor
+    {
+        time = 400,
+        SkillRequired = Blacksmith:4;Tailoring:2,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:10;Tailoring:10,
+        Tags = Forge,
+        category = Armor,
+        NeedToBeLearn = true,
+        AutoLearnAll = Blacksmith:6,
+        inputs
+        {
+            item 3 tags[base:charcoal],
+            item 1 [Base.SmallSheetMetal],
+            item 2 [Base.LeatherStrips] mode:destroy,
+            item 2 [Base.Buckle],
+            item 1 tags[base:smithinghammer] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 tags[base:metalworkingpliers;base:tongs] mode:keep flags[Prop2;MayDegradeLight],
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:heavythread],
+        }
+        outputs
+        {
+            item 1 Base.Vambrace_Left,
+        }
+    }
+
+    craftRecipe Assemble_FullMetal_Forearm_Armor
+    {
+        time = 600,
+        SkillRequired = Blacksmith:8;Tailoring:4,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:25;Tailoring:10,
+        Tags = Forge,
+        category = Armor,
+        NeedToBeLearn = true,
+        AutoLearnAll = Blacksmith:9,
+        inputs
+        {
+            item 5 tags[base:charcoal],
+            item 2 [Base.SmallSheetMetal],
+            item 2 [Base.LeatherStrips] mode:destroy,
+            item 2 [Base.Buckle],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 tags[base:metalworkingpliers;base:tongs] mode:keep flags[Prop2;MayDegradeLight],
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:heavythread],
+        }
+        outputs
+        {
+            item 1 Base.Vambrace_FullMetal_Left,
+        }
+    }
+
+    craftRecipe Assemble_Articulated_Thigh_Armor
+    {
+        time = 600,
+        SkillRequired = Blacksmith:8;Tailoring:4,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:25;Tailoring:10,
+        Tags = Forge,
+        category = Armor,
+        NeedToBeLearn = true,
+        AutoLearnAll = Blacksmith:9,
+        inputs
+        {
+            item 5 tags[base:charcoal],
+            item 2 [Base.SmallSheetMetal],
+            item 2 [Base.LeatherStrips] mode:destroy,
+            item 2 [Base.Buckle],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 tags[base:metalworkingpliers;base:tongs] mode:keep flags[Prop2;MayDegradeLight],
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:heavythread],
+        }
+        outputs
+        {
+            item 1 Base.Thigh_ArticMetal_L,
+        }
+    }
+
+    craftRecipe Assemble_Articulated_Shin_Armor
+    {
+        time = 800,
+        SkillRequired = Blacksmith:8;Tailoring:4,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:25;Tailoring:10,
+        Tags = Forge,
+        category = Armor,
+        NeedToBeLearn = true,
+        AutoLearnAll = Blacksmith:9,
+        inputs
+        {
+            item 7 tags[base:charcoal],
+            item 3 [Base.SmallSheetMetal],
+            item 2 [Base.LeatherStrips] mode:destroy,
+            item 2 [Base.Buckle],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 tags[base:metalworkingpliers;base:tongs] mode:keep flags[Prop2;MayDegradeLight],
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:heavythread],
+        }
+        outputs
+        {
+            item 1 Base.ShinKneeGuard_L_Metal,
+        }
+    }
+
+    craftRecipe Assemble_Shin_Armor
+    {
+        time = 400,
+        SkillRequired = Blacksmith:4;Tailoring:2,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:10;Tailoring:10,
+        Tags = Forge,
+        category = Armor,
+        NeedToBeLearn = true,
+        AutoLearnAll = Blacksmith:6,
+        inputs
+        {
+            item 3 tags[base:charcoal],
+            item 1 [Base.SmallSheetMetal],
+            item 2 [Base.LeatherStrips] mode:destroy,
+            item 2 [Base.Buckle],
+            item 1 tags[base:smithinghammer] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 tags[base:metalworkingpliers;base:tongs] mode:keep flags[Prop2;MayDegradeLight],
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:heavythread],
+        }
+        outputs
+        {
+            item 1 Base.Greave_Left,
+        }
+    }
+
+    craftRecipe Assemble_Thigh_Armor
+    {
+        time = 400,
+        SkillRequired = Blacksmith:4;Tailoring:2,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:10;Tailoring:10,
+        Tags = Forge,
+        category = Armor,
+        NeedToBeLearn = true,
+        AutoLearnAll = Blacksmith:6,
+        inputs
+        {
+            item 3 tags[base:charcoal],
+            item 1 [Base.SmallSheetMetal],
+            item 2 [Base.LeatherStrips] mode:destroy,
+            item 2 [Base.Buckle],
+            item 1 tags[base:smithinghammer] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 tags[base:metalworkingpliers;base:tongs] mode:keep flags[Prop2;MayDegradeLight],
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:heavythread],
+        }
+        outputs
+        {
+            item 1 Base.ThighMetal_L,
+        }
+    }
+
+    craftRecipe Assemble_Simple_Shoulder_Armor
+    {
+        time = 400,
+        SkillRequired = Blacksmith:4;Tailoring:2,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:10;Tailoring:10,
+        Tags = Forge,
+        category = Armor,
+        NeedToBeLearn = true,
+        AutoLearnAll = Blacksmith:6,
+        inputs
+        {
+            item 3 tags[base:charcoal],
+            item 1 [Base.SmallSheetMetal],
+            item 2 [Base.LeatherStrips] mode:destroy,
+            item 1 [Base.Buckle],
+            item 1 tags[base:smithinghammer] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 tags[base:metalworkingpliers;base:tongs] mode:keep flags[Prop2;MayDegradeLight],
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:heavythread],
+        }
+        outputs
+        {
+            item 1 Base.Shoulderpad_Metal_L,
+        }
+    }
+
+    craftRecipe Assemble_Shoulder_Armor_Left
+    {
+        time = 600,
+        SkillRequired = Blacksmith:8;Tailoring:4,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:25;Tailoring:10,
+        Tags = Forge,
+        category = Armor,
+        NeedToBeLearn = true,
+        MetaRecipe = base:assemble_shoulder_armor,
+        AutoLearnAll = Blacksmith:9,
+        inputs
+        {
+            item 5 tags[base:charcoal],
+            item 2 [Base.SmallSheetMetal],
+            item 2 [Base.LeatherStrips] mode:destroy,
+            item 1 [Base.Buckle],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 tags[base:metalworkingpliers;base:tongs] mode:keep flags[Prop2;MayDegradeLight],
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:heavythread],
+        }
+        outputs
+        {
+            item 1 Base.Shoulderpad_Articulated_L_Metal,
+        }
+    }
+
+    craftRecipe Assemble_Shoulder_Armor_Right
+    {
+        time = 600,
+        SkillRequired = Blacksmith:8;Tailoring:4,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:25;Tailoring:10,
+        Tags = Forge,
+        category = Armor,
+        NeedToBeLearn = true,
+        MetaRecipe = base:assemble_shoulder_armor,
+        AutoLearnAll = Blacksmith:6,
+        inputs
+        {
+            item 5 tags[base:charcoal],
+            item 2 [Base.SmallSheetMetal],
+            item 2 [Base.LeatherStrips] mode:destroy,
+            item 1 [Base.Buckle],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 tags[base:metalworkingpliers;base:tongs] mode:keep flags[Prop2;MayDegradeLight],
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:heavythread],
+        }
+        outputs
+        {
+            item 1 Base.Shoulderpad_Articulated_R_Metal,
+        }
+    }
+
+    craftRecipe Forge_Body_Armor
+    {
+        time = 1800,
+        NeedToBeLearn = true,
+        SkillRequired = Blacksmith:6;Tailoring:3,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:50;Tailoring:10,
+        Tags = Forge,
+        category = Armor,
+        AutoLearnAll = Blacksmith:9,
+        inputs
+        {
+            item 17 tags[base:charcoal],
+            item 8 [Base.SmallSheetMetal],
+            item 6 [Base.LeatherStrips] mode:destroy,
+            item 4 [Base.Buckle],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 tags[base:tongs] mode:keep flags[Prop2;MayDegradeLight],
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:heavythread],
+        }
+        outputs
+        {
+            item 1 Base.Cuirass_Metal,
+        }
+    }
+
+    craftRecipe Forge_CoatOfPlates
+    {
+        time = 2600,
+        NeedToBeLearn = true,
+        SkillRequired = Blacksmith:8;Tailoring:4,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:100;Tailoring:20,
+        Tags = Forge,
+        category = Armor,
+        AutoLearnAll = Blacksmith:10,
+        inputs
+        {
+            item 25 tags[base:charcoal],
+            item 12 [Base.SmallSheetMetal],
+            item 6 [Base.LeatherStrips] mode:destroy,
+            item 4 [Base.Buckle],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 tags[base:tongs] mode:keep flags[Prop2;MayDegradeLight],
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:heavythread],
+        }
+        outputs
+        {
+            item 1 Base.Cuirass_CoatOfPlates,
+        }
+    }
+
+    craftRecipe Forge_Metal_Mask
+    {
+        time = 400,
+        Tags = Forge,
+        NeedToBeLearn = true,
+        SkillRequired = Blacksmith:4;Tailoring:2,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:10;Tailoring:5,
+        category = Armor,
+        AutoLearnAll = Blacksmith:6,
+        inputs
+        {
+            item 3 tags[base:charcoal],
+            item 1 [Base.SmallSheetMetal;Base.SmallCopperSheet;Base.GoldSheet;Base.SilverSheet] mappers[MaskMapper],
+            item 1 [Base.LeatherStrips] mode:destroy,
+            item 1 tags[base:smithinghammer] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 tags[base:tongs] mode:keep flags[Prop2;MayDegradeLight],
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:heavythread],
+        }
+        outputs
+        {
+            item 1 mapper:MaskMapper,
+        }
+        itemMapper MaskMapper
+        {
+            Base.Hat_HockeyMask_Copper = Base.SmallCopperSheet,
+            Base.Hat_HockeyMask_Gold = Base.GoldSheet,
+            Base.Hat_HockeyMask_Metal = Base.SmallSheetMetal,
+            Base.Hat_HockeyMask_Silver = Base.SilverSheet,
+            default = Base.Hat_HockeyMask_Metal,
+        }
+    }
+
+    craftRecipe Forge_Metal_Helmet
+    {
+        time = 1000,
+        Tags = Forge,
+        NeedToBeLearn = true,
+        SkillRequired = Blacksmith:6;Tailoring:3,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:15;Tailoring:5,
+        category = Armor,
+        AutoLearnAll = Blacksmith:8,
+        inputs
+        {
+            item 9 tags[base:charcoal],
+            item 4 [Base.SmallSheetMetal],
+            item 1 tags[base:smithinghammer] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 tags[base:tongs] mode:keep flags[Prop2;MayDegradeLight],
+            item 1 [Base.LeatherStrips] mode:destroy,
+            item 1 tags[base:sewingneedle] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:awl] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:heavythread],
+        }
+        outputs
+        {
+            item 1 Base.Hat_MetalHelmet,
+        }
+    }
+}

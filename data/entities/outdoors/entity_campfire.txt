@@ -1,0 +1,37 @@
+module Base
+{
+    entity Campfire
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_Campfire,
+            uiEnabled = false,
+        }
+        component SpriteConfig
+        {
+            isThumpable = false,
+            OnCreate = BuildRecipeCode.campfire.OnCreate,
+            OnIsValid = BuildRecipeCode.campfire.OnIsValid,
+            face W
+            {
+                layer
+                {
+                    row = camping_01_6,
+                }
+            }
+        }
+        component CraftRecipe
+        {
+            timedAction = BuildCampfire,
+            time = 100,
+            Tags = CanBeDoneInDark,
+            category = Outdoors,
+            Tooltip = Tooltip_craft_campfireDesc,
+            inputs
+            {
+                item 3 [Base.Stone2],
+            }
+        }
+    }
+}

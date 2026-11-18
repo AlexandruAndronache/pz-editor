@@ -1,0 +1,137 @@
+module Base
+{
+    entity Paint_SignSkull
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_Paint_Sign_Skull,
+            uiEnabled = false,
+        }
+        component WallCoveringConfig
+        {
+            type = paintSign,
+            sign = 36,
+        }
+        component CraftRecipe
+        {
+            timedAction = Paint,
+            time = 200,
+            category = Wall Coverings,
+            Tooltip = Tooltip_craft_paintSign,
+            inputs
+            {
+                item 1 tags[base:paintbrush] mode:keep flags[Prop1;MayDegradeVeryLight],
+                item 1 tags[base:paint],
+            }
+        }
+    }
+
+    entity Paint_SignArrowRight
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_Paint_Sign_Arrow_Right,
+            uiEnabled = false,
+        }
+        component WallCoveringConfig
+        {
+            type = paintSign,
+            sign = 32,
+        }
+        component CraftRecipe
+        {
+            timedAction = Paint,
+            time = 200,
+            category = Wall Coverings,
+            Tooltip = Tooltip_craft_paintSign,
+            inputs
+            {
+                item 1 tags[base:paintbrush] mode:keep flags[Prop1;MayDegradeVeryLight],
+                item 1 tags[base:paint],
+            }
+        }
+    }
+
+    entity Paint_SignArrowLeft
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_Paint_Sign_Arrow_Left,
+            uiEnabled = false,
+        }
+        component WallCoveringConfig
+        {
+            type = paintSign,
+            sign = 33,
+        }
+        component CraftRecipe
+        {
+            timedAction = Paint,
+            time = 200,
+            category = Wall Coverings,
+            Tooltip = Tooltip_craft_paintSign,
+            inputs
+            {
+                item 1 tags[base:paintbrush] mode:keep flags[Prop1;MayDegradeVeryLight],
+                item 1 tags[base:paint],
+            }
+        }
+    }
+
+    entity Paint_SignArrowUp
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_Paint_Sign_Arrow_Up,
+            uiEnabled = false,
+        }
+        component WallCoveringConfig
+        {
+            type = paintSign,
+            sign = 35,
+        }
+        component CraftRecipe
+        {
+            timedAction = Paint,
+            time = 200,
+            category = Wall Coverings,
+            Tooltip = Tooltip_craft_paintSign,
+            inputs
+            {
+                item 1 tags[base:paintbrush] mode:keep flags[Prop1;MayDegradeVeryLight],
+                item 1 tags[base:paint],
+            }
+        }
+    }
+
+    entity Paint_SignArrowDown
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_Paint_Sign_Arrow_Down,
+            uiEnabled = false,
+        }
+        component WallCoveringConfig
+        {
+            type = paintSign,
+            sign = 34,
+        }
+        component CraftRecipe
+        {
+            timedAction = Paint,
+            time = 200,
+            category = Wall Coverings,
+            Tooltip = Tooltip_craft_paintSign,
+            inputs
+            {
+                item 1 tags[base:paintbrush] mode:keep flags[Prop1;MayDegradeVeryLight],
+                item 1 tags[base:paint],
+            }
+        }
+    }
+}

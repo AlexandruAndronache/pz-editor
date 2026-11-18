@@ -1,0 +1,17 @@
+module Base
+{
+    craftRecipe MakeCoke
+    {
+        time = 20,
+        timedAction = Making_With_Kiln,
+        Tags = DomeKiln,
+        inputs
+        {
+            item 8 [Base.CharcoalCrafted;Base.Charcoal],
+        }
+        outputs
+        {
+            item 4 Base.Coke,
+        }
+    }
+}

@@ -1,0 +1,48 @@
+module Base
+{
+    entity Smelting_Furnace
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_Furnace_II,
+            uiEnabled = true,
+        }
+        component CraftBench
+        {
+            Recipes = PrimitiveFurnace;Furnace,
+        }
+        component SpriteConfig
+        {
+            health = 150,
+            skillBaseHealth = 50,
+            face S
+            {
+                layer
+                {
+                    row = crafted_01_16,
+                }
+            }
+            face E
+            {
+                layer
+                {
+                    row = crafted_01_33,
+                }
+            }
+        }
+        component CraftRecipe
+        {
+            timedAction = Make_With_Brick,
+            time = 50,
+            category = Blacksmithing,
+            Tooltip = Tooltip_craft_furnaceIIDesc,
+            inputs
+            {
+                item 1 tags[base:masonstrowel] mode:keep flags[Prop1;MayDegradeLight],
+                item 40 [Base.StoneBlock],
+                item 1 tags[base:concrete] flags[DontRecordInput],
+            }
+        }
+    }
+}

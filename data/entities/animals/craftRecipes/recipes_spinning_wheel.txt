@@ -1,0 +1,51 @@
+module Base
+{
+    craftRecipe SpinThreadFromWool
+    {
+        time = 300,
+        timedAction = UseSpinningWheel,
+        Tags = SpinningWheel,
+        category = Farming,
+        inputs
+        {
+            item 1 [Base.WoolRaw] flags[InheritColor],
+        }
+        outputs
+        {
+            item 1 Base.Thread,
+        }
+    }
+
+    craftRecipe SpinYarnFromWool
+    {
+        time = 300,
+        timedAction = UseSpinningWheel,
+        Tags = SpinningWheel,
+        category = Farming,
+        inputs
+        {
+            item 1 [Base.WoolRaw] flags[InheritColor],
+        }
+        outputs
+        {
+            item 1 Base.Yarn,
+        }
+    }
+
+    craftRecipe SpinThreadFromFlax
+    {
+        time = 300,
+        timedAction = UseSpinningWheel,
+        Tags = SpinningWheel,
+        OnCreate = RecipeCodeOnCreate.setEcruColor,
+        category = Farming,
+        inputs
+        {
+            item 1 [Base.FlaxHeckled],
+        }
+        outputs
+        {
+            item 1 Base.Thread,
+        }
+    }
+}

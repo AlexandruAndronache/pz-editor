@@ -1,0 +1,402 @@
+module Base
+{
+    craftRecipe DryBasil
+    {
+        time = 86400,
+        Tags = DryingRackHerb,
+        category = Farming,
+        overlayStyle = Herb,
+        inputs
+        {
+            item variable[1:20] [Base.Basil],
+        }
+        outputs
+        {
+            item variable[1:20] Base.BasilDried,
+        }
+    }
+
+    craftRecipe DryChamomile
+    {
+        time = 86400,
+        Tags = DryingRackHerb,
+        category = Farming,
+        overlayStyle = Herb,
+        inputs
+        {
+            item variable[1:20] [Base.Chamomile],
+        }
+        outputs
+        {
+            item variable[1:20] Base.ChamomileDried,
+        }
+    }
+
+    craftRecipe DryChives
+    {
+        time = 86400,
+        Tags = DryingRackHerb,
+        category = Farming,
+        overlayStyle = Herb,
+        inputs
+        {
+            item variable[1:20] [Base.Chives],
+        }
+        outputs
+        {
+            item variable[1:20] Base.ChivesDried,
+        }
+    }
+
+    craftRecipe DryCilantro
+    {
+        time = 86400,
+        Tags = DryingRackHerb,
+        category = Farming,
+        overlayStyle = Herb,
+        inputs
+        {
+            item variable[1:20] [Base.Cilantro],
+        }
+        outputs
+        {
+            item variable[1:20] Base.CilantroDried,
+        }
+    }
+
+    craftRecipe DryMarigold
+    {
+        time = 86400,
+        Tags = DryingRackHerb,
+        category = Farming,
+        overlayStyle = Marigold,
+        inputs
+        {
+            item variable[1:20] [Base.Marigold],
+        }
+        outputs
+        {
+            item variable[1:20] Base.MarigoldDried,
+        }
+    }
+
+    craftRecipe dry_mint
+    {
+        time = 86400,
+        Tags = DryingRackHerb,
+        category = Farming,
+        overlayStyle = Herb,
+        inputs
+        {
+            item variable[1:20] [Base.MintHerb],
+        }
+        outputs
+        {
+            item variable[1:20] Base.MintHerbDried,
+        }
+    }
+
+    craftRecipe DryOregano
+    {
+        time = 86400,
+        Tags = DryingRackHerb,
+        category = Farming,
+        overlayStyle = Herb,
+        inputs
+        {
+            item variable[1:20] [Base.Oregano],
+        }
+        outputs
+        {
+            item variable[1:20] Base.OreganoDried,
+        }
+    }
+
+    craftRecipe DryParsley
+    {
+        time = 86400,
+        Tags = DryingRackHerb,
+        category = Farming,
+        overlayStyle = Herb,
+        inputs
+        {
+            item variable[1:20] [Base.Parsley],
+        }
+        outputs
+        {
+            item variable[1:20] Base.ParsleyDried,
+        }
+    }
+
+    craftRecipe DryRosemary
+    {
+        time = 86400,
+        Tags = DryingRackHerb,
+        category = Farming,
+        overlayStyle = Herb,
+        inputs
+        {
+            item variable[1:20] [Base.Rosemary],
+        }
+        outputs
+        {
+            item variable[1:20] Base.RosemaryDried,
+        }
+    }
+
+    craftRecipe DrySage
+    {
+        time = 86400,
+        Tags = DryingRackHerb,
+        category = Farming,
+        overlayStyle = Herb,
+        inputs
+        {
+            item variable[1:20] [Base.Sage],
+        }
+        outputs
+        {
+            item variable[1:20] Base.SageDried,
+        }
+    }
+
+    craftRecipe DryThyme
+    {
+        time = 86400,
+        Tags = DryingRackHerb,
+        category = Farming,
+        overlayStyle = Herb,
+        inputs
+        {
+            item variable[1:20] [Base.Thyme],
+        }
+        outputs
+        {
+            item variable[1:20] Base.ThymeDried,
+        }
+    }
+
+    craftRecipe DryBlackSage
+    {
+        time = 86400,
+        Tags = DryingRackHerb,
+        category = Farming,
+        overlayStyle = BlackSage,
+        inputs
+        {
+            item variable[1:20] [Base.BlackSage],
+        }
+        outputs
+        {
+            item variable[1:20] Base.BlackSageDried,
+        }
+    }
+
+    craftRecipe DryComfrey
+    {
+        time = 86400,
+        Tags = DryingRackHerb,
+        category = Farming,
+        overlayStyle = Herb,
+        inputs
+        {
+            item variable[1:20] [Base.Comfrey],
+        }
+        outputs
+        {
+            item variable[1:20] Base.ComfreyDried,
+        }
+    }
+
+    craftRecipe DryCommonMallow
+    {
+        time = 86400,
+        Tags = DryingRackHerb,
+        category = Farming,
+        overlayStyle = Herb,
+        inputs
+        {
+            item variable[1:20] [Base.CommonMallow],
+        }
+        outputs
+        {
+            item variable[1:20] Base.CommonMallowDried,
+        }
+    }
+
+    craftRecipe DryBroadleafPlantain
+    {
+        time = 86400,
+        Tags = DryingRackHerb,
+        category = Farming,
+        overlayStyle = Herb,
+        inputs
+        {
+            item variable[1:20] [Base.Plantain],
+        }
+        outputs
+        {
+            item variable[1:20] Base.PlantainDried,
+        }
+    }
+
+    craftRecipe DryWildGarlic
+    {
+        time = 86400,
+        Tags = DryingRackHerb,
+        category = Farming,
+        overlayStyle = Herb,
+        inputs
+        {
+            item variable[1:20] [Base.WildGarlic2],
+        }
+        outputs
+        {
+            item variable[1:20] Base.WildGarlicDried,
+        }
+    }
+
+    craftRecipe DryJalapenos
+    {
+        time = 86400,
+        Tags = DryingRackHerb,
+        category = Farming,
+        overlayStyle = Jalapeno,
+        inputs
+        {
+            item variable[1:20] [Base.PepperJalapeno] flags[ItemCount] mode:destroy,
+        }
+        outputs
+        {
+            item variable[1:20] Base.PepperJalapenoDried,
+        }
+    }
+
+    craftRecipe DryHabaneros
+    {
+        time = 86400,
+        Tags = DryingRackHerb,
+        category = Farming,
+        overlayStyle = Habanero,
+        inputs
+        {
+            item variable[1:20] [Base.PepperHabanero] flags[ItemCount] mode:destroy,
+        }
+        outputs
+        {
+            item variable[1:20] Base.PepperHabaneroDried,
+        }
+    }
+
+    craftRecipe DryGreenpeas
+    {
+        time = 86400,
+        Tags = DryingRackHerb,
+        category = Farming,
+        overlayStyle = Herb,
+        inputs
+        {
+            item variable[1:20] [Base.Greenpeas] flags[ItemCount] mode:destroy,
+        }
+        outputs
+        {
+            item variable[1:20] Base.GreenpeasSeed,
+        }
+    }
+
+    craftRecipe DrySoybeans
+    {
+        time = 86400,
+        Tags = DryingRackHerb,
+        category = Farming,
+        overlayStyle = Herb,
+        inputs
+        {
+            item variable[1:20] [Base.Soybeans] flags[ItemCount] mode:destroy,
+        }
+        outputs
+        {
+            item variable[1:20] Base.SoybeansSeed,
+        }
+    }
+
+    craftRecipe DryRoses
+    {
+        time = 86400,
+        Tags = DryingRackHerb,
+        category = Farming,
+        overlayStyle = Rose,
+        inputs
+        {
+            item variable[1:20] [Base.Roses] mode:destroy,
+        }
+        outputs
+        {
+            item variable[1:20] Base.RosePetalsDried,
+        }
+    }
+
+    craftRecipe DryLavender
+    {
+        time = 86400,
+        Tags = DryingRackHerb,
+        category = Farming,
+        overlayStyle = Lavender,
+        inputs
+        {
+            item variable[1:20] [Base.Lavender] mode:destroy,
+        }
+        outputs
+        {
+            item variable[1:20] Base.LavenderPetalsDried,
+        }
+    }
+
+    craftRecipe DryPoppyPods
+    {
+        time = 86400,
+        Tags = DryingRackHerb,
+        category = Farming,
+        overlayStyle = Herb,
+        inputs
+        {
+            item variable[1:20] [Base.PoppyPods] mode:destroy,
+        }
+        outputs
+        {
+            item variable[1:20] Base.PoppyPodsDried,
+        }
+    }
+
+    craftRecipe DryHops
+    {
+        time = 86400,
+        Tags = DryingRackHerb,
+        category = Farming,
+        overlayStyle = Herb,
+        inputs
+        {
+            item variable[1:20] [Base.Hops] mode:destroy,
+        }
+        outputs
+        {
+            item variable[1:20] Base.HopsDried,
+        }
+    }
+
+    craftRecipe DryGrass
+    {
+        time = 86400,
+        Tags = DryingRackHerb,
+        category = Farming,
+        overlayStyle = Herb,
+        inputs
+        {
+            item variable[1:20] [Base.GrassTuft] flags[ItemCount] mode:destroy,
+        }
+        outputs
+        {
+            item variable[1:20] Base.HayTuft,
+        }
+    }
+}

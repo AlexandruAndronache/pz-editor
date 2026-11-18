@@ -1,0 +1,63 @@
+module Base
+{
+    entity BarricadeMetalSheet
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_BarricadeMetalSheet,
+            uiEnabled = false,
+        }
+        component SpriteConfig
+        {
+            isThumpable = false,
+            OnIsValid = BuildRecipeCode.barricade.OnIsValid,
+            OnCreate = BuildRecipeCode.barricade.OnCreate,
+            TimedActionOnIsValid = BuildRecipeCode.barricade.TimedActionOnIsValid,
+            face W
+            {
+                layer
+                {
+                    row = constructedobjects_01_24,
+                }
+            }
+            face N
+            {
+                layer
+                {
+                    row = constructedobjects_01_25,
+                }
+            }
+            face E
+            {
+                layer
+                {
+                    row = constructedobjects_01_28,
+                }
+            }
+            face S
+            {
+                layer
+                {
+                    row = constructedobjects_01_29,
+                }
+            }
+        }
+        component CraftRecipe
+        {
+            timedAction = BuildPoleFence,
+            time = 200,
+            category = Barricades,
+            Tags = AutoRotate,
+            SkillRequired = MetalWelding:3,
+            xpAward = MetalWelding:30,
+            Tooltip = Tooltip_craft_BigMetalFenceDesc,
+            inputs
+            {
+                item 1 [Base.BlowTorch] flags[DontRecordInput],
+                item 1 [Base.SheetMetal],
+                item 1 [Base.WeldingRods] flags[DontRecordInput],
+            }
+        }
+    }
+}

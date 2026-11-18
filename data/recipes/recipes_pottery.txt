@@ -1,0 +1,98 @@
+module Base
+{
+    craftRecipe MakeBrickMold
+    {
+        timedAction = SawLogs,
+        time = 150,
+        Tags = AnySurfaceCraft;Pottery,
+        xpAward = Woodwork:5,
+        category = Pottery,
+        inputs
+        {
+            item 1 tags[base:saw;base:smallsaw;base:crudesaw] mode:keep flags[MayDegradeLight;Prop1],
+            item 1 tags[base:hammer] mode:keep flags[MayDegradeVeryLight],
+            item 1 [Base.Plank] flags[Prop2],
+            item 1 [Base.Nails],
+        }
+        outputs
+        {
+            item 1 Base.WoodenBrickMold,
+        }
+    }
+
+    craftRecipe MakeShingleMold
+    {
+        timedAction = SawLogs,
+        time = 180,
+        Tags = AnySurfaceCraft;Pottery,
+        xpAward = Woodwork:5,
+        category = Pottery,
+        inputs
+        {
+            item 1 tags[base:saw;base:smallsaw;base:crudesaw] mode:keep flags[MayDegradeLight;Prop1],
+            item 1 tags[base:hammer] mode:keep flags[MayDegradeVeryLight],
+            item 1 [Base.Plank] flags[Prop2],
+            item 1 [Base.Nails],
+        }
+        outputs
+        {
+            item 1 Base.WoodenShingleMold,
+        }
+    }
+
+    craftRecipe MakeTileMold
+    {
+        timedAction = SawLogs,
+        time = 180,
+        Tags = AnySurfaceCraft;Pottery,
+        xpAward = Woodwork:5,
+        category = Pottery,
+        inputs
+        {
+            item 1 tags[base:saw;base:smallsaw;base:crudesaw] mode:keep flags[MayDegradeLight;Prop1],
+            item 1 tags[base:hammer] mode:keep flags[MayDegradeVeryLight],
+            item 1 [Base.Plank] flags[Prop2],
+            item 1 [Base.Nails],
+        }
+        outputs
+        {
+            item 1 Base.WoodenTileMold,
+        }
+    }
+
+    craftRecipe PressClayBrickManually
+    {
+        time = 120,
+        timedAction = Making,
+        Tags = AnySurfaceCraft;Pottery,
+        xpAward = Pottery:5,
+        category = Pottery,
+        inputs
+        {
+            item 1 [Base.Clay],
+            item 1 [Base.WoodenBrickMold] mode:keep,
+        }
+        outputs
+        {
+            item 1 Base.ClayBrickUnfired,
+        }
+    }
+
+    craftRecipe PressClayTileManually
+    {
+        time = 120,
+        timedAction = Making,
+        Tags = AnySurfaceCraft;Pottery,
+        xpAward = Pottery:5,
+        category = Pottery,
+        inputs
+        {
+            item 1 [Base.Clay],
+            item 1 [Base.WoodenTileMold] mode:keep,
+        }
+        outputs
+        {
+            item 1 Base.ClayTileUnfired,
+        }
+    }
+}

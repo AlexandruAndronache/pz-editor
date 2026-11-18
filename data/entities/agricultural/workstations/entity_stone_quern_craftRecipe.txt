@@ -1,0 +1,50 @@
+module Base
+{
+    craftRecipe GrindCornflour
+    {
+        time = 300,
+        timedAction = UseStoneQuern,
+        Tags = Stone_Quern,
+        category = Farming,
+        inputs
+        {
+            item 20 [Base.CornSeed] flags[ItemCount],
+        }
+        outputs
+        {
+            item 1 Base.Cornflour2,
+        }
+    }
+
+    craftRecipe GrindCornmeal
+    {
+        time = 300,
+        timedAction = UseStoneQuern,
+        Tags = Stone_Quern,
+        category = Farming,
+        inputs
+        {
+            item 20 [Base.CornSeed] flags[ItemCount],
+        }
+        outputs
+        {
+            item 1 Base.Cornmeal2,
+        }
+    }
+
+    craftRecipe GrindFlour
+    {
+        time = 300,
+        timedAction = UseStoneQuern,
+        Tags = Stone_Quern,
+        category = Farming,
+        inputs
+        {
+            item 12 [Base.WheatSeed;Base.RyeSeed;Base.BarleySeed] flags[ItemCount],
+        }
+        outputs
+        {
+            item 1 Base.Flour2,
+        }
+    }
+}

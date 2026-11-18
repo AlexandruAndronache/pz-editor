@@ -1,0 +1,30 @@
+module Base
+{
+    entity Plaster_Wall
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_Plaster_Wall,
+            uiEnabled = false,
+        }
+        component WallCoveringConfig
+        {
+            type = plaster,
+        }
+        component CraftRecipe
+        {
+            timedAction = Paint,
+            time = 200,
+            category = Wall Coverings,
+            SkillRequired = Woodwork:6,
+            xpAward = Woodwork:60,
+            Tooltip = Tooltip_craft_plasterWall,
+            inputs
+            {
+                item 1 tags[base:plastertrowel] mode:keep flags[Prop1;MayDegradeVeryLight],
+                item 1 [Base.BucketPlasterFull;Base.BucketCarvedPlasterFull],
+            }
+        }
+    }
+}

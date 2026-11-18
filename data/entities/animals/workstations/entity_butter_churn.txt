@@ -1,0 +1,41 @@
+module Base
+{
+    entity ChurnBucket
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_ChurnBucket,
+            uiEnabled = true,
+        }
+        component CraftBench
+        {
+            Recipes = ChurnBucket,
+        }
+        component SpriteConfig
+        {
+            isThumpable = false,
+            face S
+            {
+                layer
+                {
+                    row = crafted_05_72,
+                }
+            }
+        }
+        component CraftRecipe
+        {
+            timedAction = BuildWoodenStructureMedium,
+            time = 50,
+            category = Farming,
+            Tooltip = Tooltip_craft_churnBucketDesc,
+            xpAward = Woodwork:10,
+            inputs
+            {
+                item 1 tags[base:hammer] mode:keep flags[Prop1;MayDegradeVeryLight],
+                item 2 [Base.Plank],
+                item 2 [Base.Nails],
+            }
+        }
+    }
+}

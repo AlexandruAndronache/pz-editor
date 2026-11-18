@@ -1,0 +1,59 @@
+module Base
+{
+    craftRecipe RollACigarette
+    {
+        timedAction = Making,
+        time = 60,
+        Tags = InHandCraft,
+        category = Miscellaneous,
+        inputs
+        {
+            item 1 tags[base:tobacco],
+            item 1 tags[base:rollingpaper],
+        }
+        outputs
+        {
+            item 1 Base.CigaretteRolled,
+        }
+    }
+
+    craftRecipe FillPipe
+    {
+        timedAction = Making,
+        time = 60,
+        Tags = InHandCraft;CanBeDoneInDark,
+        category = Miscellaneous,
+        inputs
+        {
+            item 3 tags[base:tobacco],
+            item 1 [Base.SmokingPipe;Base.CanPipe] mode:destroy mappers[PipeMapper],
+        }
+        outputs
+        {
+            item 1 mapper:PipeMapper,
+        }
+        itemMapper PipeMapper
+        {
+            Base.CanPipe_Tobacco = Base.CanPipe,
+            Base.SmokingPipe_Tobacco = Base.SmokingPipe,
+            default = Base.SmokingPipe_Tobacco,
+        }
+    }
+
+    craftRecipe MakeCanPipe
+    {
+        timedAction = Making,
+        time = 60,
+        Tags = InHandCraft;CanBeDoneInDark,
+        category = Miscellaneous,
+        inputs
+        {
+            item 1 [Base.BeerCan;Base.BeerCanEmpty;Base.Pop;Base.Pop2;Base.Pop3;Base.PopEmpty;Base.Pop2Empty;Base.Pop3Empty] flags[IsEmpty;Prop2;ItemCount],
+            item 1 tags[base:sharpknife;base:sewingneedle;base:awl] flags[Prop1;MayDegradeLight] mode:keep,
+        }
+        outputs
+        {
+            item 1 Base.CanPipe,
+        }
+    }
+}

@@ -1,0 +1,56 @@
+module Base
+{
+    entity SandbagWall
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_SandbagWall,
+            uiEnabled = false,
+        }
+        component SpriteConfig
+        {
+            skillBaseHealth = 300,
+            bonusHealth = 400,
+            face W
+            {
+                layer
+                {
+                    row = carpentry_02_12,
+                }
+            }
+            face N
+            {
+                layer
+                {
+                    row = carpentry_02_13,
+                }
+            }
+            face E
+            {
+                layer
+                {
+                    row = carpentry_02_14,
+                }
+            }
+            face S
+            {
+                layer
+                {
+                    row = carpentry_02_15,
+                }
+            }
+        }
+        component CraftRecipe
+        {
+            timedAction = BuildSandbagWall,
+            time = 80,
+            category = Outdoors,
+            Tooltip = Tooltip_craft_sandBagDesc,
+            inputs
+            {
+                item 3 [Base.Sandbag] flags[ItemCount;IsFull] mode:destroy,
+            }
+        }
+    }
+}

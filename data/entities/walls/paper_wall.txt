@@ -1,0 +1,30 @@
+module Base
+{
+    entity Paper_Wall
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_Paper_Wall,
+            uiEnabled = false,
+        }
+        component WallCoveringConfig
+        {
+            type = wallpaper,
+        }
+        component CraftRecipe
+        {
+            timedAction = Paint,
+            time = 200,
+            category = Wall Coverings,
+            Tooltip = Tooltip_craft_wallpaperWall,
+            inputs
+            {
+                item 1 tags[base:paintbrush] mode:keep flags[Prop1;MayDegradeVeryLight],
+                item 1 tags[base:scissors] mode:keep flags[MayDegradeVeryLight],
+                item 1 tags[base:wallpaperpaste],
+                item 1 tags[base:wallpaper],
+            }
+        }
+    }
+}

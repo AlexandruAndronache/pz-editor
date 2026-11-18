@@ -1,0 +1,61 @@
+module Base
+{
+    entity Grindstone
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_Grindstone,
+            uiEnabled = true,
+        }
+        component CraftBench
+        {
+            Recipes = Grindstone,
+        }
+        component SpriteConfig
+        {
+            face S
+            {
+                layer
+                {
+                    row = crafted_01_120,
+                }
+            }
+            face E
+            {
+                layer
+                {
+                    row = crafted_01_121,
+                }
+            }
+            face N
+            {
+                layer
+                {
+                    row = crafted_01_122,
+                }
+            }
+            face W
+            {
+                layer
+                {
+                    row = crafted_01_123,
+                }
+            }
+        }
+        component CraftRecipe
+        {
+            timedAction = BuildLowHammer,
+            time = 50,
+            category = Blacksmithing,
+            Tooltip = Tooltip_craft_grindstoneDesc,
+            inputs
+            {
+                item 1 tags[base:hammer] mode:keep flags[Prop1;MayDegradeVeryLight],
+                item 4 [Base.Plank],
+                item 4 [Base.Nails],
+                item 1 [Base.StoneWheel],
+            }
+        }
+    }
+}

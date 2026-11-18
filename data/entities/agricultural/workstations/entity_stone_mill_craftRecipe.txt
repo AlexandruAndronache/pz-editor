@@ -1,0 +1,82 @@
+module Base
+{
+    craftRecipe MillCornflour
+    {
+        time = 100,
+        timedAction = UseStoneQuern,
+        Tags = Stone_Mill,
+        category = Farming,
+        inputs
+        {
+            item 20 [Base.CornSeed] flags[ItemCount],
+        }
+        outputs
+        {
+            item 1 Base.Cornflour2,
+        }
+    }
+
+    craftRecipe MillCornmeal
+    {
+        time = 100,
+        timedAction = UseStoneQuern,
+        Tags = Stone_Mill,
+        category = Farming,
+        inputs
+        {
+            item 20 [Base.CornSeed] flags[ItemCount],
+        }
+        outputs
+        {
+            item 1 Base.Cornmeal2,
+        }
+    }
+
+    craftRecipe MillFlour
+    {
+        time = 100,
+        timedAction = UseStoneQuern,
+        Tags = Stone_Mill,
+        category = Farming,
+        inputs
+        {
+            item 12 [Base.WheatSeed;Base.RyeSeed;Base.BarleySeed] flags[ItemCount],
+        }
+        outputs
+        {
+            item 1 Base.Flour2,
+        }
+    }
+
+    craftRecipe MillSeeds
+    {
+        time = 100,
+        timedAction = UseStoneQuern,
+        Tags = Stone_Mill,
+        category = Farming,
+        inputs
+        {
+            item 30 [Base.FlaxSeed;Base.HempSeed] flags[ItemCount],
+        }
+        outputs
+        {
+            item 1 Base.SeedPaste,
+        }
+    }
+
+    craftRecipe MillSunflowerSeeds
+    {
+        timedAction = UseStoneQuern,
+        time = 100,
+        Tags = Stone_Mill,
+        category = Farming,
+        inputs
+        {
+            item 6 [Base.SunflowerSeeds] mode:destroy flags[ItemCount],
+        }
+        outputs
+        {
+            item 1 Base.SeedPaste,
+        }
+    }
+}

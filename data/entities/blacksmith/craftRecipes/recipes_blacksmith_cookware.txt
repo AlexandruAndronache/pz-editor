@@ -1,0 +1,244 @@
+module Base
+{
+    craftRecipe Forge_Spoons
+    {
+        time = 200,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:15,
+        AutoLearnAll = Blacksmith:2,
+        Tags = PrimitiveForge,
+        MetaRecipe = base:kitchentools,
+        category = Cookware,
+        inputs
+        {
+            item 1 tags[base:charcoal],
+            item 1 tags[base:barstockquarter],
+            item 1 tags[base:smithinghammer] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 tags[base:metalworkingpliers;base:tongs] mode:keep flags[Prop2;MayDegradeLight],
+        }
+        outputs
+        {
+            item 2 Base.SpoonForged,
+        }
+    }
+
+    craftRecipe Forge_Forks
+    {
+        time = 200,
+        SkillRequired = Blacksmith:1,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:25,
+        AutoLearnAll = Blacksmith:3,
+        Tags = PrimitiveForge,
+        MetaRecipe = base:kitchentools,
+        category = Cookware,
+        inputs
+        {
+            item 1 tags[base:charcoal],
+            item 1 tags[base:barstockquarter],
+            item 1 tags[base:smithinghammer] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 tags[base:metalworkingpliers;base:tongs] mode:keep flags[Prop2;MayDegradeLight],
+            item 1 tags[base:crudechisel;base:metalworkingchisel] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 2 Base.ForkForged,
+        }
+    }
+
+    craftRecipe Forge_Frying_Pan
+    {
+        time = 500,
+        SkillRequired = Blacksmith:2,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:20,
+        AutoLearnAll = Blacksmith:4;Cooking:1,
+        Tags = PrimitiveForge,
+        category = Cookware,
+        inputs
+        {
+            item 4 tags[base:charcoal],
+            item 1 [Base.SheetMetal],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 tags[base:metalworkingpliers;base:tongs] mode:keep flags[Prop2;MayDegradeLight],
+            item 1 tags[base:crudechisel;base:metalworkingchisel] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.PanForged,
+        }
+    }
+
+    craftRecipe Forge_Roasting_Pan
+    {
+        time = 500,
+        SkillRequired = Blacksmith:2,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:25,
+        AutoLearnAll = Blacksmith:4;Cooking:1,
+        Tags = PrimitiveForge,
+        category = Cookware,
+        inputs
+        {
+            item 4 tags[base:charcoal],
+            item 1 [Base.SheetMetal],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 tags[base:metalworkingpliers;base:tongs] mode:keep flags[Prop2;MayDegradeLight],
+            item 1 tags[base:metalworkingchisel] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.RoastingPan,
+        }
+    }
+
+    craftRecipe Forge_Fine_Spoons
+    {
+        time = 300,
+        SkillRequired = Blacksmith:2,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:35,
+        AutoLearnAll = Blacksmith:4,
+        Tags = Forge,
+        category = Cookware,
+        MetaRecipe = base:kitchentools,
+        inputs
+        {
+            item 2 tags[base:charcoal],
+            item 1 [Base.SteelBarQuarter],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 tags[base:metalworkingpliers;base:tongs] mode:keep flags[Prop2;MayDegradeLight],
+        }
+        outputs
+        {
+            item 2 Base.Spoon,
+        }
+    }
+
+    craftRecipe Forge_Fine_Butter_Knives
+    {
+        time = 300,
+        SkillRequired = Blacksmith:2,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:35,
+        AutoLearnAll = Blacksmith:4,
+        Tags = Forge,
+        category = Cookware,
+        MetaRecipe = base:kitchentools,
+        inputs
+        {
+            item 2 tags[base:charcoal],
+            item 1 [Base.SteelBarQuarter],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 tags[base:metalworkingpliers;base:tongs] mode:keep flags[Prop2;MayDegradeLight],
+        }
+        outputs
+        {
+            item 2 Base.ButterKnife,
+        }
+    }
+
+    craftRecipe Forge_Fine_Forks
+    {
+        time = 300,
+        SkillRequired = Blacksmith:3,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        AutoLearnAll = Blacksmith:5,
+        xpAward = Blacksmith:40,
+        Tags = Forge,
+        category = Cookware,
+        MetaRecipe = base:kitchentools,
+        inputs
+        {
+            item 2 tags[base:charcoal],
+            item 1 [Base.SteelBarQuarter],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 tags[base:metalworkingpliers] mode:keep flags[Prop2],
+            item 1 tags[base:metalworkingchisel] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 2 Base.Fork,
+        }
+    }
+
+    craftRecipe Forge_Baking_Pan
+    {
+        time = 500,
+        SkillRequired = Blacksmith:2,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:25,
+        AutoLearnAll = Blacksmith:4;Cooking:1,
+        Tags = Forge,
+        category = Cookware,
+        inputs
+        {
+            item 4 tags[base:charcoal],
+            item 1 [Base.SheetMetal],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 tags[base:metalworkingpliers;base:tongs] mode:keep flags[Prop2;MayDegradeLight;MayDegradeLight],
+            item 1 tags[base:metalworkingchisel] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.BakingPan,
+        }
+    }
+
+    craftRecipe Forge_Baking_Tray
+    {
+        time = 500,
+        SkillRequired = Blacksmith:2,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:25,
+        AutoLearnAll = Blacksmith:4;Cooking:1,
+        Tags = Forge,
+        category = Cookware,
+        inputs
+        {
+            item 4 tags[base:charcoal],
+            item 1 [Base.SheetMetal],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 tags[base:metalworkingpliers;base:tongs] mode:keep flags[Prop2;MayDegradeLight],
+            item 1 tags[base:metalworkingchisel] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.BakingTray,
+        }
+    }
+
+    craftRecipe Forge_Cooking_Pot
+    {
+        time = 300,
+        SkillRequired = Blacksmith:3,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:25,
+        AutoLearnAll = Blacksmith:5;Cooking:2,
+        Tags = Forge,
+        category = Cookware,
+        inputs
+        {
+            item 2 tags[base:charcoal],
+            item 2 [Base.SmallSheetMetal],
+            item 1 tags[base:ballpeenhammer] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 tags[base:metalworkingpliers;base:tongs] mode:keep flags[Prop2;MayDegradeLight],
+            item 1 tags[base:metalworkingchisel] mode:keep flags[MayDegradeLight],
+            item 1 [Base.Wire],
+        }
+        outputs
+        {
+            item 1 Base.PotForged,
+        }
+    }
+}

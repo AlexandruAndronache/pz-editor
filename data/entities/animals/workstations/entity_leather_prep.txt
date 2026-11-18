@@ -1,0 +1,1135 @@
+module Base
+{
+    entity SofteningBeam
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_SofteningBeam,
+            uiEnabled = true,
+        }
+        component CraftBench
+        {
+            Recipes = RemoveFlesh;RemoveFur,
+        }
+        component SpriteConfig
+        {
+            isThumpable = false,
+            face S
+            {
+                layer
+                {
+                    row = crafted_05_76,
+                }
+            }
+            face E
+            {
+                layer
+                {
+                    row = crafted_05_77,
+                }
+            }
+        }
+        component CraftRecipe
+        {
+            timedAction = BuildWoodenStructureMedium,
+            time = 50,
+            category = Farming,
+            Tooltip = Tooltip_craft_softeningBeamDesc,
+            xpAward = Woodwork:6,
+            inputs
+            {
+                item 1 tags[base:hammer] mode:keep flags[Prop1;MayDegradeVeryLight],
+                item 2 [Base.Plank],
+                item 2 [Base.Nails],
+            }
+        }
+    }
+
+    entity TanninBarrel
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_TanninBarrel,
+            uiEnabled = true,
+        }
+        component CraftBench
+        {
+            Recipes = TanLeather,
+        }
+        component SpriteConfig
+        {
+            isThumpable = false,
+            face SINGLE
+            {
+                layer
+                {
+                    row = crafted_05_73,
+                }
+            }
+        }
+        component SpriteOverlayConfig
+        {
+            style Leather
+            {
+                progress 0
+                {
+                    face SINGLE
+                    {
+                        layer
+                        {
+                            row = crafted_05_54,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face SINGLE
+                    {
+                        layer
+                        {
+                            row = crafted_05_55,
+                        }
+                    }
+                }
+            }
+        }
+        component CraftRecipe
+        {
+            timedAction = BuildLowNoTool,
+            time = 50,
+            category = Farming,
+            Tooltip = Tooltip_craft_tanningBarrelDesc,
+            xpAward = Woodwork:10,
+            inputs
+            {
+                item 1 tags[base:hammer] mode:keep flags[Prop1;MayDegradeVeryLight],
+                item 2 [Base.Plank],
+                item 2 [Base.Nails],
+            }
+        }
+    }
+
+    entity DryingRackLarge
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_DryingRackLarge,
+            uiEnabled = true,
+        }
+        component Resources
+        {
+            group craft_inputs
+            {
+                Item@Input@1,
+            }
+            group craft_outputs
+            {
+                Item@Output@1,
+            }
+        }
+        component DryingCraftLogic
+        {
+            Recipes = DryLeatherLarge,
+            StartMode = Manual,
+            inputGroup = craft_inputs,
+            outputGroup = craft_outputs,
+            actionAnim = Untie_High,
+        }
+        component SpriteConfig
+        {
+            health = 100,
+            skillBaseHealth = 20,
+            face S
+            {
+                layer
+                {
+                    row = crafted_05_81 crafted_05_83,
+                    row = crafted_05_80 crafted_05_82,
+                }
+            }
+            face E
+            {
+                layer
+                {
+                    row = crafted_05_86 crafted_05_87,
+                    row = crafted_05_84 crafted_05_85,
+                }
+            }
+        }
+        component SpriteOverlayConfig
+        {
+            style DeerLeather
+            {
+                progress 0
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_05_88 crafted_05_89,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_05_91,
+                            row = false crafted_05_90,
+                        }
+                    }
+                }
+                progress 50
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_skins_drying_01_0 crafted_skins_drying_01_1,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_skins_drying_01_3,
+                            row = false crafted_skins_drying_01_2,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_skins_drying_01_48 crafted_skins_drying_01_49,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_skins_drying_01_51,
+                            row = false crafted_skins_drying_01_50,
+                        }
+                    }
+                }
+            }
+            style SimmentalLeather
+            {
+                progress 0
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_05_92 crafted_05_93,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_05_95,
+                            row = false crafted_05_94,
+                        }
+                    }
+                }
+                progress 50
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_skins_drying_01_4 crafted_skins_drying_01_5,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_skins_drying_01_7,
+                            row = false crafted_skins_drying_01_6,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_skins_drying_01_52 crafted_skins_drying_01_53,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_skins_drying_01_55,
+                            row = false crafted_skins_drying_01_54,
+                        }
+                    }
+                }
+            }
+            style LargeLeather
+            {
+                progress 0
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_05_104 crafted_05_105,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_05_107,
+                            row = false crafted_05_106,
+                        }
+                    }
+                }
+                progress 50
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_skins_drying_01_16 crafted_skins_drying_01_17,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_skins_drying_01_19,
+                            row = false crafted_skins_drying_01_18,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_skins_drying_01_64 crafted_skins_drying_01_65,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_skins_drying_01_67,
+                            row = false crafted_skins_drying_01_66,
+                        }
+                    }
+                }
+            }
+            style HolsteinLeather
+            {
+                progress 0
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_05_96 crafted_05_97,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_05_99,
+                            row = false crafted_05_98,
+                        }
+                    }
+                }
+                progress 50
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_skins_drying_01_8 crafted_skins_drying_01_9,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_skins_drying_01_11,
+                            row = false crafted_skins_drying_01_10,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_skins_drying_01_56 crafted_skins_drying_01_57,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_skins_drying_01_59,
+                            row = false crafted_skins_drying_01_58,
+                        }
+                    }
+                }
+            }
+            style AngusLeather
+            {
+                progress 0
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_05_100 crafted_05_101,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_05_103,
+                            row = false crafted_05_102,
+                        }
+                    }
+                }
+                progress 50
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_skins_drying_01_12 crafted_skins_drying_01_13,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_skins_drying_01_15,
+                            row = false crafted_skins_drying_01_14,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_skins_drying_01_60 crafted_skins_drying_01_61,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_skins_drying_01_63,
+                            row = false crafted_skins_drying_01_62,
+                        }
+                    }
+                }
+            }
+        }
+        component CraftRecipe
+        {
+            timedAction = BuildByTyingHigh,
+            time = 50,
+            category = Farming,
+            Tooltip = Tooltip_craft_dryLeatherRackLargeDesc,
+            inputs
+            {
+                item 6 [Base.LongStick],
+                item 8 [Base.Twine],
+                item 1 tags[base:hammer] mode:keep flags[MayDegradeVeryLight],
+                item 1 tags[base:saw;base:smallsaw;base:crudesaw] mode:keep flags[MayDegradeLight],
+                item 2 [Base.Nails],
+            }
+        }
+        component CraftBenchSounds
+        {
+            AddInput = DryingRackLeatherInsert,
+            RemoveInput = DryingRackLeatherRemove,
+            StartCraft = DryingRackLeatherCraft,
+        }
+    }
+
+    entity DryingRackMedium
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_DryingRackMedium,
+            uiEnabled = true,
+        }
+        component Resources
+        {
+            group craft_inputs
+            {
+                Item@Input@1,
+            }
+            group craft_outputs
+            {
+                Item@Output@1,
+            }
+        }
+        component DryingCraftLogic
+        {
+            Recipes = DryLeatherMedium,
+            StartMode = Manual,
+            inputGroup = craft_inputs,
+            outputGroup = craft_outputs,
+            actionAnim = Untie_Mid,
+        }
+        component SpriteConfig
+        {
+            health = 100,
+            skillBaseHealth = 20,
+            face S
+            {
+                layer
+                {
+                    row = crafted_05_108 crafted_05_109,
+                }
+            }
+            face E
+            {
+                layer
+                {
+                    row = crafted_05_111,
+                    row = crafted_05_110,
+                }
+            }
+        }
+        component SpriteOverlayConfig
+        {
+            style DeerLeather
+            {
+                progress 0
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_05_88 crafted_05_89,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_05_91,
+                            row = crafted_05_90,
+                        }
+                    }
+                }
+                progress 50
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_0 crafted_skins_drying_01_1,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_3,
+                            row = crafted_skins_drying_01_2,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_48 crafted_skins_drying_01_49,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_51,
+                            row = crafted_skins_drying_01_50,
+                        }
+                    }
+                }
+            }
+            style PigBlackLeather
+            {
+                progress 0
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_05_144 crafted_05_145,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_05_147,
+                            row = crafted_05_146,
+                        }
+                    }
+                }
+                progress 50
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_20 crafted_skins_drying_01_21,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_23,
+                            row = crafted_skins_drying_01_22,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_68 crafted_skins_drying_01_69,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_71,
+                            row = crafted_skins_drying_01_70,
+                        }
+                    }
+                }
+            }
+            style PigLeather
+            {
+                progress 0
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_05_116 crafted_05_117,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_05_119,
+                            row = crafted_05_118,
+                        }
+                    }
+                }
+                progress 50
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_28 crafted_skins_drying_01_29,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_31,
+                            row = crafted_skins_drying_01_30,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_76 crafted_skins_drying_01_77,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_79,
+                            row = crafted_skins_drying_01_78,
+                        }
+                    }
+                }
+            }
+            style MediumLeather
+            {
+                progress 0
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_05_124 crafted_05_125,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_05_127,
+                            row = crafted_05_126,
+                        }
+                    }
+                }
+                progress 50
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_36 crafted_skins_drying_01_37,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_39,
+                            row = crafted_skins_drying_01_38,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_84 crafted_skins_drying_01_85,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_87,
+                            row = crafted_skins_drying_01_86,
+                        }
+                    }
+                }
+            }
+            style SheepLeather
+            {
+                progress 0
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_05_112 crafted_05_113,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_05_115,
+                            row = crafted_05_114,
+                        }
+                    }
+                }
+                progress 50
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_24 crafted_skins_drying_01_25,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_27,
+                            row = crafted_skins_drying_01_26,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_72 crafted_skins_drying_01_73,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_75,
+                            row = crafted_skins_drying_01_74,
+                        }
+                    }
+                }
+            }
+        }
+        component CraftRecipe
+        {
+            timedAction = BuildByTyingMedium,
+            time = 50,
+            category = Farming,
+            Tooltip = Tooltip_craft_dryLeatherRackMediumDesc,
+            inputs
+            {
+                item 6 [Base.LongStick],
+                item 8 [Base.Twine],
+                item 1 tags[base:hammer] mode:keep flags[MayDegradeVeryLight],
+                item 1 tags[base:saw;base:smallsaw;base:crudesaw] mode:keep flags[MayDegradeLight],
+                item 2 [Base.Nails],
+            }
+        }
+        component CraftBenchSounds
+        {
+            AddInput = DryingRackLeatherInsert,
+            RemoveInput = DryingRackLeatherRemove,
+            StartCraft = DryingRackLeatherCraft,
+        }
+    }
+
+    entity DryingRackSmall
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_DryingRackSmall,
+            uiEnabled = true,
+        }
+        component Resources
+        {
+            group craft_inputs
+            {
+                Item@Input@1,
+            }
+            group craft_outputs
+            {
+                Item@Output@1,
+            }
+        }
+        component DryingCraftLogic
+        {
+            Recipes = DryLeatherSmall,
+            StartMode = Manual,
+            inputGroup = craft_inputs,
+            outputGroup = craft_outputs,
+            actionAnim = Untie_Low,
+        }
+        component SpriteConfig
+        {
+            health = 100,
+            skillBaseHealth = 20,
+            face S
+            {
+                layer
+                {
+                    row = crafted_05_74,
+                }
+            }
+            face E
+            {
+                layer
+                {
+                    row = crafted_05_75,
+                }
+            }
+        }
+        component SpriteOverlayConfig
+        {
+            style PigLeather
+            {
+                progress 0
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_05_128,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_05_129,
+                        }
+                    }
+                }
+                progress 50
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_40,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_41,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_88,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_89,
+                        }
+                    }
+                }
+            }
+            style DeerLeather
+            {
+                progress 0
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_05_130,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_05_131,
+                        }
+                    }
+                }
+                progress 50
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_42,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_43,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_90,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_91,
+                        }
+                    }
+                }
+            }
+            style SmallLeather
+            {
+                progress 0
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_05_132,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_05_133,
+                        }
+                    }
+                }
+                progress 50
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_44,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_45,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_92,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_93,
+                        }
+                    }
+                }
+            }
+            style LambLeather
+            {
+                progress 0
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_05_134,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_05_135,
+                        }
+                    }
+                }
+                progress 50
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_46,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_47,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_94,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_01_95,
+                        }
+                    }
+                }
+            }
+        }
+        component CraftRecipe
+        {
+            timedAction = BuildByTyingLow,
+            time = 50,
+            SkillRequired = Woodwork:1,
+            xpAward = Woodwork:10,
+            category = Farming,
+            Tooltip = Tooltip_craft_dryLeatherRackSmallDesc,
+            inputs
+            {
+                item 4 [Base.LongStick],
+                item 4 [Base.Twine],
+                item 1 tags[base:hammer] mode:keep flags[MayDegradeVeryLight],
+                item 1 tags[base:saw;base:smallsaw;base:crudesaw] mode:keep flags[MayDegradeLight],
+                item 1 [Base.Nails],
+            }
+        }
+        component CraftBenchSounds
+        {
+            AddInput = DryingRackLeatherInsert,
+            RemoveInput = DryingRackLeatherRemove,
+            StartCraft = DryingRackLeatherCraft,
+        }
+    }
+}

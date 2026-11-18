@@ -1,0 +1,205 @@
+module Base
+{
+    craftRecipe OpenWaterRationCan
+    {
+        time = 80,
+        timedAction = OpenTinCan,
+        OnCreate = RecipeCodeOnCreate.openWaterCan,
+        Tags = InHandCraft;Cooking;CanBeDoneInDark,
+        category = Cooking,
+        inputs
+        {
+            item 1 tags[base:canopener] mode:keep flags[MayDegradeLight],
+            item 1 [Base.WaterRationCan] flags[Prop2;DontPutBack],
+        }
+        outputs
+        {
+        }
+    }
+
+    craftRecipe OpenUnlabeledCan
+    {
+        time = 80,
+        timedAction = OpenTinCan,
+        OnCreate = RecipeCodeOnCreate.openMysteryCan,
+        Tags = InHandCraft;Cooking;CanBeDoneInDark,
+        category = Cooking,
+        inputs
+        {
+            item 1 tags[base:canopener] mode:keep flags[MayDegradeLight],
+            item 1 [Base.MysteryCan] flags[Prop2;DontPutBack],
+        }
+        outputs
+        {
+        }
+    }
+
+    craftRecipe OpenDentedUnlabeledCan
+    {
+        time = 80,
+        timedAction = OpenTinCan,
+        OnCreate = RecipeCodeOnCreate.openDentedCan,
+        Tags = InHandCraft;Cooking;CanBeDoneInDark,
+        category = Cooking,
+        inputs
+        {
+            item 1 tags[base:canopener] mode:keep flags[MayDegradeLight],
+            item 1 [Base.DentedCan] flags[Prop2;DontPutBack],
+        }
+        outputs
+        {
+        }
+    }
+
+    craftRecipe OpenWaterRationCanWithKnifeOrSharpStoneFlake
+    {
+        time = 80,
+        timedAction = OpenTinCanWithKnife,
+        OnCreate = RecipeCodeOnCreate.openWaterCanKnife,
+        Tooltip = Tooltip_Recipe_OpenCanWithKnife,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        inputs
+        {
+            item 1 tags[base:sharpknife] mode:keep flags[MayDegrade;IsNotDull],
+            item 1 [Base.WaterRationCan] flags[Prop2;DontPutBack],
+        }
+        outputs
+        {
+        }
+    }
+
+    craftRecipe OpenUnlabeledCanWithKnifeOrSharpStoneFlake
+    {
+        time = 80,
+        timedAction = OpenTinCanWithKnife,
+        OnCreate = RecipeCodeOnCreate.openMysteryCan,
+        Tooltip = Tooltip_Recipe_OpenCanWithKnife,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        inputs
+        {
+            item 1 tags[base:sharpknife] mode:keep flags[MayDegrade;IsNotDull],
+            item 1 [Base.MysteryCan] flags[Prop2;DontPutBack],
+        }
+        outputs
+        {
+        }
+    }
+
+    craftRecipe OpenDentedUnlabeledCanWithKnifeOrSharpStoneFlake
+    {
+        time = 80,
+        timedAction = OpenTinCanWithKnife,
+        OnCreate = RecipeCodeOnCreate.openDentedCanKnife,
+        Tooltip = Tooltip_Recipe_OpenCanWithKnife,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        inputs
+        {
+            item 1 tags[base:sharpknife] mode:keep flags[MayDegrade;IsNotDull],
+            item 1 [Base.DentedCan] flags[Prop2;DontPutBack],
+        }
+        outputs
+        {
+        }
+    }
+
+    craftRecipe OpenCannedFoodWithKnifeOrSharpStoneFlake
+    {
+        time = 80,
+        timedAction = OpenTinCanWithKnife,
+        OnCreate = RecipeCodeOnCreate.openCan,
+        Tooltip = Tooltip_Recipe_OpenCanWithKnife,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        inputs
+        {
+            item 1 tags[base:sharpknife] mode:keep flags[MayDegrade;IsNotDull],
+            item 1 [Base.TinnedBeans;Base.CannedBolognese;Base.CannedCarrots2;Base.CannedChili;Base.CannedCorn;Base.CannedMilk;Base.CannedFruitBeverage;Base.CannedFruitCocktail;Base.CannedMushroomSoup;Base.CannedPeaches;Base.CannedPeas;Base.CannedPineapple;Base.CannedPotato2;Base.TinnedSoup;Base.CannedTomato2;Base.Dogfood] mappers[foodType] flags[Prop2;DontPutBack],
+        }
+        outputs
+        {
+            item 1 mapper:foodType,
+        }
+        itemMapper foodType
+        {
+            Base.OpenBeans = Base.TinnedBeans,
+            Base.CannedBologneseOpen = Base.CannedBolognese,
+            Base.CannedCarrotsOpen = Base.CannedCarrots2,
+            Base.CannedChiliOpen = Base.CannedChili,
+            Base.CannedCornOpen = Base.CannedCorn,
+            Base.CannedMilkOpen = Base.CannedMilk,
+            Base.CannedFruitBeverageOpen = Base.CannedFruitBeverage,
+            Base.CannedFruitCocktailOpen = Base.CannedFruitCocktail,
+            Base.CannedMushroomSoupOpen = Base.CannedMushroomSoup,
+            Base.CannedPeachesOpen = Base.CannedPeaches,
+            Base.CannedPeasOpen = Base.CannedPeas,
+            Base.CannedPineappleOpen = Base.CannedPineapple,
+            Base.CannedPotatoOpen = Base.CannedPotato2,
+            Base.TinnedSoupOpen = Base.TinnedSoup,
+            Base.CannedTomatoOpen = Base.CannedTomato2,
+            Base.DogfoodOpen = Base.Dogfood,
+        }
+    }
+
+    craftRecipe OpenCannedFood
+    {
+        timedAction = OpenTinCan,
+        time = 100,
+        OnCreate = RecipeCodeOnCreate.openAndEat,
+        Tags = InHandCraft;CanBeDoneInDark,
+        category = Cooking,
+        inputs
+        {
+            item 1 tags[base:canopener] mode:keep flags[MayDegradeLight],
+            item 1 [Base.TinnedBeans;Base.CannedBolognese;Base.CannedCarrots2;Base.CannedChili;Base.CannedCorn;Base.CannedFruitCocktail;Base.CannedFruitBeverage;Base.CannedMilk;Base.CannedMushroomSoup;Base.CannedPeaches;Base.CannedPeas;Base.CannedPineapple;Base.CannedPotato2;Base.TinnedSoup;Base.CannedTomato2;Base.TunaTin;Base.Dogfood] mappers[canSorts] flags[Prop2;DontPutBack],
+        }
+        outputs
+        {
+            item 1 mapper:canSorts,
+        }
+        itemMapper canSorts
+        {
+            Base.OpenBeans = Base.TinnedBeans,
+            Base.CannedBologneseOpen = Base.CannedBolognese,
+            Base.CannedCarrotsOpen = Base.CannedCarrots2,
+            Base.CannedChiliOpen = Base.CannedChili,
+            Base.CannedCornOpen = Base.CannedCorn,
+            Base.CannedFruitCocktailOpen = Base.CannedFruitCocktail,
+            Base.CannedFruitBeverageOpen = Base.CannedFruitBeverage,
+            Base.CannedMilkOpen = Base.CannedMilk,
+            Base.CannedMushroomSoupOpen = Base.CannedMushroomSoup,
+            Base.CannedPeachesOpen = Base.CannedPeaches,
+            Base.CannedPeasOpen = Base.CannedPeas,
+            Base.CannedPineappleOpen = Base.CannedPineapple,
+            Base.CannedPotatoOpen = Base.CannedPotato2,
+            Base.TinnedSoupOpen = Base.TinnedSoup,
+            Base.CannedTomatoOpen = Base.CannedTomato2,
+            Base.TunaTinOpen = Base.TunaTin,
+            Base.DogfoodOpen = Base.Dogfood,
+        }
+    }
+
+    craftRecipe OpenCannedFood2
+    {
+        timedAction = OpenTinCan,
+        time = 10,
+        OnCreate = RecipeCodeOnCreate.openAndEat,
+        Tags = InHandCraft;CanBeDoneInDark,
+        category = Cooking,
+        inputs
+        {
+            item 1 [Base.CannedCornedBeef;Base.CannedSardines] mappers[canSorts] flags[Prop2;DontPutBack],
+        }
+        outputs
+        {
+            item 1 mapper:canSorts,
+        }
+        itemMapper canSorts
+        {
+            Base.CannedCornedBeefOpen = Base.CannedCornedBeef,
+            Base.CannedSardinesOpen = Base.CannedSardines,
+        }
+    }
+}

@@ -1,0 +1,1063 @@
+module Base
+{
+    entity Herb_Drying_Rack
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_DryingRackHerb,
+            uiEnabled = true,
+        }
+        component Resources
+        {
+            group craft_inputs
+            {
+                Item@Input@20,
+            }
+            group craft_outputs
+            {
+                Item@Output@20@StackAny,
+            }
+        }
+        component DryingCraftLogic
+        {
+            Recipes = DryingRackHerb,
+            StartMode = Manual,
+            inputGroup = craft_inputs,
+            outputGroup = craft_outputs,
+            actionAnim = Untie_Low,
+        }
+        component SpriteConfig
+        {
+            health = 100,
+            skillBaseHealth = 20,
+            face S
+            {
+                layer
+                {
+                    row = vegetation_drying_01_1,
+                    row = vegetation_drying_01_0,
+                }
+            }
+            face E
+            {
+                layer
+                {
+                    row = vegetation_drying_01_8 vegetation_drying_01_9,
+                }
+            }
+        }
+        component SpriteOverlayConfig
+        {
+            style default
+            {
+                progress 0
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_97,
+                            row = vegetation_drying_02_96,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_104 vegetation_drying_02_105,
+                        }
+                    }
+                }
+                progress 50
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_99,
+                            row = vegetation_drying_02_98,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_106 vegetation_drying_02_107,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_101,
+                            row = vegetation_drying_02_100,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_108 vegetation_drying_02_109,
+                        }
+                    }
+                }
+            }
+            style BlackSage
+            {
+                progress 0
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_1,
+                            row = vegetation_drying_02_0,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_8 vegetation_drying_02_9,
+                        }
+                    }
+                }
+                progress 50
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_3,
+                            row = vegetation_drying_02_2,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_10 vegetation_drying_02_11,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_5,
+                            row = vegetation_drying_02_4,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_12 vegetation_drying_02_13,
+                        }
+                    }
+                }
+            }
+            style Habanero
+            {
+                progress 0
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_33,
+                            row = vegetation_drying_02_32,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_40 vegetation_drying_02_41,
+                        }
+                    }
+                }
+                progress 50
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_35,
+                            row = vegetation_drying_02_34,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_42 vegetation_drying_02_43,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_37,
+                            row = vegetation_drying_02_36,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_42 vegetation_drying_02_43,
+                        }
+                    }
+                }
+            }
+            style Herb
+            {
+                progress 0
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_01_3,
+                            row = vegetation_drying_01_2,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_01_10 vegetation_drying_01_11,
+                        }
+                    }
+                }
+                progress 50
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_01_5,
+                            row = vegetation_drying_01_4,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_01_12 vegetation_drying_01_13,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_01_7,
+                            row = vegetation_drying_01_6,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_01_14 vegetation_drying_01_15,
+                        }
+                    }
+                }
+            }
+            style Jalapeno
+            {
+                progress 0
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_49,
+                            row = vegetation_drying_02_48,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_56 vegetation_drying_02_57,
+                        }
+                    }
+                }
+                progress 50
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_51,
+                            row = vegetation_drying_02_50,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_58 vegetation_drying_02_59,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_53,
+                            row = vegetation_drying_02_52,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_60 vegetation_drying_02_61,
+                        }
+                    }
+                }
+            }
+            style Lavender
+            {
+                progress 0
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_17,
+                            row = vegetation_drying_02_16,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_24 vegetation_drying_02_25,
+                        }
+                    }
+                }
+                progress 50
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_19,
+                            row = vegetation_drying_02_18,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_26 vegetation_drying_02_27,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_21,
+                            row = vegetation_drying_02_20,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_28 vegetation_drying_02_29,
+                        }
+                    }
+                }
+            }
+            style Marigold
+            {
+                progress 0
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_65,
+                            row = vegetation_drying_02_64,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_72 vegetation_drying_02_73,
+                        }
+                    }
+                }
+                progress 50
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_67,
+                            row = vegetation_drying_02_66,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_74 vegetation_drying_02_75,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_69,
+                            row = vegetation_drying_02_68,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_75 vegetation_drying_02_76,
+                        }
+                    }
+                }
+            }
+            style Rose
+            {
+                progress 0
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_81,
+                            row = vegetation_drying_02_80,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_88 vegetation_drying_02_89,
+                        }
+                    }
+                }
+                progress 50
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_83,
+                            row = vegetation_drying_02_82,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_90 vegetation_drying_02_91,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_85,
+                            row = vegetation_drying_02_84,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_92 vegetation_drying_02_93,
+                        }
+                    }
+                }
+            }
+        }
+        component CraftRecipe
+        {
+            timedAction = BuildByTyingHigh,
+            time = 50,
+            SkillRequired = Woodwork:1,
+            xpAward = Woodwork:10,
+            category = Farming,
+            Tags = Farming,
+            Tooltip = Tooltip_craft_dryHerbsRackDesc,
+            inputs
+            {
+                item 4 [Base.LongStick],
+                item 4 [Base.Twine],
+                item 1 tags[base:hammer] mode:keep flags[MayDegradeVeryLight],
+                item 1 tags[base:crudesaw;base:saw] mode:keep flags[MayDegradeLight],
+                item 1 tags[base:drillwood;base:drillmetal;base:drillwoodpoor] mode:keep flags[MayDegradeLight],
+                item 2 [Base.Nails],
+            }
+        }
+        component CraftBenchSounds
+        {
+            AddInput = DryingRackPlantsInsert,
+            RemoveInput = DryingRackPlantsRemove,
+            StartCraft = DryingRackPlantsCraft,
+        }
+    }
+
+    entity Simple_Herb_Drying_Rack
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_SimpleDryingRackHerb,
+            uiEnabled = true,
+        }
+        component Resources
+        {
+            group craft_inputs
+            {
+                Item@Input@20,
+            }
+            group craft_outputs
+            {
+                Item@Output@20@StackAny,
+            }
+        }
+        component DryingCraftLogic
+        {
+            Recipes = DryingRackHerb,
+            StartMode = Manual,
+            inputGroup = craft_inputs,
+            outputGroup = craft_outputs,
+            actionAnim = Untie_Low,
+        }
+        component SpriteConfig
+        {
+            health = 100,
+            skillBaseHealth = 20,
+            face S
+            {
+                layer
+                {
+                    row = vegetation_drying_01_217,
+                    row = vegetation_drying_01_216,
+                }
+            }
+            face E
+            {
+                layer
+                {
+                    row = vegetation_drying_01_224 vegetation_drying_01_225,
+                }
+            }
+        }
+        component SpriteOverlayConfig
+        {
+            style default
+            {
+                progress 0
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_97,
+                            row = vegetation_drying_02_96,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_104 vegetation_drying_02_105,
+                        }
+                    }
+                }
+                progress 50
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_99,
+                            row = vegetation_drying_02_98,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_106 vegetation_drying_02_107,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_101,
+                            row = vegetation_drying_02_100,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_108 vegetation_drying_02_109,
+                        }
+                    }
+                }
+            }
+            style BlackSage
+            {
+                progress 0
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_1,
+                            row = vegetation_drying_02_0,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_8 vegetation_drying_02_9,
+                        }
+                    }
+                }
+                progress 50
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_3,
+                            row = vegetation_drying_02_2,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_10 vegetation_drying_02_11,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_5,
+                            row = vegetation_drying_02_4,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_12 vegetation_drying_02_13,
+                        }
+                    }
+                }
+            }
+            style Habanero
+            {
+                progress 0
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_33,
+                            row = vegetation_drying_02_32,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_40 vegetation_drying_02_41,
+                        }
+                    }
+                }
+                progress 50
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_35,
+                            row = vegetation_drying_02_34,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_42 vegetation_drying_02_43,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_37,
+                            row = vegetation_drying_02_36,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_42 vegetation_drying_02_43,
+                        }
+                    }
+                }
+            }
+            style Herb
+            {
+                progress 0
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_01_3,
+                            row = vegetation_drying_01_2,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_01_10 vegetation_drying_01_11,
+                        }
+                    }
+                }
+                progress 50
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_01_5,
+                            row = vegetation_drying_01_4,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_01_12 vegetation_drying_01_13,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_01_7,
+                            row = vegetation_drying_01_6,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_01_14 vegetation_drying_01_15,
+                        }
+                    }
+                }
+            }
+            style Jalapeno
+            {
+                progress 0
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_49,
+                            row = vegetation_drying_02_48,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_56 vegetation_drying_02_57,
+                        }
+                    }
+                }
+                progress 50
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_51,
+                            row = vegetation_drying_02_50,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_58 vegetation_drying_02_59,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_53,
+                            row = vegetation_drying_02_52,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_60 vegetation_drying_02_61,
+                        }
+                    }
+                }
+            }
+            style Lavender
+            {
+                progress 0
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_17,
+                            row = vegetation_drying_02_16,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_24 vegetation_drying_02_25,
+                        }
+                    }
+                }
+                progress 50
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_19,
+                            row = vegetation_drying_02_18,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_26 vegetation_drying_02_27,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_21,
+                            row = vegetation_drying_02_20,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_28 vegetation_drying_02_29,
+                        }
+                    }
+                }
+            }
+            style Marigold
+            {
+                progress 0
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_65,
+                            row = vegetation_drying_02_64,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_72 vegetation_drying_02_73,
+                        }
+                    }
+                }
+                progress 50
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_67,
+                            row = vegetation_drying_02_66,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_74 vegetation_drying_02_75,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_69,
+                            row = vegetation_drying_02_68,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_76 vegetation_drying_02_77,
+                        }
+                    }
+                }
+            }
+            style Rose
+            {
+                progress 0
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_81,
+                            row = vegetation_drying_02_80,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_88 vegetation_drying_02_89,
+                        }
+                    }
+                }
+                progress 50
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_83,
+                            row = vegetation_drying_02_82,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_90 vegetation_drying_02_91,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_85,
+                            row = vegetation_drying_02_84,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = vegetation_drying_02_92 vegetation_drying_02_93,
+                        }
+                    }
+                }
+            }
+        }
+        component CraftRecipe
+        {
+            timedAction = BuildByTyingMedium,
+            time = 50,
+            xpAward = Woodwork:5,
+            category = Farming,
+            Tags = Farming,
+            Tooltip = Tooltip_craft_dryHerbsRackDesc,
+            inputs
+            {
+                item 4 [Base.LongStick;Base.Sapling],
+                item 4 [Base.Twine;Base.RippedSheets;Base.DenimStrips;Base.LeatherStrips;Base.Rope] flags[DontReplace],
+            }
+        }
+        component CraftBenchSounds
+        {
+            AddInput = DryingRackPlantsInsert,
+            RemoveInput = DryingRackPlantsRemove,
+            StartCraft = DryingRackPlantsCraft,
+        }
+    }
+}

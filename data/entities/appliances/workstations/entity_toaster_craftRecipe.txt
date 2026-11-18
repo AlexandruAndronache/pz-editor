@@ -1,0 +1,18 @@
+module Base
+{
+    craftRecipe MakeToast
+    {
+        timedAction = Making,
+        time = 20,
+        category = Cooking,
+        Tags = Toaster,
+        inputs
+        {
+            item 1 [Base.BreadSlices] flags[ItemCount],
+        }
+        outputs
+        {
+            item 1 Base.Toast,
+        }
+    }
+}

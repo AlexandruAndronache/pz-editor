@@ -1,0 +1,1188 @@
+module Base
+{
+    craftRecipe MakeMilkFromPowderBucket
+    {
+        timedAction = Making,
+        Icon = Item_WaterDrop,
+        time = 70,
+        Tags = InHandCraft;Cooking;CanBeDoneInDark,
+        category = Cooking,
+        OnCreate = RecipeCodeOnCreate.makeMilkFromPowder,
+        inputs
+        {
+            item 1 tags[base:bucket] mode:keep,
+            -fluid 10.0 [Water],
+            item 10 [Base.AnimalMilkPowder],
+        }
+        outputs
+        {
+        }
+    }
+
+    craftRecipe MakeMilkFromPowderBottle
+    {
+        timedAction = Making,
+        Icon = Item_WaterDrop,
+        time = 20,
+        Tags = InHandCraft;Cooking;CanBeDoneInDark,
+        category = Cooking,
+        OnCreate = RecipeCodeOnCreate.makeMilkFromPowder,
+        inputs
+        {
+            item 1 [Base.FeedingBottle] mode:keep,
+            -fluid 1.0 [Water],
+            item 1 [Base.AnimalMilkPowder],
+        }
+        outputs
+        {
+        }
+    }
+
+    craftRecipe OpenBagOfFrozenFood
+    {
+        timedAction = UnPackSmallBag,
+        time = 15,
+        Tags = InHandCraft;Cooking;CanBeDoneInDark,
+        category = Cooking,
+        inputs
+        {
+            item 1 [Base.Frozen_ChickenNuggets;Base.Frozen_FishFingers;Base.Frozen_FrenchFries;Base.Frozen_TatoDots] flags[AllowFrozenItem;InheritFoodAge;InheritFreezingTime;AllowRottenItem] mappers[foodType],
+        }
+        outputs
+        {
+            item 3 mapper:foodType,
+        }
+        itemMapper foodType
+        {
+            Base.ChickenNuggets = Base.Frozen_ChickenNuggets,
+            Base.FishFingers = Base.Frozen_FishFingers,
+            Base.FrenchFries = Base.Frozen_FrenchFries,
+            Base.TatoDots = Base.Frozen_TatoDots,
+        }
+    }
+
+    craftRecipe OpenEggCarton
+    {
+        timedAction = OpenAmmoBox,
+        time = 5,
+        Tags = InHandCraft;CanBeDoneInDark,
+        category = Cooking,
+        inputs
+        {
+            item 1 [Base.EggCarton] flags[AllowFrozenItem;AllowRottenItem;Prop2;InheritFoodAge],
+        }
+        outputs
+        {
+            item 12 Base.Egg,
+        }
+    }
+
+    craftRecipe PutEggsInCarton
+    {
+        timedAction = PackingBox_Small,
+        time = 5,
+        Tooltip = Tooltip_Recipe_NeedsUncooked,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        inputs
+        {
+            item 12 [Base.Egg] flags[AllowFrozenItem;IsUncookedFoodItem;InheritFoodAge;ItemCount],
+        }
+        outputs
+        {
+            item 1 Base.EggCarton,
+        }
+    }
+
+    craftRecipe EmptyPan
+    {
+        timedAction = EmptyPan,
+        time = 100,
+        Tags = InHandCraft;Cooking,
+        category = Cooking,
+        inputs
+        {
+            item 1 [Base.PanFriedVegetables;Base.OmeletteRecipe;Base.PanFriedVegetablesForged;Base.OmeletteRecipeForged;Base.GriddlePanFriedVegetables;Base.PanFriedVegetables2] flags[AllowRottenItem;InheritCondition;ItemCount] mappers[panType],
+        }
+        outputs
+        {
+            item 1 mapper:panType,
+        }
+        itemMapper panType
+        {
+            Base.Pan = Base.PanFriedVegetables,
+            Base.Pan = Base.OmeletteRecipe,
+            Base.PanForged = Base.PanFriedVegetablesForged,
+            Base.PanForged = Base.OmeletteRecipeForged,
+            Base.GridlePan = Base.GriddlePanFriedVegetables,
+            Base.RoastingPan = Base.PanFriedVegetables2,
+        }
+    }
+
+    craftRecipe SlicePumpkin
+    {
+        timedAction = SliceFood_Surface,
+        time = 70,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        xpAward = Cooking:3,
+        inputs
+        {
+            item 1 tags[base:sharpknife;base:saw;base:crudesaw;base:meatcleaver] mode:keep flags[SharpnessCheck],
+            item 1 [Base.Pumpkin] flags[AllowRottenItem;InheritFood;ItemCount],
+        }
+        outputs
+        {
+            item 10 Base.PumpkinSliced,
+        }
+    }
+
+    craftRecipe SliceWatermelon
+    {
+        timedAction = SliceFood_Surface,
+        time = 70,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        xpAward = Cooking:3,
+        inputs
+        {
+            item 1 tags[base:sharpknife;base:saw;base:crudesaw;base:meatcleaver] mode:keep flags[SharpnessCheck],
+            item 1 [Base.Watermelon] flags[AllowRottenItem;InheritFood;ItemCount],
+        }
+        outputs
+        {
+            item 10 Base.WatermelonSliced,
+        }
+    }
+
+    craftRecipe SmashPumpkin
+    {
+        timedAction = CrushWatermelon,
+        time = 50,
+        Tags = AnySurfaceCraft;Cooking;CanBeDoneInDark,
+        category = Cooking,
+        inputs
+        {
+            item 1 tags[base:hammer;base:sledgehammer] mode:keep flags[MayDegradeVeryLight;Prop1],
+            item 1 [Base.Pumpkin] flags[AllowRottenItem;Prop2;InheritFoodAge;ItemCount],
+        }
+        outputs
+        {
+            item 5 Base.PumpkinSmashed,
+        }
+    }
+
+    craftRecipe SmashWatermelon
+    {
+        timedAction = CrushWatermelon,
+        time = 50,
+        Tags = AnySurfaceCraft;Cooking;CanBeDoneInDark,
+        category = Cooking,
+        inputs
+        {
+            item 1 tags[base:hammer;base:sledgehammer] mode:keep flags[MayDegradeVeryLight;Prop1],
+            item 1 [Base.Watermelon] flags[AllowRottenItem;Prop2;InheritFoodAge;ItemCount],
+        }
+        outputs
+        {
+            item 5 Base.WatermelonSmashed,
+        }
+    }
+
+    craftRecipe MakeBowlOfBeans
+    {
+        timedAction = MixingBowl,
+        time = 80,
+        Tags = InHandCraft;Cooking,
+        category = Cooking,
+        xpAward = Cooking:3,
+        inputs
+        {
+            item 1 [Base.Bowl;Base.ClayBowl] mode:destroy flags[ItemCount],
+            item 1 [Base.OpenBeans] flags[InheritFood;ItemCount],
+        }
+        outputs
+        {
+            item 1 Base.BeanBowl,
+        }
+    }
+
+    craftRecipe PlacePastaInSaucepan2
+    {
+        timedAction = MixingBowl,
+        time = 50,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        inputs
+        {
+            item 1 [Base.Saucepan;Base.SaucepanCopper] flags[InheritCondition;ItemCount] mappers[saucepanType] mode:destroy,
+            -fluid 0.6 categories[Water] mode:mixture,
+            item 10 tags[base:pasta],
+        }
+        outputs
+        {
+            item 1 mapper:saucepanType,
+        }
+        itemMapper saucepanType
+        {
+            Base.WaterSaucepanPasta = Base.Saucepan,
+            Base.WaterSaucepanPastaCopper = Base.SaucepanCopper,
+        }
+    }
+
+    craftRecipe PlaceRiceInSaucepan2
+    {
+        timedAction = MixingBowl,
+        time = 50,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        inputs
+        {
+            item 1 [Base.Saucepan;Base.SaucepanCopper] flags[InheritCondition;ItemCount] mappers[saucepanType] mode:destroy,
+            -fluid 0.6 categories[Water] mode:mixture,
+            item 10 [Base.Rice],
+        }
+        outputs
+        {
+            item 1 mapper:saucepanType,
+        }
+        itemMapper saucepanType
+        {
+            Base.WaterSaucepanRice = Base.Saucepan,
+            Base.WaterSaucepanRiceCopper = Base.SaucepanCopper,
+        }
+    }
+
+    craftRecipe PlacePastaInCookingPot2
+    {
+        timedAction = MixingBowl,
+        time = 50,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        inputs
+        {
+            item 1 [Base.Pot;Base.PotForged] mode:destroy flags[InheritCondition;ItemCount] mappers[potType],
+            -fluid 1.5 categories[Water] mode:mixture,
+            item 10 tags[base:pasta],
+        }
+        outputs
+        {
+            item 1 mapper:potType,
+        }
+        itemMapper potType
+        {
+            Base.WaterPotPasta = Base.Pot,
+            Base.WaterPotForgedPasta = Base.PotForged,
+        }
+    }
+
+    craftRecipe PlaceRiceInCookingPot2
+    {
+        timedAction = MixingBowl,
+        time = 50,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        inputs
+        {
+            item 1 [Base.Pot;Base.PotForged] mode:destroy flags[InheritCondition;ItemCount] mappers[potType],
+            -fluid 1.5 categories[Water] mode:mixture,
+            item 10 [Base.Rice],
+        }
+        outputs
+        {
+            item 1 mapper:potType,
+        }
+        itemMapper potType
+        {
+            Base.WaterPotRice = Base.Pot,
+            Base.WaterPotForgedRice = Base.PotForged,
+        }
+    }
+
+    craftRecipe OpenCandyPackage
+    {
+        timedAction = UnPackSmallBag,
+        time = 20,
+        Tags = InHandCraft;Cooking;CanBeDoneInDark,
+        category = Cooking,
+        inputs
+        {
+            item 1 [Base.CandyPackage],
+        }
+        outputs
+        {
+            item 5 Base.Lollipop,
+            item 5 Base.MintCandy,
+        }
+    }
+
+    craftRecipe Make4Bowls
+    {
+        timedAction = MixingBowl,
+        time = 80,
+        OnCreate = RecipeCodeOnCreate.inheritFoodNameBowl,
+        Tooltip = Tooltip_Recipe_CookedPortion,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        inputs
+        {
+            item 4 [Base.Bowl;Base.ClayBowl] mode:destroy flags[ItemCount],
+            item 1 tags[base:canbedividedinbowls] mappers[bowlType;potType] flags[InheritCondition;InheritCooked;InheritFood;ItemCount],
+        }
+        outputs
+        {
+            item 4 mapper:bowlType flags[DontInheritCondition],
+            item 1 mapper:potType,
+        }
+        itemMapper bowlType
+        {
+            Base.PastaBowl = Base.PastaPan,
+            Base.PastaBowl = Base.PastaPanCopper,
+            Base.PastaBowl = Base.PastaPot,
+            Base.PastaBowl = Base.PastaPotForged,
+            Base.PastaBowl = Base.WaterPotPasta,
+            Base.PastaBowl = Base.WaterPotForgedPasta,
+            Base.PastaBowl = Base.WaterSaucepanPasta,
+            Base.PastaBowl = Base.WaterSaucepanPastaCopper,
+            Base.PastaBowlClay = Base.PastaPan,
+            Base.PastaBowlClay = Base.PastaPanCopper,
+            Base.PastaBowlClay = Base.PastaPot,
+            Base.PastaBowlClay = Base.PastaPotForged,
+            Base.PastaBowlClay = Base.WaterPotPasta,
+            Base.PastaBowlClay = Base.WaterPotForgedPasta,
+            Base.PastaBowlClay = Base.WaterSaucepanPasta,
+            Base.PastaBowlClay = Base.WaterSaucepanPastaCopper,
+            Base.RiceBowl = Base.RicePan,
+            Base.RiceBowl = Base.RicePot,
+            Base.RiceBowl = Base.RicePotForged,
+            Base.RiceBowl = Base.WaterPotRice,
+            Base.RiceBowl = Base.WaterPotForgedRice,
+            Base.RiceBowl = Base.WaterSaucepanRice,
+            Base.RiceBowl = Base.WaterSaucepanRiceCopper,
+            Base.RiceBowlClay = Base.RicePan,
+            Base.RiceBowlClay = Base.RicePot,
+            Base.RiceBowlClay = Base.RicePotForged,
+            Base.RiceBowlClay = Base.WaterPotRice,
+            Base.RiceBowlClay = Base.WaterPotForgedRice,
+            Base.RiceBowlClay = Base.WaterSaucepanRice,
+            Base.RiceBowlClay = Base.WaterSaucepanRiceCopper,
+            Base.SoupBowl = Base.PotOfSoup,
+            Base.SoupBowl = Base.PotOfSoupRecipe,
+            Base.SoupBowlClay = Base.PotOfSoup,
+            Base.SoupBowlClay = Base.PotOfSoupRecipe,
+            Base.StewBowl = Base.PotOfStew,
+            Base.StewBowlClay = Base.PotOfStew,
+            Base.SoupBowl = Base.PotForgedSoupRecipe,
+            Base.StewBowlClay = Base.PotForgedStew,
+        }
+        itemMapper potType
+        {
+            Base.Pot = Base.PastaPot,
+            Base.Pot = Base.PotOfSoup,
+            Base.Pot = Base.PotOfSoupRecipe,
+            Base.Pot = Base.PotOfStew,
+            Base.Pot = Base.RicePot,
+            Base.Pot = Base.WaterPotPasta,
+            Base.Pot = Base.WaterPotRice,
+            Base.Saucepan = Base.PastaPan,
+            Base.Saucepan = Base.RicePan,
+            Base.Saucepan = Base.WaterSaucepanPasta,
+            Base.Saucepan = Base.WaterSaucepanRice,
+            Base.SaucepanCopper = Base.WaterSaucepanPastaCopper,
+            Base.SaucepanCopper = Base.WaterSaucepanRiceCopper,
+            Base.PotForged = Base.PastaPotForged,
+            Base.PotForged = Base.RicePotForged,
+            Base.PotForged = Base.WaterPotForgedPasta,
+            Base.PotForged = Base.WaterPotForgedRice,
+            Base.PotForged = Base.PotForgedSoupRecipe,
+            Base.PotForged = Base.PotForgedStew,
+        }
+    }
+
+    craftRecipe Make2Bowls
+    {
+        timedAction = MixingBowl,
+        time = 80,
+        OnCreate = RecipeCodeOnCreate.inheritFoodNameBowl,
+        Tooltip = Tooltip_Recipe_CookedPortion,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        inputs
+        {
+            item 2 [Base.Bowl;Base.ClayBowl] mode:destroy flags[ItemCount],
+            item 1 tags[base:canbedividedinbowls] mappers[bowlType;potType] flags[InheritCondition;InheritCooked;InheritFood;ItemCount],
+        }
+        outputs
+        {
+            item 2 mapper:bowlType flags[DontInheritCondition],
+            item 1 mapper:potType,
+        }
+        itemMapper bowlType
+        {
+            Base.PastaBowl = Base.PastaPan,
+            Base.PastaBowl = Base.PastaPanCopper,
+            Base.PastaBowl = Base.PastaPot,
+            Base.PastaBowl = Base.PastaPotForged,
+            Base.PastaBowl = Base.WaterPotPasta,
+            Base.PastaBowl = Base.WaterPotForgedPasta,
+            Base.PastaBowl = Base.WaterSaucepanPasta,
+            Base.PastaBowl = Base.WaterSaucepanPastaCopper,
+            Base.PastaBowlClay = Base.PastaPan,
+            Base.PastaBowlClay = Base.PastaPanCopper,
+            Base.PastaBowlClay = Base.PastaPot,
+            Base.PastaBowlClay = Base.PastaPotForged,
+            Base.PastaBowlClay = Base.WaterPotPasta,
+            Base.PastaBowlClay = Base.WaterPotForgedPasta,
+            Base.PastaBowlClay = Base.WaterSaucepanPasta,
+            Base.PastaBowlClay = Base.WaterSaucepanPastaCopper,
+            Base.RiceBowl = Base.RicePan,
+            Base.RiceBowl = Base.RicePot,
+            Base.RiceBowl = Base.RicePotForged,
+            Base.RiceBowl = Base.WaterPotRice,
+            Base.RiceBowl = Base.WaterPotForgedRice,
+            Base.RiceBowl = Base.WaterSaucepanRice,
+            Base.RiceBowl = Base.WaterSaucepanRiceCopper,
+            Base.RiceBowlClay = Base.RicePan,
+            Base.RiceBowlClay = Base.RicePot,
+            Base.RiceBowlClay = Base.RicePotForged,
+            Base.RiceBowlClay = Base.WaterPotRice,
+            Base.RiceBowlClay = Base.WaterPotForgedRice,
+            Base.RiceBowlClay = Base.WaterSaucepanRice,
+            Base.RiceBowlClay = Base.WaterSaucepanRiceCopper,
+            Base.SoupBowl = Base.PotOfSoup,
+            Base.SoupBowl = Base.PotOfSoupRecipe,
+            Base.SoupBowlClay = Base.PotOfSoup,
+            Base.SoupBowlClay = Base.PotOfSoupRecipe,
+            Base.StewBowl = Base.PotOfStew,
+            Base.StewBowl = Base.PotForgedStew,
+            Base.StewBowlClay = Base.PotOfStew,
+            Base.SoupBowl = Base.PotForgedSoupRecipe,
+            Base.StewBowlClay = Base.PotForgedStew,
+        }
+        itemMapper potType
+        {
+            Base.Pot = Base.PastaPot,
+            Base.Pot = Base.PotOfSoup,
+            Base.Pot = Base.PotOfSoupRecipe,
+            Base.Pot = Base.PotOfStew,
+            Base.Pot = Base.RicePot,
+            Base.Pot = Base.WaterPotPasta,
+            Base.Pot = Base.WaterPotRice,
+            Base.Saucepan = Base.PastaPan,
+            Base.Saucepan = Base.RicePan,
+            Base.Saucepan = Base.WaterSaucepanPasta,
+            Base.Saucepan = Base.WaterSaucepanRice,
+            Base.SaucepanCopper = Base.WaterSaucepanPastaCopper,
+            Base.SaucepanCopper = Base.WaterSaucepanRiceCopper,
+            Base.PotForged = Base.PastaPotForged,
+            Base.PotForged = Base.RicePotForged,
+            Base.PotForged = Base.WaterPotForgedPasta,
+            Base.PotForged = Base.WaterPotForgedRice,
+            Base.PotForged = Base.PotForgedSoupRecipe,
+            Base.PotForged = Base.PotForgedStew,
+        }
+    }
+
+    craftRecipe MakeCabbageRolls
+    {
+        timedAction = Making,
+        time = 60,
+        NeedToBeLearn = true,
+        OnCreate = RecipeCodeOnCreate.makeSushi,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        AutoLearnAny = Cooking:6,
+        inputs
+        {
+            item 1 [Base.Cabbage] flags[InheritFoodAge],
+            item 1 [Base.MincedMeat] flags[InheritFoodAge;IsCookedFoodItem],
+            item 1 tags[base:ricerecipe] flags[InheritFoodAge;IsCookedFoodItem],
+            item 1 [Base.Onion] flags[InheritFoodAge],
+            item 1 [Base.Marinara] flags[InheritFoodAge],
+        }
+        outputs
+        {
+            item 4 Base.CabbageRoll,
+        }
+    }
+
+    craftRecipe MakePizza
+    {
+        timedAction = MixingBowl,
+        time = 100,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        NeedToBeLearn = true,
+        xpAward = Cooking:10,
+        AutoLearnAny = Cooking:6,
+        inputs
+        {
+            item 1 tags[base:rollingpin] mode:keep flags[MayDegradeVeryLight],
+            item 1 tags[base:fork;base:mixingutensil;base:spoon] mode:keep flags[MayDegradeVeryLight],
+            item 1 tags[base:bowl] mode:keep,
+            item 6 tags[base:flour],
+            item 1 [Base.Salt],
+            item 15 [Base.Cheese] flags[InheritFoodAge],
+            item 15 tags[base:pizzasauce] flags[InheritFoodAge],
+            item 1 [Base.Yeast],
+            item 1 [*],
+            -fluid 0.5 categories[Water] mode:mixture,
+        }
+        outputs
+        {
+            item 1 Base.PizzaRecipe,
+        }
+    }
+
+    craftRecipe MakeBowlOfOatmeal
+    {
+        timedAction = MixingBowl,
+        time = 20,
+        Tags = InHandCraft;Cooking,
+        category = Cooking,
+        xpAward = Cooking:3,
+        inputs
+        {
+            item 1 [Base.Bowl;Base.ClayBowl] mode:destroy flags[ItemCount],
+            -fluid 0.3 categories[Water] mode:mixture,
+            item 10 [Base.OatsRaw],
+        }
+        outputs
+        {
+            item 1 Base.Oatmeal,
+        }
+    }
+
+    craftRecipe MakeBowlOfCereal
+    {
+        timedAction = MixingBowl,
+        time = 20,
+        Tags = InHandCraft;Cooking,
+        category = Cooking,
+        xpAward = Cooking:3,
+        inputs
+        {
+            item 1 [Base.Bowl;Base.ClayBowl] mode:destroy flags[ItemCount],
+            -fluid 0.3 [CowMilk;SheepMilk],
+            item 5 [Base.Cereal],
+        }
+        outputs
+        {
+            item 1 Base.CerealBowl,
+        }
+    }
+
+    craftRecipe MakeHotDog
+    {
+        timedAction = Making,
+        time = 15,
+        Tags = InHandCraft;Cooking,
+        category = Cooking,
+        inputs
+        {
+            item 1 [Base.BunsHotdog_single] flags[InheritFoodAge;ItemCount],
+            item 1 [Base.Hotdog_single] flags[InheritFoodAge;ItemCount],
+        }
+        outputs
+        {
+            item 1 Base.Hotdog,
+        }
+    }
+
+    craftRecipe MakeTortillaChips
+    {
+        timedAction = Making,
+        time = 30,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        inputs
+        {
+            item 1 tags[base:sharpknife;base:dullknife;base:meatcleaver] mode:keep flags[SharpnessCheck],
+            item 1 [Base.Tortilla] flags[InheritFoodAge],
+        }
+        outputs
+        {
+            item 1 Base.TortillaChipsBaked,
+        }
+    }
+
+    craftRecipe OpenPackOfBuns
+    {
+        timedAction = UnPackSmallBag,
+        time = 15,
+        Tags = InHandCraft;Cooking;CanBeDoneInDark,
+        category = Cooking,
+        inputs
+        {
+            item 1 [Base.BunsHamburger;Base.BunsHotdog] flags[AllowFrozenItem;InheritFoodAge;InheritFreezingTime] mappers[bunType],
+        }
+        outputs
+        {
+            item 4 mapper:bunType,
+        }
+        itemMapper bunType
+        {
+            Base.BunsHamburger_single = Base.BunsHamburger,
+            Base.BunsHotdog_single = Base.BunsHotdog,
+        }
+    }
+
+    craftRecipe OpenHotdogPack
+    {
+        timedAction = UnPackSmallBag,
+        time = 15,
+        Tags = InHandCraft;Cooking;CanBeDoneInDark,
+        category = Cooking,
+        inputs
+        {
+            item 1 [Base.HotdogPack] flags[AllowFrozenItem;InheritFoodAge;InheritFreezingTime],
+        }
+        outputs
+        {
+            item 4 Base.Hotdog_single,
+        }
+    }
+
+    craftRecipe SliceFillet
+    {
+        timedAction = SliceFish,
+        time = 50,
+        OnCreate = RecipeCodeOnCreate.cutFish,
+        OnTest = RecipeCodeOnTest.cutFish,
+        Tags = InHandCraft;CanBeDoneFromFloor;Cooking,
+        category = Cooking,
+        xpAward = Butchering:10,
+        inputs
+        {
+            item 1 tags[base:sharpknife;base:meatcleaver] mode:keep flags[IsNotDull;SharpnessCheck],
+            item 1 tags[base:uncutfish] flags[InheritFoodAge;ItemCount],
+        }
+        outputs
+        {
+            item 2 Base.FishFillet,
+        }
+    }
+
+    craftRecipe HalveFillet
+    {
+        timedAction = SliceFish,
+        time = 50,
+        OnTest = RecipeCodeOnTest.cutFillet,
+        Tags = InHandCraft;CanBeDoneFromFloor;Cooking,
+        category = Cooking,
+        inputs
+        {
+            item 1 tags[base:sharpknife;base:meatcleaver] mode:keep flags[IsNotDull;SharpnessCheck],
+            item 1 [Base.FishFillet] flags[InheritCooked;InheritFood;ItemCount;InheritWeight],
+        }
+        outputs
+        {
+            item 2 Base.FishFillet,
+        }
+    }
+
+    craftRecipe SliceHam
+    {
+        timedAction = SliceMeat_Surface,
+        time = 50,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        xpAward = Cooking:3,
+        inputs
+        {
+            item 1 tags[base:sharpknife;base:meatcleaver] mode:keep flags[IsNotDull;SharpnessCheck],
+            item 1 [Base.Ham] flags[InheritFood;ItemCount],
+        }
+        outputs
+        {
+            item 6 Base.HamSlice,
+        }
+    }
+
+    craftRecipe ButcherSmallAnimal
+    {
+        timedAction = SliceMeat_Surface,
+        time = 50,
+        OnCreate = RecipeCodeOnCreate.cutSmallAnimal,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        xpAward = Butchering:10,
+        inputs
+        {
+            item 1 tags[base:sharpknife;base:meatcleaver] mode:keep flags[IsNotDull;SharpnessCheck],
+            item 1 [Base.DeadBird;Base.DeadMouse;Base.DeadSquirrel;Base.DeadRat;Base.Frog;Base.DeadRabbit] mappers[animalType] flags[InheritFoodAge;ItemCount;InheritCooked],
+        }
+        outputs
+        {
+            item 1 mapper:animalType,
+        }
+        itemMapper animalType
+        {
+            Base.FrogMeat = Base.Frog,
+            Base.Smallbirdmeat = Base.DeadBird,
+            Base.DeadMouseSkinned = Base.DeadMouse,
+            Base.DeadRatSkinned = Base.DeadRat,
+            Base.Rabbitmeat = Base.DeadRabbit,
+            default = Base.Smallanimalmeat,
+        }
+    }
+
+    craftRecipe MakeGravy
+    {
+        timedAction = MixingBowl,
+        time = 20,
+        Tags = InHandCraft;Cooking,
+        category = Cooking,
+        xpAward = Cooking:3,
+        inputs
+        {
+            item 1 tags[base:mixingutensil] mode:keep flags[MayDegradeVeryLight],
+            item 1 [Base.Bowl;Base.ClayBowl] mode:keep flags[IsEmpty],
+            item 1 [Base.GravyMix],
+            item 1 [*],
+            -fluid 1.0 categories[Water] mode:mixture,
+        }
+        outputs
+        {
+            item 1 Base.Gravy,
+        }
+    }
+
+    craftRecipe MakeFriedShrimp
+    {
+        timedAction = MixingBowl,
+        time = 10,
+        NeedToBeLearn = true,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        xpAward = Cooking:3,
+        AutoLearnAny = Cooking:6,
+        inputs
+        {
+            item 1 [Base.BakingSoda],
+            item 3 tags[base:flour],
+            item 1 [Base.Shrimp] flags[InheritFoodAge;ItemCount],
+        }
+        outputs
+        {
+            item 1 Base.ShrimpFriedCraft,
+        }
+    }
+
+    craftRecipe MakeFriedOnionRings
+    {
+        timedAction = MixingBowl,
+        time = 80,
+        NeedToBeLearn = true,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        xpAward = Cooking:3,
+        AutoLearnAny = Cooking:6,
+        inputs
+        {
+            item 1 tags[base:sharpknife;base:meatcleaver] mode:keep flags[IsNotDull;SharpnessCheck],
+            item 1 tags[base:mixingutensil] mode:keep flags[MayDegradeVeryLight],
+            item 1 [Base.Bowl;Base.ClayBowl] mode:keep flags[IsEmpty],
+            item 1 [Base.Onion] flags[InheritFoodAge;ItemCount],
+            item 2 [Base.BakingSoda],
+            item 1 tags[base:flour],
+        }
+        outputs
+        {
+            item 2 Base.FriedOnionRingsCraft,
+        }
+    }
+
+    craftRecipe MakeGuacamole
+    {
+        timedAction = MixingBowl,
+        time = 80,
+        NeedToBeLearn = true,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        xpAward = Cooking:10,
+        AutoLearnAny = Cooking:6,
+        inputs
+        {
+            item 1 [Base.Bowl;Base.ClayBowl] mode:keep flags[IsEmpty],
+            item 1 tags[base:sharpknife;base:meatcleaver] mode:keep flags[SharpnessCheck],
+            item 1 tags[base:fork;base:mixingutensil;base:spoon] mode:keep flags[MayDegradeVeryLight],
+            item 1 [Base.Avocado] flags[InheritFoodAge;ItemCount],
+            item 1 [Base.Onion] flags[InheritFoodAge;ItemCount],
+            item 1 [Base.Tomato] flags[InheritFoodAge;ItemCount],
+            item 1 [Base.PepperJalapeno] flags[InheritFoodAge],
+            item 1 [Base.Salt;Base.SeasoningSalt],
+        }
+        outputs
+        {
+            item 5 Base.Guacamole,
+        }
+    }
+
+    craftRecipe MakePancake
+    {
+        timedAction = MixingBowl,
+        time = 60,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        xpAward = Cooking:3,
+        inputs
+        {
+            item 1 tags[base:mixingutensil] mode:keep flags[MayDegradeVeryLight],
+            item 1 [Base.Bowl;Base.ClayBowl] mode:keep flags[ItemCount],
+            -fluid 0.3 [Water],
+            item 1 [Base.PancakeMix],
+        }
+        outputs
+        {
+            item 1 Base.PancakesCraft,
+        }
+    }
+
+    craftRecipe PrepareOmelette
+    {
+        timedAction = MixingBowl,
+        time = 20,
+        OnCreate = RecipeCodeOnCreate.makeOmelette,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        xpAward = Cooking:3,
+        inputs
+        {
+            item 1 tags[base:mixingutensil] mode:keep flags[MayDegradeVeryLight],
+            item 1 [Base.Pan;Base.PanForged] mappers[panType] flags[InheritCondition],
+            item 2 tags[base:egg] flags[IsUncookedFoodItem;InheritFoodAge;ItemCount],
+        }
+        outputs
+        {
+            item 1 mapper:panType,
+        }
+        itemMapper panType
+        {
+            Base.OmeletteRecipe = Base.Pan,
+            Base.OmeletteRecipeForged = Base.PanForged,
+        }
+    }
+
+    craftRecipe MakeSushi
+    {
+        timedAction = SliceMeat_Surface,
+        time = 30,
+        NeedToBeLearn = true,
+        OnCreate = RecipeCodeOnCreate.makeSushi,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        xpAward = Cooking:3,
+        AutoLearnAny = Cooking:6,
+        inputs
+        {
+            item 1 tags[base:sharpknife;base:meatcleaver] mode:keep flags[IsNotDull;SharpnessCheck],
+            item 4 tags[base:fishmeat] flags[IsUncookedFoodItem;InheritFoodAge],
+            item 2 tags[base:ricerecipe] flags[IsCookedFoodItem],
+            item 1 [Base.RiceVinegar],
+        }
+        outputs
+        {
+            item 1 Base.SushiFish,
+        }
+    }
+
+    craftRecipe MakeMaki
+    {
+        timedAction = MixingBowl,
+        time = 30,
+        NeedToBeLearn = true,
+        OnCreate = RecipeCodeOnCreate.makeSushi,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        xpAward = Cooking:3,
+        AutoLearnAny = Cooking:6,
+        inputs
+        {
+            item 1 tags[base:sharpknife;base:meatcleaver] mode:keep flags[IsNotDull;SharpnessCheck],
+            item 2 tags[base:fishmeat] flags[IsUncookedFoodItem;InheritFoodAge],
+            item 1 tags[base:ricerecipe] flags[IsCookedFoodItem],
+            item 1 [Base.Seaweed] flags[ItemCount],
+            item 1 [Base.Avocado],
+            item 1 [Base.RiceVinegar],
+        }
+        outputs
+        {
+            item 1 Base.Maki,
+        }
+    }
+
+    craftRecipe MakeOnigiri
+    {
+        timedAction = MixingBowl,
+        time = 30,
+        NeedToBeLearn = true,
+        OnCreate = RecipeCodeOnCreate.makeSushi,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        xpAward = Cooking:3,
+        AutoLearnAny = Cooking:6,
+        inputs
+        {
+            item 1 tags[base:sharpknife;base:meatcleaver] mode:keep flags[IsNotDull;SharpnessCheck],
+            item 2 tags[base:fishmeat] flags[IsUncookedFoodItem;InheritFoodAge],
+            item 4 tags[base:ricerecipe] flags[IsCookedFoodItem],
+            item 1 [Base.Seaweed] flags[ItemCount],
+            item 2 [Base.Avocado],
+            item 1 [Base.RiceVinegar],
+        }
+        outputs
+        {
+            item 1 Base.Onigiri,
+        }
+    }
+
+    craftRecipe MakeSquidCalamari
+    {
+        timedAction = SliceMeat_Surface,
+        time = 30,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        xpAward = Cooking:3,
+        inputs
+        {
+            item 1 tags[base:sharpknife;base:meatcleaver] mode:keep flags[IsNotDull;SharpnessCheck],
+            item 1 [Base.Squid] flags[InheritFoodAge;ItemCount],
+        }
+        outputs
+        {
+            item 2 Base.SquidCalamari,
+        }
+    }
+
+    craftRecipe EmptyTray
+    {
+        timedAction = EmptyPan,
+        time = 40,
+        Tags = InHandCraft;Cooking,
+        category = Cooking,
+        inputs
+        {
+            item 1 [Base.CookiesChocolateDough;Base.CookieChocolateChipDough;Base.CookiesOatmealDough;Base.CookiesSugarDough;Base.CookiesShortbreadDough;Base.BakingTray_Muffin;Base.BakingTray_Muffin_Recipe;Base.Muffintray_Biscuit] flags[AllowRottenItem;ItemCount] mappers[trayType],
+        }
+        outputs
+        {
+            item 1 mapper:trayType,
+        }
+        itemMapper trayType
+        {
+            Base.BakingTray = Base.CookiesChocolateDough,
+            Base.BakingTray = Base.CookieChocolateChipDough,
+            Base.BakingTray = Base.CookiesOatmealDough,
+            Base.BakingTray = Base.CookiesSugarDough,
+            Base.BakingTray = Base.CookiesShortbreadDough,
+            Base.MuffinTray = Base.BakingTray_Muffin,
+            Base.MuffinTray = Base.BakingTray_Muffin_Recipe,
+            Base.MuffinTray = Base.Muffintray_Biscuit,
+        }
+    }
+
+    craftRecipe MakeHalloweenPumpkin
+    {
+        timedAction = MixingBowl,
+        time = 60,
+        Tooltip = Tooltip_Recipe_NeedsUncooked,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        xpAward = Cooking:3,
+        inputs
+        {
+            item 1 tags[base:sharpknife;base:dullknife] mode:keep flags[SharpnessCheck],
+            item 1 [Base.Pumpkin] flags[IsUncookedFoodItem;InheritFood;ItemCount],
+        }
+        outputs
+        {
+            item 1 Base.HalloweenPumpkin,
+        }
+    }
+
+    craftRecipe GetBaconBits
+    {
+        timedAction = SliceMeat,
+        time = 10,
+        Tags = InHandCraft;Cooking,
+        category = Cooking,
+        inputs
+        {
+            item 1 tags[base:sharpknife] mode:keep flags[SharpnessCheck;IsNotDull],
+            item 1 [Base.BaconRashers] flags[AllowRottenItem;InheritCooked;InheritFoodAge;ItemCount],
+        }
+        outputs
+        {
+            item 4 Base.BaconBits,
+        }
+    }
+
+    craftRecipe GetBaconRashers
+    {
+        timedAction = SliceMeat,
+        time = 10,
+        Tags = InHandCraft;Cooking,
+        category = Cooking,
+        inputs
+        {
+            item 1 tags[base:sharpknife] mode:keep flags[SharpnessCheck;IsNotDull],
+            item 1 [Base.Bacon] flags[AllowRottenItem;InheritCooked;InheritFoodAge;ItemCount],
+        }
+        outputs
+        {
+            item 4 Base.BaconRashers,
+        }
+    }
+
+    craftRecipe SliceBaloney
+    {
+        timedAction = SliceMeat_Surface,
+        time = 50,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        xpAward = Cooking:3,
+        inputs
+        {
+            item 1 tags[base:sharpknife;base:meatcleaver;base:dullknife] mode:keep flags[IsNotDull;SharpnessCheck],
+            item 1 [Base.Baloney] flags[InheritFood;ItemCount],
+        }
+        outputs
+        {
+            item 6 Base.BaloneySlice,
+        }
+    }
+
+    craftRecipe SliceSalami
+    {
+        timedAction = SliceMeat_Surface,
+        time = 50,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        xpAward = Cooking:3,
+        inputs
+        {
+            item 1 tags[base:sharpknife;base:meatcleaver] mode:keep flags[IsNotDull;SharpnessCheck],
+            item 1 [Base.Salami] flags[InheritFood;ItemCount],
+        }
+        outputs
+        {
+            item 4 Base.SalamiSlice,
+        }
+    }
+
+    craftRecipe MakeMeatPatty
+    {
+        timedAction = SliceMeat_Surface,
+        time = 30,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        xpAward = Cooking:3,
+        inputs
+        {
+            item 40 [Base.MincedMeat] flags[InheritFoodAge;InheritCooked],
+        }
+        outputs
+        {
+            item 1 Base.MeatPatty,
+        }
+    }
+
+    craftRecipe ScoopIceCream
+    {
+        timedAction = MixingBowl,
+        time = 30,
+        Tags = InHandCraft;Cooking,
+        category = Cooking,
+        xpAward = Cooking:3,
+        inputs
+        {
+            item 1 tags[base:spoon] mode:keep,
+            item 1 [Base.Cone] flags[AllowFrozenItem;ItemCount],
+            item 10 [Base.Icecream] flags[AllowFrozenItem;InheritFoodAge],
+        }
+        outputs
+        {
+            item 1 Base.ConeIcecream,
+        }
+    }
+
+    craftRecipe SlicePizza
+    {
+        timedAction = SliceMeat_Surface,
+        time = 50,
+        Tooltip = Tooltip_Recipe_MustCookedSlice,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        xpAward = Cooking:3,
+        inputs
+        {
+            item 1 tags[base:sharpknife;base:meatcleaver;base:dullknife;base:pizzacutter] mode:keep flags[SharpnessCheck],
+            item 1 [Base.PizzaWhole;Base.PizzaRecipe] flags[IsCookedFoodItem;InheritFood;ItemCount],
+        }
+        outputs
+        {
+            item 6 Base.Pizza,
+        }
+    }
+
+    craftRecipe CutChicken
+    {
+        timedAction = SliceMeat_Surface,
+        time = 150,
+        OnCreate = RecipeCodeOnCreate.cutChicken,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        xpAward = Cooking:20,
+        inputs
+        {
+            item 1 tags[base:sharpknife;base:meatcleaver] mode:keep flags[IsNotDull;SharpnessCheck],
+            item 1 [Base.ChickenWhole] flags[InheritFoodAge;ItemCount],
+        }
+        outputs
+        {
+            item 2 Base.Chicken,
+            item 2 Base.ChickenWings,
+            item 2 Base.ChickenFillet,
+        }
+    }
+
+    craftRecipe CutTurkey
+    {
+        timedAction = SliceMeat_Surface,
+        time = 150,
+        OnCreate = RecipeCodeOnCreate.cutChicken,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        xpAward = Cooking:20,
+        inputs
+        {
+            item 1 tags[base:sharpknife;base:meatcleaver] mode:keep flags[IsNotDull;SharpnessCheck],
+            item 1 [Base.TurkeyWhole] flags[InheritFoodAge;ItemCount],
+        }
+        outputs
+        {
+            item 2 Base.TurkeyLegs,
+            item 2 Base.TurkeyWings,
+            item 2 Base.TurkeyFillet,
+        }
+    }
+
+    craftRecipe open_mac_and_cheese
+    {
+        timedAction = Making,
+        time = 80,
+        OnCreate = RecipeCodeOnCreate.openMacAndCheese,
+        Tags = InHandCraft;Cooking;CanBeDoneInDark,
+        category = Cooking,
+        inputs
+        {
+            item 1 [Base.Macandcheese] flags[AllowFavorite;InheritFavorite;Prop2],
+        }
+        outputs
+        {
+            item 1 Base.Macaroni,
+            item 1 Base.cheese_powdered,
+        }
+    }
+}

@@ -1,0 +1,2420 @@
+module Base
+{
+    item Garbagebag_box
+    {
+        DisplayCategory = Container,
+        ItemType = base:drainable,
+        UseDelta = 0.05,
+        Weight = 1.0,
+        Icon = Garbagebag_box,
+        WorldStaticModel = Garbagebag_box,
+        UseWhileEquipped = false,
+    }
+
+    item CeramicCrucible_Iron
+    {
+        DisplayCategory = Material,
+        Weight = 15.0,
+        ItemType = base:drainable,
+        UseDelta = 0.05,
+        UseWhileEquipped = false,
+        ReplaceOnDeplete = Base.CeramicCrucible,
+        Icon = Ceramic_Crucible_MoltenIron,
+        StaticModel = CeramicCrucible_Steel,
+        WorldStaticModel = CeramicCrucible_Steel,
+        Tags = base:hasmetal,
+    }
+
+    item CeramicCrucible_Steel
+    {
+        DisplayCategory = Material,
+        Weight = 15.0,
+        ItemType = base:drainable,
+        UseDelta = 0.05,
+        UseWhileEquipped = false,
+        ReplaceOnDeplete = Base.CeramicCrucible,
+        Icon = Ceramic_Crucible_MoltenSteel,
+        StaticModel = CeramicCrucible_Iron,
+        WorldStaticModel = CeramicCrucible_Iron,
+        Tags = base:hasmetal,
+    }
+
+    item CeramicCrucibleSmall_Iron
+    {
+        DisplayCategory = Material,
+        Weight = 5.2,
+        ItemType = base:drainable,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        ReplaceOnDeplete = Base.CeramicCrucibleSmall,
+        Icon = Ceramic_Crucible_MoltenIron,
+        StaticModel = CeramicCrucibleSmall_Iron,
+        WorldStaticModel = CeramicCrucibleSmall_Iron,
+        Tags = base:hasmetal,
+    }
+
+    item CeramicCrucibleSmall_Steel
+    {
+        DisplayCategory = Material,
+        Weight = 5.2,
+        ItemType = base:drainable,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        ReplaceOnDeplete = Base.CeramicCrucibleSmall,
+        Icon = Ceramic_Crucible_MoltenSteel,
+        StaticModel = CeramicCrucibleSmall_Steel,
+        WorldStaticModel = CeramicCrucibleSmall_Steel,
+        Tags = base:hasmetal,
+    }
+
+    item TestWaterMug
+    {
+        DisplayCategory = Water,
+        ItemType = base:drainable,
+        Weight = 0.8,
+        Icon = MugWhite,
+        CanStoreWater = true,
+        CookingSound = BoilingFood,
+        EatType = Popcan,
+        PourType = Mug,
+        FillFromDispenserSound = GetWaterFromDispenserCeramic,
+        FillFromTapSound = GetWaterFromTapCeramic,
+        IsCookable = true,
+        IsWaterSource = true,
+        RainFactor = 0.2,
+        ReplaceOnDeplete = Base.TestMug,
+        Tooltip = Tooltip_item_RainFromGround,
+        UseDelta = 1.0,
+        UseWhileEquipped = false,
+        StaticModel = MugWhite,
+        WorldStaticModel = MugWhite,
+        Eattime = 160,
+    }
+
+    item GardeningSprayMilk
+    {
+        DisplayCategory = Gardening,
+        ItemType = base:drainable,
+        Icon = TZ_GardeningSprayCan,
+        Weight = 1.0,
+        UseDelta = 0.1,
+        ReplaceOnDeplete = Base.GardeningSprayEmpty,
+        UseWhileEquipped = false,
+        StaticModel = GardenSpray,
+        WorldStaticModel = GardenSprayGround,
+    }
+
+    item GardeningSprayAphids
+    {
+        DisplayCategory = Gardening,
+        ItemType = base:drainable,
+        Icon = TZ_GardeningSprayCan,
+        Weight = 1.0,
+        UseDelta = 0.1,
+        ReplaceOnDeplete = Base.GardeningSprayEmpty,
+        UseWhileEquipped = false,
+        StaticModel = GardenSpray,
+        WorldStaticModel = GardenSprayGround,
+    }
+
+    item GardeningSprayCigarettes
+    {
+        DisplayCategory = Gardening,
+        ItemType = base:drainable,
+        Icon = TZ_GardeningSprayCan,
+        Weight = 1.0,
+        UseDelta = 0.1,
+        ReplaceOnDeplete = Base.GardeningSprayEmpty,
+        UseWhileEquipped = false,
+        StaticModel = GardenSpray,
+        WorldStaticModel = GardenSprayGround,
+    }
+
+    item Hairgel
+    {
+        DisplayCategory = Appearance,
+        ItemType = base:drainable,
+        Weight = 0.5,
+        Icon = HairGel,
+        UseDelta = 0.05,
+        WorldStaticModel = HairGel_Ground,
+        Tags = base:dohairdo,
+        UseWhileEquipped = false,
+    }
+
+    item Hairspray2
+    {
+        DisplayCategory = Appearance,
+        Weight = 0.8,
+        ItemType = base:drainable,
+        UseDelta = 0.1,
+        Icon = Hairspray,
+        Tooltip = Tooltip_ItemTraps,
+        WorldStaticModel = HairSpray,
+        Tags = base:dohairdo;base:hasmetal;base:aerosol,
+        UseWhileEquipped = false,
+    }
+
+    item Lipstick
+    {
+        DisplayCategory = Appearance,
+        Weight = 0.2,
+        ItemType = base:drainable,
+        UseWhileEquipped = false,
+        UseDelta = 0.2,
+        Icon = Lipstick,
+        IconColorMask = Lipstick_Mask,
+        MetalValue = 1.0,
+        MakeUpType = Lips,
+        WorldStaticModel = Lipstick,
+        OnCreate = ItemCodeOnCreate.onCreateLipstick,
+    }
+
+    item MakeupEyeshadow
+    {
+        DisplayCategory = Appearance,
+        Weight = 0.1,
+        ItemType = base:drainable,
+        UseWhileEquipped = false,
+        UseDelta = 0.2,
+        Icon = MakeupEyeshadow,
+        MakeUpType = Eyes,
+        WorldStaticModel = EyesMakeup,
+    }
+
+    item MakeupFoundation
+    {
+        DisplayCategory = Appearance,
+        Weight = 0.2,
+        ItemType = base:drainable,
+        UseWhileEquipped = false,
+        UseDelta = 0.2,
+        Icon = MakeupFoundation,
+        MakeUpType = Foundation,
+        WorldStaticModel = FoundationMakeup,
+    }
+
+    item AnimalMilkPowder
+    {
+        DisplayCategory = Food,
+        Weight = 1.3,
+        ItemType = base:drainable,
+        UseDelta = 0.05,
+        UseWhileEquipped = false,
+        Icon = MilkPowder_Animal,
+        Tags = base:farmingloot,
+        WorldStaticModel = MilkPowder_Sack,
+        CantEat = true,
+    }
+
+    item AnimalFeedBag
+    {
+        DisplayCategory = Gardening,
+        ItemType = base:drainable,
+        Icon = AnimalFeed,
+        Weight = 4.0,
+        UseDelta = 0.01,
+        UseWhileEquipped = false,
+        ReplaceOnDeplete = Base.EmptySandbag,
+        AnimalFeedType = AnimalFeed,
+        ConditionMax = 1,
+        SurvivalGear = true,
+        ReplaceInSecondHand = Bag_Sandbag_LHand holdingbagleft,
+        ReplaceInPrimaryHand = Bag_Sandbag_RHand holdingbagright,
+        WorldStaticModel = CompostBag,
+        Tags = base:farmingloot,
+    }
+
+    item GrassBag
+    {
+        DisplayCategory = Gardening,
+        ItemType = base:drainable,
+        Icon = Compost,
+        Weight = 2.0,
+        UseDelta = 0.2,
+        UseWhileEquipped = false,
+        ReplaceOnDeplete = Base.EmptySandbag,
+        AnimalFeedType = Grass,
+        ConditionMax = 1,
+        SurvivalGear = true,
+        ReplaceInSecondHand = Bag_Sandbag_LHand holdingbagleft,
+        ReplaceInPrimaryHand = Bag_Sandbag_RHand holdingbagright,
+        WorldStaticModel = CompostBag,
+        Tags = base:farmingloot,
+    }
+
+    item SheepElectricShears
+    {
+        Weight = 0.3,
+        DisplayCategory = Tool,
+        ItemType = base:drainable,
+        UseDelta = 0.002,
+        Icon = SheepShears_Electric,
+        WorldStaticModel = SheepShears_Electric_Ground,
+        cantBeConsolided = true,
+        DisappearOnUse = false,
+        KeepOnDeplete = true,
+        ConditionMax = 20,
+        UseWhileEquipped = false,
+        Tags = base:hasmetal;base:miscelectronic;base:showcondition;base:shear;base:farmingloot;base:usesbattery,
+        ConditionLowerStandard = 40.0,
+    }
+
+    item InsectRepellent
+    {
+        DisplayCategory = Camping,
+        Weight = 0.8,
+        ItemType = base:drainable,
+        UseDelta = 0.05,
+        Icon = InsectRepellant,
+        WorldStaticModel = InsectRepellant,
+        Tags = base:hasmetal;base:aerosol;base:hideremaining,
+        UseWhileEquipped = false,
+        cantBeConsolided = true,
+    }
+
+    item WaterPurificationTablets
+    {
+        Weight = 0.2,
+        DisplayCategory = Camping,
+        UseDelta = 0.05,
+        ItemType = base:drainable,
+        UseWhileEquipped = false,
+        Icon = WaterPurificationTablets,
+        SurvivalGear = true,
+        WorldStaticModel = WaterPurificationTablets,
+        Tags = base:purifywater,
+    }
+
+    item Woodglue
+    {
+        DisplayCategory = Material,
+        ItemType = base:drainable,
+        Weight = 1.0,
+        Icon = Woodglue,
+        SurvivalGear = true,
+        Tooltip = Tooltip_FixItems,
+        UseDelta = 0.2,
+        UseWhileEquipped = false,
+        WorldStaticModel = WoodGlue,
+        Tags = base:glue,
+    }
+
+    item Soap2
+    {
+        DisplayCategory = Household,
+        ItemType = base:drainable,
+        Weight = 0.2,
+        Icon = Soap,
+        UseDelta = 0.05,
+        UseWhileEquipped = false,
+        cantBeConsolided = true,
+        StaticModel = Soap,
+        WorldStaticModel = Soap,
+    }
+
+    item Claybag
+    {
+        DisplayCategory = Material,
+        ItemType = base:drainable,
+        Weight = 2.0,
+        Icon = Sandbag,
+        ConditionMax = 1,
+        ReplaceInPrimaryHand = Bag_Sandbag_RHand holdingbagright,
+        ReplaceInSecondHand = Bag_Sandbag_LHand holdingbagleft,
+        ReplaceOnDeplete = Base.EmptySandbag,
+        Tooltip = Tooltip_item_empty_sack_container,
+        UseDelta = 0.125,
+        UseWhileEquipped = false,
+        WorldStaticModel = DirtBag_Ground,
+    }
+
+    item Dirtbag
+    {
+        DisplayCategory = Material,
+        ItemType = base:drainable,
+        Weight = 2.0,
+        Icon = Sandbag,
+        ConditionMax = 1,
+        ReplaceInPrimaryHand = Bag_Sandbag_RHand holdingbagright,
+        ReplaceInSecondHand = Bag_Sandbag_LHand holdingbagleft,
+        ReplaceOnDeplete = Base.EmptySandbag,
+        Tooltip = Tooltip_item_empty_sack_container,
+        UseDelta = 0.25,
+        UseWhileEquipped = false,
+        WorldStaticModel = DirtBag_Ground,
+    }
+
+    item Gravelbag
+    {
+        DisplayCategory = Material,
+        ItemType = base:drainable,
+        Weight = 2.0,
+        Icon = Gravelbag,
+        ConditionMax = 1,
+        ReplaceInPrimaryHand = Bag_Sandbag_RHand holdingbagright,
+        ReplaceInSecondHand = Bag_Sandbag_LHand holdingbagleft,
+        ReplaceOnDeplete = Base.EmptySandbag,
+        Tooltip = Tooltip_item_empty_sack_container,
+        UseDelta = 0.25,
+        UseWhileEquipped = false,
+        WorldStaticModel = GravelBag,
+    }
+
+    item Sandbag
+    {
+        DisplayCategory = Material,
+        ItemType = base:drainable,
+        Weight = 2.0,
+        Icon = Sandbag,
+        ReplaceInPrimaryHand = Bag_Sandbag_RHand holdingbagright,
+        ReplaceInSecondHand = Bag_Sandbag_LHand holdingbagleft,
+        ReplaceOnDeplete = Base.EmptySandbag,
+        Tooltip = Tooltip_item_empty_sack_container,
+        UseDelta = 0.25,
+        UseWhileEquipped = false,
+        WorldStaticModel = SandBag,
+    }
+
+    item BucketClayCement
+    {
+        DisplayCategory = Material,
+        ItemType = base:drainable,
+        Weight = 10.0,
+        Icon = MetalBucket_Concrete,
+        PourType = Bucket,
+        ReplaceOnDeplete = Base.Bucket,
+        UseDelta = 0.25,
+        UseWhileEquipped = false,
+        StaticModel = BucketFullConcrete_Ground,
+        WorldStaticModel = BucketFullConcrete_Ground,
+        Tags = base:hasmetal;base:concrete,
+        Researchablerecipes = MakeBucketMaul;MakeKettleMaul,
+    }
+
+    item BucketConcreteFull
+    {
+        DisplayCategory = Material,
+        ItemType = base:drainable,
+        Weight = 10.0,
+        Icon = MetalBucket_Concrete,
+        PourType = Bucket,
+        ReplaceOnDeplete = Base.Bucket,
+        UseDelta = 0.25,
+        UseWhileEquipped = false,
+        StaticModel = BucketFullConcrete_Ground,
+        WorldStaticModel = BucketFullConcrete_Ground,
+        Tags = base:hasmetal;base:concrete,
+        Researchablerecipes = MakeBucketMaul;MakeKettleMaul,
+    }
+
+    item BucketCarvedClayCement
+    {
+        DisplayCategory = Material,
+        ItemType = base:drainable,
+        Weight = 10.0,
+        Icon = Bucket_Crude,
+        PourType = Bucket,
+        ReplaceOnDeplete = Base.BucketCarved,
+        UseDelta = 0.25,
+        UseWhileEquipped = false,
+        StaticModel = BucketCarvedConcrete_Hand,
+        WorldStaticModel = BucketCarvedConcrete,
+        Tags = base:concrete,
+        Researchablerecipes = MakeBucketMaul;MakeKettleMaul,
+    }
+
+    item BucketCarvedConcreteFull
+    {
+        DisplayCategory = Material,
+        ItemType = base:drainable,
+        Weight = 10.0,
+        Icon = Bucket_Crude,
+        PourType = Bucket,
+        ReplaceOnDeplete = Base.BucketCarved,
+        UseDelta = 0.25,
+        UseWhileEquipped = false,
+        StaticModel = BucketCarvedConcrete_Hand,
+        WorldStaticModel = BucketCarvedConcrete,
+        Tags = base:concrete,
+        Researchablerecipes = MakeBucketMaul;MakeKettleMaul,
+    }
+
+    item BucketPlasterFull
+    {
+        DisplayCategory = Material,
+        ItemType = base:drainable,
+        Weight = 10.0,
+        Icon = MetalBucket_Plaster,
+        PourType = Bucket,
+        ReplaceOnDeplete = Base.Bucket,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        StaticModel = BucketFullPlaster_Ground,
+        WorldStaticModel = BucketFullPlaster_Ground,
+        Tags = base:hasmetal;base:plasterbucket,
+    }
+
+    item BucketCarvedPlasterFull
+    {
+        DisplayCategory = Material,
+        ItemType = base:drainable,
+        Weight = 10.0,
+        Icon = Bucket_Crude,
+        PourType = Bucket,
+        ReplaceOnDeplete = Base.BucketCarved,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        StaticModel = BucketCarvedPlaster_Hand,
+        WorldStaticModel = BucketCarvedPlaster,
+        Tags = base:wallpaperpaste;base:plasterbucket,
+    }
+
+    item DuctTape
+    {
+        DisplayCategory = Material,
+        ItemType = base:drainable,
+        Weight = 0.5,
+        Icon = DuctTape,
+        ConsolidateOption = ContextMenu_Merge,
+        SurvivalGear = true,
+        Tooltip = Tooltip_FixItems,
+        UseDelta = 0.25,
+        UseWhileEquipped = false,
+        WorldStaticModel = DuctTape,
+        Tags = base:tape;base:inferiorbinding;base:simpleweaponbinding,
+    }
+
+    item Epoxy
+    {
+        DisplayCategory = Material,
+        ItemType = base:drainable,
+        Weight = 0.5,
+        Icon = EpoxyApplicator,
+        SurvivalGear = true,
+        UseDelta = 0.2,
+        UseWhileEquipped = false,
+        WorldStaticModel = Epoxy,
+        Tags = base:epoxy,
+        Tooltip = Tooltip_item_Epoxy,
+    }
+
+    item FiberglassTape
+    {
+        DisplayCategory = Material,
+        ItemType = base:drainable,
+        Weight = 0.8,
+        Icon = FibreglassTape,
+        ConsolidateOption = ContextMenu_Merge,
+        SurvivalGear = true,
+        Tooltip = Tooltip_item_FiberglassTape,
+        UseDelta = 0.25,
+        UseWhileEquipped = false,
+        WorldStaticModel = FiberglassTape,
+        Tags = base:fiberglasstape,
+    }
+
+    item Glue
+    {
+        DisplayCategory = Material,
+        ItemType = base:drainable,
+        Weight = 0.5,
+        Icon = Glue,
+        SurvivalGear = true,
+        Tooltip = Tooltip_FixItems,
+        UseDelta = 0.2,
+        UseWhileEquipped = false,
+        WorldStaticModel = Glue,
+        Tags = base:glue,
+    }
+
+    item Wire
+    {
+        DisplayCategory = Material,
+        ItemType = base:drainable,
+        Weight = 1.0,
+        Icon = Wire,
+        ConsolidateOption = ContextMenu_Merge,
+        MetalValue = 20.0,
+        SurvivalGear = true,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        WorldStaticModel = Wire,
+        Tags = base:wire;base:hasmetal,
+    }
+
+    item BucketWallpaperPaste
+    {
+        DisplayCategory = Material,
+        Weight = 10.0,
+        ItemType = base:drainable,
+        UseWhileEquipped = false,
+        UseDelta = 0.1,
+        ReplaceOnDeplete = Base.Bucket,
+        Icon = MetalBucket_Plaster,
+        StaticModel = Bucket,
+        WorldStaticModel = BucketFullPlaster_Ground,
+        Tags = base:wallpaperpaste;base:hasmetal,
+    }
+
+    item BucketCarvedWallpaperPaste
+    {
+        DisplayCategory = Material,
+        ItemType = base:drainable,
+        Weight = 10.0,
+        Icon = Bucket_Crude,
+        PourType = Bucket,
+        ReplaceOnDeplete = Base.BucketCarved,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        StaticModel = BucketCarvedPlaster_Hand,
+        WorldStaticModel = BucketCarvedPlaster,
+        Tags = base:wallpaperpaste,
+    }
+
+    item Wallpaper_BeigeStripe
+    {
+        DisplayCategory = Material,
+        ItemType = base:drainable,
+        Icon = Wallpaper_BeigeStripe,
+        Weight = 10.0,
+        WorldStaticModel = Wallpaper_BeigeStripe,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        cantBeConsolided = true,
+        Tags = base:wallpaper,
+        Tooltip = Tooltip_item_Wallpaper,
+    }
+
+    item Wallpaper_BlackFloral
+    {
+        DisplayCategory = Material,
+        ItemType = base:drainable,
+        Icon = Wallpaper_BlackFloral,
+        Weight = 10.0,
+        WorldStaticModel = Wallpaper_BlackFloral,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        cantBeConsolided = true,
+        Tags = base:wallpaper,
+        Tooltip = Tooltip_item_Wallpaper,
+    }
+
+    item Wallpaper_BlueStripe
+    {
+        DisplayCategory = Material,
+        ItemType = base:drainable,
+        Icon = Wallpaper_BlueStripe,
+        Weight = 10.0,
+        WorldStaticModel = Wallpaper_BlueStripe,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        cantBeConsolided = true,
+        Tags = base:wallpaper,
+        Tooltip = Tooltip_item_Wallpaper,
+    }
+
+    item Wallpaper_GreenDiamond
+    {
+        DisplayCategory = Material,
+        ItemType = base:drainable,
+        Icon = Wallpaper_GreenDiamond,
+        Weight = 10.0,
+        WorldStaticModel = Wallpaper_GreenDiamond,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        cantBeConsolided = true,
+        Tags = base:wallpaper,
+        Tooltip = Tooltip_item_Wallpaper,
+    }
+
+    item Wallpaper_GreenFloral
+    {
+        DisplayCategory = Material,
+        ItemType = base:drainable,
+        Icon = Wallpaper_GreenFloral,
+        Weight = 10.0,
+        WorldStaticModel = Wallpaper_GreenFloral,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        cantBeConsolided = true,
+        Tags = base:wallpaper,
+        Tooltip = Tooltip_item_Wallpaper,
+    }
+
+    item Wallpaper_PinkChevron
+    {
+        DisplayCategory = Material,
+        ItemType = base:drainable,
+        Icon = Wallpaper_PinkChevron,
+        Weight = 10.0,
+        WorldStaticModel = Wallpaper_PinkChevron,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        cantBeConsolided = true,
+        Tags = base:wallpaper,
+        Tooltip = Tooltip_item_Wallpaper,
+    }
+
+    item Wallpaper_PinkFloral
+    {
+        DisplayCategory = Material,
+        ItemType = base:drainable,
+        Icon = Wallpaper_PinkFloral,
+        Weight = 10.0,
+        WorldStaticModel = Wallpaper_PinkFloral,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        cantBeConsolided = true,
+        Tags = base:wallpaper,
+        Tooltip = Tooltip_item_Wallpaper,
+    }
+
+    item Battery
+    {
+        DisplayCategory = Electronics,
+        ItemType = base:drainable,
+        Weight = 0.1,
+        Icon = Battery,
+        MetalValue = 1.0,
+        UseDelta = 0.007,
+        UseWhileEquipped = false,
+        cantBeConsolided = true,
+        WorldStaticModel = Battery,
+        Researchablerecipes = MakeImprovisedLighter,
+        Tags = base:hasmetal,
+    }
+
+    item SlugRepellent
+    {
+        DisplayCategory = Gardening,
+        ItemType = base:drainable,
+        UseDelta = 0.1,
+        Weight = 1.0,
+        Icon = SlugRepellent,
+        StaticModel = SlugRepellent,
+        WorldStaticModel = SlugRepellent,
+        UseWhileEquipped = false,
+    }
+
+    item BBQStarterFluid
+    {
+        DisplayCategory = Household,
+        ItemType = base:drainable,
+        Weight = 0.5,
+        Icon = BBQStarterFluid,
+        UseDelta = 0.05,
+        UseWhileEquipped = false,
+        WorldStaticModel = BBQStarterFluid,
+        Tags = base:hasmetal,
+    }
+
+    item Lighter
+    {
+        DisplayCategory = FireSource,
+        ItemType = base:drainable,
+        Weight = 0.1,
+        Icon = Lighter,
+        ActivatedItem = true,
+        cantBeConsolided = true,
+        KeepOnDeplete = true,
+        LightDistance = 5,
+        LightStrength = 0.8,
+        MetalValue = 1.0,
+        ticksPerEquipUse = 130,
+        TorchCone = false,
+        UseWhileEquipped = true,
+        StaticModel = Zippo,
+        WeightEmpty = 0.1,
+        WorldStaticModel = ZippoGround,
+        Tags = base:hasmetal;base:lighter;base:startfire;base:lessfull;base:refillablelighter,
+        UseDelta = 0.03125,
+        SurvivalGear = true,
+        SoundMap = Activate UseLighter,
+    }
+
+    item LighterDisposable
+    {
+        DisplayCategory = FireSource,
+        ItemType = base:drainable,
+        Weight = 0.1,
+        Icon = LighterDisposable,
+        ActivatedItem = true,
+        cantBeConsolided = true,
+        LightDistance = 5,
+        LightStrength = 0.6,
+        ticksPerEquipUse = 110,
+        TorchCone = false,
+        UseWhileEquipped = true,
+        StaticModel = LighterDisposable,
+        WeightEmpty = 0.1,
+        WorldStaticModel = LighterDisposable,
+        Tags = base:hasmetal;base:lighter;base:startfire;base:lessfull,
+        UseDelta = 0.015125,
+        SurvivalGear = true,
+        SoundMap = Activate UseLighter,
+    }
+
+    item LighterFluid
+    {
+        DisplayCategory = Household,
+        ItemType = base:drainable,
+        Weight = 0.2,
+        Icon = LighterFluid,
+        UseDelta = 0.05,
+        UseWhileEquipped = false,
+        WorldStaticModel = LighterFluid,
+        Tags = base:hasmetal;base:lighterfluid,
+    }
+
+    item MagnesiumFirestarter
+    {
+        DisplayCategory = Camping,
+        ItemType = base:drainable,
+        Weight = 0.1,
+        Icon = MagnesiumFirestarter,
+        UseDelta = 0.02,
+        WorldStaticModel = MagnesiumFirestarter,
+        SurvivalGear = true,
+        Tags = base:startfire;base:hasmetal,
+        UseWhileEquipped = false,
+    }
+
+    item Matchbox
+    {
+        DisplayCategory = FireSource,
+        Weight = 0.3,
+        ItemType = base:drainable,
+        UseWhileEquipped = false,
+        UseDelta = 0.02,
+        Icon = Matchbox,
+        ConsolidateOption = ContextMenu_Merge,
+        WorldStaticModel = Matchbox,
+        Tags = base:startfire;base:lessfull;base:ignorezombiedensity,
+        SurvivalGear = true,
+    }
+
+    item FishingLine
+    {
+        DisplayCategory = Fishing,
+        ItemType = base:drainable,
+        Weight = 0.3,
+        Icon = FishingLine,
+        ConsolidateOption = ContextMenu_Merge,
+        SurvivalGear = true,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        WorldStaticModel = FishingLine,
+        Tags = base:fishingline;base:thread,
+    }
+
+    item PremiumFishingLine
+    {
+        DisplayCategory = Fishing,
+        ItemType = base:drainable,
+        UseDelta = 0.25,
+        UseWhileEquipped = false,
+        Icon = FishingLinePremium,
+        Weight = 0.1,
+        SurvivalGear = true,
+        Tags = base:fishingline;base:thread;base:heavythread,
+        ConsolidateOption = ContextMenu_Merge,
+        WorldStaticModel = FishingLinePremium,
+    }
+
+    item Yeast
+    {
+        DisplayCategory = Food,
+        ItemType = base:drainable,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        Icon = Yeast,
+        Weight = 0.2,
+        WorldStaticModel = Yeast,
+    }
+
+    item BakingSoda
+    {
+        DisplayCategory = Cooking,
+        ItemType = base:drainable,
+        Weight = 0.3,
+        Icon = BakingSoda,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        WorldStaticModel = BakingSoda_Ground,
+    }
+
+    item GravyMix
+    {
+        DisplayCategory = Food,
+        ItemType = base:drainable,
+        Weight = 0.1,
+        Icon = GravyMix,
+        UseDelta = 0.5,
+        UseWhileEquipped = false,
+        WorldStaticModel = GravyMix_Ground,
+    }
+
+    item PancakeMix
+    {
+        DisplayCategory = Food,
+        ItemType = base:drainable,
+        Weight = 0.1,
+        Icon = PancakeMix,
+        UseDelta = 0.25,
+        UseWhileEquipped = false,
+        WorldStaticModel = PancakeMix_Ground,
+    }
+
+    item Vinegar2
+    {
+        DisplayCategory = Food,
+        ItemType = base:drainable,
+        UseWhileEquipped = false,
+        UseDelta = 0.1,
+        Weight = 0.2,
+        Icon = Vinegar,
+        CantBeFrozen = true,
+        EatType = GlugFood,
+        EvolvedRecipe = Sandwich:1;Burger:1;Rice:1;Pasta:1;Stir fry:1;Salad:1;Taco:1;Burrito:1,
+        Packaged = true,
+        Spice = true,
+        HungerChange = -10.0,
+        UnhappyChange = 50,
+        Calories = 0.0,
+        Carbohydrates = 0.0,
+        Lipids = 0.0,
+        Proteins = 0.0,
+        StaticModel = Vinegar,
+        WorldStaticModel = Vinegar,
+        Tags = base:vinegar;base:minoringredient,
+        FoodType = Dressing,
+    }
+
+    item Vinegar_Jug
+    {
+        DisplayCategory = Food,
+        ItemType = base:drainable,
+        UseWhileEquipped = false,
+        UseDelta = 0.05,
+        Weight = 2.0,
+        Icon = Vinegar_Jug,
+        CantBeFrozen = true,
+        EatType = GlugFood,
+        EvolvedRecipe = Sandwich:1;Burger:1;Rice:1;Pasta:1;Stir fry:1;Salad:1;Taco:1;Burrito:1,
+        Packaged = true,
+        Spice = true,
+        HungerChange = -100.0,
+        UnhappyChange = 500,
+        Calories = 0.0,
+        Carbohydrates = 0.0,
+        Lipids = 0.0,
+        Proteins = 0.0,
+        WorldStaticModel = Vinegar_Jug,
+        Tags = base:vinegar;base:minoringredient,
+        FoodType = Dressing,
+        EvolvedRecipeName = Vinegar,
+    }
+
+    item CompostBag
+    {
+        DisplayCategory = Gardening,
+        ItemType = base:drainable,
+        Weight = 5.0,
+        Icon = Compost,
+        ConditionMax = 1,
+        ReplaceOnDeplete = Base.EmptySandbag,
+        SurvivalGear = true,
+        Tooltip = Tooltip_Fertilizer,
+        UseDelta = 0.25,
+        UseWhileEquipped = false,
+        StaticModel = CompostBag,
+        WorldStaticModel = CompostBag,
+        Tags = base:compost,
+    }
+
+    item Fertilizer
+    {
+        DisplayCategory = Gardening,
+        ItemType = base:drainable,
+        Weight = 5.0,
+        WeightEmpty = 0.1,
+        Icon = TZ_IndieStoneNPK,
+        Tooltip = Tooltip_Fertilizer,
+        UseDelta = 0.125,
+        UseWhileEquipped = false,
+        StaticModel = Fertilizer_Ground,
+        WorldStaticModel = Fertilizer_Ground,
+        Tags = base:fertilizer,
+    }
+
+    item CeramicCrucibleWithGlass
+    {
+        DisplayCategory = Material,
+        Weight = 6.0,
+        ItemType = base:drainable,
+        UseDelta = 0.25,
+        UseWhileEquipped = false,
+        ReplaceOnDeplete = Base.CeramicCrucibleSmall,
+        Icon = Ceramic_Crucible_Fired_Molten,
+        StaticModel = CeramicCrucibleGlass,
+        WorldStaticModel = CeramicCrucibleGlass,
+        Tooltip = Tooltip_item_CeramicCrucibleWithGlass,
+    }
+
+    item PaperNapkins2
+    {
+        DisplayCategory = Junk,
+        ItemType = base:drainable,
+        Weight = 0.1,
+        Icon = PaperNapkins,
+        UseWhileEquipped = false,
+        WorldStaticModel = PaperNapkins_Ground,
+        Tags = base:mufflesneeze;base:fitswallet;base:isfirefuel;base:isfiretinder,
+        FireFuelRatio = 0.25,
+        cantBeConsolided = true,
+        UseDelta = 1.0,
+    }
+
+    item HandTorch
+    {
+        DisplayCategory = LightSource,
+        ItemType = base:drainable,
+        Weight = 0.5,
+        Icon = Flashlight2,
+        ActivatedItem = true,
+        DisappearOnUse = false,
+        KeepOnDeplete = true,
+        LightDistance = 15,
+        LightStrength = 1.8,
+        MetalValue = 10.0,
+        TorchCone = true,
+        TorchDot = 0.5,
+        UseDelta = 0.006,
+        cantBeConsolided = true,
+        primaryAnimMask = HoldingTorchRight,
+        secondaryAnimMask = HoldingTorchLeft,
+        StaticModel = HandTorch,
+        WorldStaticModel = HandTorchGround,
+        Tags = base:flashlight;base:flashlightpillar,
+        SoundMap = Activate FlashlightOn,
+        SoundMap = Deactivate FlashlightOff,
+        Researchablerecipes = MakeImprovisedFlashlight;MakeImprovisedLantern,
+    }
+
+    item FlashLight_AngleHead
+    {
+        DisplayCategory = LightSource,
+        ItemType = base:drainable,
+        Weight = 0.5,
+        Icon = FlashlightAngled_Black,
+        ActivatedItem = true,
+        KeepOnDeplete = true,
+        LightDistance = 15,
+        LightStrength = 1.5,
+        MetalValue = 10.0,
+        TorchCone = true,
+        TorchDot = 0.5,
+        UseDelta = 0.006,
+        cantBeConsolided = true,
+        primaryAnimMask = HoldingAngleTorchRight,
+        secondaryAnimMask = HoldingAngleTorchLeft,
+        StaticModel = FlashLight_AngleHead,
+        WorldStaticModel = FlashLight_AngleHead_Ground,
+        Tags = base:flashlight;base:flashlightpillar,
+        AttachmentType = Webbing,
+        SoundMap = Activate FlashlightOn,
+        SoundMap = Deactivate FlashlightOff,
+        Researchablerecipes = MakeImprovisedFlashlight;MakeImprovisedLantern,
+    }
+
+    item FlashLight_AngleHead_Army
+    {
+        DisplayCategory = LightSource,
+        ItemType = base:drainable,
+        Weight = 0.5,
+        Icon = FlashlightAngled_Green,
+        ActivatedItem = true,
+        DisappearOnUse = false,
+        KeepOnDeplete = true,
+        LightDistance = 15,
+        LightStrength = 1.5,
+        MetalValue = 10.0,
+        TorchCone = true,
+        TorchDot = 0.53,
+        UseDelta = 0.0057,
+        cantBeConsolided = true,
+        primaryAnimMask = HoldingAngleTorchRight,
+        secondaryAnimMask = HoldingAngleTorchLeft,
+        StaticModel = FlashLight_AngleHead_Army,
+        WorldStaticModel = FlashLight_AngleHead_Army_Ground,
+        Tags = base:flashlight;base:flashlightpillar,
+        AttachmentType = Webbing,
+        SoundMap = Activate FlashlightOn,
+        SoundMap = Deactivate FlashlightOff,
+        Researchablerecipes = MakeImprovisedFlashlight;MakeImprovisedLantern,
+    }
+
+    item Torch
+    {
+        DisplayCategory = LightSource,
+        ItemType = base:drainable,
+        Weight = 1.0,
+        Icon = Flashlight,
+        ActivatedItem = true,
+        DisappearOnUse = false,
+        KeepOnDeplete = true,
+        LightDistance = 25,
+        LightStrength = 2.0,
+        MetalValue = 10.0,
+        TorchCone = true,
+        TorchDot = 0.66,
+        UseDelta = 0.007,
+        cantBeConsolided = true,
+        primaryAnimMask = HoldingTorchRight,
+        secondaryAnimMask = HoldingHeavyTorchLeft,
+        StaticModel = FlashLight,
+        WorldStaticModel = FlashLightGround,
+        Tags = base:flashlight;base:flashlightpillar,
+        SoundMap = Activate FlashlightOn,
+        SoundMap = Deactivate FlashlightOff,
+        Researchablerecipes = MakeImprovisedFlashlight;MakeImprovisedLantern,
+    }
+
+    item PenLight
+    {
+        DisplayCategory = LightSource,
+        LightDistance = 11,
+        LightStrength = 1.2,
+        Weight = 0.2,
+        DisappearOnUse = false,
+        KeepOnDeplete = true,
+        ItemType = base:drainable,
+        TorchCone = true,
+        TorchDot = 0.75,
+        UseDelta = 0.001,
+        ActivatedItem = true,
+        Icon = Penlight,
+        MetalValue = 5.0,
+        cantBeConsolided = true,
+        StaticModel = PenLight_Hand,
+        primaryAnimMask = HoldingTorchRight,
+        secondaryAnimMask = HoldingTorchLeft,
+        WorldStaticModel = PenLight,
+        Tags = base:flashlight,
+        SoundMap = Activate FlashlightPenOn,
+        SoundMap = Deactivate FlashlightPenOff,
+        Researchablerecipes = MakeImprovisedFlashlight;MakeImprovisedLantern,
+    }
+
+    item Propane_Refill
+    {
+        DisplayCategory = LightSource,
+        ItemType = base:drainable,
+        Weight = 1.0,
+        Icon = Propane_Refill,
+        MetalValue = 10.0,
+        UseDelta = 0.00001,
+        UseWhileEquipped = false,
+        cantBeConsolided = true,
+        WorldStaticModel = Propane_Refill,
+    }
+
+    item Lantern_HurricaneLit
+    {
+        DisplayCategory = LightSource,
+        ItemType = base:drainable,
+        Weight = 2.0,
+        Icon = Lantern_Hurricane,
+        ActivatedItem = false,
+        DisappearOnUse = false,
+        LightDistance = 15,
+        LightStrength = 1.5,
+        MetalValue = 40.0,
+        TorchCone = false,
+        UseDelta = 0.007,
+        cantBeConsolided = true,
+        primaryAnimMask = holdingbagright,
+        secondaryAnimMask = holdingbagleft,
+        StaticModel = Lantern_Hurricane_HandleUp,
+        WorldStaticModel = Lantern_Hurricane,
+        Researchablerecipes = Forge_Lantern;MakeLanternGlass,
+        Tags = base:litlantern,
+        ReplaceOnExtinguish = Base.Lantern_Hurricane,
+        DoubleClickRecipe = ExtinguishHurricaneLantern,
+    }
+
+    item Lantern_Hurricane
+    {
+        DisplayCategory = LightSource,
+        ItemType = base:drainable,
+        Weight = 2.0,
+        Icon = Lantern_Hurricane,
+        DisappearOnUse = false,
+        MetalValue = 40.0,
+        cantBeConsolided = true,
+        primaryAnimMask = holdingbagright,
+        secondaryAnimMask = holdingbagleft,
+        StaticModel = Lantern_Hurricane_HandleUp,
+        WorldStaticModel = Lantern_Hurricane,
+        UseDelta = 0.007,
+        UseWhileEquipped = false,
+        Researchablerecipes = Forge_Lantern;MakeLanternGlass,
+        Tags = base:unlitlantern;base:smeltablesteellarge,
+        DoubleClickRecipe = LightHurricaneLantern,
+    }
+
+    item Lantern_Hurricane_CopperLit
+    {
+        DisplayCategory = LightSource,
+        ItemType = base:drainable,
+        Weight = 2.0,
+        Icon = Lantern_Hurricane_Copper,
+        ActivatedItem = false,
+        DisappearOnUse = false,
+        LightDistance = 15,
+        LightStrength = 1.5,
+        MetalValue = 40.0,
+        TorchCone = false,
+        UseDelta = 0.007,
+        cantBeConsolided = true,
+        primaryAnimMask = holdingbagright,
+        secondaryAnimMask = holdingbagleft,
+        StaticModel = Lantern_Hurricane_Copper_HandleUp,
+        WorldStaticModel = Lantern_Hurricane_Copper,
+        Researchablerecipes = Forge_Lantern;MakeLanternGlass,
+        Tags = base:litlantern,
+        ReplaceOnExtinguish = Base.Lantern_Hurricane_Copper,
+        DoubleClickRecipe = ExtinguishHurricaneLantern,
+    }
+
+    item Lantern_Hurricane_Copper
+    {
+        DisplayCategory = LightSource,
+        ItemType = base:drainable,
+        Weight = 2.0,
+        Icon = Lantern_Hurricane_Copper,
+        DisappearOnUse = false,
+        MetalValue = 40.0,
+        cantBeConsolided = true,
+        primaryAnimMask = holdingbagright,
+        secondaryAnimMask = holdingbagleft,
+        StaticModel = Lantern_Hurricane_Copper_HandleUp,
+        WorldStaticModel = Lantern_Hurricane_Copper,
+        UseDelta = 0.007,
+        UseWhileEquipped = false,
+        Researchablerecipes = Forge_Lantern;MakeLanternGlass,
+        Tags = base:scraplargecopper;base:unlitlantern,
+        DoubleClickRecipe = LightHurricaneLantern,
+    }
+
+    item Lantern_Hurricane_ForgedLit
+    {
+        DisplayCategory = LightSource,
+        ItemType = base:drainable,
+        Weight = 2.0,
+        Icon = Lantern_Hurricane_Forged,
+        ActivatedItem = false,
+        DisappearOnUse = false,
+        LightDistance = 15,
+        LightStrength = 1.5,
+        MetalValue = 40.0,
+        TorchCone = false,
+        UseDelta = 0.007,
+        cantBeConsolided = true,
+        primaryAnimMask = holdingbagright,
+        secondaryAnimMask = holdingbagleft,
+        StaticModel = Lantern_Hurricane_Forged_HandleUp,
+        WorldStaticModel = Lantern_Hurricane_Forged,
+        Researchablerecipes = Forge_Lantern;MakeLanternGlass,
+        Tags = base:litlantern,
+        ReplaceOnExtinguish = Base.Lantern_Hurricane_Forged,
+        DoubleClickRecipe = ExtinguishHurricaneLantern,
+    }
+
+    item Lantern_Hurricane_Forged
+    {
+        DisplayCategory = LightSource,
+        ItemType = base:drainable,
+        Weight = 2.0,
+        Icon = Lantern_Hurricane_Forged,
+        DisappearOnUse = false,
+        MetalValue = 40.0,
+        cantBeConsolided = true,
+        primaryAnimMask = holdingbagright,
+        secondaryAnimMask = holdingbagleft,
+        StaticModel = Lantern_Hurricane_Forged_HandleUp,
+        WorldStaticModel = Lantern_Hurricane_Forged,
+        UseDelta = 0.007,
+        UseWhileEquipped = false,
+        Researchablerecipes = Forge_Lantern;MakeLanternGlass,
+        Tags = base:scraplargesteel;base:unlitlantern,
+        DoubleClickRecipe = LightHurricaneLantern,
+    }
+
+    item Lantern_Hurricane_GoldLit
+    {
+        DisplayCategory = LightSource,
+        ItemType = base:drainable,
+        Weight = 2.0,
+        Icon = Lantern_Hurricane_Gold,
+        ActivatedItem = false,
+        DisappearOnUse = false,
+        LightDistance = 15,
+        LightStrength = 1.5,
+        MetalValue = 40.0,
+        TorchCone = false,
+        UseDelta = 0.007,
+        cantBeConsolided = true,
+        primaryAnimMask = holdingbagright,
+        secondaryAnimMask = holdingbagleft,
+        StaticModel = Lantern_Hurricane_Gold_HandleUp,
+        WorldStaticModel = Lantern_Hurricane_Gold,
+        Researchablerecipes = Forge_Lantern;MakeLanternGlass,
+        Tags = base:litlantern,
+        ReplaceOnExtinguish = Base.Lantern_Hurricane_Gold,
+        DoubleClickRecipe = ExtinguishHurricaneLantern,
+    }
+
+    item Lantern_Hurricane_Gold
+    {
+        DisplayCategory = LightSource,
+        ItemType = base:drainable,
+        Weight = 2.0,
+        Icon = Lantern_Hurricane_Gold,
+        DisappearOnUse = false,
+        MetalValue = 40.0,
+        cantBeConsolided = true,
+        primaryAnimMask = holdingbagright,
+        secondaryAnimMask = holdingbagleft,
+        StaticModel = Lantern_Hurricane_Gold_HandleUp,
+        WorldStaticModel = Lantern_Hurricane_Gold,
+        UseDelta = 0.007,
+        UseWhileEquipped = false,
+        Researchablerecipes = Forge_Lantern;MakeLanternGlass,
+        Tags = base:goldscrap;base:unlitlantern,
+        DoubleClickRecipe = LightHurricaneLantern,
+    }
+
+    item Lantern_Hurricane_SilverLit
+    {
+        DisplayCategory = LightSource,
+        ItemType = base:drainable,
+        Weight = 2.0,
+        Icon = Lantern_Hurricane_Silver,
+        ActivatedItem = false,
+        DisappearOnUse = false,
+        LightDistance = 15,
+        LightStrength = 1.5,
+        MetalValue = 40.0,
+        TorchCone = false,
+        UseDelta = 0.007,
+        cantBeConsolided = true,
+        primaryAnimMask = holdingbagright,
+        secondaryAnimMask = holdingbagleft,
+        StaticModel = Lantern_Hurricane_Silver_HandleUp,
+        WorldStaticModel = Lantern_Hurricane_Silver,
+        Researchablerecipes = Forge_Lantern;MakeLanternGlass,
+        Tags = base:litlantern,
+        ReplaceOnExtinguish = Base.Lantern_Hurricane_Silver,
+        DoubleClickRecipe = ExtinguishHurricaneLantern,
+    }
+
+    item Lantern_Hurricane_Silver
+    {
+        DisplayCategory = LightSource,
+        ItemType = base:drainable,
+        Weight = 2.0,
+        Icon = Lantern_Hurricane_Silver,
+        DisappearOnUse = false,
+        MetalValue = 40.0,
+        cantBeConsolided = true,
+        primaryAnimMask = holdingbagright,
+        secondaryAnimMask = holdingbagleft,
+        StaticModel = Lantern_Hurricane_Silver_HandleUp,
+        WorldStaticModel = Lantern_Hurricane_Silver,
+        UseDelta = 0.007,
+        UseWhileEquipped = false,
+        Researchablerecipes = Forge_Lantern;MakeLanternGlass,
+        Tags = base:silverscrap;base:unlitlantern,
+        DoubleClickRecipe = LightHurricaneLantern,
+    }
+
+    item Lantern_Propane
+    {
+        DisplayCategory = LightSource,
+        ItemType = base:drainable,
+        Weight = 2.0,
+        Icon = Lantern_Propane,
+        ActivatedItem = true,
+        DisappearOnUse = false,
+        LightDistance = 15,
+        LightStrength = 2.0,
+        MetalValue = 20.0,
+        TorchCone = false,
+        UseDelta = 0.007,
+        cantBeConsolided = true,
+        primaryAnimMask = holdingbagright,
+        secondaryAnimMask = holdingbagleft,
+        StaticModel = Lantern_Propane_HandleUp,
+        WorldStaticModel = Lantern_Propane,
+        SoundMap = EquippedAndActivated PropaneLanternRunning,
+        Researchablerecipes = Forge_Lantern;MakeLanternGlass,
+    }
+
+    item Lantern_CraftedElectric
+    {
+        DisplayCategory = LightSource,
+        ItemType = base:drainable,
+        Weight = 2.0,
+        Icon = Lantern_Improvised,
+        ActivatedItem = true,
+        DisappearOnUse = false,
+        LightDistance = 10,
+        LightStrength = 1.5,
+        MetalValue = 20.0,
+        TorchCone = false,
+        UseDelta = 0.007,
+        cantBeConsolided = true,
+        primaryAnimMask = holdingbagright,
+        secondaryAnimMask = holdingbagleft,
+        StaticModel = Lantern_Improvised,
+        WorldStaticModel = Lantern_Improvised,
+        Tags = base:flashlight;base:hasmetal;base:ignorezombiedensity,
+        SoundMap = Activate FlashlightOn,
+        SoundMap = Deactivate FlashlightOff,
+        Researchablerecipes = MakeImprovisedFlashlight,
+    }
+
+    item Flashlight_Crafted
+    {
+        DisplayCategory = LightSource,
+        ItemType = base:drainable,
+        Weight = 1.0,
+        Icon = Flashlight_Improvised,
+        ActivatedItem = true,
+        DisappearOnUse = false,
+        LightDistance = 11,
+        LightStrength = 1.2,
+        MetalValue = 10.0,
+        TorchCone = true,
+        TorchDot = 0.66,
+        UseDelta = 0.008,
+        cantBeConsolided = true,
+        primaryAnimMask = HoldingTorchRight,
+        secondaryAnimMask = HoldingHeavyTorchLeft,
+        StaticModel = FlashLight_Improvised,
+        WorldStaticModel = FlashLight_Improvised,
+        Tags = base:flashlight;base:hasmetal;base:ignorezombiedensity,
+        SoundMap = Activate FlashlightOn,
+        SoundMap = Deactivate FlashlightOff,
+        Researchablerecipes = MakeImprovisedLantern,
+    }
+
+    item Pills
+    {
+        DisplayCategory = FirstAid,
+        ItemType = base:drainable,
+        Weight = 0.2,
+        Icon = PillsPainkiller,
+        Medical = true,
+        Tooltip = Tooltip_Painkillers,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        StaticModel = PillBottle,
+        WorldStaticModel = PainKillers_Ground,
+        Tags = base:consumable,
+    }
+
+    item PillsAntiDep
+    {
+        DisplayCategory = FirstAid,
+        ItemType = base:drainable,
+        Weight = 0.2,
+        Icon = PillsAntidepressant,
+        Medical = true,
+        Tooltip = Tooltip_PillsAntidepressant,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        StaticModel = PillBottle,
+        WorldStaticModel = PillBottleGround,
+        Tags = base:consumable,
+    }
+
+    item PillsBeta
+    {
+        DisplayCategory = FirstAid,
+        ItemType = base:drainable,
+        Weight = 0.2,
+        Icon = PillsBetablocker,
+        Medical = true,
+        Tooltip = Tooltip_PillsBetablocker,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        StaticModel = PillBottle,
+        WorldStaticModel = PillBottleGround,
+        Tags = base:consumable,
+    }
+
+    item PillsSleepingTablets
+    {
+        DisplayCategory = FirstAid,
+        ItemType = base:drainable,
+        Weight = 0.2,
+        Icon = PillsSleeping,
+        Medical = true,
+        Tooltip = Tooltip_PillsSleeping,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        StaticModel = PillBottle,
+        WorldStaticModel = SleepingTablets_Ground,
+        Tags = base:consumable,
+    }
+
+    item PillsVitamins
+    {
+        DisplayCategory = FirstAid,
+        ItemType = base:drainable,
+        Weight = 0.2,
+        Icon = PillsCaffeine,
+        Medical = true,
+        Tooltip = Tooltip_Vitamins,
+        UseDelta = 0.2,
+        UseWhileEquipped = false,
+        fatigueChange = -4.0,
+        StressChange = 1,
+        StaticModel = CaffeinePills,
+        WorldStaticModel = CaffeinePills,
+        Tags = base:consumable,
+    }
+
+    item AlcoholedCottonBalls
+    {
+        DisplayCategory = FirstAid,
+        ItemType = base:drainable,
+        Weight = 0.1,
+        Icon = CottonBalls,
+        AlcoholPower = 4.0,
+        ConsolidateOption = ContextMenu_Merge,
+        Medical = true,
+        Tooltip = Tooltip_AlcoholBandage,
+        UseDelta = 1.0,
+        UseWhileEquipped = false,
+        WorldStaticModel = CottonBalls,
+    }
+
+    item AlcoholWipes
+    {
+        DisplayCategory = FirstAid,
+        ItemType = base:drainable,
+        Weight = 0.3,
+        Icon = AlcoholWipes,
+        AlcoholPower = 4.0,
+        ConsolidateOption = ContextMenu_Merge,
+        Medical = true,
+        Tooltip = Tooltip_AlcoholBandage,
+        UseDelta = 0.2,
+        UseWhileEquipped = false,
+        WorldStaticModel = AlcoholWipes,
+    }
+
+    item Tissue
+    {
+        DisplayCategory = FirstAid,
+        ItemType = base:drainable,
+        Weight = 0.1,
+        Icon = Tissue,
+        cantBeConsolided = true,
+        Tooltip = Tooltip_tissue_tooltip,
+        UseWhileEquipped = false,
+        WorldStaticModel = Tissue,
+        Tags = base:mufflesneeze;base:fitswallet;base:isfirefuel;base:isfirefuelsingleuse;base:isfiretinder,
+        FireFuelRatio = 0.25,
+    }
+
+    item TissueBox
+    {
+        DisplayCategory = FirstAid,
+        ItemType = base:drainable,
+        UseDelta = 0.05,
+        Weight = 1.0,
+        Icon = TissueBox,
+        WorldStaticModel = TissueBox,
+        Tags = base:isfirefuel,
+        FireFuelRatio = 0.25,
+        UseWhileEquipped = false,
+    }
+
+    item WeldingRods
+    {
+        DisplayCategory = Material,
+        ItemType = base:drainable,
+        Weight = 1.5,
+        WeightEmpty = 0.2,
+        Icon = WeldingRods,
+        ConsolidateOption = ContextMenu_Merge,
+        MetalValue = 20.0,
+        UseDelta = 0.05,
+        UseWhileEquipped = false,
+        WorldStaticModel = WeldingRods,
+    }
+
+    item BlowTorch
+    {
+        DisplayCategory = Tool,
+        ItemType = base:drainable,
+        Weight = 1.0,
+        WeightEmpty = 0.3,
+        Icon = BlowTorch,
+        KeepOnDeplete = true,
+        MetalValue = 20.0,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        cantBeConsolided = true,
+        StaticModel = BlowTorch,
+        WorldStaticModel = BlowtorchGround,
+    }
+
+    item PropaneTank
+    {
+        DisplayCategory = Material,
+        ItemType = base:drainable,
+        Weight = 10.0,
+        WeightEmpty = 5.0,
+        Icon = PropaneTank,
+        ScaleWorldIcon = 2.0,
+        UseDelta = 0.0002,
+        UseWhileEquipped = false,
+        UseWorldItem = true,
+        cantBeConsolided = true,
+        WorldStaticModel = PropaneTank,
+        KeepOnDeplete = true,
+        Tags = base:hasmetal;base:smeltablesteellarge,
+    }
+
+    item Extinguisher
+    {
+        DisplayCategory = Household,
+        ItemType = base:drainable,
+        Weight = 2.0,
+        Icon = Extinguisher,
+        MetalValue = 25.0,
+        Tooltip = Tooltip_Extinguisher,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        cantBeConsolided = true,
+        WorldStaticModel = Extinguisher,
+        Tags = base:smeltableironsmall,
+    }
+
+    item GasmaskFilter
+    {
+        DisplayCategory = Accessory,
+        ItemType = base:drainable,
+        Weight = 0.3,
+        Icon = GasmaskFilter,
+        UseDelta = 0.01,
+        UseWhileEquipped = false,
+        cantBeConsolided = true,
+        WorldStaticModel = GasmaskFilter,
+        Tags = base:gasmaskfilter;base:hasmetal,
+        KeepOnDeplete = true,
+        Researchablerecipes = MakeCraftedGasMaskFilter;RechargeFilters;MakeImprovisedGasMask,
+    }
+
+    item RagFilter
+    {
+        DisplayCategory = Accessory,
+        ItemType = base:drainable,
+        Weight = 0.1,
+        Icon = Rag,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        cantBeConsolided = true,
+        WorldStaticModel = RippedSheets,
+        Tags = base:ragfilter,
+        ReplaceOnDeplete = Base.RippedSheetsDirty,
+    }
+
+    item GasmaskFilterCrafted
+    {
+        DisplayCategory = Accessory,
+        ItemType = base:drainable,
+        Weight = 0.3,
+        Icon = GasmaskFilterHomemade,
+        UseDelta = 0.02,
+        UseWhileEquipped = false,
+        cantBeConsolided = true,
+        WorldStaticModel = GasmaskFilterHomemade,
+        Tags = base:gasmaskfilter;base:hasmetal,
+        KeepOnDeplete = true,
+        Researchablerecipes = RechargeFilters;MakeImprovisedGasMask,
+    }
+
+    item GunPowder
+    {
+        DisplayCategory = Material,
+        ItemType = base:drainable,
+        Weight = 0.5,
+        Icon = GunpowderJar,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        WeightEmpty = 0.01,
+        WorldStaticModel = GunpowderJar,
+    }
+
+    item Oxygen_Tank
+    {
+        DisplayCategory = Accessory,
+        ItemType = base:drainable,
+        Weight = 5.0,
+        WeightEmpty = 5.0,
+        Icon = OxygenTank,
+        UseDelta = 0.0625,
+        UseWhileEquipped = false,
+        cantBeConsolided = true,
+        KeepOnDeplete = true,
+        WorldStaticModel = Oxygen_Tank_Ground,
+        Tags = base:hasmetal;base:oxygentank;base:smeltableironsmall,
+    }
+
+    item RatPoison
+    {
+        DisplayCategory = Household,
+        ItemType = base:drainable,
+        UseDelta = 0.1,
+        Weight = 1.0,
+        Icon = RatPoison,
+        StaticModel = RatPoisonBox,
+        WorldStaticModel = RatPoisonBox,
+        Tags = base:consumable;base:showpoison,
+        OnEat = RecipeCodeOnEat.consumeRatPoison,
+        CustomContextMenu = Eat,
+        EatType = EatBox,
+        FoodSicknessChange = 100,
+    }
+
+    item RespiratorFilters
+    {
+        DisplayCategory = Accessory,
+        ItemType = base:drainable,
+        Weight = 0.3,
+        Icon = AirFilters,
+        UseDelta = 0.02,
+        UseWhileEquipped = false,
+        cantBeConsolided = true,
+        WorldStaticModel = RespiratorFilters,
+        Tags = base:respiratorfilter,
+        KeepOnDeplete = true,
+    }
+
+    item RespiratorFiltersRecharged
+    {
+        DisplayCategory = Accessory,
+        ItemType = base:drainable,
+        Weight = 0.3,
+        Icon = AirFilters_Tape,
+        UseDelta = 0.04,
+        UseWhileEquipped = false,
+        cantBeConsolided = true,
+        WorldStaticModel = RespiratorFilters_Taped,
+        Tags = base:respiratorfilter,
+        KeepOnDeplete = true,
+    }
+
+    item ToiletPaper
+    {
+        DisplayCategory = Junk,
+        ItemType = base:drainable,
+        Weight = 0.5,
+        Icon = ToiletPaper,
+        ConsolidateOption = ContextMenu_Merge,
+        Tooltip = Tooltip_tissue_tooltip,
+        UseWhileEquipped = false,
+        WorldStaticModel = ToiletPaper,
+        Tags = base:mufflesneeze;base:isfirefuel;base:isfirefuelsingleuse;base:isfiretinder,
+        FireFuelRatio = 0.25,
+    }
+
+    item CorrectionFluid
+    {
+        DisplayCategory = Household,
+        ItemType = base:drainable,
+        Weight = 0.2,
+        StaticModel = CorrectionFluid,
+        WorldStaticModel = CorrectionFluid,
+        Icon = Whiteout,
+        CustomContextMenu = Sniff,
+        OnEat = RecipeCodeOnEat.consumeCorrectionFluid,
+        Tags = base:consumable,
+        UseDelta = 0.1,
+        EatType = Sniff,
+        FoodSicknessChange = 10,
+    }
+
+    item LighterBBQ
+    {
+        DisplayCategory = FireSource,
+        ItemType = base:drainable,
+        Weight = 0.3,
+        Icon = BBQLighter,
+        ActivatedItem = true,
+        cantBeConsolided = true,
+        LightDistance = 5,
+        LightStrength = 0.6,
+        ticksPerEquipUse = 110,
+        TorchCone = false,
+        UseWhileEquipped = true,
+        StaticModel = LighterBBQ,
+        WeightEmpty = 0.1,
+        WorldStaticModel = LighterBBQ,
+        Tags = base:hasmetal;base:lighter;base:startfire;base:lessfull,
+        UseDelta = 0.015125,
+        SurvivalGear = true,
+        SoundMap = Activate UseLighter,
+    }
+
+    item Staples
+    {
+        DisplayCategory = Junk,
+        ItemType = base:drainable,
+        Weight = 0.1,
+        Icon = Staples,
+        WorldStaticModel = Staples_Ground,
+        UseWhileEquipped = false,
+        Tags = base:hasmetal;base:hideremaining,
+        cantBeConsolided = true,
+    }
+
+    item Twine
+    {
+        DisplayCategory = Material,
+        ItemType = base:drainable,
+        Weight = 0.5,
+        Icon = Twine,
+        ConsolidateOption = ContextMenu_Merge,
+        SurvivalGear = true,
+        UseDelta = 0.2,
+        UseWhileEquipped = false,
+        WorldStaticModel = Twine,
+        Tags = base:fishingline;base:binding;base:twine;base:simpleweaponbinding,
+    }
+
+    item PaintBlack
+    {
+        DisplayCategory = Paint,
+        ItemType = base:drainable,
+        Weight = 5.0,
+        Icon = Paint_Black,
+        PourType = Bucket,
+        ReplaceOnDeplete = Base.PaintbucketEmpty,
+        Tooltip = Tooltip_Paint,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        StaticModel = PaintTinBlack_Ground,
+        WorldStaticModel = PaintTinBlack_Ground,
+        SoundMap = DumpContents EmptyPaintCan,
+        Tags = base:paint,
+    }
+
+    item PaintBlue
+    {
+        DisplayCategory = Paint,
+        ItemType = base:drainable,
+        Weight = 5.0,
+        Icon = Paint_Blue,
+        PourType = Bucket,
+        ReplaceOnDeplete = Base.PaintbucketEmpty,
+        Tooltip = Tooltip_Paint,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        StaticModel = PaintTinBlue_Ground,
+        WorldStaticModel = PaintTinBlue_Ground,
+        SoundMap = DumpContents EmptyPaintCan,
+        Tags = base:paint,
+    }
+
+    item PaintBrown
+    {
+        DisplayCategory = Paint,
+        ItemType = base:drainable,
+        Weight = 5.0,
+        Icon = Paint_Brown,
+        PourType = Bucket,
+        ReplaceOnDeplete = Base.PaintbucketEmpty,
+        Tooltip = Tooltip_Paint,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        StaticModel = PaintTinBrown_Ground,
+        WorldStaticModel = PaintTinBrown_Ground,
+        SoundMap = DumpContents EmptyPaintCan,
+        Tags = base:paint,
+    }
+
+    item PaintCyan
+    {
+        DisplayCategory = Paint,
+        ItemType = base:drainable,
+        Weight = 5.0,
+        Icon = Paint_Cyan,
+        PourType = Bucket,
+        ReplaceOnDeplete = Base.PaintbucketEmpty,
+        Tooltip = Tooltip_Paint,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        StaticModel = PaintTinCyan_Ground,
+        WorldStaticModel = PaintTinCyan_Ground,
+        SoundMap = DumpContents EmptyPaintCan,
+        Tags = base:paint,
+    }
+
+    item PaintGreen
+    {
+        DisplayCategory = Paint,
+        ItemType = base:drainable,
+        Weight = 5.0,
+        Icon = Paint_Green,
+        PourType = Bucket,
+        ReplaceOnDeplete = Base.PaintbucketEmpty,
+        Tooltip = Tooltip_Paint,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        StaticModel = PaintTinGreen_Ground,
+        WorldStaticModel = PaintTinGreen_Ground,
+        SoundMap = DumpContents EmptyPaintCan,
+        Tags = base:paint,
+    }
+
+    item PaintGrey
+    {
+        DisplayCategory = Paint,
+        ItemType = base:drainable,
+        Weight = 5.0,
+        Icon = Paint_Grey,
+        PourType = Bucket,
+        ReplaceOnDeplete = Base.PaintbucketEmpty,
+        Tooltip = Tooltip_Paint,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        StaticModel = PaintTinGrey_Ground,
+        WorldStaticModel = PaintTinGrey_Ground,
+        SoundMap = DumpContents EmptyPaintCan,
+        Tags = base:paint,
+    }
+
+    item PaintLightBlue
+    {
+        DisplayCategory = Paint,
+        ItemType = base:drainable,
+        Weight = 5.0,
+        Icon = Paint_LightBlue,
+        PourType = Bucket,
+        ReplaceOnDeplete = Base.PaintbucketEmpty,
+        Tooltip = Tooltip_Paint,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        StaticModel = PaintTinLightBlue_Ground,
+        WorldStaticModel = PaintTinLightBlue_Ground,
+        SoundMap = DumpContents EmptyPaintCan,
+        Tags = base:paint,
+    }
+
+    item PaintLightBrown
+    {
+        DisplayCategory = Paint,
+        ItemType = base:drainable,
+        Weight = 5.0,
+        Icon = Paint_LightBrown,
+        PourType = Bucket,
+        ReplaceOnDeplete = Base.PaintbucketEmpty,
+        Tooltip = Tooltip_Paint,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        StaticModel = PaintTinLightBrown_Ground,
+        WorldStaticModel = PaintTinLightBrown_Ground,
+        SoundMap = DumpContents EmptyPaintCan,
+        Tags = base:paint,
+    }
+
+    item PaintOrange
+    {
+        DisplayCategory = Paint,
+        ItemType = base:drainable,
+        Weight = 5.0,
+        Icon = Paint_Orange,
+        PourType = Bucket,
+        ReplaceOnDeplete = Base.PaintbucketEmpty,
+        Tooltip = Tooltip_Paint,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        StaticModel = PaintTinOrange_Ground,
+        WorldStaticModel = PaintTinOrange_Ground,
+        SoundMap = DumpContents EmptyPaintCan,
+        Tags = base:paint,
+    }
+
+    item PaintPink
+    {
+        DisplayCategory = Paint,
+        ItemType = base:drainable,
+        Weight = 5.0,
+        Icon = Paint_Pink,
+        PourType = Bucket,
+        ReplaceOnDeplete = Base.PaintbucketEmpty,
+        Tooltip = Tooltip_Paint,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        StaticModel = PaintTinPink_Ground,
+        WorldStaticModel = PaintTinPink_Ground,
+        SoundMap = DumpContents EmptyPaintCan,
+        Tags = base:paint,
+    }
+
+    item PaintPurple
+    {
+        DisplayCategory = Paint,
+        ItemType = base:drainable,
+        Weight = 5.0,
+        Icon = Paint_Purple,
+        PourType = Bucket,
+        ReplaceOnDeplete = Base.PaintbucketEmpty,
+        Tooltip = Tooltip_Paint,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        StaticModel = PaintTinPurple_Ground,
+        WorldStaticModel = PaintTinPurple_Ground,
+        SoundMap = DumpContents EmptyPaintCan,
+        Tags = base:paint,
+    }
+
+    item PaintRed
+    {
+        DisplayCategory = Paint,
+        ItemType = base:drainable,
+        Weight = 5.0,
+        Icon = Paint_Red,
+        PourType = Bucket,
+        ReplaceOnDeplete = Base.PaintbucketEmpty,
+        Tooltip = Tooltip_Paint,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        StaticModel = PaintTinRed_Ground,
+        WorldStaticModel = PaintTinRed_Ground,
+        SoundMap = DumpContents EmptyPaintCan,
+        Tags = base:paint,
+    }
+
+    item PaintTurquoise
+    {
+        DisplayCategory = Paint,
+        ItemType = base:drainable,
+        Weight = 5.0,
+        Icon = Paint_Turquoise,
+        PourType = Bucket,
+        ReplaceOnDeplete = Base.PaintbucketEmpty,
+        Tooltip = Tooltip_Paint,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        StaticModel = PaintTinTurquoise_Ground,
+        WorldStaticModel = PaintTinTurquoise_Ground,
+        SoundMap = DumpContents EmptyPaintCan,
+        Tags = base:paint,
+    }
+
+    item PaintWhite
+    {
+        DisplayCategory = Paint,
+        ItemType = base:drainable,
+        Weight = 5.0,
+        Icon = Paint_White,
+        PourType = Bucket,
+        ReplaceOnDeplete = Base.PaintbucketEmpty,
+        Tooltip = Tooltip_Paint,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        StaticModel = PaintTinWhite_Ground,
+        WorldStaticModel = PaintTinWhite_Ground,
+        SoundMap = DumpContents EmptyPaintCan,
+        Tags = base:paint,
+    }
+
+    item PaintYellow
+    {
+        DisplayCategory = Paint,
+        ItemType = base:drainable,
+        Weight = 5.0,
+        Icon = Paint_Yellow,
+        PourType = Bucket,
+        ReplaceOnDeplete = Base.PaintbucketEmpty,
+        Tooltip = Tooltip_Paint,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        StaticModel = PaintTinYellow_Ground,
+        WorldStaticModel = PaintTinYellow_Ground,
+        SoundMap = DumpContents EmptyPaintCan,
+        Tags = base:paint,
+    }
+
+    item SprayPaint
+    {
+        DisplayCategory = Paint,
+        ItemType = base:drainable,
+        Weight = 1.0,
+        Icon = SprayPaint,
+        IconColorMask = SprayPaint_Mask,
+        Tooltip = Tooltip_Paint,
+        UseDelta = 0.125,
+        UseWhileEquipped = false,
+        StaticModel = SprayPaint,
+        WorldStaticModel = SprayPaint,
+        OnCreate = ItemCodeOnCreate.onCreateSprayPaint,
+    }
+
+    item Matches
+    {
+        DisplayCategory = FireSource,
+        ItemType = base:drainable,
+        Weight = 0.1,
+        Icon = Matches,
+        ConsolidateOption = ContextMenu_Merge,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        WorldStaticModel = Matches,
+        Tags = base:startfire;base:lessfull;base:fitswallet,
+        SurvivalGear = true,
+    }
+
+    item CigarettePack
+    {
+        DisplayCategory = Junk,
+        Weight = 0.2,
+        UseDelta = 0.05,
+        ItemType = base:drainable,
+        UseWhileEquipped = false,
+        KeepOnDeplete = false,
+        Icon = IckySticks,
+        StaticModel = Cigarette_Lit,
+        WorldStaticModel = CigarettePack_Closed,
+        Tags = base:packed;base:lessfull;base:consumable;base:smokable,
+        EatType = Cigarettes,
+        OnEat = RecipeCodeOnEat.consumeNicotine,
+        StressChange = -5,
+        CustomEatSound = ,
+        Eattime = 460,
+        RequireInHandOrInventory = Base.CandleLit/Base.Matches/Base.Matchbox/Base.LighterDisposable/Base.Lighter/Base.LighterBBQ/Base.Lighter_Battery,
+        CustomContextMenu = Smoke,
+        FoodSicknessChange = 14,
+        InverseCoughProbability = 10,
+        InverseCoughProbabilitySmoker = 2,
+    }
+
+    item CigaretteRollingPapers
+    {
+        DisplayCategory = Junk,
+        ItemType = base:drainable,
+        Weight = 0.1,
+        Icon = CigaretteRollingPapers,
+        UseDelta = 0.02,
+        UseWhileEquipped = false,
+        WorldStaticModel = CigaretteRollingPapers,
+        Tags = base:rollingpaper;base:lessfull;base:fitswallet,
+    }
+
+    item TobaccoLoose
+    {
+        DisplayCategory = Junk,
+        ItemType = base:drainable,
+        Weight = 0.3,
+        Icon = TobaccoLoose,
+        UseDelta = 0.02,
+        UseWhileEquipped = false,
+        WorldStaticModel = TobaccoLoose,
+        Tags = base:ignorezombiedensity;base:tobacco;base:lessfull,
+    }
+
+    item TobaccoChewing
+    {
+        DisplayCategory = Junk,
+        Weight = 0.3,
+        UseDelta = 0.05,
+        ItemType = base:drainable,
+        UseWhileEquipped = false,
+        Icon = TobaccoChewing,
+        StaticModel = TobaccoChewing_Hand,
+        WorldStaticModel = TobaccoChewing,
+        Tags = base:ignorezombiedensity;base:consumable;base:chewingtobacco;base:lessfull,
+        CustomContextMenu = Chew,
+        OnEat = RecipeCodeOnEat.consumeNicotine,
+        EatType = EatBox,
+        StressChange = -10,
+        FoodSicknessChange = 14,
+    }
+
+    item Candle
+    {
+        DisplayCategory = LightSource,
+        ItemType = base:drainable,
+        Weight = 0.2,
+        Icon = Candle,
+        UseDelta = 0.003,
+        cantBeConsolided = true,
+        StaticModel = Candle,
+        WorldStaticModel = CandleGround,
+        UseWhileEquipped = false,
+        DoubleClickRecipe = LightCandle,
+    }
+
+    item CandleLit
+    {
+        DisplayCategory = LightSource,
+        ItemType = base:drainable,
+        Weight = 0.2,
+        Icon = CandleLit,
+        ActivatedItem = false,
+        LightDistance = 5,
+        LightStrength = 1.2,
+        TorchCone = false,
+        UseDelta = 0.003,
+        UseWhileUnequipped = true,
+        cantBeConsolided = true,
+        StaticModel = Candle,
+        WorldStaticModel = CandleGround,
+        Tags = base:startfire,
+        ReplaceOnExtinguish = Base.Candle,
+        DoubleClickRecipe = ExtinguishCandle,
+    }
+
+    item BathTowel
+    {
+        DisplayCategory = Household,
+        ItemType = base:drainable,
+        Weight = 0.3,
+        Icon = Bathtowel,
+        ReplaceOnDeplete = Base.BathTowelWet,
+        Tooltip = Tooltip_Bathtowel,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        cantBeConsolided = true,
+        StaticModel = BathTowel_Hand,
+        WorldStaticModel = BathTowel,
+        Tags = base:cleanstains;base:spawnfullunlesslaundry,
+    }
+
+    item DishCloth
+    {
+        DisplayCategory = Household,
+        ItemType = base:drainable,
+        Weight = 0.3,
+        Icon = Dishtowel,
+        ReplaceOnDeplete = Base.DishClothWet,
+        Tooltip = Tooltip_Bathtowel,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        cantBeConsolided = true,
+        StaticModel = DishCloth_Hand,
+        WorldStaticModel = DishTowel,
+        Tags = base:cleanstains,
+    }
+
+    item FabricRoll_Cotton
+    {
+        DisplayCategory = Material,
+        Weight = 10.0,
+        ItemType = base:drainable,
+        UseDelta = 0.05,
+        Icon = FabricRoll_Cotton_White,
+        WorldStaticModel = FabricRoll_White,
+        OnCreate = ItemCodeOnCreate.onCreateFabricRoll,
+        UseWhileEquipped = false,
+    }
+
+    item FabricRoll_DenimBlack
+    {
+        DisplayCategory = Material,
+        Weight = 10.0,
+        ItemType = base:drainable,
+        UseDelta = 0.05,
+        Icon = FabricRoll_Denim_Black,
+        WorldStaticModel = FabricRoll_Black,
+        UseWhileEquipped = false,
+    }
+
+    item FabricRoll_DenimBlue
+    {
+        DisplayCategory = Material,
+        Weight = 10.0,
+        ItemType = base:drainable,
+        UseDelta = 0.05,
+        Icon = FabricRoll_Denim_Blue,
+        WorldStaticModel = FabricRoll_Blue,
+        UseWhileEquipped = false,
+    }
+
+    item FabricRoll_DenimDarkBlue
+    {
+        DisplayCategory = Material,
+        Weight = 10.0,
+        ItemType = base:drainable,
+        UseDelta = 0.05,
+        Icon = FabricRoll_Denim_DarkBlue,
+        WorldStaticModel = FabricRoll_DarkBlue,
+        UseWhileEquipped = false,
+    }
+
+    item Thread
+    {
+        DisplayCategory = Material,
+        ItemType = base:drainable,
+        Weight = 0.1,
+        Icon = Thread,
+        IconColorMask = Thread_Mask,
+        ConsolidateOption = ContextMenu_Merge,
+        SurvivalGear = true,
+        UseDelta = 0.05,
+        UseWhileEquipped = false,
+        WorldStaticModel = Thread,
+        OnCreate = ItemCodeOnCreate.onCreateRandomColor,
+        Tags = base:thread,
+    }
+
+    item Thread_Aramid
+    {
+        DisplayCategory = Material,
+        ItemType = base:drainable,
+        Weight = 0.2,
+        Icon = AramidThread,
+        ConsolidateOption = ContextMenu_Merge,
+        SurvivalGear = true,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        WorldStaticModel = Thread_Aramid,
+        Tags = base:thread;base:heavythread,
+    }
+
+    item Thread_Sinew
+    {
+        DisplayCategory = Material,
+        ItemType = base:drainable,
+        Weight = 0.2,
+        Icon = SinewThread,
+        ConsolidateOption = ContextMenu_Merge,
+        SurvivalGear = true,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        WorldStaticModel = Thread_Sinew,
+        Tags = base:thread;base:heavythread,
+    }
+
+    item SteelWool
+    {
+        DisplayCategory = Tool,
+        ItemType = base:drainable,
+        Weight = 0.3,
+        UseDelta = 0.2,
+        Icon = SteelWool,
+        WorldStaticModel = SteelWool,
+        Tags = base:hasmetal;base:isfiretinder,
+        FireFuelRatio = 0.25,
+        UseWhileEquipped = false,
+        Researchablerecipes = MakeImprovisedLighter,
+    }
+
+    item Bullhorn
+    {
+        DisplayCategory = Tool,
+        ItemType = base:drainable,
+        Weight = 2.0,
+        Icon = Bullhorn,
+        EquipSound = MegaphoneEquip,
+        UnequipSound = MegaphoneUnEquip,
+        WorldStaticModel = Megaphone,
+        UseWhileEquipped = true,
+        Tags = base:hasmetal;base:miscelectronic;base:hideremaining;base:megaphone,
+        cantBeConsolided = true,
+    }
+
+    item CarBattery1
+    {
+        DisplayCategory = VehicleMaintenance,
+        Weight = 5.0,
+        ItemType = base:drainable,
+        UseDelta = 0.00001,
+        UseWhileEquipped = false,
+        Icon = CarBattery,
+        MetalValue = 1.0,
+        cantBeConsolided = true,
+        VehicleType = 1,
+        ConditionMax = 100,
+        ChanceToSpawnDamaged = 30,
+        MechanicsItem = true,
+        WorldStaticModel = CarBattery,
+        Tags = base:carbattery,
+        KeepOnDeplete = true,
+    }
+
+    item CarBattery2
+    {
+        DisplayCategory = VehicleMaintenance,
+        Weight = 5.0,
+        ItemType = base:drainable,
+        UseDelta = 0.00001,
+        UseWhileEquipped = false,
+        Icon = CarBattery,
+        MetalValue = 1.0,
+        cantBeConsolided = true,
+        VehicleType = 2,
+        ConditionMax = 100,
+        ChanceToSpawnDamaged = 30,
+        MechanicsItem = true,
+        WorldStaticModel = CarBattery,
+        Tags = base:carbattery,
+        KeepOnDeplete = true,
+    }
+
+    item CarBattery3
+    {
+        DisplayCategory = VehicleMaintenance,
+        Weight = 5.0,
+        ItemType = base:drainable,
+        UseDelta = 0.00001,
+        UseWhileEquipped = false,
+        Icon = CarBattery,
+        MetalValue = 1.0,
+        cantBeConsolided = true,
+        VehicleType = 3,
+        ConditionMax = 100,
+        ChanceToSpawnDamaged = 30,
+        MechanicsItem = true,
+        WorldStaticModel = CarBattery,
+        Tags = base:carbattery,
+        KeepOnDeplete = true,
+    }
+
+    item Lighter_Battery
+    {
+        DisplayCategory = FireSource,
+        ItemType = base:drainable,
+        Weight = 0.1,
+        Icon = Lighter_Crafted,
+        MetalValue = 1.0,
+        UseDelta = 0.05,
+        UseWhileEquipped = false,
+        cantBeConsolided = true,
+        WorldStaticModel = Lighter_Battery,
+        Tags = base:hasmetal;base:lighter;base:startfire,
+        SoundMap = Activate UseLighter,
+    }
+
+    item DentalFloss
+    {
+        DisplayCategory = Material,
+        ItemType = base:drainable,
+        Weight = 0.1,
+        Icon = DentalFloss,
+        ConsolidateOption = ContextMenu_Merge,
+        UseDelta = 0.2,
+        UseWhileEquipped = false,
+        WorldStaticModel = DentalFloss,
+        Tags = base:thread,
+    }
+}

@@ -1,0 +1,130 @@
+module Base
+{
+    craftRecipe DryCorn
+    {
+        time = 172800,
+        Tags = DryingRackGrain,
+        category = Farming,
+        overlayStyle = Corn,
+        inputs
+        {
+            item variable[1:20] [Base.Corn] flags[ItemCount] mode:destroy,
+        }
+        outputs
+        {
+            item variable[1:20] Base.CornSeed,
+        }
+    }
+
+    craftRecipe DrySunflower
+    {
+        time = 172800,
+        Tags = DryingRackGrain,
+        category = Farming,
+        overlayStyle = Sunflower,
+        inputs
+        {
+            item variable[1:20] [Base.SunflowerHead] flags[ItemCount] mode:destroy,
+        }
+        outputs
+        {
+            item variable[1:20] Base.SunflowerHeadDried,
+        }
+    }
+
+    craftRecipe DryWheat
+    {
+        time = 172800,
+        Tags = DryingRackGrain,
+        category = Farming,
+        overlayStyle = Wheat,
+        inputs
+        {
+            item variable[1:20] [Base.WheatSheaf] flags[ItemCount] mode:destroy,
+        }
+        outputs
+        {
+            item variable[1:20] Base.WheatSheafDried,
+        }
+    }
+
+    craftRecipe DryFlax
+    {
+        time = 172800,
+        Tags = DryingRackGrain,
+        category = Farming,
+        overlayStyle = Flax,
+        inputs
+        {
+            item variable[1:20] [Base.Flax] flags[ItemCount] mode:destroy,
+        }
+        outputs
+        {
+            item variable[1:20] Base.FlaxDried,
+        }
+    }
+
+    craftRecipe DryTobacco
+    {
+        time = 172800,
+        Tags = DryingRackGrain,
+        category = Farming,
+        overlayStyle = Tobacco;Herb,
+        inputs
+        {
+            item variable[1:20] [Base.Tobacco] flags[ItemCount] mode:destroy,
+        }
+        outputs
+        {
+            item variable[1:20] Base.TobaccoDried,
+        }
+    }
+
+    craftRecipe DryRye
+    {
+        time = 172800,
+        Tags = DryingRackGrain,
+        category = Farming,
+        overlayStyle = Wheat,
+        inputs
+        {
+            item variable[1:20] [Base.RyeSheaf] flags[ItemCount] mode:destroy,
+        }
+        outputs
+        {
+            item variable[1:20] Base.RyeSheafDried,
+        }
+    }
+
+    craftRecipe DryHemp
+    {
+        time = 172800,
+        Tags = DryingRackGrain,
+        category = Farming,
+        overlayStyle = Hemp,
+        inputs
+        {
+            item variable[1:20] [Base.HempBundle] flags[ItemCount] mode:destroy,
+        }
+        outputs
+        {
+            item variable[1:20] Base.HempBundleDried,
+        }
+    }
+
+    craftRecipe DryBarley
+    {
+        time = 172800,
+        Tags = DryingRackGrain,
+        category = Farming,
+        overlayStyle = Wheat,
+        inputs
+        {
+            item variable[1:20] [Base.BarleySheaf] flags[ItemCount] mode:destroy,
+        }
+        outputs
+        {
+            item variable[1:20] Base.BarleySheafDried,
+        }
+    }
+}

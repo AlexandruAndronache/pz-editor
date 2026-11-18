@@ -1,0 +1,31 @@
+module Base
+{
+    entity GoldPallet
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_GoldPallet,
+            uiEnabled = false,
+        }
+        component ContextMenuConfig
+        {
+            contextEntry
+            {
+                menu = TakeGoldBars,
+                icon = Item_Ingot_Gold.png,
+                customFunction = ContextMenuCode.TakeGoldBars,
+            }
+        }
+        component SpriteConfig
+        {
+            face SINGLE
+            {
+                layer
+                {
+                    row = location_military_knox_01_1,
+                }
+            }
+        }
+    }
+}

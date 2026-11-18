@@ -1,0 +1,53 @@
+module Base
+{
+    craftRecipe OpenBottleOfBeer
+    {
+        timedAction = OpenBeerBottle,
+        time = 15,
+        AllowBatchCraft = false,
+        Tags = InHandCraft;Cooking;CanBeDoneInDark,
+        category = Cooking,
+        inputs
+        {
+            item 1 tags[base:bottleopener] mode:keep,
+            item 1 [Base.BeerBottle;Base.BeerImported] mode:keep flags[DontPutBack;IsSealed;Prop2;Unseal;ItemCount],
+        }
+        outputs
+        {
+        }
+    }
+
+    craftRecipe OpenCanOfBeverage
+    {
+        timedAction = OpenPopCan,
+        time = 15,
+        AllowBatchCraft = false,
+        Tags = InHandCraft;Cooking;CanBeDoneInDark,
+        category = Cooking,
+        inputs
+        {
+            item 1 tags[base:sealedbeveragecan] mode:keep flags[DontPutBack;IsSealed;Prop2;Unseal;ItemCount],
+        }
+        outputs
+        {
+        }
+    }
+
+    craftRecipe OpenBottleOfWine
+    {
+        timedAction = UncorkBottle,
+        time = 30,
+        AllowBatchCraft = false,
+        Tags = InHandCraft;Cooking;CanBeDoneInDark,
+        category = Cooking,
+        inputs
+        {
+            item 1 tags[base:corkscrew] mode:keep,
+            item 1 [Base.Wine;Base.Wine2;Base.WineAged] mode:keep flags[DontPutBack;IsSealed;Prop2;Unseal;ItemCount],
+        }
+        outputs
+        {
+            item 1 Base.Cork,
+        }
+    }
+}

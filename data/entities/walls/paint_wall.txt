@@ -1,0 +1,28 @@
+module Base
+{
+    entity Paint_Wall
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_Paint_Wall,
+            uiEnabled = false,
+        }
+        component WallCoveringConfig
+        {
+            type = paintThump,
+        }
+        component CraftRecipe
+        {
+            timedAction = Paint,
+            time = 200,
+            category = Wall Coverings,
+            Tooltip = Tooltip_craft_paintWall,
+            inputs
+            {
+                item 1 tags[base:paintbrush] mode:keep flags[Prop1;MayDegradeVeryLight],
+                item 1 tags[base:paint],
+            }
+        }
+    }
+}

@@ -190,8 +190,9 @@ textarea.raw{grid-column:1/-1;width:100%;min-height:34px;font-family:var(--f-mon
   </div>
 </div>
 
+<script src="datakit.js"></script>
 <script>
-const SRC = "FitnessExercises = {};\r\n\r\nFitnessExercises.exercisesType = {\r\n\tsquats = {\r\n\t\ttype = \"squats\",\r\n\t\tname=getText(\"IGUI_Squats\"),\r\n\t\ttooltip=getText(\"IGUI_Squats_Tooltip\"),\r\n\t\tstiffness=\"legs\", -- where we gonna build stiffness (can be a list separated by \",\" can be legs, arms or abs)\r\n\t\tmetabolics = Metabolics.Fitness,\r\n\t\txpMod = 1,\r\n\t};\r\n\tpushups = {\r\n\t\ttype = \"pushups\",\r\n\t\tname=getText(\"IGUI_PushUps\"),\r\n\t\ttooltip=getText(\"IGUI_PushUps_Tooltip\"),\r\n\t\tstiffness=\"arms,chest\",\r\n\t\tmetabolics = Metabolics.Fitness,\r\n\t\txpMod = 1,\r\n\t};\r\n\tsitup = {\r\n\t\ttype = \"situp\",\r\n\t\tname=getText(\"IGUI_SitUps\"),\r\n\t\ttooltip=getText(\"IGUI_SitUps_Tooltip\"),\r\n\t\tstiffness=\"abs\",\r\n\t\tmetabolics = Metabolics.Fitness,\r\n\t\txpMod = 1,\r\n\t};\r\n\tburpees = {\r\n\t\ttype = \"burpees\",\r\n\t\tname=getText(\"IGUI_Burpees\"),\r\n\t\ttooltip=getText(\"IGUI_Burpees_Tooltip\"),\r\n\t\tstiffness=\"legs,arms,chest\", -- where we gonna build stiffness (can be a list separated by \",\" can be legs, arms or abs)\r\n\t\tmetabolics = Metabolics.FitnessHeavy,\r\n\t\txpMod = 0.8, -- few less xp as it gives xp for 3 body parts\r\n\t};\r\n\tbarbellcurl = {\r\n\t\ttype = \"barbellcurl\",\r\n\t\tname=getText(\"IGUI_BarbellCurl\"),\r\n\t\ttooltip=getText(\"IGUI_BarbellCurl_Tooltip\"),\r\n\t\titem = \"Base.BarBell\",\r\n\t\tprop=\"twohands\", -- prop is where we gonna put our item, 2 hand, primary or switch (one hand, then the other every X times)\r\n\t\tstiffness=\"arms,chest\",\r\n\t\tmetabolics = Metabolics.FitnessHeavy,\r\n\t\txpMod = 1.2,\r\n\t};\r\n\tdumbbellpress = {\r\n\t\ttype = \"dumbbellpress\",\r\n\t\tname=getText(\"IGUI_DumbbellPress\"),\r\n\t\ttooltip=getText(\"IGUI_PushUps_Tooltip\"),\r\n\t\titem = \"Base.DumbBell\",\r\n\t\tprop=\"switch\",\r\n\t\tstiffness=\"arms\",\r\n\t\tmetabolics = Metabolics.FitnessHeavy,\r\n\t\txpMod = 1.8,\r\n\t};\r\n\tbicepscurl = {\r\n\t\ttype = \"bicepscurl\",\r\n\t\tname=getText(\"IGUI_BicepsCurl\"),\r\n\t\ttooltip=getText(\"IGUI_PushUps_Tooltip\"),\r\n\t\titem = \"Base.DumbBell\",\r\n\t\tprop=\"switch\", -- switch is special, as i have 2 anim, one for left hand and one for right, i'll switch every X repeat the hand used\r\n\t\tstiffness=\"arms\",\r\n\t\tmetabolics = Metabolics.FitnessHeavy,\r\n\t\txpMod = 1.8,\r\n\t};\r\n}";
+let SRC = '';   // loaded from data/fitness/FitnessExercises.lua
 const GAME_PATH = 'media/lua/shared/Definitions/FitnessExercises.lua';
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -448,7 +449,7 @@ $('zipBtn').addEventListener('click',async()=>{
 const DK='pz-fitness-draft';
 let draftTimer=null;
 function sig(str){ let h=2166136261; for(let i=0;i<str.length;i+=7){ h^=str.charCodeAt(i); h=Math.imul(h,16777619) } return str.length+':'+(h>>>0).toString(36) }
-const SIG=sig(SRC);
+let SIG='';
 function writeDraft(){ clearTimeout(draftTimer); draftTimer=null; try{
   if(!S.ex.some(x=>x.dirty) && S.name==='FitnessExercises.lua') localStorage.removeItem(DK);
   else localStorage.setItem(DK, JSON.stringify({sig:SIG, name:S.name, ex:S.ex, segs:S.segs, nl:S.nl})) }catch(_){} }
@@ -458,11 +459,13 @@ window.addEventListener('pagehide',()=>{ if(draftTimer) writeDraft() });
 document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='hidden' && draftTimer) writeDraft() });
 document.addEventListener('click',e=>{ if(draftTimer && e.target.closest && e.target.closest('a[href]')) writeDraft() },true);
 
-load(SRC,'FitnessExercises.lua');
-try{ const d=JSON.parse(localStorage.getItem(DK)||'null');
-  if(d && d.sig===SIG && Array.isArray(d.ex)){ S.ex=d.ex; S.segs=d.segs; S.nl=d.nl; S.name=d.name||S.name;
-    $('fname').textContent=S.name; S.sel=S.ex.findIndex(x=>!x.deleted); buildFilters(); renderList(); renderEditor(); }
-  else if(d && d.text){ load(d.text,d.name); $('bMsg').textContent='Restored your edits from an older version of this page. They are now the baseline.' } }catch(_){}
+PZData.text('data/fitness/FitnessExercises.lua').then(t=>{ SRC=t; SIG=sig(SRC);
+  load(SRC,'FitnessExercises.lua');
+  try{ const d=JSON.parse(localStorage.getItem(DK)||'null');
+    if(d && d.sig===SIG && Array.isArray(d.ex)){ S.ex=d.ex; S.segs=d.segs; S.nl=d.nl; S.name=d.name||S.name;
+      $('fname').textContent=S.name; S.sel=S.ex.findIndex(x=>!x.deleted); buildFilters(); renderList(); renderEditor(); }
+    else if(d && d.text){ load(d.text,d.name); $('bMsg').textContent='Restored your edits from an older version of this page. They are now the baseline.' } }catch(_){}
+});
 </script>
 </body>
 </html>

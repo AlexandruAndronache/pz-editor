@@ -1,0 +1,40 @@
+module Base
+{
+    entity Well
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_Well,
+            uiEnabled = false,
+        }
+        component FluidContainer
+        {
+            ContainerName = Well,
+            Capacity = 10000.0,
+            RainFactor = 0.1,
+            FillsWithCleanWater = true,
+            HiddenAmount = true,
+            InitialPercentMin = 0.2,
+            InitialPercentMax = 1.0,
+            Fluids
+            {
+                fluid = Water:1.0,
+            }
+            whitelist
+            {
+                fluid = Water,
+            }
+        }
+        component SpriteConfig
+        {
+            face S
+            {
+                layer
+                {
+                    row = camping_01_16,
+                }
+            }
+        }
+    }
+}

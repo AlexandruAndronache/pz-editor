@@ -1,0 +1,36 @@
+module Base
+{
+    craftRecipe DrillPlank
+    {
+        timedAction = Making,
+        time = 40,
+        Tags = AnySurfaceCraft,
+        category = Miscellaneous,
+        xpAward = Carving:1,
+        inputs
+        {
+            item 1 [Base.Plank;Base.Log;Base.LargeBranch] flags[Prop2],
+            item 1 tags[base:screwdriver;base:dullknife;base:sharpknife;base:drillwood;base:drillwoodpoor] mode:keep flags[Prop1;MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 Base.PercedWood,
+        }
+    }
+
+    craftRecipe MakeMagnesiumShavings
+    {
+        timedAction = Making,
+        time = 40,
+        Tags = InHandCraft,
+        category = Miscellaneous,
+        inputs
+        {
+            item 1 [Base.MagnesiumFirestarter],
+        }
+        outputs
+        {
+            item 1 Base.MagnesiumShavings,
+        }
+    }
+}

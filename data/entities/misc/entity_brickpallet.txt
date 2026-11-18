@@ -1,0 +1,31 @@
+module Base
+{
+    entity BrickPallet
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_BrickPallet,
+            uiEnabled = false,
+        }
+        component ContextMenuConfig
+        {
+            contextEntry
+            {
+                menu = TakeBricks,
+                icon = Item_ClayBrick_Fired.png,
+                customFunction = ContextMenuCode.TakeBricks,
+            }
+        }
+        component SpriteConfig
+        {
+            face SINGLE
+            {
+                layer
+                {
+                    row = construction_01_4,
+                }
+            }
+        }
+    }
+}
